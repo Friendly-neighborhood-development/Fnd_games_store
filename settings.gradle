@@ -1,4 +1,6 @@
 rootProject.name = 'fnd_games_store'
 include 'config-service'
 include 'registry-service'
+include 'gateway-service'
+include 'notification-service'
 
