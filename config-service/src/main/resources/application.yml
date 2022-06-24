@@ -5,7 +5,7 @@ spring:
       #        usage of a git repository
       server:
         git:
-          uri: https://github.com/SergeyPodgorny/YML-Coinfigurations-storage
+          uri: https://github.com/Friendly-neighborhood-development/Games_Store_Configurations
           skipSslValidation: true
     #        usage of a local folder
     #     server:

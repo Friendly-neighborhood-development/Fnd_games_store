@@ -3,4 +3,5 @@ include 'config-service'
 include 'registry-service'
 include 'gateway-service'
 include 'notification-service'
+include 'games-service'
 

@@ -10,10 +10,10 @@ repositories {
 }
 sourceSets {
     main {
-        java { srcDirs = [ 'main' ] }
+        java { srcDirs = [] }
     }
     test {
-        java { srcDirs = [ 'test' ] }
+        java { srcDirs = [] }
     }
 }
 dependencies {
