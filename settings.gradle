@@ -5,4 +5,5 @@ include 'gateway-service'
 include 'notification-service'
 include 'games-service'
 include 'orders-service'
+include 'basket-service'
 
