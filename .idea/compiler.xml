@@ -9,8 +9,10 @@
         </processorPath>
         <module name="fnd_games_store.basket-service.test" />
         <module name="fnd_games_store.orders-service.test" />
-        <module name="fnd_games_store.games-service.main" />
+        <module name="fnd_games_store.users-service.main" />
         <module name="fnd_games_store.games-service.test" />
+        <module name="fnd_games_store.users-service.test" />
+        <module name="fnd_games_store.games-service.main" />
         <module name="fnd_games_store.orders-service.main" />
         <module name="fnd_games_store.basket-service.main" />
       </profile>
