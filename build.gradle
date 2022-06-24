@@ -9,12 +9,7 @@ repositories {
     mavenCentral()
 }
 sourceSets {
-    main {
-        java { srcDirs = [] }
-    }
-    test {
-        java { srcDirs = [] }
-    }
+
 }
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'

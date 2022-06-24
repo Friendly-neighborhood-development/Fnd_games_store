@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/games-service" />
             <option value="$PROJECT_DIR$/gateway-service" />
             <option value="$PROJECT_DIR$/notification-service" />
+            <option value="$PROJECT_DIR$/orders-service" />
             <option value="$PROJECT_DIR$/registry-service" />
           </set>
         </option>
