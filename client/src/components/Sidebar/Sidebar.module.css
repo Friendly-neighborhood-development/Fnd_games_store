@@ -1,0 +1,10 @@
+.sidebar{
+    width: 200px;
+    background-color: var(--color-white);
+    position: fixed;
+    height: 95vh;
+    overflow: auto;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+}

@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './App.css';
+import Sidebar from "./components/Sidebar/Sidebar";
+import Navbar from "./components/Navbar/Navbar";
+import GamesList from "./components/GamesList/GamesList";
 
-function App() {
+const App:FC = ()=> {
   return (
-    <div className="App">
-    </div>
+      <div className="app">
+          <div className="container">
+              <Sidebar/>
+              <div className="main-wrapper">
+                  <Navbar/>
+                  <GamesList/>
+              </div>
+          </div>
+      </div>
+
   );
 }
 
