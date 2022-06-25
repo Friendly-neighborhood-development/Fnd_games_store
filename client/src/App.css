@@ -16,6 +16,7 @@
 .app{
     background-color: var(--color-light-gray);
     display: flex;
+    font-family: 'Roboto', sans-serif;
 }
 
 .main-wrapper{
