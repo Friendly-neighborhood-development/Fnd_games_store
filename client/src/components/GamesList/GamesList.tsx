@@ -1,23 +1,24 @@
 import React, {FC} from 'react';
 import cl from './GamesList.module.css'
 import GameCard from "../GameCard/GameCard";
+import images from "../../constants/images";
 
 interface gameProps {
     title: string,
     description: string,
+    image: string,
     id:number
 }
 
 
 const games:Array<gameProps> = [
-    {title: "Minecraft", description: "Have a nice day", id: 1},
-    {title: "Dota 2", description: "Have a bad day", id: 2},
-    {title: "GTA V", description: "Have a nice gun", id: 3},
-    {title: "Fortnite", description: "Have a pride day", id: 4},
-    {title: "Valorant", description: "Have a quick day", id: 5},
-    {title: "Farming Simulator 22", description: "Have a farm day", id: 6},
-    {title: "Cyberpunk 2077", description: "Have a bug day", id: 7},
-    {title: "Battlefield 6", description: "Have a war day", id: 8},
+    {title: "Minecraft", description: "Have a nice day", image: images.Cyberpunk, id: 1},
+    {title: "Dota 2", description: "Have a bad day", image: images.Cyberpunk, id: 2},
+    {title: "GTA V", description: "Have a nice gun", image: images.Cyberpunk, id: 3},
+    {title: "Fortnite", description: "Have a pride day", image: images.Cyberpunk, id: 4},
+    {title: "Valorant", description: "Have a quick day", image: images.Cyberpunk, id: 5},
+    {title: "Farming Simulator 22", description: "Have a farm day", image: images.Cyberpunk, id: 6},
+    {title: "Cyberpunk 2077", description: "Have a bug day", image: images.Cyberpunk, id: 7},
 
 ]
 
@@ -28,6 +29,7 @@ const GamesList:FC = () => {
                 <GameCard
                     title={game.title}
                     description={game.description}
+                    image={game.image}
                     key={game.id}
                 />)}
         </div>

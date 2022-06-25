@@ -1,10 +1,27 @@
-.card{
+.game_card {
     width: 250px;
-    height: 250px;
-    padding: 25px;
-    margin-bottom: 20px;
+    height: 300px;
+    padding: 10px;
+    margin-bottom: 15px;
     border-radius: 10%;
     background-color: var(--color-white);
+}
+
+.game_img {
+    height: 200px;
+    width: 100%;
+    border-radius: 10%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.game_img img{
+    width: 100%;
+}
+
+.game_details{
 
 }
 
