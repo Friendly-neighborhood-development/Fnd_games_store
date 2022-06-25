@@ -1,24 +1,29 @@
 import React, {FC, useEffect, useState} from 'react';
 import cl from './GameCard.module.css'
+import CustomButton from "../UI/CustomButton/CustomButton";
 
 interface GameCardProps {
     title: string,
     description: string,
-    image: string
+    image: string,
+    price: number | string;
 }
 
-const GameCard:FC<GameCardProps> = ({title, description, image}) => {
+const GameCard: FC<GameCardProps> = ({title, description, image, price}) => {
     const [gameCardClasses, setGameCardClasses] = useState([cl.game_card, cl.skeleton].join(" "))
     const [gameImgClasses, setGameImgClasses] = useState([cl.game_img, cl.hide_text].join(" "))
     const [gameTitleClasses, setGameTitleClasses] = useState([cl.game_title, cl.hide_text].join(" "))
-    const [gameDescriptionClasses, setGameDescriptionClasses] = useState([cl.game_description, cl.hide_text].join(" "))
+    const [gamePriceClasses, setGamePriceClasses] = useState([cl.game_price, cl.hide_text].join(" "))
+    const [gameButtonClasses, setGameButtonClasses] = useState(cl.hide_text)
+
 
     useEffect(() => {
         setTimeout(() => {
             setGameCardClasses(cl.game_card)
             setGameImgClasses(cl.game_img)
             setGameTitleClasses(cl.game_title)
-            setGameDescriptionClasses(cl.game_description)
+            setGamePriceClasses(cl.game_price)
+            setGameButtonClasses("")
         }, 1500)
     }, [])
 
@@ -28,8 +33,16 @@ const GameCard:FC<GameCardProps> = ({title, description, image}) => {
             <div className={gameImgClasses}>
                 <img src={image} alt={"game picture"}/>
             </div>
+            <div className={cl.game_details}>
                 <h3 className={gameTitleClasses}>{title}</h3>
-                <p className={gameDescriptionClasses}>{description}</p>
+                <div className={cl.game_sale}>
+                    <p className={gamePriceClasses}>{price === "Бесплатно"
+                        ? price
+                        : price + " ₽"}</p>
+                    <CustomButton>Получить</CustomButton>
+                </div>
+            </div>
+
         </div>
     );
 };

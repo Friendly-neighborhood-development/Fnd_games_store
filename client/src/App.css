@@ -5,6 +5,10 @@
     --color-blue: #0047FF;
     --color-text: #7A797D;
     --color-active-text: var(--color-blue);
+    --color-button-bg: var(--color-white);
+    --color-button-text: var(--color-blue);
+    --color-button-hov: var(--color-blue);
+    --color-button-text-hov: var(--color-white)
 }
 
 * {

@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {FC} from 'react';
+import cl from './CustomButton.module.css'
 
-const CustomButton = () => {
+interface CustomButtonProps{
+    children: any;
+}
+
+const CustomButton:FC<CustomButtonProps> = ({ children}) => {
     return (
-        <div>
-            
-        </div>
+        <button className={cl.btn}>
+            {children}
+        </button>
     );
-};
+}
 
 export default CustomButton;

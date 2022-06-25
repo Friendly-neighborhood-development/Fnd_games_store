@@ -3,8 +3,9 @@
 }
 
 .game_card {
+    display: flex;
+    flex-direction: column;
     width: 250px;
-    height: 300px;
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 10%;
@@ -26,12 +27,19 @@
     width: 100%;
 }
 
-.game_title {
-    margin-bottom: 10px;
+.game_details{
+    margin: 0 0.5rem;
+
 }
 
-.game_description {
+.game_sale{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.game_title {
+    margin-bottom: 0.5rem;
 }
 
 /* Skeleton */
