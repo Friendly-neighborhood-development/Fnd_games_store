@@ -2,6 +2,7 @@
     --color-light-gray: #f8f8f8;
     --color-gray: #f1f1f1;
     --color-dark-gray: #747475;
+    --color-very-dark-gray: #27262E;
     --color-white: #ffffff;
     --color-blue: #0047FF;
     --color-text: #7A797D;
@@ -24,6 +25,10 @@
     background-color: var(--color-light-gray);
     display: flex;
     font-family: 'Roboto', sans-serif;
+}
+
+.page{
+    min-height: 100vh;
 }
 
 .main-wrapper{

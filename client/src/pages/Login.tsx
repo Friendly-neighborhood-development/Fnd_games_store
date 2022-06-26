@@ -6,11 +6,14 @@ import GamesList from "../components/GamesList/GamesList";
 const Login = () => {
     return (
         <div className="container">
-            <Sidebar/>
-            <div className="main-wrapper">
-                <Navbar/>
-                Login
+            <div className={"page"}>
+                <Sidebar/>
+                <div className="main-wrapper">
+                    <Navbar/>
+                    Login
+                </div>
             </div>
+
         </div>
     );
 };

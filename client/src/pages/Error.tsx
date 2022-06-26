@@ -4,10 +4,13 @@ import {Link} from "react-router-dom";
 const Error = () => {
     return (
         <div className={"container"}>
-            <span>Something went wrong, please </span>
-            <Link to={"/login"} className="navbar__link">
-                <span>go back to safety</span>
-            </Link>
+            <div className={"page"}>
+                <span>Something went wrong, please </span>
+                <Link to={"/login"}>
+                    <span>go back to safety</span>
+                </Link>
+            </div>
+
 
         </div>
     );

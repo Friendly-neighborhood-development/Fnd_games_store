@@ -1,0 +1,22 @@
+.block{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem;
+
+}
+
+.title{
+    display: flex;
+    margin-bottom: 0.5rem;
+    color: var(--color-very-dark-gray);
+    text-transform: uppercase;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+
+}
+
+.links{
+    display: flex;
+    flex-direction: column;
+}
