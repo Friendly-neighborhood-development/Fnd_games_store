@@ -1,4 +1,5 @@
 .sidebar{
+    padding-top: 1rem;
     width: 200px;
     background-color: var(--color-white);
     position: fixed;
@@ -6,5 +7,6 @@
     overflow: auto;
     border-radius: 15px;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

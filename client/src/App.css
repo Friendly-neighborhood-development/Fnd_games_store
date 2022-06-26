@@ -5,11 +5,13 @@
     --color-white: #ffffff;
     --color-blue: #0047FF;
     --color-text: #7A797D;
-    --color-active-text: var(--color-blue);
     --color-button-bg: var(--color-white);
     --color-button-text: var(--color-blue);
     --color-button-hov: var(--color-blue);
-    --color-button-text-hov: var(--color-white)
+    --color-button-text-hov: var(--color-white);
+    --color-link-text: var(--color-text);
+    --color-link-text-active: var(--color-blue);
+
 }
 
 * {

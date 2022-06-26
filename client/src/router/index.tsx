@@ -15,5 +15,4 @@ export const routes:Array<routeProps> = [
     {path: "/login", element: <Login/>},
     {path: "/error", element: <Error/>},
     { path: "*", element: <Navigate to="/error" /> },
-
 ]
