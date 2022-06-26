@@ -39,7 +39,7 @@ const GameCard: FC<GameCardProps> = ({title, description, image, price}) => {
                     <p className={gamePriceClasses}>{price === "Бесплатно"
                         ? price
                         : price + " ₽"}</p>
-                    <CustomButton>Получить</CustomButton>
+                    <div className={gameButtonClasses}>  <CustomButton>Получить</CustomButton> </div>
                 </div>
             </div>
 

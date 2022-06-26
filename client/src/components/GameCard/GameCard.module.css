@@ -29,7 +29,10 @@
 
 .game_details{
     margin: 0 0.5rem;
+}
 
+.game_title {
+    margin-bottom: 0.5rem;
 }
 
 .game_sale{
@@ -38,9 +41,12 @@
     align-items: center;
 }
 
-.game_title {
-    margin-bottom: 0.5rem;
+.game_price{
+    width: 40%;
+    color: var(--color-dark-gray);
 }
+
+
 
 /* Skeleton */
 .game_card.skeleton {
