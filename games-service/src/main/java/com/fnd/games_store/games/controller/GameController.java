@@ -23,9 +23,9 @@ public class GameController {
 
 
 
-    @GetMapping("/get/{name}")
-    public GameResponseDTO getGameEntry(@RequestParam String name){
-        return new GameResponseDTO(gameService.getGameByName(name));
+    @GetMapping("/get/{requestedGameId}")
+    public GameResponseDTO getGameEntry(@RequestParam String requestedGameId){
+        return new GameResponseDTO(gameService.getGameById(requestedGameId));
     }
 
     @GetMapping("/getAll")
@@ -41,16 +41,16 @@ public class GameController {
     }
 
     @PutMapping("/update/{name}")
-    public GameResponseDTO updateGameEntry(@PathVariable String name, @RequestBody GameRequestDTO requestDTO){
-        return gameService.updateGameEntry(requestDTO.getName(),requestDTO.getGenre(), requestDTO.getReleaseDate(), requestDTO.getDeveloper(),
-                requestDTO.getPublisher(), requestDTO.getPlatform(),requestDTO.getFeatures(), requestDTO.getPrice(), requestDTO.getDiscount(),
-                requestDTO.getDescription());
+    public GameResponseDTO updateGameEntry(@PathVariable String requestedGameId, @RequestBody @NotNull GameRequestDTO gameRequestDTO){
+        return gameService.updateGameEntry(requestedGameId, gameRequestDTO.getName(),gameRequestDTO.getGenre(), gameRequestDTO.getReleaseDate(),
+               gameRequestDTO.getDeveloper(), gameRequestDTO.getPublisher(), gameRequestDTO.getPlatform(),gameRequestDTO.getFeatures(),
+               gameRequestDTO.getPrice(), gameRequestDTO.getDiscount(), gameRequestDTO.getDescription());
 
     }
 
-    @DeleteMapping("/delete/{name}")
-    public void deleteGameEntry(@PathVariable String name){
-        gameService.deleteGameEntry(name);
+    @DeleteMapping("/delete/{requestedGameId}")
+    public void deleteGameEntry(@PathVariable String requestedGameId){
+        gameService.deleteGameEntry(requestedGameId);
     }
 
 

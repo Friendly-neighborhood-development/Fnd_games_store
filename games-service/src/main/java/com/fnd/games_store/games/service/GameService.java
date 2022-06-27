@@ -21,8 +21,8 @@ public class GameService {
         this.gameRepository = gameRepository;
     }
 
-    public Game getGameByName(String name){
-       return gameRepository.findById(convertNameToId(name)).orElseThrow(()-> new GameNotFoundException("Requested game not found"));
+    public Game getGameById(String id){
+       return gameRepository.findById(id).orElseThrow(()-> new GameNotFoundException("Requested game not found"));
     }
 
    public List<Game> getGamesCatalogue(){
@@ -38,21 +38,18 @@ public class GameService {
             return gameRepository.save(creatingGameEntry).getId();
     }
 
-    public GameResponseDTO updateGameEntry(String name, String genre, OffsetDateTime releaseDate, String developer, String publisher,
+    public GameResponseDTO updateGameEntry(String updatingAccountId, String name, String genre, OffsetDateTime releaseDate, String developer, String publisher,
                                 String platform, String features, BigDecimal price, BigDecimal discount, String description) {
             Game updatingGameEntry = new Game(name, genre, releaseDate, developer, publisher,
                                               platform, features,price, discount,description);
-            updatingGameEntry.setId(gameRepository.getGameByName(updatingGameEntry.getName()).getId());
+            updatingGameEntry.setId(updatingAccountId);
             return new GameResponseDTO(gameRepository.save(updatingGameEntry));
     }
 
-        public void deleteGameEntry(String name){
-            gameRepository.deleteById(convertNameToId(name));
-    }
-
-        private String convertNameToId(String name){
-            Game requestedGame = gameRepository.getGameByName(name);
-            return requestedGame.getId();
+        public String deleteGameEntry(String deletingGameId){
+        Game gameToBeDeleted = gameRepository.getGameById(deletingGameId);
+        gameRepository.deleteById(deletingGameId);
+            return gameToBeDeleted.getId();
     }
 
 }
