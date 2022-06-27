@@ -15,7 +15,7 @@ import java.time.OffsetDateTime;
 public class GameResponseDTO {
     private String name;
     private String genre;
-    private OffsetDateTime releaseDate;
+    private String releaseDate;
     private String developer;
     private String publisher;
     private String platform;
@@ -26,7 +26,7 @@ public class GameResponseDTO {
 
     private Game game;
 
-    public GameResponseDTO(String name, String genre, OffsetDateTime releaseDate, String developer, String publisher, String platform, String features, BigDecimal price, BigDecimal discount, String description) {
+    public GameResponseDTO(String name, String genre, String releaseDate, String developer, String publisher, String platform, String features, BigDecimal price, BigDecimal discount, String description) {
         this.name = name;
         this.genre = genre;
         this.releaseDate = releaseDate;
