@@ -1,0 +1,16 @@
+.btn {
+    padding: 0.8rem 1.5rem;
+    align-self: center;
+    cursor: pointer;
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease-in;
+    border: 1px solid var(--color-button-text);
+}
+
+.btn:hover {
+    background: var(--color-button-hov);
+    color: var(--color-button-text-hov);
+}
