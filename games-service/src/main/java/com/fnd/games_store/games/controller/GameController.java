@@ -1,7 +1,7 @@
 package com.fnd.games_store.games.controller;
 
-import com.fnd.games_store.games.entity.dto.GameRequestDTO;
-import com.fnd.games_store.games.entity.dto.GameResponseDTO;
+import com.fnd.games_store.games.controller.dto.GameRequestDTO;
+import com.fnd.games_store.games.controller.dto.GameResponseDTO;
 import com.fnd.games_store.games.service.GameService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,16 +15,16 @@ import java.util.stream.Collectors;
 public class GameController {
 
 
-    private final GameService gameService;
+    private GameService gameService;
     @Autowired
-    public GameController(GameService gameService) {
+    public GameController() {
         this.gameService = gameService;
     }
 
 
 
     @GetMapping("/get/{requestedGameId}")
-    public GameResponseDTO getGameEntry(@RequestParam String requestedGameId){
+    public GameResponseDTO getGameEntry(@PathVariable String requestedGameId){
         return new GameResponseDTO(gameService.getGameById(requestedGameId));
     }
 
@@ -40,7 +40,7 @@ public class GameController {
                 gameRequestDTO.getDescription());
     }
 
-    @PutMapping("/update/{name}")
+    @PutMapping("/update/{requestedGameId}")
     public GameResponseDTO updateGameEntry(@PathVariable String requestedGameId, @RequestBody @NotNull GameRequestDTO gameRequestDTO){
         return gameService.updateGameEntry(requestedGameId, gameRequestDTO.getName(),gameRequestDTO.getGenre(), gameRequestDTO.getReleaseDate(),
                gameRequestDTO.getDeveloper(), gameRequestDTO.getPublisher(), gameRequestDTO.getPlatform(),gameRequestDTO.getFeatures(),
@@ -52,6 +52,5 @@ public class GameController {
     public void deleteGameEntry(@PathVariable String requestedGameId){
         gameService.deleteGameEntry(requestedGameId);
     }
-
 
 }

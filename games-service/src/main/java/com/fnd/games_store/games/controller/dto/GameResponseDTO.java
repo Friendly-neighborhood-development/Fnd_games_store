@@ -1,4 +1,4 @@
-package com.fnd.games_store.games.entity.dto;
+package com.fnd.games_store.games.controller.dto;
 
 
 import com.fnd.games_store.games.entity.Game;
@@ -24,7 +24,7 @@ public class GameResponseDTO {
     private BigDecimal discount;
     private String description;
 
-    private Game game;
+
 
     public GameResponseDTO(String name, String genre, String releaseDate, String developer, String publisher, String platform, String features, BigDecimal price, BigDecimal discount, String description) {
         this.name = name;

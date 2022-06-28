@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -20,7 +21,7 @@ import java.util.Objects;
 
 
 @Entity
-@Table(name = "games-catalogue")
+@Table(name = "games_catalogue")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -35,7 +36,7 @@ public class Game {
     private String id;
     private String name;
     private String genre;
-    private OffsetDateTime releaseDate;
+    private String releaseDate;
     private String developer;
     private String publisher;
     private String platform;
@@ -44,7 +45,8 @@ public class Game {
     private BigDecimal discount;
     private String description;
 
-    public Game(String name, String genre, OffsetDateTime releaseDate, String developer, String publisher, String platform, String features, BigDecimal price, BigDecimal discount, String description) {
+    public Game(String name, String genre, String releaseDate, String developer, String publisher, String platform,
+                String features, BigDecimal price, BigDecimal discount, String description) {
         this.name = name;
         this.genre = genre;
         this.releaseDate = releaseDate;
