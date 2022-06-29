@@ -1,7 +1,8 @@
 spring:
+  profiles:
+    active: "dev"
   cloud:
     config:
-
       #        usage of a git repository
       server:
         git:
@@ -11,14 +12,13 @@ spring:
     #     server:
     #        native:
     #          search-locations: classpath:/services
-    #   setting up profiels, for now it is default
-    profiles:
-      active: default
   security:
     user:
       password: admin
 
 server:
   port: 8001
+
+
 
 

@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: "test"
   application:
     name: games-service
   config:
@@ -6,3 +8,4 @@ spring:
     fail-fast: true
     password: admin
     username: user
+
