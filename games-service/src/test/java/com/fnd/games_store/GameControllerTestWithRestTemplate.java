@@ -10,7 +10,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = GamesApplication.class)
-public class GameControllerTest {
+public class GameControllerTestWithRestTemplate {
 
     @LocalServerPort
     private int port;

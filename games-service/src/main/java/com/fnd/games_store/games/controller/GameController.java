@@ -56,7 +56,7 @@ public class GameController {
     @Profile("test")
     @GetMapping("/default")
     public String printDefaultMessage(){
-        return "Test succeed";
+        return gameService.defaultMessage();
     }
 
 }
