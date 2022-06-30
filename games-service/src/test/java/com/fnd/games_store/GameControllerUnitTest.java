@@ -2,7 +2,9 @@ package com.fnd.games_store;
 
 
 import com.fnd.games_store.games.GamesApplication;
+import com.fnd.games_store.games.entity.Game;
 import com.fnd.games_store.games.service.GameService;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -14,7 +16,7 @@ import static org.mockito.Mockito.when;
 
 @SpringBootTest(classes = GamesApplication.class)
 @AutoConfigureMockMvc
-public class GameControllerIntegrationTest {
+public class GameControllerUnitTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -26,7 +28,15 @@ public class GameControllerIntegrationTest {
     void shouldReturnDefaultMessage(){
         when(gameService.defaultMessage()).thenReturn("Test succeed");
     }
+    @Before
+    void setUp(){
+        Game game = new Game();
+        game.setId("1");
+    }
 
-
+    @Test
+    void method1(){
+        when(gameService.getGameById("2")).thenThrow(new RuntimeException());
+    }
 
 }
