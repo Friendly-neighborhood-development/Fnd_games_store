@@ -15,6 +15,7 @@ import java.time.OffsetDateTime;
 @ToString
 public class GameRequestDTO {
 
+    private String id;
     private String name;
     private String genre;
     private String releaseDate;

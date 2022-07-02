@@ -14,15 +14,16 @@ import java.util.List;
 @Service
 public class GameService {
 
-    private final GameRepository gameRepository;
+    private GameRepository gameRepository;
 
     @Autowired
     public GameService(GameRepository gameRepository) {
         this.gameRepository = gameRepository;
     }
 
-    public Game getGameById(String id){
-       return gameRepository.findById(id).orElseThrow(()-> new GameNotFoundException("Requested game not found"));
+    public GameResponseDTO getGameById(String id){
+        Game foundGameById = gameRepository.findById(id).orElseThrow(()-> new GameNotFoundException("Requested game not found"));
+        return new GameResponseDTO(foundGameById);
     }
 
    public List<Game> getGamesCatalogue(){

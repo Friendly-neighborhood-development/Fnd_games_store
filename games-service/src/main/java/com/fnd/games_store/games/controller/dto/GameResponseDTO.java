@@ -7,12 +7,12 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
-@NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
 @ToString
 public class GameResponseDTO {
+    private String id;
     private String name;
     private String genre;
     private String releaseDate;
@@ -24,7 +24,9 @@ public class GameResponseDTO {
     private BigDecimal discount;
     private String description;
 
+    public GameResponseDTO(){
 
+    }
 
     public GameResponseDTO(String name, String genre, String releaseDate, String developer, String publisher, String platform, String features, BigDecimal price, BigDecimal discount, String description) {
         this.name = name;

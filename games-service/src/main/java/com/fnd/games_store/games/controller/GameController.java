@@ -16,15 +16,15 @@ import java.util.stream.Collectors;
 public class GameController {
 
 
-    private final GameService gameService;
+    private GameService gameService;
     @Autowired
     public GameController(GameService gameService) {
         this.gameService = gameService;
     }
 
     @GetMapping("/get/{requestedGameId}")
-    public GameResponseDTO getGameEntry(@PathVariable String requestedGameId){
-        return new GameResponseDTO(gameService.getGameById(requestedGameId));
+    public GameResponseDTO getGameById(@PathVariable String requestedGameId){
+        return gameService.getGameById(requestedGameId);
     }
 
     @GetMapping("/getAll")
