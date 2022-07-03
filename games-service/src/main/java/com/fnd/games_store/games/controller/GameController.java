@@ -23,28 +23,23 @@ public class GameController {
     }
 
     @GetMapping("/get/{requestedGameId}")
-    public GameResponseDTO getGameById(@PathVariable String requestedGameId){
+    public GameResponseDTO getGameById(@PathVariable @NotNull String requestedGameId){
         return gameService.getGameById(requestedGameId);
     }
 
     @GetMapping("/getAll")
     public List<GameResponseDTO> getGameCatalogue(){
-        return gameService.getGamesCatalogue().stream().map(GameResponseDTO::new).collect(Collectors.toList());
+        return gameService.getGamesCatalogue();
     }
 
     @PostMapping("/create")
-    public String createGameEntry(@RequestBody @NotNull GameRequestDTO gameRequestDTO){
-        return gameService.createGameEntry(gameRequestDTO.getName(),gameRequestDTO.getGenre(), gameRequestDTO.getReleaseDate(), gameRequestDTO.getDeveloper(),
-                gameRequestDTO.getPublisher(), gameRequestDTO.getPlatform(),gameRequestDTO.getFeatures(), gameRequestDTO.getPrice(), gameRequestDTO.getDiscount(),
-                gameRequestDTO.getDescription());
+    public GameResponseDTO createGameEntry(@RequestBody @NotNull GameRequestDTO gameRequestDTO){
+        return gameService.createGameEntry(gameRequestDTO);
     }
 
     @PutMapping("/update/{requestedGameId}")
-    public GameResponseDTO updateGameEntry(@PathVariable String requestedGameId, @RequestBody @NotNull GameRequestDTO gameRequestDTO){
-        return gameService.updateGameEntry(requestedGameId, gameRequestDTO.getName(),gameRequestDTO.getGenre(), gameRequestDTO.getReleaseDate(),
-               gameRequestDTO.getDeveloper(), gameRequestDTO.getPublisher(), gameRequestDTO.getPlatform(),gameRequestDTO.getFeatures(),
-               gameRequestDTO.getPrice(), gameRequestDTO.getDiscount(), gameRequestDTO.getDescription());
-
+    public GameResponseDTO updateGameEntry(@PathVariable @NotNull String requestedGameId, @RequestBody @NotNull GameRequestDTO gameRequestDTO){
+        return gameService.updateGameEntry(requestedGameId, gameRequestDTO);
     }
 
     @DeleteMapping("/delete/{requestedGameId}")

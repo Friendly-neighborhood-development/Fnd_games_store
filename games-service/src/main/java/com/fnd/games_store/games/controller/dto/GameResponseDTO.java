@@ -28,7 +28,8 @@ public class GameResponseDTO {
 
     }
 
-    public GameResponseDTO(String name, String genre, String releaseDate, String developer, String publisher, String platform, String features, BigDecimal price, BigDecimal discount, String description) {
+    public GameResponseDTO(String name, String genre, String releaseDate, String developer, String publisher,
+                           String platform, String features, BigDecimal price, BigDecimal discount, String description) {
         this.name = name;
         this.genre = genre;
         this.releaseDate = releaseDate;
@@ -42,6 +43,7 @@ public class GameResponseDTO {
     }
 
     public GameResponseDTO(Game game){
+        this.id = game.getId();
         this.name = game.getName();
         this.genre = game.getGenre();
         this.releaseDate = game.getReleaseDate();

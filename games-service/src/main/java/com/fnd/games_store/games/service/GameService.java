@@ -1,7 +1,9 @@
 package com.fnd.games_store.games.service;
 
+import com.fnd.games_store.games.controller.dto.GameRequestDTO;
 import com.fnd.games_store.games.entity.Game;
 import com.fnd.games_store.games.controller.dto.GameResponseDTO;
+import com.fnd.games_store.games.exceptions.GameAlreadyExistException;
 import com.fnd.games_store.games.exceptions.GameNotFoundException;
 import com.fnd.games_store.games.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class GameService {
@@ -22,35 +25,41 @@ public class GameService {
     }
 
     public GameResponseDTO getGameById(String id){
-        Game foundGameById = gameRepository.findById(id).orElseThrow(()-> new GameNotFoundException("Requested game not found"));
+        Game foundGameById = gameRepository.findById(id).orElseThrow(GameNotFoundException::new);
         return new GameResponseDTO(foundGameById);
     }
 
-   public List<Game> getGamesCatalogue(){
-        return gameRepository.findAll();
+   public List<GameResponseDTO> getGamesCatalogue(){
+        return gameRepository.findAll().stream().map(GameResponseDTO::new).collect(Collectors.toList());
     }
 
+   public GameResponseDTO createGameEntry(GameRequestDTO gameRequestDTO) {
 
-    // TODO for now I don't know how to better deal with this method in case if a game would be found, refactor later
-   public String createGameEntry(String name, String genre, String releaseDate, String developer, String publisher,
-                                  String platform, String features, BigDecimal price, BigDecimal discount, String description) {
-            Game creatingGameEntry = new Game(name, genre, releaseDate, developer, publisher,
-                                              platform, features,price, discount,description);
-            return gameRepository.save(creatingGameEntry).getId();
+        Game gameFound = gameRepository.getGameByName(gameRequestDTO.getName());
+
+        if (gameFound != null ){
+            return new GameResponseDTO(gameRepository.getGameByName(gameRequestDTO.getName()));
+        } else {
+            Game creatingGameEntry = new Game(gameRequestDTO.getName(), gameRequestDTO.getGenre(), gameRequestDTO.getReleaseDate(),
+                    gameRequestDTO.getDeveloper(), gameRequestDTO.getPublisher(), gameRequestDTO.getPlatform(),
+                    gameRequestDTO.getFeatures(),gameRequestDTO.getPrice(), gameRequestDTO.getDiscount(),gameRequestDTO.getDescription());
+            return new GameResponseDTO(gameRepository.save(creatingGameEntry));
+        }
+
     }
 
-    public GameResponseDTO updateGameEntry(String updatingAccountId, String name, String genre, String releaseDate, String developer, String publisher,
-                                String platform, String features, BigDecimal price, BigDecimal discount, String description) {
-            Game updatingGameEntry = new Game(name, genre, releaseDate, developer, publisher,
-                                              platform, features,price, discount,description);
-            updatingGameEntry.setId(updatingAccountId);
+    public GameResponseDTO updateGameEntry(String updatingGameId, GameRequestDTO gameRequestDTO) {
+            gameRepository.findById(updatingGameId).orElseThrow(GameNotFoundException::new);
+            Game updatingGameEntry = new Game(gameRequestDTO.getName(), gameRequestDTO.getGenre(), gameRequestDTO.getReleaseDate(),
+                                              gameRequestDTO.getDeveloper(), gameRequestDTO.getPublisher(), gameRequestDTO.getPlatform(),
+                                              gameRequestDTO.getFeatures(),gameRequestDTO.getPrice(), gameRequestDTO.getDiscount(),gameRequestDTO.getDescription());
+            updatingGameEntry.setId(updatingGameId);
             return new GameResponseDTO(gameRepository.save(updatingGameEntry));
     }
 
-        public String deleteGameEntry(String deletingGameId){
+        public void deleteGameEntry(String deletingGameId){
         Game gameToBeDeleted = gameRepository.getGameById(deletingGameId);
         gameRepository.deleteById(deletingGameId);
-            return gameToBeDeleted.getId();
     }
 
 
