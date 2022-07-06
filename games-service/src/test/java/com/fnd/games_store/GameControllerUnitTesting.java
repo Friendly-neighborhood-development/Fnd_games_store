@@ -24,16 +24,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
-
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
 public class GameControllerUnitTesting {
 
     @Mock
-    GameService gameService;
+    private GameService gameService;
 
     @InjectMocks
-    GameController gameController;
+    private GameController gameController;
 
     @Test
     void getMethodShouldReturnProperObject() {
@@ -62,10 +61,6 @@ public class GameControllerUnitTesting {
         createMethodMockSetUp();
         assertThat(gameService.createGameEntry(createAppropriateGameRequestDTO())).isEqualTo(createAppropriateGameResponseDTO());
     }
-
-
-
-
 
 
     @BeforeEach

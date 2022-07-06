@@ -5,8 +5,10 @@ import com.fnd.games_store.games.controller.GameController;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 
 
 /**
@@ -14,6 +16,8 @@ import org.springframework.boot.test.context.SpringBootTest;
  * Also, there I'm testing if the controller gets to the context and its methods accessibility.
  * @author SergeyPodgorny
  */
+
+
 @SpringBootTest(classes = GamesApplication.class)
 public class ContextLoadsTest {
 
@@ -25,10 +29,4 @@ public class ContextLoadsTest {
     void contextLoadsTest(){
         assertThat(controller).isNotNull();
     }
-
-    @Test
-    void verifyDefaultMessage(){
-        assertThat(controller.printDefaultMessage()).isEqualTo("Test succeed");
-    }
-
 }
