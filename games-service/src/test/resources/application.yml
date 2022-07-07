@@ -1,4 +1,5 @@
 spring:
+  debug: false
   profiles:
     active: "test"
   cloud:
@@ -22,3 +23,6 @@ spring:
 
 server:
   port: 8080
+
+
+

@@ -6,12 +6,10 @@ import com.fnd.games_store.games.service.GameService;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @NoArgsConstructor
@@ -49,11 +47,5 @@ public class GameController {
         gameService.deleteGameEntry(requestedGameId);
     }
 
-
-    @Profile("test")
-    @GetMapping("/default")
-    public String printDefaultMessage(){
-        return gameService.defaultMessage();
-    }
 
 }

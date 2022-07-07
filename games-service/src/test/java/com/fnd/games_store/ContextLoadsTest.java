@@ -10,19 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
-
-/**
- * This is some sort of integration testing which includes fetching configuration from Git environment repository.
- * Also, there I'm testing if the controller gets to the context and its methods accessibility.
- * @author SergeyPodgorny
- */
-
-
 @SpringBootTest(classes = GamesApplication.class)
 public class ContextLoadsTest {
 
     @Autowired
     GameController controller;
+
 
 
     @Test
