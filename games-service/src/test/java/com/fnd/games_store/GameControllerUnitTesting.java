@@ -32,13 +32,11 @@ public class GameControllerUnitTesting extends TestUtilities{
 
     @Test
     void getMethodShouldReturnProperObject() {
-        getMethodMockSetUp();
         assertThat(gameService.getGameById("1")).isEqualTo(gameController.getGameById("1"));
     }
 
     @Test
     void getMethodShouldThrowException() {
-        getMethodMockSetUpException();
         Exception e = assertThrows(GameNotFoundException.class, ()->{
             gameController.getGameById("2");
         });
@@ -47,14 +45,12 @@ public class GameControllerUnitTesting extends TestUtilities{
 
     @Test
     void getGamesCatalogueMethodShouldReturnListOfProperObjects(){
-        getGameCatalogueMethodMockSetUp();
         for(GameResponseDTO i : createGameResponseDTOList()){
             assertThat(gameService.getGamesCatalogue()).isEqualTo(gameController.getGameCatalogue());
         }
     }
     @Test
     void createMethodShouldCreateProperObject(){
-        createMethodMockSetUp();
         assertThat(gameService.createGameEntry(createAppropriateGameRequestDTO())).isEqualTo(createAppropriateGameResponseDTO());
     }
 

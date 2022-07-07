@@ -18,7 +18,15 @@ public class TestUtilities {
 
     protected final String getGameCatalogueRequest = "";
 
-    protected final String createGameRequest = "{"+"\"name\": \"gta5\""+"}";
+    protected final String createGameRequest = "{"+"" +
+            "\"name\": \"gta5\""
+
+
+
+
+
+
+            +"}";
 
     protected final String updateGameRequest = "";
 
