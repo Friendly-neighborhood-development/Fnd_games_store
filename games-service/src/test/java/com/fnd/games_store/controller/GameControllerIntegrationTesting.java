@@ -1,6 +1,7 @@
-package com.fnd.games_store;
+package com.fnd.games_store.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fnd.games_store.utilities.TestUtilities;
 import com.fnd.games_store.games.GamesApplication;
 import com.fnd.games_store.games.controller.dto.GameResponseDTO;
 import com.fnd.games_store.games.service.GameService;
@@ -26,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(classes = GamesApplication.class)
 @AutoConfigureMockMvc
-public class GameControllerIntegrationTesting extends TestUtilities{
+public class GameControllerIntegrationTesting extends TestUtilities {
 
     @Autowired
     MockMvc mvc;
@@ -34,8 +35,6 @@ public class GameControllerIntegrationTesting extends TestUtilities{
 
     @MockBean
     GameService gameService;
-
-
 
 
     @Test

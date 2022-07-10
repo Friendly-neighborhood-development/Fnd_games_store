@@ -1,9 +1,10 @@
-package com.fnd.games_store;
+package com.fnd.games_store.utilities;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fnd.games_store.games.controller.dto.GameRequestDTO;
 import com.fnd.games_store.games.controller.dto.GameResponseDTO;
+import com.fnd.games_store.games.entity.Game;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
@@ -131,5 +132,19 @@ public class TestUtilities {
         return gameRequestDTO;
     }
 
+    protected Game createTestGameEntity(){
+        Game game = new Game();
+        game.setName("name");
+        game.setGenre(null);
+        game.setReleaseDate("date");
+        game.setDeveloper("developer");
+        game.setPublisher("publisher");
+        game.setPlatform("platform");
+        game.setFeatures("features");
+        game.setPrice(BigDecimal.valueOf(1000));
+        game.setDiscount(BigDecimal.valueOf(200));
+        game.setDescription("description");
+        return game;
+    }
 
 }

@@ -1,6 +1,7 @@
-package com.fnd.games_store;
+package com.fnd.games_store.controller;
 
 
+import com.fnd.games_store.utilities.TestUtilities;
 import com.fnd.games_store.games.controller.GameController;
 
 import com.fnd.games_store.games.controller.dto.GameResponseDTO;
@@ -22,7 +23,7 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-public class GameControllerUnitTesting extends TestUtilities{
+public class GameControllerUnitTesting extends TestUtilities {
 
     @Mock
     private GameService gameService;
