@@ -132,8 +132,9 @@ public class TestUtilities {
         return gameRequestDTO;
     }
 
-    protected Game createTestGameEntity(){
+    protected Game createTestGameEntity(String id){
         Game game = new Game();
+        game.setId(id);
         game.setName("name");
         game.setGenre(null);
         game.setReleaseDate("date");

@@ -1,4 +1,4 @@
-package com.fnd.games_store.controller;
+package com.fnd.games_store.service;
 
 
 import com.fnd.games_store.utilities.TestUtilities;

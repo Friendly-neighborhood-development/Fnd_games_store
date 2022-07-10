@@ -15,7 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTestContextBootstrapper;
 import org.springframework.test.context.BootstrapWith;
 
-import java.util.List;
+
+import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -34,16 +35,28 @@ public class GameRepositoryJpaIntegrationTesting extends TestUtilities {
 
     @Test
     void createdEntityShouldEqualsReturnedEntity(){
-        List<Game> returnedGame = gameRepository.findAll();
-        createTestGameEntity().setId(returnedGame.get(0).getId());
-        assertThat(createTestGameEntity()).isEqualTo(returnedGame.get(0));
+        Game returnedGameFromDb = gameRepository.getGameByName("name");
+        String returnedGameFromDbId = returnedGameFromDb.getId();
+        assertThat(createTestGameEntity(returnedGameFromDbId)).isEqualTo(returnedGameFromDb);
     }
+
+
+//      game.setName("name");
+//        game.setGenre(null);
+//        game.setReleaseDate("date");
+//        game.setDeveloper("developer");
+//        game.setPublisher("publisher");
+//        game.setPlatform("platform");
+//        game.setFeatures("features");
+//        game.setPrice(BigDecimal.valueOf(1000));
+//        game.setDiscount(BigDecimal.valueOf(200));
+//        game.setDescription("description");
 
 
 
     @BeforeEach
     private void setUp(){
-        Game testingGame = createTestGameEntity();
+        Game testingGame = createTestGameEntity(null);
         testEntityManager.persist(testingGame);
         testEntityManager.flush();
     }
