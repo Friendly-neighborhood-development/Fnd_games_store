@@ -1,5 +1,10 @@
 spring:
   profiles:
+   active: "dev"
+
+---
+spring:
+  profiles:
     active: "dev"
   cloud:
     config:
@@ -8,17 +13,26 @@ spring:
         git:
           uri: https://github.com/Friendly-neighborhood-development/Games_Store_Configurations
           skipSslValidation: true
-    #        usage of a local folder
-    #     server:
-    #        native:
-    #          search-locations: classpath:/services
+          default-label: main
   security:
     user:
       password: admin
 
 server:
   port: 8001
+---
+spring:
+  profiles:
+    active: "dev"
+  cloud:
+    config:
+#            usage of a local folder inside the config-service
+         server:
+            native:
+              search-locations: classpath:/services
+  security:
+    user:
+      password: admin
 
-
-
-
+server:
+  port: 8001
