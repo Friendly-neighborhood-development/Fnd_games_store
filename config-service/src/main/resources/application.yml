@@ -1,38 +1,47 @@
 spring:
   profiles:
-   active: "dev"
+    active: dev
 
 ---
 spring:
-  profiles:
-    active: "dev"
+  config:
+    activate:
+      on-profile: dev
   cloud:
     config:
+      default-label: main
       #        usage of a git repository
       server:
         git:
           uri: https://github.com/Friendly-neighborhood-development/Games_Store_Configurations
           skipSslValidation: true
-          default-label: main
+
+    #        usage of a local folder
+    #     server:
+    #        native:
+    #          search-locations: classpath:/services
   security:
     user:
       password: admin
 
-server:
-  port: 8001
 ---
 spring:
-  profiles:
-    active: "dev"
+  config:
+    activate:
+      on-profile: prod
   cloud:
     config:
-#            usage of a local folder inside the config-service
-         server:
-            native:
-              search-locations: classpath:/services
+      default-label: prod
+      #        usage of a git repository
+      server:
+        git:
+          uri: https://github.com/Friendly-neighborhood-development/Games_Store_Configurations
+          skipSslValidation: true
+
+    #        usage of a local folder
+    #     server:
+    #        native:
+    #          search-locations: classpath:/services
   security:
     user:
       password: admin
-
-server:
-  port: 8001

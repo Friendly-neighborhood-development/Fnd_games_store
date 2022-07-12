@@ -1,0 +1,18 @@
+spring:
+  jpa:
+    database: POSTGRESQL
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    hibernate:
+      ddl-auto: create
+    properties:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/basket_service_database
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+server:
+  servlet:
+    context-path: /basket
+  port: 8083
