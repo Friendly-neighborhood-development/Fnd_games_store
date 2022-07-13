@@ -1,7 +1,7 @@
 spring:
   debug: false
   profiles:
-    active: "test"
+    active: test
   cloud:
     config:
       enabled: false

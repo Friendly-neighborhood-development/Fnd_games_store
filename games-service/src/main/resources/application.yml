@@ -1,13 +1,6 @@
 spring:
   profiles:
-    active: "dev"
-  application:
-    name: games-service
-  config:
-    import: optional:configserver:http://localhost:8001
-    fail-fast: true
-    password: admin
-    username: user
+    active: local
 
 flyway:
     user: postgres
@@ -15,3 +8,55 @@ flyway:
     schemas: app-db
     url: jdbc:postgresql://localhost:5432/games_service_database
     locations: filesystem:db/migration
+
+---
+
+spring:
+  application:
+    name: games-service
+  config:
+    import: optional:configserver:http://localhost:8001
+    fail-fast: true
+    password: admin
+    username: user
+    activate:
+      on-profile: prod
+---
+spring:
+  application:
+    name: games-service
+  config:
+    import: optional:configserver:http://localhost:8001
+    fail-fast: true
+    password: admin
+    username: user
+    activate:
+      on-profile: dev
+
+---
+spring:
+  cloud:
+    config:
+      enabled: false
+    discovery:
+      enabled: false
+  jpa:
+    database: POSTGRESQL
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    hibernate:
+      ddl-auto: none
+    properties:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/games_service_database
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+    activate:
+      on-profile: local
+
+server:
+  port: 8010
+
+
+
