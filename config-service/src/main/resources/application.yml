@@ -28,11 +28,12 @@ spring:
       on-profile: prod
   cloud:
     config:
-      default-label: prod
       server:
         git:
           uri: https://github.com/Friendly-neighborhood-development/Games_Store_Configurations
+          label: prod
           skipSslValidation: true
+
   security:
     user:
       password: admin
