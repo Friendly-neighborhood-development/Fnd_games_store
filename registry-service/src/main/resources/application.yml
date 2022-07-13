@@ -1,9 +1,9 @@
 spring:
   profiles:
-    active: dev
+    active: prod
 
 ---
-
+# docker environment
 spring:
   activate:
     on-profile: prod

@@ -1,6 +1,8 @@
 spring:
   profiles:
-    active: dev
+    active: prod
+server:
+  port: 8001
 
 ---
 spring:
@@ -9,22 +11,17 @@ spring:
       on-profile: dev
   cloud:
     config:
-      default-label: main
-      #        usage of a git repository
+      default-label: prod
       server:
         git:
           uri: https://github.com/Friendly-neighborhood-development/Games_Store_Configurations
           skipSslValidation: true
-
-    #        usage of a local folder
-    #     server:
-    #        native:
-    #          search-locations: classpath:/services
   security:
     user:
       password: admin
 
 ---
+# TODO need to configure fetching configurations for different environments depends on selected profile
 spring:
   config:
     activate:
@@ -32,16 +29,10 @@ spring:
   cloud:
     config:
       default-label: prod
-      #        usage of a git repository
       server:
         git:
           uri: https://github.com/Friendly-neighborhood-development/Games_Store_Configurations
           skipSslValidation: true
-
-    #        usage of a local folder
-    #     server:
-    #        native:
-    #          search-locations: classpath:/services
   security:
     user:
       password: admin
