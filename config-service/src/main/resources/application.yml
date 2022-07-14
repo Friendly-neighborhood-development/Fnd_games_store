@@ -21,7 +21,7 @@ spring:
       password: admin
 
 ---
-# TODO need to configure fetching configurations for different environments depends on selected profile
+# TODO need to configure fetching configurations for different environments depends on selected profile, in other words - create several git repos
 spring:
   config:
     activate:
