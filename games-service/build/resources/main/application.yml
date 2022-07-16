@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: standalonedev
+
+flyway:
+    user: postgres
+    password: root
+    schemas: app-db
+    url: jdbc:postgresql://localhost:5432/games_service_database
+    locations: filesystem:db/migration
+
+

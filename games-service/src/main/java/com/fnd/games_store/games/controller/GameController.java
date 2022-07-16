@@ -47,5 +47,10 @@ public class GameController {
         gameService.deleteGameEntry(requestedGameId);
     }
 
+    @GetMapping("/default")
+    public String checkHealthOnMac(){
+        return "the backend is ok, check postman";
+    }
+
 
 }
