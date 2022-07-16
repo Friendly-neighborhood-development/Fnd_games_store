@@ -33,13 +33,15 @@ repositories {
     mavenCentral()
 }
 
-bootJar {
-    enabled = false
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.fnd.games_store.games.GamesApplication'
+        )
+    }
 }
 
-jar {
-    enabled = false
-}
+
 ext {
     set('springCloudVersion', "2021.0.3")
 }

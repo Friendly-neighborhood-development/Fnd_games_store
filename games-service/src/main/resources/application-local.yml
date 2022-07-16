@@ -20,3 +20,4 @@ server:
   servlet:
     context-path: /games
   port: 8081
+

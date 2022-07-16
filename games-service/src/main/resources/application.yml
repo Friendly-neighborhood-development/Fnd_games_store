@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: frontdev
+    active: standalonedev
 
 flyway:
     user: postgres
