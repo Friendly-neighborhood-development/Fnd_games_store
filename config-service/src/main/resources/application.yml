@@ -1,39 +1,5 @@
 spring:
   profiles:
-    active: prod
+    active: dev
 server:
   port: 8001
-
----
-spring:
-  config:
-    activate:
-      on-profile: dev
-  cloud:
-    config:
-      default-label: prod
-      server:
-        git:
-          uri: https://github.com/Friendly-neighborhood-development/Games_Store_Configurations
-          skipSslValidation: true
-  security:
-    user:
-      password: admin
-
----
-# TODO need to configure fetching configurations for different environments depends on selected profile, in other words - create several git repos
-spring:
-  config:
-    activate:
-      on-profile: prod
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/Friendly-neighborhood-development/Games_Store_Configurations
-          label: prod
-          skipSslValidation: true
-
-  security:
-    user:
-      password: admin
