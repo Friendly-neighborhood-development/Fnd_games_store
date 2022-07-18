@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="42f1d1fb-9223-44d7-bd40-f123e36d2720" name="fnd_games_store" url="jdbc:postgresql://localhost:5432/games_service_database" driverClass="org.postgresql.Driver" />
+    </data-sources>
+  </component>
+</project>

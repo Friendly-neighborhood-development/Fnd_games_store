@@ -55,6 +55,7 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
     implementation 'org.jetbrains:annotations:23.0.0'
+    implementation group: 'org.flywaydb', name: 'flyway-core', version: '9.0.1'
     implementation group: 'com.h2database', name: 'h2', version: '2.0.202'
     implementation 'junit:junit:4.13.2'
     compileOnly 'org.projectlombok:lombok'
