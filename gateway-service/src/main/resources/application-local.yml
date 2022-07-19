@@ -9,9 +9,16 @@ spring:
       routes:
          - id: games
 #            eureka should locate the games-service
-            uri: lb://games-service
+            uri: localhost:8081//games
             predicates:
             - Path=/games/**
 
 server:
    port: 8989
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

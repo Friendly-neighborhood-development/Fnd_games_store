@@ -1,0 +1,21 @@
+spring:
+  activate:
+    on-profile: prod
+  application:
+    name: registry-service
+  config:
+    import: optional:configserver:http://localhost:8001
+    fail-fast: true
+    password: admin
+    username: user
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    server:
+      waitTimeInMsWhenSyncEmpty: 0
+  server:
+    peer-node-read-timeout-ms: 100000
