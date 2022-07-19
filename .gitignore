@@ -1,0 +1,7 @@
+.idea/
+.gradle/
+.build/
+src/
+games-service/build
+config-service/build
+registry-service/build
