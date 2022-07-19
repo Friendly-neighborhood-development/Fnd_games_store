@@ -1,3 +1,5 @@
 .idea/
 .gradle/
 src/
+games-service/build
+build/
