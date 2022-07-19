@@ -7,8 +7,8 @@ developer varchar(20) NOT NULL,
 publisher varchar(20) NOT NULL,
 platform varchar(20) NOT NULL,
 features varchar(20) NOT NULL,
-price money NOT NULL,
-discount money NOT NULL,
+price numeric(4,2) NOT NULL,
+discount numeric(4,2) NOT NULL,
 description varchar(255) NOT NULL);
 
 
