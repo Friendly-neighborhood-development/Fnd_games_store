@@ -1,8 +1,8 @@
 spring:
   profiles:
-    active: dev
+    active: standalonedev
 
-  flyway:
+flyway:
     user: postgres
     password: root
     schemas: app-db
