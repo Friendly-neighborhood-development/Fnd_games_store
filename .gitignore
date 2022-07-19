@@ -1,7 +1,5 @@
 .idea/
 .gradle/
-<<<<<<< HEAD
-.src/
-=======
 src/
->>>>>>> games
+games-service/build
+build/
