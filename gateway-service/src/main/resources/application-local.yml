@@ -1,17 +1,11 @@
 spring:
-   application:
-      name: gateway-service
-   cloud:
-      gateway:
-      discovery:
-         locator:
-            enabled: true
+  cloud:
+    gateway:
       routes:
-         - id: games
-#            eureka should locate the games-service
-            uri: localhost:8081//games
-            predicates:
-            - Path=/games/**
+      - id: games_service
+        uri: http://localhost:8081/games
+        predicates:
+        - Path=/games/**
 
 server:
    port: 8989
