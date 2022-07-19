@@ -1,3 +1,7 @@
 .idea/
 .gradle/
+<<<<<<< HEAD
 .src/
+=======
+src/
+>>>>>>> games
