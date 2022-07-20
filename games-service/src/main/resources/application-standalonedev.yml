@@ -5,10 +5,13 @@ spring:
     discovery:
       enabled: false
   jpa:
+    flyway:
+      enabled: true
+      validate-on-migrate: true
     database: h2
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
   datasource:
     database-platform: org.hibernate.dialect.H2Dialect
@@ -25,3 +28,9 @@ server:
     context-path: /games
   port: 8080
 
+#flyway:
+#    user: sa
+#    password:
+#    schemas: app-db
+#    url: jdbc:h2:mem:testdb
+#    locations: filesystem:db/migration

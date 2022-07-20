@@ -5,6 +5,9 @@ spring:
     discovery:
       enabled: false
   jpa:
+    flyway:
+      enabled: true
+      validate-on-migrate: true
     database: POSTGRESQL
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
     hibernate:
@@ -20,4 +23,3 @@ server:
   servlet:
     context-path: /games
   port: 8081
-
