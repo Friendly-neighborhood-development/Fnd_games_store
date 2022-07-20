@@ -23,13 +23,15 @@ public class GameResponseDTO {
     private BigDecimal price;
     private BigDecimal discount;
     private String description;
+    private String base64Image;
 
     public GameResponseDTO(){
 
     }
 
-    public GameResponseDTO(String name, String genre, String releaseDate, String developer, String publisher,
-                           String platform, String features, BigDecimal price, BigDecimal discount, String description) {
+    public GameResponseDTO(String name, String genre, String releaseDate, String developer,
+                          String publisher, String platform, String features, BigDecimal price,
+                          BigDecimal discount, String description, String base64Image) {
         this.name = name;
         this.genre = genre;
         this.releaseDate = releaseDate;
@@ -40,6 +42,7 @@ public class GameResponseDTO {
         this.price = price;
         this.discount = discount;
         this.description = description;
+        this.base64Image = base64Image;
     }
 
     public GameResponseDTO(Game game){
@@ -54,6 +57,7 @@ public class GameResponseDTO {
         this.price = game.getPrice();
         this.discount = game.getDiscount();
         this.description = game.getDescription();
+        this.base64Image=game.getBase64Image();
     }
 
 

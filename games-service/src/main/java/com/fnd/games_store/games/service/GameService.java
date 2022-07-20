@@ -42,7 +42,8 @@ public class GameService {
         } else {
             Game creatingGameEntry = new Game(gameRequestDTO.getName(), gameRequestDTO.getGenre(), gameRequestDTO.getReleaseDate(),
                     gameRequestDTO.getDeveloper(), gameRequestDTO.getPublisher(), gameRequestDTO.getPlatform(),
-                    gameRequestDTO.getFeatures(),gameRequestDTO.getPrice(), gameRequestDTO.getDiscount(),gameRequestDTO.getDescription());
+                    gameRequestDTO.getFeatures(),gameRequestDTO.getPrice(), gameRequestDTO.getDiscount(),
+                    gameRequestDTO.getDescription(), gameRequestDTO.getBase64Image());
             return new GameResponseDTO(gameRepository.save(creatingGameEntry));
         }
 
@@ -52,7 +53,8 @@ public class GameService {
             gameRepository.findById(updatingGameId).orElseThrow(GameNotFoundException::new);
             Game updatingGameEntry = new Game(gameRequestDTO.getName(), gameRequestDTO.getGenre(), gameRequestDTO.getReleaseDate(),
                                               gameRequestDTO.getDeveloper(), gameRequestDTO.getPublisher(), gameRequestDTO.getPlatform(),
-                                              gameRequestDTO.getFeatures(),gameRequestDTO.getPrice(), gameRequestDTO.getDiscount(),gameRequestDTO.getDescription());
+                                              gameRequestDTO.getFeatures(),gameRequestDTO.getPrice(), gameRequestDTO.getDiscount(),
+                                              gameRequestDTO.getDescription(), gameRequestDTO.getBase64Image());
             updatingGameEntry.setId(updatingGameId);
             return new GameResponseDTO(gameRepository.save(updatingGameEntry));
     }

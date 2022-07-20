@@ -7,9 +7,6 @@ spring:
         predicates:
         - Path=/games/**
 
-server:
-   port: 8989
-
 eureka:
   instance:
     preferIpAddress: true

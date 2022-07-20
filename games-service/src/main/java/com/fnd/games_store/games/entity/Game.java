@@ -42,9 +42,10 @@ public class Game {
     private BigDecimal price;
     private BigDecimal discount;
     private String description;
+    private String base64Image;
 
     public Game(String name, String genre, String releaseDate, String developer, String publisher, String platform,
-                String features, BigDecimal price, BigDecimal discount, String description) {
+                String features, BigDecimal price, BigDecimal discount, String description, String base64Image) {
         this.name = name;
         this.genre = genre;
         this.releaseDate = releaseDate;
@@ -55,6 +56,7 @@ public class Game {
         this.price = price;
         this.discount = discount;
         this.description = description;
+        this.base64Image=base64Image;
     }
 
 

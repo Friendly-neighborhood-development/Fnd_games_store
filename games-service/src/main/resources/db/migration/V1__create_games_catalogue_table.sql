@@ -9,6 +9,7 @@ platform varchar(20) NOT NULL,
 features varchar(20) NOT NULL,
 price numeric(10,2) NOT NULL,
 discount numeric(10,2) NOT NULL,
-description varchar(255) NOT NULL);
+description varchar NOT NULL,
+base64Image varchar NOT NULL);
 
 
