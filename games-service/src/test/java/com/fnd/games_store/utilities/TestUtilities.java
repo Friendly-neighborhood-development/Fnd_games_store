@@ -57,6 +57,7 @@ public class TestUtilities {
         gameResponseDTO.setPrice(gameRequestDTO.getPrice());
         gameResponseDTO.setDiscount(gameRequestDTO.getDiscount());
         gameResponseDTO.setDescription(gameRequestDTO.getDescription());
+        gameResponseDTO.setBase64Image(gameRequestDTO.getBase64Image());
         return gameResponseDTO;
     }
 
@@ -74,6 +75,7 @@ public class TestUtilities {
         gameResponseDTO.setPrice(BigDecimal.valueOf(1000));
         gameResponseDTO.setDiscount(BigDecimal.valueOf(200));
         gameResponseDTO.setDescription("description");
+        gameResponseDTO.setBase64Image("image");
         return gameResponseDTO;
     }
 
@@ -97,6 +99,7 @@ public class TestUtilities {
         gameResponseDTO.setPrice(BigDecimal.valueOf(1000));
         gameResponseDTO.setDiscount(BigDecimal.valueOf(200));
         gameResponseDTO.setDescription("description");
+        gameResponseDTO.setBase64Image("image");
         return gameResponseDTO;
     }
 
@@ -113,6 +116,7 @@ public class TestUtilities {
         gameRequestDTO.setPrice(BigDecimal.valueOf(1000));
         gameRequestDTO.setDiscount(BigDecimal.valueOf(200));
         gameRequestDTO.setDescription("description");
+        gameRequestDTO.setBase64Image("image");
         return gameRequestDTO;
     }
 
@@ -129,6 +133,7 @@ public class TestUtilities {
         gameRequestDTO.setPrice(BigDecimal.valueOf(1000));
         gameRequestDTO.setDiscount(BigDecimal.valueOf(200));
         gameRequestDTO.setDescription("description");
+        gameRequestDTO.setBase64Image("image");
         return gameRequestDTO;
     }
 
@@ -145,6 +150,7 @@ public class TestUtilities {
         game.setPrice(BigDecimal.valueOf(1000));
         game.setDiscount(BigDecimal.valueOf(200));
         game.setDescription("description");
+        game.setBase64Image("image");
         return game;
     }
 
