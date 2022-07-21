@@ -9,7 +9,6 @@ const Games = () => {
         <MainLayout>
             <GamesList/>
         </MainLayout>
-
     );
 };
 
