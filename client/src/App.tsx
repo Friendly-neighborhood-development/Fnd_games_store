@@ -1,12 +1,11 @@
 import React, {FC} from 'react';
 import './App.css';
-import Navbar from "./components/Navbar";
 import {BrowserRouter as Router} from "react-router-dom";
 import AppRouter from "./components/AppRouter";
 
 const App:FC = ()=> {
   return (
-      <div className="app">
+      <div className="bg-gray-50 flex">
           <Router>
               <AppRouter />
           </Router>

@@ -5,8 +5,8 @@ import SidebarLinksBlock from "./SidebarLinksBlock";
 
 const Sidebar: FC = () => {
     return (
-        <div className={"py-1 w-52 bg-white fixed h-screen rounded-2xl flex flex-col"}>
-            <div className={"w-full flex justify-center items-center mb-8"}>
+        <div className={"py-1 w-52 bg-white fixed h-screen flex flex-col"}>
+            <div className={"w-full flex justify-center items-center my-6"}>
                 <img  className={"w-4/6"} src={images.logo} alt={"logo"}/>
             </div>
             <SidebarLinksBlock links={sidebarLinks}/>

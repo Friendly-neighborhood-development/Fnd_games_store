@@ -12,19 +12,12 @@
     --color-button-text-hov: var(--color-white);
     --color-link-text: var(--color-text);
     --color-link-text-active: var(--color-blue);
-
 }
 
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-}
-
-.app{
-    background-color: var(--color-light-gray);
-    display: flex;
-    font-family: 'Roboto', sans-serif;
 }
 
 .page{
