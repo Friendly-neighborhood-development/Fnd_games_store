@@ -1,13 +1,13 @@
 import React from 'react';
-import Sidebar from "../components/Sidebar/Sidebar";
-import Navbar from "../components/Navbar/Navbar";
-import GamesList from "../components/GamesList/GamesList";
+import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
+import GamesList from "../components/GamesList";
 
 const Games = () => {
     return (
-        <div className="container">
+        <div className="container mx-auto">
             <Sidebar/>
-            <div className="main-wrapper">
+            <div className="flex flex-col items-center pl-56">
                 <Navbar/>
                 <GamesList/>
             </div>

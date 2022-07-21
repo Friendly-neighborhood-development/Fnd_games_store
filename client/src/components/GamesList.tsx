@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
-import cl from './GamesList.module.css'
-import GameCard from "../GameCard/GameCard";
-import images from "../../constants/images";
+import GameCard from "./GameCard";
+import images from "../constants/images";
 
 interface gameProps {
     title: string,
@@ -10,7 +9,6 @@ interface gameProps {
     price: number | string;
     id:number
 }
-
 
 const games:Array<gameProps> = [
     {title: "Minecraft", description: "Have a nice day", image: images.Minecraft,price: 1912, id: 1},
@@ -25,7 +23,7 @@ const games:Array<gameProps> = [
 
 const GamesList:FC = () => {
     return (
-        <div className={cl.gamesList}>
+        <div className={"w-full flex flex-wrap justify-between"}>
             {games.map(game =>
                 <GameCard
                     title={game.title}

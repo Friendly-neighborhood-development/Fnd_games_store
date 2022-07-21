@@ -31,15 +31,15 @@
     min-height: 100vh;
 }
 
-.main-wrapper{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-left: 215px;
-    width: 800px;
-}
+/*.main-wrapper{*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    flex-direction: column;*/
+/*    margin-left: 215px;*/
+/*    width: 800px;*/
+/*}*/
 
-.container {
-    padding: 1rem 5rem;
-    margin: 0 auto;
-}
+/*.container {*/
+/*    padding: 1rem 5rem;*/
+/*    margin: 0 auto;*/
+/*}*/

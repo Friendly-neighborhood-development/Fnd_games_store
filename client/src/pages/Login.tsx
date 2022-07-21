@@ -1,7 +1,6 @@
 import React from 'react';
-import Sidebar from "../components/Sidebar/Sidebar";
-import Navbar from "../components/Navbar/Navbar";
-import GamesList from "../components/GamesList/GamesList";
+import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
 
 const Login = () => {
     return (
@@ -13,7 +12,6 @@ const Login = () => {
                     Login
                 </div>
             </div>
-
         </div>
     );
 };

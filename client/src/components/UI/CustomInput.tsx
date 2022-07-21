@@ -1,7 +1,5 @@
 import React, {FC} from 'react';
 
-import cl from "./CustomInput.module.css";
-
 interface CustomInputProps{
     value?: string | number;
     onChange?: () => void;
@@ -11,7 +9,7 @@ interface CustomInputProps{
 }
 
 const CustomInput:FC<CustomInputProps> = (props) => {
-    return <input className={cl.input} {...props} />;
+    return <input className={"text-gray-500 border-none text-base outline-none w-full"} {...props} />;
 }
 
 export default CustomInput;
