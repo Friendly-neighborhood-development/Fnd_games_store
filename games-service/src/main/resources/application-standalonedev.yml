@@ -1,4 +1,8 @@
 spring:
+#  cache:
+#    cache-names: games_catalogue_cache
+#    cafeine:
+#      spec: maximumSize=500,expireAfterAccess=600s
   cloud:
     config:
       enabled: false

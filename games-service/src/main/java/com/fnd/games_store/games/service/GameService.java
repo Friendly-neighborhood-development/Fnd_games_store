@@ -7,6 +7,7 @@ import com.fnd.games_store.games.exceptions.GameAlreadyExistException;
 import com.fnd.games_store.games.exceptions.GameNotFoundException;
 import com.fnd.games_store.games.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ public class GameService {
         Game foundGameById = gameRepository.findById(id).orElseThrow(GameNotFoundException::new);
         return new GameResponseDTO(foundGameById);
     }
-
+//   @Cacheable
    public List<GameResponseDTO> getGamesCatalogue(){
         return gameRepository.findAll().stream().map(GameResponseDTO::new).collect(Collectors.toList());
     }
