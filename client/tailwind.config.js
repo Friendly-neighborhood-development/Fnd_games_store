@@ -4,7 +4,13 @@ module.exports = {
     ],
     theme: {
         container: {
-            padding: "7rem"
+            padding: {
+                DEFAULT: "7rem",
+                sm: "1rem",
+                lg: "4rem",
+                xl: "10rem",
+                "2xl": "15rem"
+            }
         },
     },
     plugins: [],

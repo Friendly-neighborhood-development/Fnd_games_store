@@ -1,7 +1,14 @@
 export interface gameProps {
-    name: string,
-    description: string,
-    base64Image: string,
-    price: number | string;
     id: number
+    name: string
+    base64Image: string
+    description: string
+    developer: string
+    discount: number
+    features: string
+    genre: string
+    platform: string
+    price: number
+    publisher: string
+    releaseDate: string
 }
