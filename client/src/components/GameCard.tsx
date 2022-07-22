@@ -11,7 +11,7 @@ interface GameCardProps {
 
 const GameCard: FC<gameProps> = ({name, description, base64Image, price, discount}) => {
     return (
-        <div className={"flex flex-col w-56 mb-4 mx-2git  bg-white flex justify-between"}>
+        <div className={"flex flex-col w-56 mb-4 mx-2 bg-white flex justify-between"}>
             <div className={"max-h-56 w-full overflow-hidden flex justify-center items-center mb-4"}>
                 <img className={"w-full"} src={base64Image} alt={"game picture"}/>
             </div>
