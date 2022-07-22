@@ -1,17 +1,14 @@
 import React from 'react';
-import Sidebar from "../components/Sidebar/Sidebar";
-import Navbar from "../components/Navbar/Navbar";
-import GamesList from "../components/GamesList/GamesList";
+import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
+import GamesList from "../components/GamesList";
+import MainLayout from "../components/layouts/MainLayout";
 
 const Games = () => {
     return (
-        <div className="container">
-            <Sidebar/>
-            <div className="main-wrapper">
-                <Navbar/>
-                <GamesList/>
-            </div>
-        </div>
+        <MainLayout>
+            <GamesList/>
+        </MainLayout>
     );
 };
 
