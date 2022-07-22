@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import SidebarLink, {SidebarLinkProps} from "./UI/SidebarLink";
+import {icons} from "react-icons";
 
 interface SidebarLinksBlockProps {
     title?: string,
@@ -14,7 +15,7 @@ const SidebarLinksBlock: FC<SidebarLinksBlockProps> = ({title, links}) => {
                 : <></>}
             <div className={"flex flex-col"}>
                 {links.map(link =>
-                    <SidebarLink to={link.to} title={link.title} key={link.to}/>)
+                    <SidebarLink to={link.to} title={link.title} key={link.to} icon={link.icon}/>)
                 }
             </div>
         </div>
