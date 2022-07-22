@@ -6,6 +6,7 @@ import com.fnd.games_store.games.service.GameService;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @NoArgsConstructor
+@CrossOrigin
 public class GameController {
 
 
@@ -27,10 +29,14 @@ public class GameController {
         return gameService.getGameById(requestedGameId);
     }
 
-    @GetMapping("/getAll")
+    @RequestMapping(method = RequestMethod.GET, value = "/getAll", produces = "application/json"
+            )
     public List<GameResponseDTO> getGameCatalogue(){
         return gameService.getGamesCatalogue();
     }
+
+//,headers = {"Access-Control-Allow-Origin=*", "Access-Control-Allow-Credentials=true"}
+
 
     @PostMapping("/create")
     public GameResponseDTO createGameEntry(@RequestBody @NotNull GameRequestDTO gameRequestDTO){
