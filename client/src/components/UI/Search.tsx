@@ -8,7 +8,7 @@ interface SearchProps {
 
 const Search: FC<SearchProps> = ({placeholder}) => {
     return (
-        <div className={"rounded-3xl bg-white w-80 p-4 flex"}>
+        <div className={"rounded-3xl bg-white w-80 py-2 px-4 flex"}>
             <span className={"mr-4 flex justify-center items-center"}>
                 <SearchIcon className={"text-gray-500 h-5 w-5"}/>
             </span>

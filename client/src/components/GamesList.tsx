@@ -12,7 +12,7 @@ const GamesList: FC = () => {
     }, [])
 
     return (
-        <div className={"w-full flex flex-wrap justify-between"}>
+        <div className={"w-full flex flex-wrap"}>
             {games.map(game =>
                 <GameCard
                     {...game}
