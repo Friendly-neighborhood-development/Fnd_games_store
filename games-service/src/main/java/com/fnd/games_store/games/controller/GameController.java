@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @NoArgsConstructor
+@CrossOrigin
 public class GameController {
 
 
