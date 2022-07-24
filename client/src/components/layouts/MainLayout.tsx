@@ -3,7 +3,7 @@ import Sidebar from "../Sidebar";
 import Navbar from "../Navbar";
 
 interface MainLayoutProps{
-    children: React.ReactNode
+    children?: React.ReactNode
 }
 
 const MainLayout:FC<MainLayoutProps> = ({children}) => {

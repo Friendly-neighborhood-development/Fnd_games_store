@@ -1,7 +1,7 @@
 import React from 'react';
 import {Routes, Route, Navigate} from "react-router-dom";
 import {routes} from "../constants/routes";
-import {RefreshIcon} from "@heroicons/react/outline";
+import MainLayout from "./layouts/MainLayout";
 
 const AppRouter = () => {
     return (
@@ -10,7 +10,7 @@ const AppRouter = () => {
                 <Route
                     path={route.path}
                     element={
-                        <React.Suspense fallback={<RefreshIcon/>}>
+                        <React.Suspense fallback={<MainLayout/>}>
                             {route.element}
                         </React.Suspense>
                     }

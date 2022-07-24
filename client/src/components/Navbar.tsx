@@ -13,20 +13,26 @@ const Navbar: FC = () => {
                     <span className={"ml-2"}>Games Store</span>
                 </div>
             </Link>
-            <div className={"flex"}>
+            <nav className={"flex items-center"}>
                 <Search className={"mr-4"} placeholder={"Искать в магазине.."}/>
-                <span
-                    className={"mr-4 rounded-full bg-white border-solid border-gray-300 border h-10 w-10 flex justify-center items-center"}>
-                    <BellIcon className={"text-gray-500 w-3/5 h-3/5"}/>
-                </span>
-                <span
-                    className={"mr-4 rounded-full bg-white border-solid border-gray-300 border h-10 w-10 flex justify-center items-center"}>
+                <Link to={"/notifications"}>
+                    <span
+                        className={"mr-4 rounded-full bg-white border-solid border-gray-300 border h-10 w-10 flex justify-center items-center"}>
+                        <BellIcon className={"text-gray-500 w-3/5 h-3/5"}/>
+                    </span>
+                </Link>
+                <Link to={"/cart"}>
+                    <span
+                        className={"mr-4 rounded-full bg-white border-solid border-gray-300 border h-10 w-10 flex justify-center items-center"}>
                     <ShoppingCartIcon className={"text-gray-500 w-3/5 h-3/5"}/>
-                </span>
-                <span className={"rounded-full inline-block overflow-hidden h-10 w-10 bg-white"}>
-                    <img src={images.andrew} className={"w-full h-full object-cover"}/>
-                </span>
-            </div>
+                    </span>
+                </Link>
+                <Link to={"/login"}>
+                    <span className={"rounded-full inline-block overflow-hidden h-10 w-10 bg-white"}>
+                        <img src={images.andrew} className={"w-full h-full object-cover"}/>
+                    </span>
+                </Link>
+            </nav>
         </header>
     );
 };

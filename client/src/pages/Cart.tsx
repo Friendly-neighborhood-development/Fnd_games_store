@@ -1,12 +1,12 @@
 import React from 'react';
 import MainLayout from "../components/layouts/MainLayout";
 
-const Login = () => {
+const Cart = () => {
     return (
         <MainLayout>
-            Login
+            Cart
         </MainLayout>
     );
 };
 
-export default Login;
+export default Cart;
