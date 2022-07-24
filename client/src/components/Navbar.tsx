@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import Search from "./UI/Search";
 import images from "../constants/images";
-import {ShoppingCartIcon, BellIcon, PuzzleIcon} from "@heroicons/react/outline";
+import {ShoppingCartIcon, BellIcon, PuzzleIcon, SearchIcon} from "@heroicons/react/outline";
 import {Link} from "react-router-dom";
 
 const Navbar: FC = () => {
@@ -10,11 +10,12 @@ const Navbar: FC = () => {
             <Link to={"/games"}>
                 <div className={"mr-4 text-3xl text-blue-600 flex items-center"}>
                     <PuzzleIcon className={"w-8 h-8 text-blue-600"}/>
-                    <span className={"ml-2"}>Games Store</span>
+                    <span className={"ml-2 hidden md:block"}>Games Store</span>
                 </div>
             </Link>
             <nav className={"flex items-center"}>
-                <Search className={"mr-4"} placeholder={"Искать в магазине.."}/>
+                <Search className={"mr-4 hidden sm:flex"} placeholder={"Искать в магазине.."}/>
+                <SearchIcon className={"mr-4 sm:hidden w-6 h-6 text-gray-500"}/>
                 <Link to={"/notifications"}>
                     <span
                         className={"mr-4 rounded-full bg-white border-solid border-gray-300 border h-10 w-10 flex justify-center items-center"}>

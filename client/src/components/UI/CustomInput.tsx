@@ -5,11 +5,13 @@ interface CustomInputProps{
     onChange?: () => void;
     type: string;
     placeholder?: string;
+    className?: string
 
 }
 
-const CustomInput:FC<CustomInputProps> = (props) => {
-    return <input className={"text-gray-500 border-none text-base outline-none w-full"} {...props} />;
+const CustomInput:FC<CustomInputProps> = ({className, ...props}) => {
+    const rootClasses = ["text-gray-500 border-none text-base outline-none w-full", className].join(" ")
+    return <input className={rootClasses} {...props} />;
 }
 
 export default CustomInput;

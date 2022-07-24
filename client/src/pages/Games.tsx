@@ -1,11 +1,11 @@
 import React from 'react';
-import GamesList from "../components/GamesList";
+import GamesCategory from "../components/GamesCategory";
 import MainLayout from "../components/layouts/MainLayout";
 
 const Games = () => {
     return (
         <MainLayout>
-            <GamesList/>
+            <GamesCategory/>
         </MainLayout>
     );
 };
