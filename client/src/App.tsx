@@ -5,7 +5,7 @@ import AppRouter from "./components/AppRouter";
 
 const App:FC = ()=> {
   return (
-      <div className="bg-gray-50 flex">
+      <div className="bg-gray-100 flex">
           <Router>
               <AppRouter />
           </Router>

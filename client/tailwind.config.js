@@ -9,7 +9,7 @@ module.exports = {
                 sm: "1rem",
                 lg: "2rem",
                 xl: "3rem",
-                "2xl": "5rem"
+                "2xl": "10rem"
             }
         },
         fontSize:{

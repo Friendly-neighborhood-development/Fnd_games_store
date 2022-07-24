@@ -5,7 +5,7 @@ import {ShoppingCartIcon, BellIcon} from "@heroicons/react/outline";
 
 const Navbar: FC = () => {
     return (
-        <header className={"w-full mb-6 flex justify-between items-center"}>
+        <header className={"w-full mb-6 px-2 flex justify-between items-center"}>
             <Search placeholder={"Поиск игры или разработчика.."}/>
             <div className={"flex"}>
                 <span
