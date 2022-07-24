@@ -3,7 +3,6 @@ import Search from "./UI/Search";
 import images from "../constants/images";
 import {ShoppingCartIcon, BellIcon, PuzzleIcon} from "@heroicons/react/outline";
 import {Link} from "react-router-dom";
-import Login from "../pages/Login";
 
 const Navbar: FC = () => {
     return (
@@ -15,7 +14,7 @@ const Navbar: FC = () => {
                 </div>
             </Link>
             <div className={"flex"}>
-                <Search className={"mr-4"} placeholder={"Поиск игры или разработчика.."}/>
+                <Search className={"mr-4"} placeholder={"Искать в магазине.."}/>
                 <span
                     className={"mr-4 rounded-full bg-white border-solid border-gray-300 border h-10 w-10 flex justify-center items-center"}>
                     <BellIcon className={"text-gray-500 w-3/5 h-3/5"}/>

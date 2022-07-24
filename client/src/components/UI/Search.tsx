@@ -8,7 +8,7 @@ interface SearchProps {
 }
 
 const Search: FC<SearchProps> = ({placeholder, className}) => {
-    const rootClasses = ["rounded-3xl bg-white w-80 py-2 px-4 flex", className].join(" ")
+    const rootClasses = ["rounded-3xl bg-white w-max-80 py-2 px-4 flex", className].join(" ")
     return (
         <div className={rootClasses}>
             <span className={"mr-4 flex justify-center items-center"}>

@@ -1,8 +1,10 @@
-import React, {FC} from "react";
-import Games from "../pages/Games";
-import Login from "../pages/Login";
+import React from "react";
 import {Navigate} from "react-router-dom";
-import Error from "../pages/Error";
+
+// lazy loading for pages
+const Games = React.lazy(() => import("../pages/Games"))
+const Login = React.lazy(() => import("../pages/Login"))
+const Error = React.lazy(() => import("../pages/Error"))
 
 interface routeProps {
     path: string,
