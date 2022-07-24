@@ -4,7 +4,7 @@ import {gameProps} from "../types/Games";
 
 const GameCard: FC<gameProps> = ({name, description, base64Image, price, discount}) => {
     return (
-        <div className={"flex flex-col w-56 mb-4 mx-2 bg-white justify-between rounded-1"}>
+        <div className={"flex flex-col w-1/6 mb-4 mx-2 bg-white justify-between rounded-1"}>
             <div className={"h-56 w-full overflow-hidden flex justify-center items-center mb-4"}>
                 <img className={"w-full pointer-events-none"} src={base64Image} alt={"game picture"}/>
             </div>

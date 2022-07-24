@@ -9,8 +9,7 @@ interface MainLayoutProps{
 const MainLayout:FC<MainLayoutProps> = ({children}) => {
     return (
         <div className="container mx-auto min-h-screen">
-            <Sidebar/>
-            <div className="flex flex-col items-center pl-56 pt-8">
+            <div className="flex flex-col items-center pt-8">
                 <Navbar/>
                 {children}
             </div>
