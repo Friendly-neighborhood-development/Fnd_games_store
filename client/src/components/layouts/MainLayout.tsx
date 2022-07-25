@@ -3,16 +3,15 @@ import Sidebar from "../Sidebar";
 import Navbar from "../Navbar";
 
 interface MainLayoutProps{
-    children: React.ReactNode
+    children?: React.ReactNode
 }
 
 const MainLayout:FC<MainLayoutProps> = ({children}) => {
     return (
         <div className="container mx-auto min-h-screen">
-            <Sidebar/>
-            <div className="flex flex-col items-center pl-56 pt-8">
+            <div className="flex flex-col items-center pt-2 lg:pt-8">
                 <Navbar/>
-                {children}
+                    {children}
             </div>
         </div>
     );

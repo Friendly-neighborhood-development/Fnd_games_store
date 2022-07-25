@@ -1,12 +1,12 @@
 import React from 'react';
 import MainLayout from "../components/layouts/MainLayout";
 
-const Login = () => {
+const Notifications = () => {
     return (
         <MainLayout>
-            Login
+            Notifications
         </MainLayout>
     );
 };
 
-export default Login;
+export default Notifications;

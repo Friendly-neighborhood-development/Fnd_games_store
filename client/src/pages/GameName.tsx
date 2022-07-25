@@ -1,12 +1,14 @@
 import React from 'react';
 import MainLayout from "../components/layouts/MainLayout";
+import {useParams} from "react-router-dom";
 
-const Login = () => {
+const GameName = () => {
+    const {name} = useParams()
     return (
         <MainLayout>
-            Login
+            {name}
         </MainLayout>
     );
 };
 
-export default Login;
+export default GameName;

@@ -1,35 +1,36 @@
-import React, {FC, useEffect, useState} from 'react';
-import CustomButton from "./UI/CustomButton";
+import React, {FC, memo} from 'react';
 import {gameProps} from "../types/Games";
+import {Link} from "react-router-dom";
 
-interface GameCardProps {
-    name: string,
-    description: string,
-    image: string,
-    price: number | string;
-}
 
-const GameCard: FC<gameProps> = ({name, description, base64Image, price, discount}) => {
+const GameCard: FC<gameProps> = memo(({name, description, base64Image, price, discount}) => {
     return (
-        <div className={"flex flex-col w-56 p-2.5 mb-4 mx-4 rounded-3xl bg-white"}>
-            <div className={"h-52 w-full rounded-2xl overflow-hidden flex justify-center items-center mb-4"}>
-                <img className={"w-full"} src={base64Image} alt={"game picture"}/>
+        <Link to={`/games/${name}`}
+              className={"flex w-60 flex-wrap lg:w-56 mb-4 mr-2 last:mr-0 bg-white justify-between rounded-sm"}>
+            <div className={"h-72 md:h-56 w-60 overflow-hidden flex justify-center items-center mb-4 rounded-sm"}>
+                <img className={"w-full pointer-events-none"} src={base64Image} alt={"game picture"}/>
             </div>
-            <div className={"mx-2"}>
-                <h3 className={"mb-2"}>{name}</h3>
-                <div>
-                    {discount
-                        ? <div className={"text-sm"}>
-                            <span className={"line-through text-gray-400"}>RUB {price}</span>
-                            <span className={"text-gray-600"}>  RUB {price - discount}</span>
-                        </div>
-                        : <span></span>}
-                    {/*<CustomButton>Получить</CustomButton>*/}
+            <div className={"px-2 pb-2 w-full"}>
+                <div className={"h-10 text-ellipsis whitespace-nowrap overflow-hidden"}>{name}</div>
+                <div className={"text-sm"}>
+                    {price === 0
+                        ? <div>Бесплатно</div>
+                        : (discount
+                            ? <div className={"flex justify-between items-center"}>
+                                <span
+                                    className={"flex items-center p-2 bg-blue-600 text-white rounded-lg text-2xs"}>-{discount}%</span>
+                                <div className={"ml-1 flex-wrap flex justify-end items-center"}>
+                                    <div className={"line-through text-gray-400 font-bold"}>{price} ₽</div>
+                                    <div className={"ml-1"}>  {+(price - price * discount / 100).toFixed(2)} ₽</div>
+                                </div>
+
+                            </div>
+                            : <div>{price} ₽</div>)}
                 </div>
             </div>
 
-        </div>
+        </Link>
     );
-};
+});
 
 export default GameCard;
