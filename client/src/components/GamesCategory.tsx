@@ -11,7 +11,7 @@ interface GamesCategoryProps{
 const GamesCategory: FC<GamesCategoryProps> = ({title, games}) => {
     return (
         <>
-            <div className={"mb-2 px-4 flex justify-start w-full items-center mt-8"}>
+            <div className={"mb-2 flex justify-start w-full items-center mt-8 mb-5"}>
                 <div className={"text-xl"}>{title}</div>
                 <span className={"ml-1 mt-1"}><ChevronRightIcon className={"w-2.5 h-2.5 md:w-4 md:h-4"}/></span>
             </div>

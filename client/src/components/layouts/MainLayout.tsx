@@ -11,7 +11,7 @@ const MainLayout:FC<MainLayoutProps> = ({children}) => {
         <div className="container mx-auto min-h-screen">
             <div className="flex flex-col items-center pt-2 lg:pt-8">
                 <Navbar/>
-                {children}
+                    {children}
             </div>
         </div>
     );
