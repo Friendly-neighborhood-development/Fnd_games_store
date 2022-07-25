@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 
 const Navbar: FC = () => {
     return (
-        <header className={"w-full mb-8 px-2 flex justify-between items-center"}>
+        <header className={"w-full px-2 flex justify-between items-center"}>
             <Link to={"/games"}>
                 <div className={"mr-4 text-3xl text-blue-600 flex items-center"}>
                     <PuzzleIcon className={"w-8 h-8 text-blue-600"}/>
