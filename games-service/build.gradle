@@ -15,6 +15,12 @@ group = 'com.fnd.games_store'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+//configurations.implementation {
+//    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+//    exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
+//}
+
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -60,7 +66,7 @@ dependencies {
     implementation 'org.flywaydb:flyway-core'
     implementation group: 'com.h2database', name: 'h2', version: '2.0.202'
     implementation 'junit:junit:4.13.2'
-    implementation 'com.github.ben-manes:caffeine:3.1.1'
+//    implementation 'com.github.ben-manes:caffeine:3.1.1'
     implementation 'org.springframework.boot:spring-boot-starter-cache'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

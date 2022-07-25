@@ -3,7 +3,6 @@ package com.fnd.games_store.games.service;
 import com.fnd.games_store.games.controller.dto.GameRequestDTO;
 import com.fnd.games_store.games.entity.Game;
 import com.fnd.games_store.games.controller.dto.GameResponseDTO;
-import com.fnd.games_store.games.exceptions.GameAlreadyExistException;
 import com.fnd.games_store.games.exceptions.GameNotFoundException;
 import com.fnd.games_store.games.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//@Cacheable(cacheNames = "cahce1")
 @Service
 public class GameService {
 
@@ -63,12 +63,6 @@ public class GameService {
         public void deleteGameEntry(String deletingGameId){
         Game gameToBeDeleted = gameRepository.getGameById(deletingGameId);
         gameRepository.deleteById(deletingGameId);
-    }
-
-
-    @Profile("test")
-    public String defaultMessage(){
-        return "Test succeed";
     }
 
 }
