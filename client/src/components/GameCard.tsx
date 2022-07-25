@@ -1,9 +1,9 @@
-import React, {FC} from 'react';
+import React, {FC, memo} from 'react';
 import {gameProps} from "../types/Games";
 import {Link} from "react-router-dom";
 
 
-const GameCard: FC<gameProps> = ({name, description, base64Image, price, discount}) => {
+const GameCard: FC<gameProps> = memo(({name, description, base64Image, price, discount}) => {
     return (
         <Link to={`/games/${name}`}
               className={"flex w-60 flex-wrap lg:w-56 mb-4 mr-2 last:mr-0 bg-white justify-between rounded-sm"}>
@@ -31,6 +31,6 @@ const GameCard: FC<gameProps> = ({name, description, base64Image, price, discoun
 
         </Link>
     );
-};
+});
 
 export default GameCard;

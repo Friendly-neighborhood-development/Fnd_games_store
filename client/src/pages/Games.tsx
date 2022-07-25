@@ -2,12 +2,12 @@ import React, {useEffect, useState} from 'react';
 import GamesCategory from "../components/GamesCategory";
 import MainLayout from "../components/layouts/MainLayout";
 import {gameProps} from "../types/Games";
-import {BASE_URL} from "../constants/baseURL";
+import {BASE_SERVER_URL} from "../constants/baseServerURL";
 
 const Games = () => {
     const [games, setGames] = useState(Array<gameProps>)
     useEffect(() => {
-        const url = `${BASE_URL}/games/getAll`
+        const url = `${BASE_SERVER_URL}/games/getAll`
         fetch(url)
             .then(response => response.json())
             .then(json => setGames(json))

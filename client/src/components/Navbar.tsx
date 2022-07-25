@@ -1,12 +1,12 @@
-import React, {FC} from 'react';
+import React, {FC, memo} from 'react';
 import Search from "./UI/Search";
 import images from "../constants/images";
 import {ShoppingCartIcon, BellIcon, PuzzleIcon, SearchIcon} from "@heroicons/react/outline";
 import {Link} from "react-router-dom";
 
-const Navbar: FC = () => {
+const Navbar: FC = memo(() => {
     return (
-        <header className={"w-full px-2 flex justify-between items-center fixed"}>
+        <header className={"w-full px-2 flex justify-between items-center"}>
             <Link to={"/games"}>
                 <div className={"mr-4 text-3xl text-blue-600 flex items-center"}>
                     <PuzzleIcon className={"w-8 h-8 text-blue-600"}/>
@@ -36,6 +36,6 @@ const Navbar: FC = () => {
             </nav>
         </header>
     );
-};
+})
 
 export default Navbar;

@@ -1,13 +1,12 @@
-import React, {FC} from 'react';
+import React, {FC, memo} from 'react';
 import SidebarLink, {SidebarLinkProps} from "./UI/SidebarLink";
-import {icons} from "react-icons";
 
 interface SidebarLinksBlockProps {
     title?: string,
     links: Array<SidebarLinkProps>
 }
 
-const SidebarLinksBlock: FC<SidebarLinksBlockProps> = ({title, links}) => {
+const SidebarLinksBlock: FC<SidebarLinksBlockProps> = memo(({title, links}) => {
     return (
         <div className={"flex flex-col justify-between m-4"}>
             {title
@@ -21,6 +20,6 @@ const SidebarLinksBlock: FC<SidebarLinksBlockProps> = ({title, links}) => {
         </div>
 
     );
-};
+});
 
 export default SidebarLinksBlock;
