@@ -4,9 +4,7 @@ import com.fnd.games_store.games.controller.dto.GameRequestDTO;
 import com.fnd.games_store.games.controller.dto.GameResponseDTO;
 import com.fnd.games_store.games.service.GameService;
 import lombok.NoArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -25,7 +23,7 @@ public class GameController {
     }
 
     @GetMapping("/get/{requestedGameId}")
-    public GameResponseDTO getGameById(@PathVariable @NotNull String requestedGameId){
+    public GameResponseDTO getGameById(@PathVariable String requestedGameId){
         return gameService.getGameById(requestedGameId);
     }
 
@@ -39,12 +37,12 @@ public class GameController {
 
 
     @PostMapping("/create")
-    public GameResponseDTO createGameEntry(@RequestBody @NotNull GameRequestDTO gameRequestDTO){
+    public GameResponseDTO createGameEntry(@RequestBody GameRequestDTO gameRequestDTO){
         return gameService.createGameEntry(gameRequestDTO);
     }
 
     @PutMapping("/update/{requestedGameId}")
-    public GameResponseDTO updateGameEntry(@PathVariable @NotNull String requestedGameId, @RequestBody @NotNull GameRequestDTO gameRequestDTO){
+    public GameResponseDTO updateGameEntry(@PathVariable String requestedGameId, @RequestBody GameRequestDTO gameRequestDTO){
         return gameService.updateGameEntry(requestedGameId, gameRequestDTO);
     }
 

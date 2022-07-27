@@ -19,9 +19,6 @@ public class CaffeineConfig {
         return cacheManager;
     }
 
-
-
-
     public Caffeine<Object, Object> caffeineCache(){
         return Caffeine.newBuilder().
                 initialCapacity(10).
