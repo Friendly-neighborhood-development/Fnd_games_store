@@ -3,6 +3,10 @@ spring:
     name: games-service
   profiles:
     active: standalonedev
+#  cache:
+#    cache-names: cache1
+#    caffeine:
+#      spec: maximumsize:500
 
 
 

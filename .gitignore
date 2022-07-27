@@ -1,6 +1,5 @@
 .idea/
 .gradle/
-src/
 games-service/build
 registry-service/build
 config-service/build
