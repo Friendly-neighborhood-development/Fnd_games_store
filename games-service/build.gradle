@@ -8,9 +8,11 @@ plugins {
 }
 
 
+
 group = 'com.fnd.games_store'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+
 
 configurations {
     compileOnly {
@@ -33,11 +35,17 @@ repositories {
 
 
 jar {
+
     manifest {
         attributes(
                 'Main-Class': 'com.fnd.games_store.games.GamesApplication'
         )
     }
+}
+
+task fatJar(type: Jar) {
+    duplicatesStrategy = 'exclude'
+
 }
 
 

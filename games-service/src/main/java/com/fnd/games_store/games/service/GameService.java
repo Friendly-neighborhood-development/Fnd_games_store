@@ -1,24 +1,31 @@
 package com.fnd.games_store.games.service;
 
 
+import com.fnd.games_store.games.GamesApplication;
 import com.fnd.games_store.games.controller.dto.GameRequestDTO;
 import com.fnd.games_store.games.entity.Game;
 import com.fnd.games_store.games.controller.dto.GameResponseDTO;
 import com.fnd.games_store.games.exceptions.GameNotFoundException;
 import com.fnd.games_store.games.repository.GameRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
-
-//@Cacheable(cacheNames = "cahce1")
+@CacheConfig(cacheNames = "games")
+@Cacheable
 @Service
 public class GameService {
 
-
+    private static final Logger logger = LoggerFactory.getLogger(GamesApplication.class);
 
     private GameRepository gameRepository;
 
@@ -33,7 +40,12 @@ public class GameService {
     }
 //   @Cacheable
    public List<GameResponseDTO> getGamesCatalogue(){
-        return gameRepository.findAll().stream().map(GameResponseDTO::new).collect(Collectors.toList());
+        logger.info("service started");
+        Instant startTime = Instant.now();
+        List<GameResponseDTO> listOfGames = gameRepository.findAll().stream().map(GameResponseDTO::new).collect(Collectors.toList());
+        Instant endTime = Instant.now();
+        logger.info("service terminated with execution time: " + Duration.between(startTime,endTime).toMillis());
+        return listOfGames;
     }
 
    public GameResponseDTO createGameEntry(GameRequestDTO gameRequestDTO) {

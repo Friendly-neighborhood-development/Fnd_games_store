@@ -8,7 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-//@EnableCaching
+@EnableCaching
 public class GamesApplication {
 
     public static void main(String[] args) {

@@ -23,7 +23,7 @@ public class CaffeineConfig {
         return Caffeine.newBuilder().
                 initialCapacity(10).
                 maximumSize(10).
-                expireAfterWrite(1, TimeUnit.SECONDS);
+                expireAfterWrite(5, TimeUnit.SECONDS);
     }
 
 
