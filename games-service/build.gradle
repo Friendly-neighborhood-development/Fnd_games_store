@@ -43,9 +43,8 @@ jar {
     }
 }
 
-task fatJar(type: Jar) {
+task bootJar(type: Jar) {
     duplicatesStrategy = 'exclude'
-
 }
 
 
