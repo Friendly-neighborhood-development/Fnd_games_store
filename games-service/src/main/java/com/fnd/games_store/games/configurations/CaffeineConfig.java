@@ -2,7 +2,6 @@ package com.fnd.games_store.games.configurations;
 
 
 import com.github.benmanes.caffeine.cache.Caffeine;
-import org.springframework.cache.CacheManager;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class CaffeineConfig {
 
     @Bean
-    public CacheManager cacheManager(){
+    public CaffeineCacheManager caffeineCacheManager(){
         CaffeineCacheManager cacheManager = new CaffeineCacheManager();
         cacheManager.setCaffeine(caffeineCache());
         return cacheManager;
@@ -22,8 +21,8 @@ public class CaffeineConfig {
     public Caffeine<Object, Object> caffeineCache(){
         return Caffeine.newBuilder().
                 initialCapacity(10).
-                maximumSize(10).
-                expireAfterWrite(1, TimeUnit.SECONDS);
+                maximumSize(100).
+                expireAfterWrite(60, TimeUnit.SECONDS);
     }
 
 

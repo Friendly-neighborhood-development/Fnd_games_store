@@ -27,28 +27,24 @@ public class GameController {
         return gameService.getGameById(requestedGameId);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/getAll", produces = "application/json"
-            )
+    @GetMapping("/getAll")
     public List<GameResponseDTO> getGameCatalogue(){
         return gameService.getGamesCatalogue();
     }
 
-//,headers = {"Access-Control-Allow-Origin=*", "Access-Control-Allow-Credentials=true"}
-
-
     @PostMapping("/create")
-    public GameResponseDTO createGameEntry(@RequestBody GameRequestDTO gameRequestDTO){
-        return gameService.createGameEntry(gameRequestDTO);
+    public GameResponseDTO createGameEntry(@RequestBody GameRequestDTO creatingGameBody){
+        return gameService.createGameEntry(creatingGameBody);
     }
 
-    @PutMapping("/update/{requestedGameId}")
-    public GameResponseDTO updateGameEntry(@PathVariable String requestedGameId, @RequestBody GameRequestDTO gameRequestDTO){
-        return gameService.updateGameEntry(requestedGameId, gameRequestDTO);
+    @PutMapping("/update/{updatingGameId}")
+    public GameResponseDTO updateGameEntry(@PathVariable String updatingGameId, @RequestBody GameRequestDTO newGameBody){
+        return gameService.updateGameEntry(updatingGameId, newGameBody);
     }
 
-    @DeleteMapping("/delete/{requestedGameId}")
-    public void deleteGameEntry(@PathVariable String requestedGameId){
-        gameService.deleteGameEntry(requestedGameId);
+    @DeleteMapping("/delete/{deletingGameId}")
+    public void deleteGameEntry(@PathVariable String deletingGameId){
+        gameService.deleteGameEntry(deletingGameId);
     }
 
 }
