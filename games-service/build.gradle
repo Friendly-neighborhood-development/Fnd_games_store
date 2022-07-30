@@ -33,27 +33,13 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 
-
-
-tasks.withType(Tar){
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-}
-
-tasks.withType(Zip){
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-}
-
 jar {
     manifest {
         attributes(
                 'Main-Class': 'com.fnd.games_store.games.GamesApplication'
         )
+
     }
-}
-
-
-ext {
-    set('springCloudVersion', "2021.0.3")
 }
 
 dependencies {
@@ -67,7 +53,7 @@ dependencies {
     implementation 'org.flywaydb:flyway-core'
     implementation group: 'com.h2database', name: 'h2', version: '2.0.202'
     implementation 'junit:junit:4.13.2'
-    implementation ('com.github.ben-manes:caffeine:2.9.3'){
+    implementation ('com.github.ben-manes:caffeine:2.9.2'){
         exclude group: 'org.slf4j'
     }
     implementation 'org.springframework.boot:spring-boot-starter-cache'
@@ -79,6 +65,12 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 
 }
+
+
+ext {
+    set('springCloudVersion', "2021.0.3")
+}
+
 
 dependencyManagement {
     imports {

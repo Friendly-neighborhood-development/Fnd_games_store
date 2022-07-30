@@ -19,8 +19,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-@CacheConfig(cacheManager = "caffeineCacheManager")
-@Cacheable(cacheNames = "games")
+@CacheConfig(cacheNames = "games")
+@Cacheable
 @Service
 public class GameService {
 
