@@ -10,7 +10,7 @@ interface CustomInputProps{
 }
 
 const CustomInput:FC<CustomInputProps> = ({className, ...props}) => {
-    const rootClasses = ["text-gray-500 border-none text-base outline-none w-full", className].join(" ")
+    const rootClasses = ["text-gray-500 border-none text-base outline-none w-full dark:bg-transparent", className].join(" ")
     return <input className={rootClasses} {...props} />;
 }
 

@@ -5,18 +5,17 @@ module.exports = {
     theme: {
         container: {
             padding: {
-                DEFAULT: "0.5rem",
-                sm: "1rem",
-                lg: "1rem",
-                xl: "2rem",
-                "2xl": "10rem"
+                DEFAULT: "1rem",
+                sm: "2rem",
+                lg: "3rem",
+                xl: "3rem",
+                "2xl": "7rem"
             }
         },
         fontSize:{
             "2xs": ".6rem",
             'xs': '.75rem',
             'sm': '.875rem',
-            'tiny': '.875rem',
             'base': '1rem',
             'lg': '1.125rem',
             'xl': '1.25rem',
@@ -28,5 +27,6 @@ module.exports = {
             '7xl': '5rem',
         }
     },
+    darkMode: 'class',
     plugins: [],
 }
