@@ -5,9 +5,9 @@
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
-      <excludeFolder url="file://$MODULE_DIR$/server/config-service" />
-      <excludeFolder url="file://$MODULE_DIR$/server/basket-service" />
-      <excludeFolder url="file://$MODULE_DIR$/server/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/basket-service" />
+      <excludeFolder url="file://$MODULE_DIR$/config-service" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
