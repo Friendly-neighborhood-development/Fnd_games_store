@@ -1,4 +1,4 @@
-export interface gameProps {
+export interface game {
     id: number
     name: string
     base64Image: string
