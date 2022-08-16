@@ -11,7 +11,7 @@ interface GamesCategoryProps{
 const GamesCategory: FC<GamesCategoryProps> = memo(({title, games}) => {
     return (
         <div className={"w-full"}>
-            <div className={"mb-2 flex justify-start w-full items-center mt-8 mb-5"}>
+            <div className={"mb-2 flex justify-start w-full items-center mt-8 mb-5 cursor-pointer"}>
                 <span className={"text-xl dark:text-slate-100 ml-4"}>{title}</span>
                 <span className={"ml-1"}>
                     <ChevronRightIcon className={"w-4 h-4 text-slate-800 dark:text-slate-100"}/>

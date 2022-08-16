@@ -2,13 +2,14 @@ import React, {FC} from 'react';
 
 interface ButtonProps {
     children: any;
+    className?: string
 }
 
-const Button: FC<ButtonProps> = ({children}) => {
+const Button: FC<ButtonProps> = ({className, children}) => {
+    const rootClasses = "px-6 py-2 text-sm self-center cursor-pointer rounded " + className
     return (
         <button
-            className={"px-6 py-3 self-center cursor-pointer bg-white text-blue-600 rounded-lg border-solid" +
-                " border-blue-600 border font-semibold hover:bg-blue-600 hover:text-white ease-in duration-200"}>
+            className={rootClasses}>
             {children}
         </button>
     );
