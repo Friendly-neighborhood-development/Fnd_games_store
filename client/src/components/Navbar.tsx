@@ -4,6 +4,7 @@ import images from "../constants/images";
 import {ShoppingCartIcon, BellIcon, PuzzleIcon, SearchIcon} from "@heroicons/react/outline";
 import {Link} from "react-router-dom";
 import NavbarIcon from "./UI/NavbarIcon";
+import ThemeSwitcher from "./UI/ThemeSwitcher";
 
 const Navbar: FC = memo(() => {
     return (
@@ -14,9 +15,10 @@ const Navbar: FC = memo(() => {
                     <span className={"ml-2 dark:text-white md:text-3xl text-xl"}>Games Store</span>
                 </div>
             </Link>
-            <nav className={"flex items-center"}>
-                <Search className={"mr-4 hidden sm:flex"} placeholder={"Искать в магазине.."}/>
+            <nav className={"flex items-center space-x-4"}>
+                <Search className={"hidden sm:flex"} placeholder={"Искать в магазине.."}/>
                 <SearchIcon className={"sm:hidden w-6 h-6 text-gray-500"}/>
+                <ThemeSwitcher className={""}/>
                 <NavbarIcon Icon={BellIcon} link={"/notifications"}/>
                 <NavbarIcon Icon={ShoppingCartIcon} link={"/cart"}/>
                 <Link to={"/login"}>

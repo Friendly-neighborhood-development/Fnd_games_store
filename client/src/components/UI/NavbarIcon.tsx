@@ -4,19 +4,30 @@ import {BellIcon} from "@heroicons/react/outline";
 
 interface NavbarIconProps {
     Icon: any,
-    link: string
+    link?: string,
 }
 
 const NavbarIcon: FC<NavbarIconProps> = ({Icon, link}) => {
     return (
-        <Link to={link}>
-            <span
-                className={"mr-4 rounded-full bg-white border-solid border-gray-300 border" +
-                    " h-10 w-10 flex justify-center items-center dark:bg-slate-700/50" +
-                    " dark:border-slate-600"}>
-                <Icon className={"text-gray-500 dark:text-slate-400 w-3/5 h-3/5"}/>
-            </span>
-        </Link>
+        <>
+            {link
+                ? <Link to={link}>
+                    <span
+                        className={"rounded-full bg-white border-solid border-gray-300 border" +
+                            " h-10 w-10 flex justify-center items-center dark:bg-slate-700/50" +
+                            " dark:border-slate-600"}
+                    >
+                        <Icon className={"text-gray-500 dark:text-slate-400 w-3/5 h-3/5"}/>
+                    </span>
+                </Link>
+                : <span
+                    className={"rounded-full bg-white border-solid border-gray-300 border" +
+                        " h-10 w-10 flex justify-center items-center dark:bg-slate-700/50" +
+                        " dark:border-slate-600 cursor-pointer"}
+                >
+                        <Icon className={"text-gray-500 dark:text-slate-400 w-3/5 h-3/5"}/>
+                    </span>}
+        </>
     );
 };
 
