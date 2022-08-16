@@ -6,7 +6,7 @@ interface ThemeSwitcherProps {
 }
 
 const ThemeSwitcher: FC<ThemeSwitcherProps> = ({className}) => {
-    const [icon, setIcon] = useState("light")
+    const [icon, setIcon] = useState(localStorage.getItem("theme") || "light")
     useEffect(() => {
         document.documentElement.setAttribute("class", localStorage.getItem("theme") || "light")
     }, [])
