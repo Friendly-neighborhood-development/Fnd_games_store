@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import CustomInput from "./CustomInput";
+import Input from "./Input";
 import {SearchIcon} from "@heroicons/react/outline";
 
 interface SearchProps {
@@ -14,7 +14,7 @@ const Search: FC<SearchProps> = ({placeholder, className}) => {
             <span className={"mr-4 flex justify-center items-center"}>
                 <SearchIcon className={"text-gray-500 h-5 w-5"}/>
             </span>
-            <CustomInput type={"text"} placeholder={placeholder}/>
+            <Input type={"text"} placeholder={placeholder}/>
         </div>
     );
 };

@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
 
-interface CustomButtonProps {
+interface ButtonProps {
     children: any;
 }
 
-const CustomButton: FC<CustomButtonProps> = ({children}) => {
+const Button: FC<ButtonProps> = ({children}) => {
     return (
         <button
             className={"px-6 py-3 self-center cursor-pointer bg-white text-blue-600 rounded-lg border-solid" +
@@ -14,4 +14,4 @@ const CustomButton: FC<CustomButtonProps> = ({children}) => {
     );
 }
 
-export default CustomButton;
+export default Button;

@@ -9,9 +9,9 @@ interface CustomInputProps{
 
 }
 
-const CustomInput:FC<CustomInputProps> = ({className, ...props}) => {
+const Input:FC<CustomInputProps> = ({className, ...props}) => {
     const rootClasses = ["text-gray-500 border-none text-base outline-none w-full dark:bg-transparent", className].join(" ")
     return <input className={rootClasses} {...props} />;
 }
 
-export default CustomInput;
+export default Input;

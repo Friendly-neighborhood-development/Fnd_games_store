@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 const GameCard: FC<game> = memo(({name, description, base64Image, price, discount}) => {
     return (
         <Link to={`/games/${name}`}
-              className={"flex w-60 flex-wrap lg:w-56 mb-4 mr-2 bg-white dark:bg-slate-800/50 justify-between rounded-sm"}>
+              className={"flex w-60 flex-wrap lg:w-56 mb-4 bg-white dark:bg-slate-800/50 justify-between rounded-sm"}>
             <div className={"h-72 md:h-56 w-60 overflow-hidden flex justify-center items-center mb-4 rounded-sm"}>
                 <img className={"w-full pointer-events-none"} src={base64Image} alt={"game picture"}/>
             </div>
