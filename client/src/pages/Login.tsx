@@ -34,7 +34,7 @@ const Login = () => {
                     </form>
                     <div className={"text-sm p-4 rounded-lg border border-gray-500/50 w-full mt-4 flex justify-center"}>
                         New to Games Store?
-                        <Link to={"/login"} className={"ml-1 text-sky-500"}>
+                        <Link to={"/register"} className={"ml-1 text-sky-500"}>
                             Create an account
                         </Link>
                     </div>
