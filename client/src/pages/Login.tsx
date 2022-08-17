@@ -13,13 +13,13 @@ const Login = () => {
         <NotLoginLayout>
             <div className={"pt-6 w-80 flex flex-col items-center"}>
                 <Link to={"/games"} className={"my-4"}>
-                    <PuzzleIcon className={"w-16 h-16 text-sky-500"}/>
+                    <PuzzleIcon className={"w-16 h-16 text-blue-600 dark:text-sky-500"}/>
                 </Link>
-                <h1 className={"text-xl text-slate-300 mb-4"}>
+                <h1 className={"text-xl dark:text-slate-300 mb-4"}>
                     Sign in to Games Store
                 </h1>
                 <form
-                    className={"p-4 dark:bg-slate-700/50 dark:text-slate-300 rounded-md w-full space-y-2 flex flex-col border-gray-500/30 border"}
+                    className={"p-4 bg-white dark:bg-slate-700/50 dark:text-slate-300 rounded-md w-full space-y-2 flex flex-col border-gray-500/30 border"}
                     onSubmit={formHandler}
                 >
                     <Input
@@ -34,16 +34,16 @@ const Login = () => {
                     />
                     <button />
                     <Button
-                        className={"dark:bg-green-700 dark:hover:bg-green-600 w-full dark:text-white"}
+                        className={"bg-green-600 dark:bg-green-700 hover:bg-green-500 dark:hover:bg-green-600 w-full text-white"}
                         type={"submit"}
                         // value={"Submit"}
                     >
                         Sign in
                     </Button>
                 </form>
-                <div className={"text-sm p-4 rounded-lg border border-gray-500/50 w-full mt-4 flex justify-center"}>
+                <div className={"text-sm bg-white dark:bg-transparent p-4 rounded-lg border border-gray-500/30 dark:border-gray-500/50 w-full mt-4 flex justify-center"}>
                     New to Games Store?
-                    <Link to={"/register"} className={"ml-1 text-sky-500"}>
+                    <Link to={"/register"} className={"ml-1 text-blue-600 dark:text-sky-500"}>
                         Create an account
                     </Link>
                 </div>
