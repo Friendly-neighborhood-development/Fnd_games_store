@@ -6,6 +6,7 @@ import Test from "../pages/Test";
 const Games = React.lazy(() => import("../pages/Games"))
 const GameName = React.lazy(() => import("../pages/GameName"))
 const Login = React.lazy(() => import("../pages/Login"))
+const Register = React.lazy(() => import("../pages/Register"))
 const Cart = React.lazy(() => import("../pages/Cart"))
 const Notifications = React.lazy(() => import("../pages/Notifications"))
 const Error = React.lazy(() => import("../pages/Error"))
@@ -20,6 +21,7 @@ export const routes: Array<routeProps> = [
     {path: "/games", element: <Games/>},
     {path: "/games/:name", element: <GameName/>},
     {path: "/login", element: <Login/>},
+    {path: "/register", element: <Register/>},
     {path: "/cart", element: <Cart/>},
     {path: "/notifications", element: <Notifications/>},
     {path: "/error", element: <Error/>},

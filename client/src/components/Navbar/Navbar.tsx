@@ -1,22 +1,30 @@
 import React, {FC, memo} from 'react';
-import Search from "./UI/Search";
-import images from "../constants/images";
+import Search from "../UI/Search";
+import images from "../../constants/images";
 import {ShoppingCartIcon, BellIcon, PuzzleIcon, SearchIcon} from "@heroicons/react/outline";
 import {Link} from "react-router-dom";
-import NavbarIcon from "./UI/NavbarIcon";
+import NavbarIcon from "./NavbarIcon";
+import ThemeSwitcher from "../UI/ThemeSwitcher";
 
-const Navbar: FC = memo(() => {
+interface NavbarProps{
+    className?: string
+}
+
+const Navbar: FC<NavbarProps> = memo(({className}) => {
+    const rootClasses = "w-full justify-between items-center py-4 " + className
+
     return (
-        <header className={"w-full flex justify-between items-center"}>
+        <header className={rootClasses}>
             <Link to={"/games"}>
                 <div className={"mr-4  text-blue-600 dark:text-sky-500 flex items-center"}>
                     <PuzzleIcon className={"w-8 h-8"}/>
                     <span className={"ml-2 dark:text-white md:text-3xl text-xl"}>Games Store</span>
                 </div>
             </Link>
-            <nav className={"flex items-center"}>
-                <Search className={"mr-4 hidden sm:flex"} placeholder={"Искать в магазине.."}/>
+            <nav className={"flex items-center space-x-4"}>
+                <Search className={"hidden sm:flex bg-white border border-slate-500/30"} placeholder={"Искать в магазине.."}/>
                 <SearchIcon className={"sm:hidden w-6 h-6 text-gray-500"}/>
+                <ThemeSwitcher className={""}/>
                 <NavbarIcon Icon={BellIcon} link={"/notifications"}/>
                 <NavbarIcon Icon={ShoppingCartIcon} link={"/cart"}/>
                 <Link to={"/login"}>

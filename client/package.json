@@ -11,6 +11,7 @@
     "@types/node": "^16.11.41",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
+    "concurrently": "^7.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
@@ -19,6 +20,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "dev": "concurrently \"react-scripts start\" \"java -jar ~/Downloads/Telegram\\ Desktop/games-service-0.0.1-SNAPSHOT.jar\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
