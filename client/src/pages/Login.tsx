@@ -25,12 +25,12 @@ const Login = () => {
                     <Input
                         type={"email"}
                         label={"Email"}
-                        className={"rounded-md py-1.5 my-2 border-gray-500/50 border"}
+                        className={"rounded-md py-1.5 my-2 border-gray-500/50 border dark:bg-slate-900"}
                     />
                     <Input
                         type={"password"}
                         label={"Password"}
-                        className={"rounded-md py-1.5 my-2 border-gray-500/50 border"}
+                        className={"rounded-md py-1.5 my-2 border-gray-500/50 border dark:bg-slate-900"}
                     />
                     <Button
                         className={"bg-green-500 dark:bg-green-700 hover:bg-green-600 dark:hover:bg-green-600 w-full text-white"}
