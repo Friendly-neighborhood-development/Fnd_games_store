@@ -1,14 +1,20 @@
 import React, {FC, memo} from 'react';
-import Search from "./UI/Search";
-import images from "../constants/images";
+import Search from "../UI/Search";
+import images from "../../constants/images";
 import {ShoppingCartIcon, BellIcon, PuzzleIcon, SearchIcon} from "@heroicons/react/outline";
 import {Link} from "react-router-dom";
-import NavbarIcon from "./UI/NavbarIcon";
-import ThemeSwitcher from "./UI/ThemeSwitcher";
+import NavbarIcon from "./NavbarIcon";
+import ThemeSwitcher from "../UI/ThemeSwitcher";
 
-const Navbar: FC = memo(() => {
+interface NavbarProps{
+    className?: string
+}
+
+const Navbar: FC<NavbarProps> = memo(({className}) => {
+    const rootClasses = "w-full justify-between items-center " + className
+
     return (
-        <header className={"w-full flex justify-between items-center"}>
+        <header className={rootClasses}>
             <Link to={"/games"}>
                 <div className={"mr-4  text-blue-600 dark:text-sky-500 flex items-center"}>
                     <PuzzleIcon className={"w-8 h-8"}/>

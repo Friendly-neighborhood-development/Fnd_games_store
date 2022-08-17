@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
-import Sidebar from "../Sidebar";
-import Navbar from "../Navbar";
+import Navbar from "../Navbar/Navbar";
+import SmallScreenNavbar from "../Navbar/SmallScreenNavbar";
 
 interface MainLayoutProps {
     children?: React.ReactNode
@@ -12,7 +12,8 @@ const MainLayout: FC<MainLayoutProps> = ({children}) => {
             <div className="container mx-auto min-h-screen">
                 {/*<Sidebar/>*/}
                 <div className="flex flex-col items-center pt-4 lg:pt-6">
-                    <Navbar/>
+                    <Navbar className={"hidden lg:flex"}/>
+                    <SmallScreenNavbar className={"flex lg:hidden"}/>
                     {children}
                 </div>
             </div>
