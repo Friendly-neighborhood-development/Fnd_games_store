@@ -4,9 +4,10 @@ import {Link} from "react-router-dom";
 
 
 const GameCard: FC<game> = memo(({name, description, base64Image, price, discount}) => {
+    const highlightAfterClass = "after:content-[''] after:block after:absolute after:z-10 after:top-0 after:w-56 after:h-full after:bg-gray-300/30"
     return (
         <Link to={`/games/${name}`}
-              className={"flex w-60 flex-wrap mr-2 lg:mr-0 lg:w-56 mb-4 bg-white dark:bg-slate-800/50 justify-between rounded-sm"}>
+              className={"flex z-0 w-60 flex-wrap mr-2 lg:mr-0 lg:w-56 mb-4 bg-white dark:bg-slate-800/50 justify-between rounded-sm after:con "}>
             <div className={"h-72 md:h-56 w-60 overflow-hidden flex justify-center items-center mb-4 rounded-sm"}>
                 <img className={"w-full pointer-events-none"} src={base64Image} alt={"game picture"}/>
             </div>
@@ -27,7 +28,9 @@ const GameCard: FC<game> = memo(({name, description, base64Image, price, discoun
                             : <div className={"dark:text-slate-200"}>{price} ₽</div>)}
                 </div>
             </div>
+            <div className={""}>
 
+            </div>
         </Link>
     );
 });

@@ -6,6 +6,9 @@ import Input from "../components/UI/Input";
 import Button from "../components/UI/Button";
 
 const Login = () => {
+    const formHandler = (e: React.SyntheticEvent) => {
+        e.preventDefault()
+    }
     return (
         <NotLoginLayout>
             <div className={"pt-6 w-80 flex flex-col items-center"}>
@@ -16,18 +19,25 @@ const Login = () => {
                     Sign in to Games Store
                 </h1>
                 <form
-                    className={"p-4 dark:bg-slate-700/50 dark:text-slate-300 rounded-md w-full space-y-2 flex flex-col border-gray-500/30 border"}>
+                    className={"p-4 dark:bg-slate-700/50 dark:text-slate-300 rounded-md w-full space-y-2 flex flex-col border-gray-500/30 border"}
+                    onSubmit={formHandler}
+                >
                     <Input
                         type={"email"}
                         label={"Email"}
-                        className={"rounded p-1 my-2 border-gray-500/50 border"}
+                        className={"rounded-md py-1.5 my-2 border-gray-500/50 border"}
                     />
                     <Input
                         type={"password"}
                         label={"Password"}
-                        className={"rounded p-1 my-2 border-gray-500/50 border"}
+                        className={"rounded-md py-1.5 my-2 border-gray-500/50 border"}
                     />
-                    <Button className={"dark:bg-green-700 dark:hover:bg-green-600 w-full dark:text-white"}>
+                    <button />
+                    <Button
+                        className={"dark:bg-green-700 dark:hover:bg-green-600 w-full dark:text-white"}
+                        type={"submit"}
+                        // value={"Submit"}
+                    >
                         Sign in
                     </Button>
                 </form>
