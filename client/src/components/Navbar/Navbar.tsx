@@ -11,7 +11,7 @@ interface NavbarProps{
 }
 
 const Navbar: FC<NavbarProps> = memo(({className}) => {
-    const rootClasses = "w-full justify-between items-center " + className
+    const rootClasses = "w-full justify-between items-center py-4 " + className
 
     return (
         <header className={rootClasses}>
@@ -22,7 +22,7 @@ const Navbar: FC<NavbarProps> = memo(({className}) => {
                 </div>
             </Link>
             <nav className={"flex items-center space-x-4"}>
-                <Search className={"hidden sm:flex"} placeholder={"Искать в магазине.."}/>
+                <Search className={"hidden sm:flex bg-white border border-slate-500/30"} placeholder={"Искать в магазине.."}/>
                 <SearchIcon className={"sm:hidden w-6 h-6 text-gray-500"}/>
                 <ThemeSwitcher className={""}/>
                 <NavbarIcon Icon={BellIcon} link={"/notifications"}/>

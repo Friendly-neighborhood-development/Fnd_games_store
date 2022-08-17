@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 
 interface NotLoginLayoutProps {
-    children: React.ReactNode
+    children?: React.ReactNode
 }
 
 const NotLoginLayout: FC<NotLoginLayoutProps> = ({children}) => {

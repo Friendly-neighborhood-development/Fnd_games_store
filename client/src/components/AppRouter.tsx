@@ -2,6 +2,7 @@ import React from 'react';
 import {Routes, Route} from "react-router-dom";
 import {routes} from "../constants/routes";
 import MainLayout from "./layouts/MainLayout";
+import NotLoginLayout from "./layouts/NotLoginLayout";
 
 const AppRouter = () => {
     return (
@@ -10,7 +11,7 @@ const AppRouter = () => {
                 <Route
                     path={route.path}
                     element={
-                        <React.Suspense fallback={<MainLayout/>}>
+                        <React.Suspense fallback={<NotLoginLayout/>}>
                             {route.element}
                         </React.Suspense>
                     }

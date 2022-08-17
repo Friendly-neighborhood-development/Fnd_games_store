@@ -12,7 +12,7 @@ const NavbarIcon: FC<NavbarIconProps> = ({Icon, link}) => {
         <Link to={link} className={""}>
             <span
                 className={"rounded-full bg-white border-solid border-gray-300 border" +
-                    " h-10 w-10 flex justify-center items-center dark:bg-slate-700/50" +
+                    " h-10 w-10 flex justify-center items-center dark:bg-slate-800" +
                     " dark:border-slate-600 dark:hover:bg-slate-500/50"}
             >
                 <Icon className={"text-gray-500 dark:text-slate-400 w-3/5 h-3/5"}/>
