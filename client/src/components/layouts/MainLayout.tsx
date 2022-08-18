@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
-import Header from "../Navbar/Header";
-import SmallScreenHeader from "../Navbar/SmallScreenHeader";
+import Header from "../Header/Header";
+import SmallScreenHeader from "../Header/SmallScreenHeader";
 
 interface MainLayoutProps {
     children?: React.ReactNode

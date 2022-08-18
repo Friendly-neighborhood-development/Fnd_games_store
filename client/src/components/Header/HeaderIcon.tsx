@@ -7,7 +7,7 @@ interface NavbarIconProps {
     link: string,
 }
 
-const NavbarIcon: FC<NavbarIconProps> = ({Icon, link}) => {
+const HeaderIcon: FC<NavbarIconProps> = ({Icon, link}) => {
     return (
         <Link to={link} className={""}>
             <span
@@ -21,4 +21,4 @@ const NavbarIcon: FC<NavbarIconProps> = ({Icon, link}) => {
     );
 };
 
-export default NavbarIcon;
+export default HeaderIcon;

@@ -3,7 +3,7 @@ import Search from "../UI/Search";
 import images from "../../constants/images";
 import {ShoppingCartIcon, BellIcon, PuzzleIcon, SearchIcon} from "@heroicons/react/outline";
 import {Link} from "react-router-dom";
-import NavbarIcon from "./NavbarIcon";
+import HeaderIcon from "./HeaderIcon";
 import ThemeSwitcher from "../UI/ThemeSwitcher";
 import SmallScreenHeader from "./SmallScreenHeader";
 
@@ -24,8 +24,8 @@ const Header: FC = memo(() => {
                                 placeholder={"Искать в магазине.."}/>
                         <SearchIcon className={"sm:hidden w-6 h-6 text-gray-500"}/>
                         <ThemeSwitcher className={""}/>
-                        <NavbarIcon Icon={BellIcon} link={"/notifications"}/>
-                        <NavbarIcon Icon={ShoppingCartIcon} link={"/cart"}/>
+                        <HeaderIcon Icon={BellIcon} link={"/notifications"}/>
+                        <HeaderIcon Icon={ShoppingCartIcon} link={"/cart"}/>
                         <Link to={"/login"}>
                     <span className={"rounded-full inline-block overflow-hidden h-10 w-10 bg-white" +
                         " dark:bg-slate-700/50 flex items-center"}>
