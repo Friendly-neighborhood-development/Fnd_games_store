@@ -29,10 +29,12 @@ const ThemeSwitcher: FC<ThemeSwitcherProps> = ({className}) => {
     }
 
     return (
-        <span onClick={toggleTheme}>
+        <span
+            onClick={toggleTheme}
+            className={"text-blue-600 dark:text-sky-500 cursor-pointer"}>
             {icon === "dark"
-                ? <MoonIcon className={"w-8 h-8 text-blue-600 dark:text-sky-500 cursor-pointer"}/>
-                : <SunIcon className={"w-8 h-8 text-blue-600 dark:text-sky-500 cursor-pointer"}/>
+                ? <MoonIcon className={"w-8 h-8"}/>
+                : <SunIcon className={"w-8 h-8"}/>
             }
 
         </span>
