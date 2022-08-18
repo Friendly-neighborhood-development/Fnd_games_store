@@ -19,18 +19,19 @@ const Login = () => {
                     Sign in to Games Store
                 </h1>
                 <form
-                    className={"p-4 bg-white dark:bg-slate-700/50 dark:text-slate-300 rounded-md w-full space-y-2 flex flex-col border-gray-500/50 border"}
+                    className={"p-4 bg-gray-50 dark:bg-slate-700/50 dark:text-slate-300 rounded-md w-full space-y-2 flex flex-col border-gray-500/30 dark:border-gray-500/50 border"}
                     onSubmit={formHandler}
                 >
                     <Input
                         type={"email"}
                         label={"Email"}
-                        className={"rounded-md py-1.5 my-2 border-gray-500/50 border dark:bg-slate-900"}
+                        className={"rounded-md py-1 my-2 border-gray-500/30 dark:border-gray-500/50 border dark:bg-slate-900"}
+                        autoComplete={"username"}
                     />
                     <Input
                         type={"password"}
                         label={"Password"}
-                        className={"rounded-md py-1.5 my-2 border-gray-500/50 border dark:bg-slate-900"}
+                        className={"rounded-md py-1 my-2 border-gray-500/30 dark:border-gray-500/50 border dark:bg-slate-900"}
                     />
                     <Button
                         className={"bg-green-500 dark:bg-green-700 hover:bg-green-600 dark:hover:bg-green-600 w-full text-white"}
@@ -40,10 +41,10 @@ const Login = () => {
                         Sign in
                     </Button>
                 </form>
-                <div className={"text-sm bg-white dark:bg-transparent p-4 rounded-lg border border-gray-500/50 dark:border-gray-500/50 w-full mt-4 flex justify-center"}>
+                <div className={"text-sm bg-white dark:bg-transparent p-4 rounded-lg border border-gray-500/30 dark:border-gray-500/50 w-full mt-4 flex justify-center"}>
                     <span className={"dark:text-slate-200"}>New to Games Store?</span>
                     <Link to={"/register"} className={"ml-1 text-blue-600 dark:text-sky-500"}>
-                        Create an account.
+                        Create an account .
                     </Link>
                 </div>
             </div>

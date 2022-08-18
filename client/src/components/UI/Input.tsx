@@ -7,7 +7,7 @@ interface CustomInputProps {
     placeholder?: string;
     className?: string
     label?: string
-    autoComplete?: "on" | "off"
+    autoComplete?: "on" | "off" | "username"
 
 }
 
