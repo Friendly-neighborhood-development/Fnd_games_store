@@ -10,7 +10,7 @@ interface GamesCategoryProps{
 
 const GamesCategory: FC<GamesCategoryProps> = memo(({title, games}) => {
     return (
-        <div className={"w-full"}>
+        <section className={"w-full"}>
             <div className={"flex justify-start w-full items-center my-4 cursor-pointer"}>
                 <span className={"text-xl dark:text-slate-100 ml-4"}>{title}</span>
                 <span className={"ml-1"}>
@@ -24,7 +24,7 @@ const GamesCategory: FC<GamesCategoryProps> = memo(({title, games}) => {
                         key={game.id}
                     />)}
             </div>
-        </div>
+        </section>
 
     );
 })

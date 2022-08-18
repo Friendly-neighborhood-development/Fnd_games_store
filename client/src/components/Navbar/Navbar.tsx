@@ -14,7 +14,7 @@ const Navbar: FC<NavbarProps> = memo(({className}) => {
     const rootClasses = "w-full justify-between items-center py-4 " + className
 
     return (
-        <header className={rootClasses}>
+        <div className={rootClasses}>
             <Link to={"/games"}>
                 <div className={"mr-4  text-blue-600 dark:text-sky-500 flex items-center"}>
                     <PuzzleIcon className={"w-8 h-8"}/>
@@ -34,7 +34,7 @@ const Navbar: FC<NavbarProps> = memo(({className}) => {
                     </span>
                 </Link>
             </nav>
-        </header>
+        </div>
     );
 })
 
