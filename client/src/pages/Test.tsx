@@ -1,11 +1,47 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MainLayout from "../components/layouts/MainLayout";
-import Slider from "../components/UI/Slider";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../store/store";
+import Button from "../components/UI/Button";
+import {decrement, increment, incrementByAmount} from "../store/slices/counterSlice";
+import Input from "../components/UI/Input";
 
 const Test = () => {
+    const [amountValue, setAmountValue] = useState("")
+    const count = useSelector((state: RootState) => state.counter.value)
+    const dispatch = useDispatch()
     return (
         <MainLayout>
-            <Slider/>
+            <div className={"flex flex-col justify-items-start"}>
+                <h1>Here is count: {count}</h1>
+                <Button
+                    onClick={() => dispatch(increment())}
+                    className={"bg-green-600"}
+                >
+                    Increment
+                </Button>
+                <Button
+                    onClick={() => dispatch(decrement())}
+                    className={"bg-pink-600"}
+                >
+                    Decrement
+                </Button>
+                <Input
+                    type={"text"}
+                    value={amountValue}
+                    onChange={(e: React.FormEvent<HTMLInputElement>) => setAmountValue(e.currentTarget.value)}
+                    className={"dark:bg-slate-800"}
+                    label={"amount"}
+                />
+                <Button
+                    onClick={() => dispatch(incrementByAmount(+amountValue))}
+                    className={"bg-sky-600"}
+                >
+                    Increment by amount
+                </Button>
+            </div>
+
+
         </MainLayout>
     );
 };
