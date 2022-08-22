@@ -1,4 +1,4 @@
-export interface IGames {
+export interface IGame {
     id: number
     name: string
     base64Image: string

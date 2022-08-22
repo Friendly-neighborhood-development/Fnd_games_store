@@ -1,11 +1,11 @@
 import React, {FC, memo} from 'react';
 import GameCard from "./GameCard";
-import {IGames} from "../models/Games";
+import {IGame} from "../models/IGame";
 import {ChevronRightIcon} from "@heroicons/react/outline";
 
 interface GamesCategoryProps {
     title: string
-    games: Array<IGames>
+    games: Array<IGame>
 }
 
 const GamesCategory: FC<GamesCategoryProps> = memo(({title, games}) => {
