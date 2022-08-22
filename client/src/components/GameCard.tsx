@@ -1,9 +1,9 @@
 import React, {FC, memo} from 'react';
-import {game} from "../types/Games";
+import {IGames} from "../models/Games";
 import {Link} from "react-router-dom";
 
 
-const GameCard: FC<game> = memo(({name, description, base64Image, price, discount}) => {
+const GameCard: FC<IGames> = memo(({name, description, base64Image, price, discount}) => {
     return (
         <Link to={`/games/${name}`}
               className={"flex z-0 w-60 flex-wrap mr-2 lg:mr-0 lg:w-56 mb-4 bg-white dark:bg-slate-800/50 justify-between rounded-sm after:con "}>

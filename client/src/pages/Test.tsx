@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import MainLayout from "../components/layouts/MainLayout";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../store/store";
 import Button from "../components/UI/Button";
-import {decrement, increment, incrementByAmount} from "../store/slices/counterSlice";
+import {decrement, increment, incrementByAmount} from "../store/reducers/counterSlice";
 import Input from "../components/UI/Input";
 
-const Test = () => {
+const Test = memo(() => {
     const [amountValue, setAmountValue] = useState("")
     const count = useSelector((state: RootState) => state.counter.value)
     const dispatch = useDispatch()
@@ -44,6 +44,6 @@ const Test = () => {
 
         </MainLayout>
     );
-};
+});
 
 export default Test;
