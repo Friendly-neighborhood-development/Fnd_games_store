@@ -10,13 +10,12 @@ const Games = () => {
     useEffect(() => {
         dispatch(fetchGames())
     }, [])
-    if(isLoading) return <h1>Идёт загрузка</h1>
+
     return (
         <MainLayout>
-            {error && <h1>{error}</h1>}
-            <GamesCategory title={"Популярные"} games={games}/>
-            <GamesCategory title={"Распродажа"} games={games}/>
-            <GamesCategory title={"Новинки"} games={games}/>
+            <GamesCategory title={"Популярные"} type={"popular"} games={games}/>
+            <GamesCategory title={"Распродажа"} type={"sale"} games={games}/>
+            <GamesCategory title={"Новинки"} type={"new"} games={games}/>
         </MainLayout>
     );
 };
