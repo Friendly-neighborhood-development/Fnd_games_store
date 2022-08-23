@@ -1,5 +1,5 @@
 import React, {FC, memo} from 'react';
-import {MenuIcon, PuzzleIcon, SearchIcon} from "@heroicons/react/outline";
+import {Bars3Icon, PuzzlePieceIcon, MagnifyingGlassIcon} from "@heroicons/react/24/outline";
 import {Link} from "react-router-dom";
 import ThemeSwitcher from "../UI/ThemeSwitcher";
 
@@ -9,12 +9,12 @@ const SmallScreenHeader: FC = memo(() => {
             className={"w-full border-b border-slate-500/30 lg:hidden sticky top-0 z-10 bg-white dark:bg-slate-900/80 shadow-lg dark:shadow-none shadow-gray-500/10"}>
             <div className="container mx-auto">
                 <div className={"w-full justify-between items-center flex  py-3"}>
-                    <SearchIcon className={"w-6 h-6 dark:text-gray-100"}/>
+                    <MagnifyingGlassIcon className={"w-6 h-6 dark:text-gray-100"}/>
                     <Link to={"/games"} className={"flex items-center"}>
-                        <PuzzleIcon className={"w-6 h-6 text-blue-500"}/>
+                        <PuzzlePieceIcon className={"w-6 h-6 text-blue-500"}/>
                         <span className={"dark:text-gray-100 text-xl ml-1"}>Games Store</span>
                     </Link>
-                    <MenuIcon className={"w-6 h-6 dark:text-gray-100"}/>
+                    <Bars3Icon className={"w-6 h-6 dark:text-gray-100"}/>
                     <div className={"fixed z-50"}>
                         <div
                             className={"fixed inset-0 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80 font-semibold dark:text-slate-300"}

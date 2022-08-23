@@ -1,7 +1,7 @@
 import React, {FC, memo, useEffect} from 'react';
 import GameCard from "./GameCard";
 import {IGame} from "../models/IGame";
-import {ChevronRightIcon} from "@heroicons/react/outline";
+import {ChevronRightIcon} from "@heroicons/react/24/outline";
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
 import {fetchGames} from "../store/actions/gameAction";
 

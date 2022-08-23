@@ -1,11 +1,7 @@
-import React, {FC, useEffect, useState} from 'react';
-import {MoonIcon, SunIcon} from "@heroicons/react/outline";
+import React, {FC, memo, useEffect, useState} from 'react';
+import {MoonIcon, SunIcon} from "@heroicons/react/24/outline";
 
-interface ThemeSwitcherProps {
-    className?: string
-}
-
-const ThemeSwitcher: FC<ThemeSwitcherProps> = ({className}) => {
+const ThemeSwitcher:FC = memo(() => {
     const [icon, setIcon] = useState(localStorage.getItem("theme") || "light")
     useEffect(() => {
         document.documentElement.setAttribute("class", localStorage.getItem("theme") || "light")
@@ -29,16 +25,15 @@ const ThemeSwitcher: FC<ThemeSwitcherProps> = ({className}) => {
     }
 
     return (
-        <span
+        <div
             onClick={toggleTheme}
-            className={"text-blue-600 dark:text-sky-500 cursor-pointer " + className}>
+            className={"text-blue-600 dark:text-sky-500 cursor-pointer"}>
             {icon === "dark"
                 ? <MoonIcon className={"w-8 h-8"}/>
                 : <SunIcon className={"w-8 h-8"}/>
             }
-
-        </span>
+        </div>
     );
-};
+});
 
 export default ThemeSwitcher;

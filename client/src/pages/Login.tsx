@@ -1,7 +1,7 @@
 import React from 'react';
 import NotLoginLayout from "../components/layouts/NotLoginLayout";
 import {Link} from "react-router-dom";
-import {PuzzleIcon} from "@heroicons/react/outline";
+import {PuzzlePieceIcon} from "@heroicons/react/24/outline";
 import Input from "../components/UI/Input";
 import Button from "../components/UI/Button";
 
@@ -13,7 +13,7 @@ const Login = () => {
         <NotLoginLayout>
             <div className={"pt-6 w-80 flex flex-col items-center"}>
                 <Link to={"/games"} className={"my-4"}>
-                    <PuzzleIcon className={"w-16 h-16 text-blue-600 dark:text-sky-500"}/>
+                    <PuzzlePieceIcon className={"w-16 h-16 text-blue-600 dark:text-sky-500"}/>
                 </Link>
                 <h1 className={"text-xl dark:text-slate-200 mb-4"}>
                     Sign in to Games Store
