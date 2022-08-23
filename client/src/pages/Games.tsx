@@ -11,9 +11,9 @@ const Games = () => {
         dispatch(fetchGames())
     }, [])
     if(isLoading) return <h1>Идёт загрузка</h1>
-    if(error) return <h1>{error}</h1>
     return (
         <MainLayout>
+            {error && <h1>{error}</h1>}
             <GamesCategory title={"Популярные"} games={games}/>
             <GamesCategory title={"Распродажа"} games={games}/>
             <GamesCategory title={"Новинки"} games={games}/>
