@@ -2,7 +2,7 @@ import React, {FC, useEffect, useState} from 'react';
 import {MoonIcon, SunIcon} from "@heroicons/react/outline";
 
 interface ThemeSwitcherProps {
-    className: string
+    className?: string
 }
 
 const ThemeSwitcher: FC<ThemeSwitcherProps> = ({className}) => {
@@ -31,7 +31,7 @@ const ThemeSwitcher: FC<ThemeSwitcherProps> = ({className}) => {
     return (
         <span
             onClick={toggleTheme}
-            className={"text-blue-600 dark:text-sky-500 cursor-pointer"}>
+            className={"text-blue-600 dark:text-sky-500 cursor-pointer " + className}>
             {icon === "dark"
                 ? <MoonIcon className={"w-8 h-8"}/>
                 : <SunIcon className={"w-8 h-8"}/>
