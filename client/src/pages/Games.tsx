@@ -1,22 +1,21 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import GamesCategory from "../components/GamesCategory";
 import MainLayout from "../components/layouts/MainLayout";
-import {game} from "../types/Games";
-import {BASE_SERVER_URL} from "../constants/baseServerURL";
+import {useAppDispatch, useAppSelector} from "../hooks/redux";
+import {fetchGames} from "../store/actions/gameAction";
 
 const Games = () => {
-    const [games, setGames] = useState(Array<game>)
+    const {games, isLoading, error} = useAppSelector(state => state.game)
+    const dispatch = useAppDispatch()
     useEffect(() => {
-        const url = `${BASE_SERVER_URL}/games/getAll`
-        fetch(url)
-            .then(response => response.json())
-            .then(json => setGames(json))
+        dispatch(fetchGames())
     }, [])
+
     return (
         <MainLayout>
-            <GamesCategory title={"Популярные"} games={games}/>
-            <GamesCategory title={"Распродажа"} games={games}/>
-            <GamesCategory title={"Новинки"} games={games}/>
+            <GamesCategory title={"Популярные"} type={"popular"} games={games}/>
+            <GamesCategory title={"Распродажа"} type={"sale"} games={games}/>
+            <GamesCategory title={"Новинки"} type={"new"} games={games}/>
         </MainLayout>
     );
 };

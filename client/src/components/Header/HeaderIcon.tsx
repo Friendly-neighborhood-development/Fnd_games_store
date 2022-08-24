@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {Link} from "react-router-dom";
-import {BellIcon} from "@heroicons/react/outline";
+import {BellIcon} from "@heroicons/react/24/outline";
 
 interface NavbarIconProps {
     Icon: any,

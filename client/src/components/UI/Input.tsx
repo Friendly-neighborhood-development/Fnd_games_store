@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 
 interface CustomInputProps {
     value?: string | number;
-    onChange?: () => void;
+    onChange?: (arg0: React.FormEvent<HTMLInputElement>) => void;
     type: string;
     placeholder?: string;
     className?: string
