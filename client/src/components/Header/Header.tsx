@@ -5,7 +5,6 @@ import {ShoppingCartIcon, BellIcon, PuzzlePieceIcon, MagnifyingGlassIcon} from "
 import {Link} from "react-router-dom";
 import HeaderIcon from "./HeaderIcon";
 import ThemeSwitcher from "../UI/ThemeSwitcher";
-import SmallScreenHeader from "./SmallScreenHeader";
 
 const Header: FC = memo(() => {
     return (
@@ -24,8 +23,8 @@ const Header: FC = memo(() => {
                                 placeholder={"Искать в магазине.."}/>
                         <MagnifyingGlassIcon className={"sm:hidden w-6 h-6 text-gray-500"}/>
                         <ThemeSwitcher/>
-                        <HeaderIcon Icon={BellIcon} link={"/notifications"}/>
                         <HeaderIcon Icon={ShoppingCartIcon} link={"/cart"}/>
+                        <HeaderIcon Icon={BellIcon} link={"/notifications"}/>
                         <Link to={"/login"}>
                             <span className={"rounded-full inline-block overflow-hidden h-10 w-10 bg-white" +
                                 " dark:bg-slate-700/50 flex items-center"}>
