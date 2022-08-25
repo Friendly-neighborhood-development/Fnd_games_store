@@ -15,7 +15,7 @@ const HeaderIcon: FC<NavbarIconProps> = ({Icon, link}) => {
                     " h-10 w-10 flex justify-center items-center dark:bg-slate-800" +
                     " dark:border-slate-600 hover:bg-gray-200/30 dark:hover:bg-slate-500/50"}
             >
-                <Icon className={"text-gray-500 dark:text-slate-400 w-3/5 h-3/5"}/>
+                <Icon className={"text-slate-500 dark:text-slate-400 w-3/5 h-3/5"}/>
             </span>
         </Link>
     );
