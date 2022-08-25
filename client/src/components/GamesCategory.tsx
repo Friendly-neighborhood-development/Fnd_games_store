@@ -24,7 +24,7 @@ const GamesCategory: FC<GamesCategoryProps> = memo(({title, type, games}) => {
                 </span>
             </div>
             <div
-                className={"flex lg:flex-none w-full overflow-x-auto lg:overflow-x-visible lg:grid lg:grid-cols-4 xl:grid-cols-5 lg:gap-3"}>
+                className={"flex lg:flex-none w-full overflow-x-auto lg:overflow-x-visible lg:grid lg:grid-cols-4 xl:grid-cols-5 lg:gap-8 xl:gap-4"}>
                 {games.map(game =>
                     <GameCard
                         {...game}

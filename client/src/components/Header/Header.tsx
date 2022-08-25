@@ -18,13 +18,14 @@ const Header: FC = memo(() => {
                             <span className={"ml-2 dark:text-white md:text-3xl text-xl"}>Games Store</span>
                         </div>
                     </Link>
-                    <nav className={"flex items-center space-x-4"}>
+                    <nav className={"flex items-center space-x-4 relative"}>
                         <Search className={"hidden sm:flex bg-white border border-slate-500/30"}
                                 placeholder={"Искать в магазине.."}/>
                         <MagnifyingGlassIcon className={"sm:hidden w-6 h-6 text-gray-500"}/>
-                        <ThemeSwitcher/>
                         <HeaderIcon Icon={ShoppingCartIcon} link={"/cart"}/>
                         <HeaderIcon Icon={BellIcon} link={"/notifications"}/>
+                        <ThemeSwitcher/>
+
                         <Link to={"/login"}>
                             <span className={"rounded-full inline-block overflow-hidden h-10 w-10 bg-white" +
                                 " dark:bg-slate-700/50 flex items-center"}>

@@ -1,7 +1,7 @@
 import React, {FC, memo, useEffect, useState} from 'react';
-import {MoonIcon, SunIcon} from "@heroicons/react/24/outline";
+import {ComputerDesktopIcon, MoonIcon, SunIcon} from "@heroicons/react/24/outline";
 
-const ThemeSwitcher:FC = memo(() => {
+const ThemeSwitcher: FC = memo(() => {
     const [icon, setIcon] = useState(localStorage.getItem("theme") || "light")
     useEffect(() => {
         document.documentElement.setAttribute("class", localStorage.getItem("theme") || "light")
@@ -25,14 +25,31 @@ const ThemeSwitcher:FC = memo(() => {
     }
 
     return (
-        <div
-            onClick={toggleTheme}
-            className={"text-blue-600 dark:text-sky-500 cursor-pointer"}>
-            {icon === "dark"
-                ? <MoonIcon className={"w-8 h-8"}/>
-                : <SunIcon className={"w-8 h-8"}/>
-            }
-        </div>
+        <>
+            <div
+                onClick={toggleTheme}
+                className={"text-blue-600 dark:text-sky-500 cursor-pointer"}>
+                {icon === "dark"
+                    ? <MoonIcon className={"w-8 h-8"}/>
+                    : <SunIcon className={"w-8 h-8"}/>
+                }
+            </div>
+            {/*<ul className={"absolute top-full right-0 mt-6 font-semibold text-sm z-50 w-36 py-1 rounded-lg bg-white overflow-hidden shadow-lg dark:bg-slate-800"}>*/}
+            {/*    <li className={"flex px-2 py-1 cursor-pointer items-center hover:bg-gray-100 dark:hover:bg-slate-700"}>*/}
+            {/*        <ComputerDesktopIcon*/}
+            {/*            className={"w-6 h-6 mr-2"}/>*/}
+            {/*        System*/}
+            {/*    </li>*/}
+            {/*    <li className={"flex px-2 py-1 cursor-pointer items-center hover:bg-gray-100 dark:hover:bg-slate-700"}>*/}
+            {/*        <SunIcon className={"w-6 h-6 mr-2"}/>*/}
+            {/*        Light*/}
+            {/*    </li>*/}
+            {/*    <li className={"flex px-2 py-1 cursor-pointer items-center hover:bg-gray-100 dark:hover:bg-slate-700"}>*/}
+            {/*        <MoonIcon className={"w-6 h-6 mr-2"}/>*/}
+            {/*        Dark*/}
+            {/*    </li>*/}
+            {/*</ul>*/}
+        </>
     );
 });
 
