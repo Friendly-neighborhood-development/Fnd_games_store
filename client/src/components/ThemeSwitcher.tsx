@@ -1,5 +1,6 @@
 import React, {FC, memo, useEffect, useState} from 'react';
 import {ComputerDesktopIcon, MoonIcon, SunIcon} from "@heroicons/react/24/outline";
+import {ChevronDownIcon} from "@heroicons/react/20/solid";
 
 const ThemeSwitcher: FC = memo(() => {
     const [modal, setModal] = useState(false)
@@ -30,23 +31,27 @@ const ThemeSwitcher: FC = memo(() => {
         switchTheme(localStorage.theme)
     }, [])
 
-
-
     return (
         <div
-            className={"text-blue-600 cursor-pointer dark:text-sky-500"}
+            className={"text-blue-600 cursor-pointer border lg:border-none border-slate-300 rounded-lg p-2 dark:text-sky-500 dark:border-slate-600"}
             onClick={() => setModal(!modal)}
         >
-            {localStorage.theme === "system"
-                ? window.matchMedia('(prefers-color-scheme: dark)').matches
-                    ? <MoonIcon className={"w-8 h-8 text-slate-300"}/>
-                    : <SunIcon className={"w-8 h-8 text-slate-500"}/>
-                : localStorage.theme === "dark"
-                    ? <MoonIcon className={"w-8 h-8"}/>
-                    : <SunIcon className={"w-8 h-8"}/>
-            }
+            <div className={"flex items-center justify-between space-x-2"}>
+                {localStorage.theme === "system"
+                    ? window.matchMedia('(prefers-color-scheme: dark)').matches
+                        ? <MoonIcon className={"w-6 h-6 lg:w-8 lg:h-8 text-slate-400"}/>
+                        : <SunIcon className={"w-6 h-6 lg:w-8 lg:h-8 text-slate-500"}/>
+                    : localStorage.theme === "dark"
+                        ? <MoonIcon className={"w-6 h-6 lg:w-8 lg:h-8"}/>
+                        : <SunIcon className={"w-6 h-6 lg:w-8 lg:h-8"}/>
+                }
+                <span className={"lg:hidden text-slate-800 capitalize font-semibold dark:text-slate-300"}>
+                    {localStorage.theme}
+                </span>
+                <ChevronDownIcon className={"w-3 h-3 text-slate-500 dark:text-slate-400"}/>
+            </div>
             {modal &&
-                <ul className={"absolute top-full right-0 mt-8 font-semibold text-slate-700 text-sm z-50 w-36 py-1 rounded-lg bg-white overflow-hidden shadow-xl dark:text-slate-300 dark:bg-slate-800"}>
+                <ul className={"absolute top-full right-0 mt-2 lg:mt-8 font-semibold text-slate-700 text-sm z-50 w-36 py-1 rounded-lg bg-white overflow-hidden shadow-xl dark:text-slate-300 dark:bg-slate-800"}>
                     <li
                         className={"flex px-2 py-1 cursor-pointer items-center hover:bg-gray-100 dark:hover:bg-slate-700"}
                         onClick={() => switchTheme("light")}

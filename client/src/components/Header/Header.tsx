@@ -25,7 +25,6 @@ const Header: FC = memo(() => {
                         <HeaderIcon Icon={ShoppingCartIcon} link={"/cart"}/>
                         <HeaderIcon Icon={BellIcon} link={"/notifications"}/>
                         <ThemeSwitcher/>
-
                         <Link to={"/login"}>
                             <span className={"rounded-full inline-block overflow-hidden h-10 w-10 bg-white" +
                                 " dark:bg-slate-700/50 flex items-center"}>
