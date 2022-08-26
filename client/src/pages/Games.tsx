@@ -13,7 +13,7 @@ const Games = () => {
 
     return (
         <MainLayout>
-            <main className={"w-full"}>
+            <main className={"w-full flex flex-col justify-end"}>
                 <GamesCategory title={"Популярные"} type={"popular"} games={games}/>
                 <GamesCategory title={"Распродажа"} type={"sale"} games={games}/>
                 <GamesCategory title={"Новинки"} type={"new"} games={games}/>

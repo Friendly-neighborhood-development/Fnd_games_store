@@ -18,7 +18,7 @@ const MainLayout: FC<MainLayoutProps> = ({children}) => {
         <div className="text-slate-800 dark:text-slate-400 bg-gray-100 dark:bg-slate-900 flex flex-col min-h-screen">
                 <Header/>
                 <SmHeader/>
-            <div className="container mx-auto flex justify-between space-x-5">
+            <div className="container mx-auto flex lg:space-x-6">
                 <Sidebar/>
                 {children}
             </div>
