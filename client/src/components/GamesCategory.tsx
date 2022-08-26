@@ -2,8 +2,6 @@ import React, {FC, memo, useEffect} from 'react';
 import GameCard from "./GameCard";
 import {IGame} from "../models/IGame";
 import {ChevronRightIcon} from "@heroicons/react/24/outline";
-import {useAppDispatch, useAppSelector} from "../hooks/redux";
-import {fetchGames} from "../store/actions/gameAction";
 
 interface GamesCategoryProps {
     title: string,
@@ -24,7 +22,7 @@ const GamesCategory: FC<GamesCategoryProps> = memo(({title, type, games}) => {
                 </span>
             </div>
             <div
-                className={"flex lg:flex-none w-full overflow-x-auto lg:overflow-x-visible lg:grid lg:grid-cols-4 xl:grid-cols-5 lg:gap-8 xl:gap-4"}>
+                className={"flex lg:flex-none w-full overflow-x-auto lg:overflow-x-visible lg:grid lg:grid-cols-4 xl:grid-cols-5 lg:gap-y-4 lg:gap-x-8 xl:gap-x-4"}>
                 {games.map(game =>
                     <GameCard
                         {...game}
