@@ -15,7 +15,7 @@ const MainLayout: FC<MainLayoutProps> = ({children}) => {
         document.documentElement.style.overflow = ""
     }, [])
     return (
-        <div className="text-slate-800 dark:text-slate-400 bg-gray-100 dark:bg-slate-900 flex flex-col min-h-screen">
+        <div className="text-slate-800 bg-gray-100 flex flex-col min-h-screen dark:text-slate-400 dark:bg-slate-900">
                 <Header/>
                 <SmHeader/>
             <div className="container mx-auto flex lg:space-x-6">

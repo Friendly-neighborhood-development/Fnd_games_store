@@ -4,9 +4,10 @@ import {Link} from "react-router-dom";
 
 
 const GameCard: FC<IGame> = memo(({name, description, base64Image, price, discount}) => {
+    const testStyles = " lg:before:block lg:before:absolute lg:before:-inset-1 lg:hover:before:bg-gray-300/5 lg:relative lg:inline-block"
     return (
         <Link to={`/games/${name}`}
-              className={"flex flex-wrap  lg:px-2 lg:pb-6 dark:bg-slate-900 justify-between rounded-sm"}>
+              className={"flex flex-wrap pb-4 bg-white dark:bg-slate-800 justify-between rounded-lg lg:overflow-hidden" + testStyles}>
             <div className={"h-72 md:h-56 w-60 lg:w-full overflow-hidden flex justify-center items-center mb-4 rounded-sm"}>
                 <img className={"w-full pointer-events-none"} src={base64Image} alt={"game picture"}/>
             </div>
