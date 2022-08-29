@@ -35,6 +35,8 @@ const ThemeSwitcher: FC = memo(() => {
         switchTheme(localStorage.theme)
     }, [])
 
+    const activeClass = " text-blue-600 dark:text-sky-500"
+
     return (
         <div
             className={"text-blue-600 cursor-pointer border lg:border-none border-slate-300 rounded-lg p-2 lg:p-0 dark:text-sky-500 dark:border-slate-600"}
@@ -57,30 +59,29 @@ const ThemeSwitcher: FC = memo(() => {
             {modal &&
                 <ul className={"absolute top-full right-0 mt-2 lg:mt-8 font-semibold text-slate-700 text-sm z-50 w-36 py-1 rounded-lg bg-white overflow-hidden shadow-xl dark:text-slate-300 dark:bg-slate-800"}>
                     <li
-                        className={"flex px-2 py-1 cursor-pointer items-center hover:bg-gray-100 dark:hover:bg-slate-700"}
+                        className={"flex px-2 py-1 cursor-pointer items-center hover:bg-gray-100 dark:hover:bg-slate-700" + (localStorage.theme === "light" ? activeClass : "")}
                         onClick={() => switchTheme("light")}
                     >
-                        <SunIcon className={"w-6 h-6 mr-2 text-slate-500"}/>
+                        <SunIcon className={"w-6 h-6 mr-2"}/>
                         Light
                     </li>
                     <li
-                        className={"flex px-2 py-1 cursor-pointer items-center hover:bg-gray-100 dark:hover:bg-slate-700"}
+                        className={"flex px-2 py-1 cursor-pointer items-center hover:bg-gray-100 dark:hover:bg-slate-700" + (localStorage.theme === "dark" ? activeClass : "")}
                         onClick={() => switchTheme("dark")}
                     >
-                        <MoonIcon className={"w-6 h-6 mr-2 text-slate-500"}/>
+                        <MoonIcon className={"w-6 h-6 mr-2"}/>
                         Dark
                     </li>
                     <li
-                        className={"flex px-2 py-1 cursor-pointer items-center hover:bg-gray-100 dark:hover:bg-slate-700"}
+                        className={"flex px-2 py-1 cursor-pointer items-center hover:bg-gray-100 dark:hover:bg-slate-700" + (localStorage.theme === "system" ? activeClass : "")}
                         onClick={() => switchTheme("system")}
                     >
-                        <ComputerDesktopIcon className={"w-6 h-6 mr-2 text-slate-500 hidden lg:block"}/>
-                        <DevicePhoneMobileIcon className={"w-6 h-6 mr-2 text-slate-500 lg:hidden"}/>
+                        <ComputerDesktopIcon className={"w-6 h-6 mr-2 hidden lg:block"}/>
+                        <DevicePhoneMobileIcon className={"w-6 h-6 mr-2 lg:hidden"}/>
                         System
                     </li>
                 </ul>
             }
-
         </div>
     );
 });
