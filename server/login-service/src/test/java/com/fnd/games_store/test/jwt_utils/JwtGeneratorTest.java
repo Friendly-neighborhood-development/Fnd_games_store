@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 
 import java.lang.reflect.Field;
 
@@ -15,6 +17,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(classes = LoginApplication.class)
 @Slf4j
 public class JwtGeneratorTest {
+
+    @Autowired
+    Environment environment;
 
     @Autowired
     JwtGeneratorImpl jwtGeneratorImpl;
@@ -33,7 +38,9 @@ public class JwtGeneratorTest {
     private void injectedFiledValuesAccessSetUp() {
         injectedSecret = jwtGeneratorImpl.getSecret();
         injectedExpiration = jwtGeneratorImpl.getExpirationDuration();
+//        log.error(environment.getProperty("access_secret"));
     }
+
 
 
 }
