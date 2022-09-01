@@ -52,18 +52,17 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.flywaydb:flyway-core'
     implementation group: 'com.h2database', name: 'h2', version: '2.0.202'
+    // https://mvnrepository.com/artifact/com.auth0/java-jwt
+    implementation group: 'com.auth0', name: 'java-jwt', version: '3.19.2'
     implementation 'junit:junit:4.13.2'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     runtimeOnly 'org.postgresql:postgresql'
-    testImplementation 'org.springframework.security:spring-security-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 
-
 }
-
 
 ext {
     set('springCloudVersion', "2021.0.3")

@@ -21,7 +21,6 @@ public class SecurityConfiguration {
 
         httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
 
-
         return httpSecurity.build();
     }
 

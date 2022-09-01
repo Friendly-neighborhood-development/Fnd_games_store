@@ -32,9 +32,6 @@ public class UserAccount {
 
     private String email;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "roles")
-//    private List<UserRole> role;
-
 
     @Override
     public boolean equals(Object o) {

@@ -3,3 +3,4 @@ games-service/build
 registry-service/build
 config-service/build
 gateway-service/build
+users-service/build
