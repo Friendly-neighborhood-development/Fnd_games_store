@@ -53,10 +53,7 @@ dependencies {
     implementation 'org.flywaydb:flyway-core'
     implementation group: 'com.h2database', name: 'h2', version: '2.0.202'
     implementation 'junit:junit:4.13.2'
-    implementation ('com.github.ben-manes:caffeine:2.9.2'){
-        exclude group: 'org.slf4j'
-    }
-    implementation 'org.springframework.boot:spring-boot-starter-cache'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     runtimeOnly 'org.postgresql:postgresql'

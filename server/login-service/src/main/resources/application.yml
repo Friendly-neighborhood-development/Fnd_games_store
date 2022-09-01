@@ -5,5 +5,8 @@ spring:
     active: standalonedev
 
 
-
+variables:
+  security:
+    access_secret: OTFBRjg3MUMwOUYxODlFNDc3NEQwNTAxMTg0M0M0NzI5QTczNDY1QUU4MTA5MUFERjZFNDIxNTk0QTZDOUYyQg==
+    access_expiration: 90000000
 
