@@ -1,7 +1,7 @@
 package com.fnd.games_store.test.jwt_utils;
 
 import com.fnd.games_store.login.LoginApplication;
-import com.fnd.games_store.login.jwt_utils.implementations.JwtGeneratorImpl;
+import com.fnd.games_store.login.jwt_utils.implementation.JwtGeneratorImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,19 +19,19 @@ public class JwtGeneratorTest {
 
     private String injectedSecret;
 
-    private String injectedExpiration;
+    private Long injectedExpiration;
 
 
     @Test
     void doesInjectedFieldsHaveCorrectValues() {
         assertThat(injectedSecret).isEqualTo("OTFBRjg3MUMwOUYxODlFNDc3NEQwNTAxMTg0M0M0NzI5QTczNDY1QUU4MTA5MUFERjZFNDIxNTk0QTZDOUYyQg==");
-        assertThat(injectedExpiration).isEqualTo("90000000");
+        assertThat(injectedExpiration).isEqualTo(90000000);
     }
 
     @BeforeEach
     private void injectedFiledValuesAccessSetUp() {
-        injectedSecret = jwtGeneratorImpl.jwtAccessSecret();
-        injectedExpiration = jwtGeneratorImpl.getExpirationDuration();
+        injectedSecret = jwtGeneratorImpl.getJwtAccessSecret();
+        injectedExpiration = jwtGeneratorImpl.getAccessTokenExpirationDuration();
 
     }
 

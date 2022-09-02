@@ -7,6 +7,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator.Builder;
 import com.auth0.jwt.algorithms.Algorithm;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -30,4 +31,12 @@ public class JwtGeneratorImpl implements JwtGenerator {
                 .sign(Algorithm.HMAC256(jwtAccessSecret));
     }
 
+    @Profile("test")
+    public String getJwtAccessSecret() {
+        return jwtAccessSecret;
+    }
+    @Profile("test")
+    public Long getAccessTokenExpirationDuration() {
+        return accessTokenExpirationDuration;
+    }
 }

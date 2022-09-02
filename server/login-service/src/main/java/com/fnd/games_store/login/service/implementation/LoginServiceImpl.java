@@ -6,7 +6,10 @@ import com.fnd.games_store.login.jwt_utils.implementation.UserDetailsServiceImpl
 import com.fnd.games_store.login.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
 
 @Service
 @Slf4j
@@ -23,9 +26,11 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public String login(String username,String password) {
 
+
+
+
+
         return jwtGenerator.generateJwtToken(userDetails.loadUserByUsername(username));
     }
-
-
 
 }
