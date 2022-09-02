@@ -1,8 +1,8 @@
 package com.fnd.games_store.login.service.implementation;
 
 
-import com.fnd.games_store.login.entity.Account;
-import com.fnd.games_store.login.repository.AccountRepository;
+import com.fnd.games_store.login.jwt_utils.implementation.JwtGeneratorImpl;
+import com.fnd.games_store.login.jwt_utils.implementation.UserDetailsServiceImpl;
 import com.fnd.games_store.login.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,20 +12,18 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class LoginServiceImpl implements LoginService {
 
+    private final UserDetailsServiceImpl userDetails;
+    private final JwtGeneratorImpl jwtGenerator;
     @Autowired
-    private final AccountRepository accountRepository;
-
-    public LoginServiceImpl(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public LoginServiceImpl(UserDetailsServiceImpl userDetails, JwtGeneratorImpl jwtGenerator) {
+        this.userDetails = userDetails;
+        this.jwtGenerator = jwtGenerator;
     }
 
     @Override
     public String login(String username,String password) {
 
-        Account account = accountRepository.findUserByUsername(username).get();
-
-
-        return account.toString();
+        return jwtGenerator.generateJwtToken(userDetails.loadUserByUsername(username));
     }
 
 

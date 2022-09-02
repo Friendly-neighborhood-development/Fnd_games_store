@@ -25,9 +25,8 @@ public class LoginControllerImpl implements LoginController {
     @Override
     @GetMapping("/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO loginRequestDTO) {
-        loginService.login(loginRequestDTO.getUsername(), loginRequestDTO.getPassword());
-
-        return ResponseEntity.ok(new LoginResponseDTO(""));
+        String generatedToken = loginService.login(loginRequestDTO.getUsername(), loginRequestDTO.getPassword());
+        return ResponseEntity.ok(new LoginResponseDTO(generatedToken));
     }
 
 
