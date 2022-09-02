@@ -8,7 +8,11 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.security.RolesAllowed;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTCreator.Builder;
+import com.auth0.jwt.algorithms.Algorithm;
+
+import java.util.Date;
 
 @Component
 @NoArgsConstructor
@@ -16,19 +20,24 @@ import javax.annotation.security.RolesAllowed;
 public class JwtGeneratorImpl implements JwtGenerator {
 
     @Value("${variables.security.access_secret}")
-    private String secret;
+    private String jwtAccessSecret;
 
     @Value("${variables.security.access_expiration}")
     private String expirationDuration;
 
     @Override
-    public String generateToken(UserDetails userDetails) {
-        return null;
+    public String generateAccessToken(UserDetails userDetails) {
+        Builder builder = JWT.create().withSubject(userDetails.getUsername());
+
+        //TODO need to do something wit deprecated constructor Date()
+        return builder.withIssuedAt(new Date()).withExpiresAt(new Date(System.currentTimeMillis() + expirationDuration))
+                .withSubject(userDetails.getUsername())
+                .sign(Algorithm.HMAC256(jwtAccessSecret));
     }
 
     @Profile("test")
-    public String getSecret() {
-        return secret;
+    public String jwtAccessSecret() {
+        return jwtAccessSecret;
     }
     @Profile("test")
     public String getExpirationDuration() {

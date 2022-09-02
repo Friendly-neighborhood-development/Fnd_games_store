@@ -7,10 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
-
-import java.lang.reflect.Field;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,28 +15,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class JwtGeneratorTest {
 
     @Autowired
-    Environment environment;
-
-    @Autowired
     JwtGeneratorImpl jwtGeneratorImpl;
 
     private String injectedSecret;
 
     private String injectedExpiration;
 
+
     @Test
-    void doesInjectedFieldsHaveCorrectValues() throws NoSuchFieldException, IllegalAccessException {
+    void doesInjectedFieldsHaveCorrectValues() {
         assertThat(injectedSecret).isEqualTo("OTFBRjg3MUMwOUYxODlFNDc3NEQwNTAxMTg0M0M0NzI5QTczNDY1QUU4MTA5MUFERjZFNDIxNTk0QTZDOUYyQg==");
         assertThat(injectedExpiration).isEqualTo("90000000");
     }
 
     @BeforeEach
     private void injectedFiledValuesAccessSetUp() {
-        injectedSecret = jwtGeneratorImpl.getSecret();
+        injectedSecret = jwtGeneratorImpl.jwtAccessSecret();
         injectedExpiration = jwtGeneratorImpl.getExpirationDuration();
-//        log.error(environment.getProperty("access_secret"));
-    }
 
+    }
 
 
 }

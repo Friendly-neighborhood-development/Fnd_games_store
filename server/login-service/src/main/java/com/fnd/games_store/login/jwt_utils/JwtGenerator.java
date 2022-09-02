@@ -4,6 +4,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public interface JwtGenerator {
 
-    public String generateToken(UserDetails userDetails);
+    public String generateAccessToken(UserDetails userDetails);
 
 }

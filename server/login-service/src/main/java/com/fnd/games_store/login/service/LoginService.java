@@ -2,6 +2,6 @@ package com.fnd.games_store.login.service;
 
 public interface LoginService {
 
-    public void login();
+    public String login(String username,String password);
 
 }
