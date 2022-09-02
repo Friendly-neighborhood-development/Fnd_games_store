@@ -24,6 +24,4 @@ spring:
       enabled: true
       path: /h2
 server:
-  servlet:
-    context-path: /games
   port: 8090

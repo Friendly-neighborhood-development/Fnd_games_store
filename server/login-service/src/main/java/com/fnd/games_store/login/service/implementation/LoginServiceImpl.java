@@ -1,6 +1,5 @@
 package com.fnd.games_store.login.service.implementation;
 
-import com.fnd.games_store.login.jwt_utils.JwtGenerator;
 import com.fnd.games_store.login.jwt_utils.implementations.CustomUserDetailsService;
 import com.fnd.games_store.login.jwt_utils.implementations.JwtGeneratorImpl;
 import com.fnd.games_store.login.service.LoginService;
@@ -9,7 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LoginServiceImplementation implements LoginService {
+public class LoginServiceImpl implements LoginService {
 
 
     private JwtGeneratorImpl jwtGeneratorimpl;
