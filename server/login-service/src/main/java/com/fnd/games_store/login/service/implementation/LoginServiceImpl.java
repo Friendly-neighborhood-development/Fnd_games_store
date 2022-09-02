@@ -1,35 +1,33 @@
 package com.fnd.games_store.login.service.implementation;
 
-import com.fnd.games_store.login.jwt_utils.implementations.CustomUserDetailsService;
-import com.fnd.games_store.login.jwt_utils.implementations.JwtGeneratorImpl;
+
+import com.fnd.games_store.login.entity.Account;
+import com.fnd.games_store.login.repository.AccountRepository;
 import com.fnd.games_store.login.service.LoginService;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class LoginServiceImpl implements LoginService {
 
+    @Autowired
+    private final AccountRepository accountRepository;
 
-    private JwtGeneratorImpl jwtGeneratorimpl;
-
-    private CustomUserDetailsService userDetails;
+    public LoginServiceImpl(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
+    }
 
     @Override
     public String login(String username,String password) {
 
-        UsernamePasswordAuthenticationToken authToken =  new UsernamePasswordAuthenticationToken(username,password);
+        Account account = accountRepository.findUserByUsername(username).get();
 
-        SecurityContextHolder.getContext().setAuthentication(authToken);
 
-        SecurityContextHolder.getContext().getAuthentication();
-        return generateToken(username);
+        return account.toString();
     }
 
 
-
-    private String generateToken(String username){
-        return jwtGeneratorimpl.generateAccessToken(userDetails.loadUserByUsername(username));
-    }
 
 }

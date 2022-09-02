@@ -53,8 +53,7 @@ dependencies {
     implementation 'org.flywaydb:flyway-core'
     implementation group: 'com.h2database', name: 'h2', version: '2.0.202'
     implementation 'junit:junit:4.13.2'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    // https://mvnrepository.com/artifact/com.auth0/java-jwt
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation group: 'com.auth0', name: 'java-jwt', version: '3.19.2'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

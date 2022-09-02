@@ -31,6 +31,7 @@ public class Account {
 
     @Column(name = "authority_id")
     @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "authority_id")
     private List<Authority> authorities;
 
 
