@@ -6,6 +6,7 @@ import com.fnd.games_store.login.service.ValidationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @Slf4j
+@CrossOrigin
 public class ValidationController implements UserValidation {
 
 
@@ -28,9 +30,9 @@ public class ValidationController implements UserValidation {
     @GetMapping("/validate")
     public ResponseEntity<ValidationResponseDTO> validateUser(HttpServletRequest request) {
 
-        String incomingToken = request.getHeader("token");
+        String incomingToken = request.getHeader("Authorization").substring(7);
 
-        log.info("incoming token: "+ request.getHeader("token"));
+        log.info("incoming token: "+ incomingToken);
 
         Boolean isIncomingTokenValid = validationService.validate(incomingToken);
 
