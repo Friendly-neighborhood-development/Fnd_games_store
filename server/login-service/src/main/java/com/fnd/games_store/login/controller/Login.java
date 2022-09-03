@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 import javax.servlet.http.HttpSession;
 
-public interface LoginController {
+public interface Login {
 
     public ResponseEntity<LoginResponseDTO> login(LoginRequestDTO loginRequestDTO, HttpSession session);
 
