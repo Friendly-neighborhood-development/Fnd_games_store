@@ -32,18 +32,14 @@ public class LoginServiceImpl implements LoginService {
 
         UserDetails loadedUser = userDetails.loadUserByUsername(username);
 
-
-
-
-
-
-
-
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username,password,loadedUser.getAuthorities()));
 
         UsernamePasswordAuthenticationToken authToken =  new UsernamePasswordAuthenticationToken(username,password, loadedUser.getAuthorities());
 
         SecurityContextHolder.getContext().setAuthentication(authToken);
+
+        SecurityContextHolder.getContext().getAuthentication().isAuthenticated();
+
 
         log.info(SecurityContextHolder.getContext().getAuthentication().toString());
 

@@ -5,14 +5,10 @@ import com.fnd.games_store.login.controller.Login;
 import com.fnd.games_store.login.controller.dto.LoginRequestDTO;
 import com.fnd.games_store.login.controller.dto.LoginResponseDTO;
 import com.fnd.games_store.login.service.LoginService;
-import com.fnd.games_store.login.service.implementation.LoginServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -26,7 +22,7 @@ public class LoginController implements Login {
     LoginService loginService;
 
     @Override
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO loginRequestDTO, HttpSession session) {
         String generatedToken = loginService.login(loginRequestDTO.getUsername(), loginRequestDTO.getPassword());
 
@@ -34,7 +30,6 @@ public class LoginController implements Login {
 
         return ResponseEntity.ok(new LoginResponseDTO(generatedToken));
     }
-
 
 
 
