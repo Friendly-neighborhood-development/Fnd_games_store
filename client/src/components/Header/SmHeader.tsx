@@ -8,7 +8,7 @@ import {
     UserIcon
 } from "@heroicons/react/24/outline";
 import {Link} from "react-router-dom";
-import ThemeSwitcher from "../ThemeSwitcher";
+import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 import {XMarkIcon} from "@heroicons/react/20/solid";
 import SmHeaderLink from "./SmHeaderLink";
 

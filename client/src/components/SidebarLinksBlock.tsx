@@ -1,4 +1,4 @@
-import React, {FC, memo} from 'react';
+ import React, {FC, memo} from 'react';
 import SidebarLink, {SidebarLinkProps} from "./UI/SidebarLink";
 
 interface SidebarLinksBlockProps {

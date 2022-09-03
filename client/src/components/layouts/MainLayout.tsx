@@ -15,10 +15,10 @@ const MainLayout: FC<MainLayoutProps> = ({children}) => {
         document.documentElement.style.overflow = ""
     }, [])
     return (
-        <div className="text-slate-800 bg-gray-100 flex flex-col min-h-screen dark:text-slate-400 dark:bg-slate-900">
+        <div className="text-slate-900 bg-gray-100 flex flex-col min-h-screen dark:text-slate-200 dark:bg-slate-900">
                 <Header/>
                 <SmHeader/>
-            <div className="container mx-auto flex lg:space-x-6">
+            <div className="container mx-auto flex lg:space-x-6 ">
                 <Sidebar/>
                 {children}
             </div>
