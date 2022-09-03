@@ -15,8 +15,8 @@ public class TestUtilities {
     private ObjectMapper objectMapper = new ObjectMapper();
 
 
-    protected final String getGameRequest =
-            "{"+"\"name\": \"gta5\""+"}";
+//    protected final String getGameRequest =
+//            "{"+"\"name\": \"gta5\""+"}";
 
 
 

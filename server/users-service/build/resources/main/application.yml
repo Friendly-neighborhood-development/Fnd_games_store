@@ -1,9 +1,0 @@
-spring:
-  application:
-    name: users-service
-  profiles:
-    active: standalonedev
-
-
-
-
