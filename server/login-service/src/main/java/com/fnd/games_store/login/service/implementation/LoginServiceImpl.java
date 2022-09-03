@@ -35,21 +35,17 @@ public class LoginServiceImpl implements LoginService {
 
         UserDetails loadedUser = userDetails.loadUserByUsername(username);
 
-        if (SecurityContextHolder.getContext()!=null) {
-            throw new RuntimeException();
-        } else {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username,password,loadedUser.getAuthorities()));
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username,password,loadedUser.getAuthorities()));
 
-            UsernamePasswordAuthenticationToken authToken =  new UsernamePasswordAuthenticationToken(username,password, loadedUser.getAuthorities());
+        UsernamePasswordAuthenticationToken authToken =  new UsernamePasswordAuthenticationToken(username,password, loadedUser.getAuthorities());
 
-            SecurityContextHolder.getContext().setAuthentication(authToken);
+        SecurityContextHolder.getContext().setAuthentication(authToken);
 
-            log.info(SecurityContextHolder.getContext().getAuthentication().toString());
+        log.info(SecurityContextHolder.getContext().getAuthentication().toString());
 
-            log.info(SecurityContextHolder.getContext().getAuthentication().getName());
+        log.info(SecurityContextHolder.getContext().getAuthentication().getName());
 
-            return jwtGenerator.generateJwtToken(loadedUser);
-        }
+        return jwtGenerator.generateJwtToken(loadedUser);
 
 
 

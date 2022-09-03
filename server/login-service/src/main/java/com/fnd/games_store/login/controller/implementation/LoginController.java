@@ -4,7 +4,8 @@ package com.fnd.games_store.login.controller.implementation;
 import com.fnd.games_store.login.controller.Login;
 import com.fnd.games_store.login.controller.dto.LoginRequestDTO;
 import com.fnd.games_store.login.controller.dto.LoginResponseDTO;
-import com.fnd.games_store.login.service.implementation.LoginServiceImpl;
+
+import com.fnd.games_store.login.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class LoginController implements Login {
 
 
     @Autowired
-    LoginServiceImpl loginService;
+    LoginService loginService;
 
     @Override
     @PostMapping("/login")
