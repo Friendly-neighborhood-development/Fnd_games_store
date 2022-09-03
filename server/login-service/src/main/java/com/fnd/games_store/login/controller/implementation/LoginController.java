@@ -1,7 +1,7 @@
 package com.fnd.games_store.login.controller.implementation;
 
 
-import com.fnd.games_store.login.controller.Login;
+import com.fnd.games_store.login.controller.UserLogin;
 import com.fnd.games_store.login.controller.dto.LoginRequestDTO;
 import com.fnd.games_store.login.controller.dto.LoginResponseDTO;
 
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 @RestController
 @CrossOrigin
 @Slf4j
-public class LoginController implements Login {
+public class LoginController implements UserLogin {
 
 
     @Autowired
