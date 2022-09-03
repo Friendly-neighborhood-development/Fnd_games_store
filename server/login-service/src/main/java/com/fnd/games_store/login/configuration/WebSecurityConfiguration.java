@@ -19,7 +19,7 @@ public class WebSecurityConfiguration {
         http.authorizeHttpRequests().antMatchers("/login").permitAll().anyRequest().authenticated()
                 .and()
                 .csrf().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
 
         return http.build();
     }

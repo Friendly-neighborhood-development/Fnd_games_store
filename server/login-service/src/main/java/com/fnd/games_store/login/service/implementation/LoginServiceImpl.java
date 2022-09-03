@@ -38,9 +38,6 @@ public class LoginServiceImpl implements LoginService {
 
         SecurityContextHolder.getContext().setAuthentication(authToken);
 
-        SecurityContextHolder.getContext().getAuthentication().isAuthenticated();
-
-
         log.info(SecurityContextHolder.getContext().getAuthentication().toString());
 
         log.info(SecurityContextHolder.getContext().getAuthentication().getName());
