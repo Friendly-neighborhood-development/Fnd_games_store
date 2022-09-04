@@ -6,4 +6,5 @@ include 'notification-service'
 include 'games-service'
 include 'orders-service'
 include 'login-service'
+include 'cart-service'
 

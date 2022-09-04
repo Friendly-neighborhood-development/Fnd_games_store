@@ -3,7 +3,7 @@ plugins {
     id 'org.springframework.boot' version '2.7.0'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-    id "org.flywaydb.flyway" version "8.5.12"
+//    id "org.flywaydb.flyway" version "8.5.12"
     id "io.freefair.lombok" version "5.1.0"
 }
 
@@ -20,12 +20,12 @@ configurations {
     }
 }
 
-flyway {
-    url = 'jdbc:postgresql://localhost:5432/login_service_database'
-    user = 'postgres'
-    password = 'root'
-    driver = 'org.postgresql.Driver'
-}
+//flyway {
+//    url = 'jdbc:postgresql://localhost:5432/cart_service_database'
+//    user = 'postgres'
+//    password = 'root'
+//    driver = 'org.postgresql.Driver'
+//}
 
 
 repositories {
@@ -35,7 +35,7 @@ repositories {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'com.fnd.games_store.games.LoginApplication'
+                'Main-Class': 'com.fnd.games_store.games.CartApplication'
         )
 
     }
@@ -49,7 +49,7 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    implementation 'org.flywaydb:flyway-core'
+//    implementation 'org.flywaydb:flyway-core'
     implementation group: 'com.h2database', name: 'h2', version: '2.0.202'
     implementation 'junit:junit:4.13.2'
     implementation 'org.springframework.boot:spring-boot-starter-security'
