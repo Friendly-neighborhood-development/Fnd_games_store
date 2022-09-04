@@ -3,4 +3,4 @@ spring:
     active: dev
 
 server:
-   port: 8989
+   port: 8080
