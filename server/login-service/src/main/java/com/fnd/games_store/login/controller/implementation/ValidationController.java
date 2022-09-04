@@ -1,14 +1,13 @@
 package com.fnd.games_store.login.controller.implementation;
 
 import com.fnd.games_store.login.controller.UserValidation;
+import com.fnd.games_store.login.controller.dto.ValidationRequestDTO;
 import com.fnd.games_store.login.controller.dto.ValidationResponseDTO;
 import com.fnd.games_store.login.service.ValidationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -41,15 +40,15 @@ public class ValidationController implements UserValidation {
 
 
     @Override
-    @GetMapping("/validate")
-    public ResponseEntity<ValidationResponseDTO> validateUser(String incomingToken) {
+    @PostMapping("/validate")
+    public ResponseEntity<ValidationResponseDTO> validateUser(@RequestBody ValidationRequestDTO validationRequestDTO) {
 
         log.info("I WAS ACCESSED !!!!!!!");
 
 
-        log.info("incoming token: "+ incomingToken);
+        log.info("incoming token: "+ validationRequestDTO.getToken());
 
-        Boolean isIncomingTokenValid = validationService.validate(incomingToken);
+        Boolean isIncomingTokenValid = validationService.validate(validationRequestDTO.getToken());
 
         return ResponseEntity.ok(new ValidationResponseDTO(isIncomingTokenValid));
     }
