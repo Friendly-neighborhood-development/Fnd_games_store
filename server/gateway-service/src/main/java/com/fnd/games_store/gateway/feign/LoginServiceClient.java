@@ -13,7 +13,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON;
 @FeignClient(name = "login-service")
 public interface LoginServiceClient {
 
-    @RequestMapping(value = "/validate",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, value = "/validate", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ValidationResponseDTO validateUserByToken(@RequestBody ValidationRequestDTO userValidationRequestDTO);
 
 }

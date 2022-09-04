@@ -1,6 +1,7 @@
 package com.fnd.games_store.gateway;
 
 import com.fnd.games_store.gateway.dto.ValidationRequestDTO;
+import com.fnd.games_store.gateway.dto.ValidationResponseDTO;
 import com.fnd.games_store.gateway.feign.LoginServiceClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,13 @@ public class GatewayApplication implements CommandLineRunner {
         ValidationRequestDTO userValidationRequestDTO = new ValidationRequestDTO();
         userValidationRequestDTO.setToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY2MjM3MjI0OCwiaWF0IjoxNjYyMjgyMjQ4fQ.gfw5FLa1cHRf5LoHwk-abWNxzDAfeSPrWYaTFTNu690");
 
-        Boolean isISerValid = loginClient.validateUserByToken(userValidationRequestDTO).getIsUserValid();
+        Boolean isUserValid = loginClient.validateUserByToken(userValidationRequestDTO).getIsUserValid();
 
-        log.info(isISerValid.toString());
+
+        ValidationResponseDTO validationResponseDTO = new ValidationResponseDTO();
+
+        validationResponseDTO.setIsUserValid(isUserValid);
+
+        log.info(validationResponseDTO.getIsUserValid().toString());
     }
 }

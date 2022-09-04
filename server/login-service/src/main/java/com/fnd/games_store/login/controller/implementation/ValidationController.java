@@ -26,20 +26,18 @@ public class ValidationController implements UserValidation {
 
     @Override
     @PostMapping("/validate")
-    public ValidationResponseDTO validateUser(@RequestBody ValidationRequestDTO validationRequestDTO) {
+    public Boolean validateUser(@RequestBody ValidationRequestDTO validationRequestDTO) {
+
 
         log.info("I WAS ACCESSED !!!!!!!");
-
 
         log.info("incoming token: "+ validationRequestDTO.getToken());
 
         Boolean isIncomingTokenValid = validationService.validate(validationRequestDTO.getToken());
 
-        ValidationResponseDTO validationResponseDTO = new ValidationResponseDTO(validationService.validate(validationRequestDTO.getToken()));
+        log.info(isIncomingTokenValid.toString());
 
-        log.info(validationResponseDTO.getIsTokenValid().toString());
-
-        return validationResponseDTO;
+        return isIncomingTokenValid;
     }
 
 
