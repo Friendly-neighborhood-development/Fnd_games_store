@@ -1,6 +1,6 @@
 spring:
   application:
-    name: cart-service
+    name: login-service
   profiles:
     active: dev
 

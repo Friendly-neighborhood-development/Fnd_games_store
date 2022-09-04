@@ -26,11 +26,26 @@ public class ValidationController implements UserValidation {
     }
 
 
+//    @Override
+//    @GetMapping("/validate")
+//    public ResponseEntity<ValidationResponseDTO> validateUser(HttpServletRequest request) {
+//
+//        String incomingToken = request.getHeader("Authorization").substring(7);
+//
+//        log.info("incoming token: "+ incomingToken);
+//
+//        Boolean isIncomingTokenValid = validationService.validate(incomingToken);
+//
+//        return ResponseEntity.ok(new ValidationResponseDTO(isIncomingTokenValid));
+//    }
+
+
     @Override
     @GetMapping("/validate")
-    public ResponseEntity<ValidationResponseDTO> validateUser(HttpServletRequest request) {
+    public ResponseEntity<ValidationResponseDTO> validateUser(String incomingToken) {
 
-        String incomingToken = request.getHeader("Authorization").substring(7);
+        log.info("I WAS ACCESSED !!!!!!!");
+
 
         log.info("incoming token: "+ incomingToken);
 
@@ -38,4 +53,6 @@ public class ValidationController implements UserValidation {
 
         return ResponseEntity.ok(new ValidationResponseDTO(isIncomingTokenValid));
     }
+
+
 }
