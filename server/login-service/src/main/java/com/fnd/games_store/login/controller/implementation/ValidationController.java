@@ -41,7 +41,7 @@ public class ValidationController implements UserValidation {
 
     @Override
     @PostMapping("/validate")
-    public ResponseEntity<ValidationResponseDTO> validateUser(@RequestBody ValidationRequestDTO validationRequestDTO) {
+    public ValidationResponseDTO validateUser(@RequestBody ValidationRequestDTO validationRequestDTO) {
 
         log.info("I WAS ACCESSED !!!!!!!");
 
@@ -50,7 +50,7 @@ public class ValidationController implements UserValidation {
 
         Boolean isIncomingTokenValid = validationService.validate(validationRequestDTO.getToken());
 
-        return ResponseEntity.ok(new ValidationResponseDTO(isIncomingTokenValid));
+        return new ValidationResponseDTO(isIncomingTokenValid);
     }
 
 
