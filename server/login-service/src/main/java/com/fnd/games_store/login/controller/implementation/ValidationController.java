@@ -24,21 +24,6 @@ public class ValidationController implements UserValidation {
         this.validationService = validationService;
     }
 
-
-//    @Override
-//    @GetMapping("/validate")
-//    public ResponseEntity<ValidationResponseDTO> validateUser(HttpServletRequest request) {
-//
-//        String incomingToken = request.getHeader("Authorization").substring(7);
-//
-//        log.info("incoming token: "+ incomingToken);
-//
-//        Boolean isIncomingTokenValid = validationService.validate(incomingToken);
-//
-//        return ResponseEntity.ok(new ValidationResponseDTO(isIncomingTokenValid));
-//    }
-
-
     @Override
     @PostMapping("/validate")
     public ValidationResponseDTO validateUser(@RequestBody ValidationRequestDTO validationRequestDTO) {
@@ -50,7 +35,11 @@ public class ValidationController implements UserValidation {
 
         Boolean isIncomingTokenValid = validationService.validate(validationRequestDTO.getToken());
 
-        return new ValidationResponseDTO(isIncomingTokenValid);
+        ValidationResponseDTO validationResponseDTO = new ValidationResponseDTO(validationService.validate(validationRequestDTO.getToken()));
+
+        log.info(validationResponseDTO.getIsTokenValid().toString());
+
+        return validationResponseDTO;
     }
 
 

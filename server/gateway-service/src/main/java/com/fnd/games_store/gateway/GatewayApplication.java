@@ -32,6 +32,8 @@ public class GatewayApplication implements CommandLineRunner {
         ValidationRequestDTO userValidationRequestDTO = new ValidationRequestDTO();
         userValidationRequestDTO.setToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY2MjM3MjI0OCwiaWF0IjoxNjYyMjgyMjQ4fQ.gfw5FLa1cHRf5LoHwk-abWNxzDAfeSPrWYaTFTNu690");
 
-        log.info(loginClient.validateUserByToken(userValidationRequestDTO).toString());
+        Boolean isISerValid = loginClient.validateUserByToken(userValidationRequestDTO).getIsUserValid();
+
+        log.info(isISerValid.toString());
     }
 }
