@@ -51,7 +51,7 @@ const TestThemeSwitcher = memo(() => {
     }
     useEffect(() => {
         // шото с этим сделать
-        switchTheme(localStorage.theme)
+        switchTheme(themes.find(theme => theme.mode === localStorage.theme) || themes[2])
     }, [])
 
     return (
@@ -60,7 +60,7 @@ const TestThemeSwitcher = memo(() => {
                 <selectedTheme.Icon className={"w-8 h-8 text-slate-500 dark:text-slate-400"}/>
             </Listbox.Button>
             <Listbox.Options
-                className={"absolute top-full right-0 mt-2 lg:mt-8 w-36 bg-white rounded-lg py-1 shadow-xl dark:text-slate-300 dark:bg-slate-800"}>
+                className={"absolute top-full right-0 mt-2 lg:mt-8 w-36 bg-white rounded-lg py-1 shadow-xl dark:text-slate-300 dark:bg-slate-800 overflow-hidden"}>
                 {themes.map((theme) => (
                     <Listbox.Option
                         key={theme.id}
