@@ -11,4 +11,8 @@ public class ValidationResponseDTO {
 
     private Boolean isUserValid;
 
+
+    public Boolean getUserValid() {
+        return isUserValid;
+    }
 }
