@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    config:
+      enabled: false
+    discovery:
+      enabled: false
+  redis:
+    host: localhost
+    port: 6379
+  session:
+    store-type: redis
+server:
+  servlet:
+    context-path: /cart
+  port: 8083

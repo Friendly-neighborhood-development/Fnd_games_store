@@ -2,7 +2,7 @@ spring:
   application:
     name: games-service
   profiles:
-    active: standalonedev
+    active: dev
 
 
 

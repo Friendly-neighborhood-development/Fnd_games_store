@@ -1,0 +1,30 @@
+spring:
+  cloud:
+    config:
+      enabled: false
+    discovery:
+      enabled: false
+  redis:
+    host: localhost
+    port: 6379
+  session:
+    store-type: redis
+  jpa:
+    flyway:
+      enabled: true
+      validate-on-migrate: true
+    database: POSTGRESQL
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    hibernate:
+      ddl-auto: none
+    properties:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/login_service_database
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+    activate:
+      on-profile: "local"
+server:
+  port: 8090
