@@ -1,16 +1,20 @@
-package com.fnd.games_store.cart.repository;
+package com.fnd.games_store.cart.service;
 
 import com.fnd.games_store.cart.entity.Cart;
 
-public interface RedisRepository {
+import java.util.Optional;
+
+public interface CartCrudService {
 
 
     public void persistCart(Cart cart);
 
-    public Cart getCartBySessionId(String sessionId);
+    public Optional<Cart> getCartById(String cartId);
 
     public void deleteCartById(String cartId);
 
     public void updateCart(Cart cart);
+
+
 
 }

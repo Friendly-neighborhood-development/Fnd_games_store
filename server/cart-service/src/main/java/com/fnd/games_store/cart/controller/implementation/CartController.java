@@ -1,10 +1,10 @@
 package com.fnd.games_store.cart.controller.implementation;
 
-import com.fnd.games_store.cart.controller.CartCrudProvider;
+import com.fnd.games_store.cart.controller.CartCrudController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
-public class CartController implements CartCrudProvider {
+public class CartController implements CartCrudController {
 
 
     @Override
