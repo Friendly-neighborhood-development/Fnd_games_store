@@ -2,15 +2,14 @@ import React, {FC, memo} from 'react';
 import {IGame} from "../models/IGame";
 import {Link} from "react-router-dom";
 
-
 const GameCard: FC<IGame> = memo(({name, description, base64Image, price, discount}) => {
     return (
         <Link to={`/games/${name}`}
-              className={"flex z-0 w-60 flex-wrap mr-2 lg:mr-0 lg:w-52 xl:w-56 bg-white dark:bg-slate-800/50 justify-between rounded-sm after:con "}>
-            <div className={"h-72 md:h-56 w-60 overflow-hidden flex justify-center items-center mb-4 rounded-sm"}>
+              className={"flex flex-wrap pb-4 bg-white dark:bg-slate-800/50 justify-between lg:shadow-md rounded-lg lg:overflow-hidden lg:before:block lg:before:absolute lg:before:-inset-1 lg:hover:before:bg-gray-400/10 dark:lg:hover:before:bg-gray-200/10 lg:relative lg:inline-block"}>
+            <div className={"h-72 md:h-56 w-60 lg:w-full overflow-hidden flex justify-center items-center mb-4 rounded-sm"}>
                 <img className={"w-full pointer-events-none"} src={base64Image} alt={"game picture"}/>
             </div>
-            <div className={"px-2 pb-2 w-full"}>
+            <div className={"w-full px-2"}>
                 <div className={"h-10 text-ellipsis whitespace-nowrap overflow-hidden dark:text-gray-200"}>{name}</div>
                 <div className={"text-sm"}>
                     {price === 0

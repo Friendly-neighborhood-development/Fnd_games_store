@@ -9,26 +9,28 @@ import ThemeSwitcher from "../ThemeSwitcher";
 const Header: FC = memo(() => {
     return (
         <header
-            className={"w-full border-b border-slate-500/30 hidden sticky lg:block top-0 z-10 bg-white dark:backdrop-blur dark:bg-slate-900/80 shadow-lg dark:shadow-none shadow-gray-500/10"}>
+            className={"w-full border-b border-slate-500/30 hidden sticky lg:block top-0 z-10 bg-white shadow-lg shadow-gray-500/10 dark:backdrop-blur dark:bg-slate-900/80 dark:shadow-none"}>
             <div className="container mx-auto">
                 <div className={"w-full justify-between items-center py-4 flex"}>
                     <Link to={"/games"}>
-                        <div className={"mr-4 text-blue-600 dark:text-sky-500 flex items-center"}>
+                        <div className={"mr-4 text-blue-600 flex items-center dark:text-sky-500"}>
                             <PuzzlePieceIcon className={"w-8 h-8"}/>
                             <span className={"ml-2 dark:text-white md:text-3xl text-xl"}>Games Store</span>
                         </div>
                     </Link>
                     <nav className={"flex items-center space-x-4 relative"}>
-                        <Search className={"hidden sm:flex bg-white border border-slate-500/30"}
-                                placeholder={"Искать в магазине.."}/>
+                        <Search
+                            className={"hidden sm:flex bg-white border border-slate-500/30"}
+                            placeholder={"Искать в магазине.."}
+                        />
                         <MagnifyingGlassIcon className={"sm:hidden w-6 h-6 text-gray-500"}/>
                         <HeaderIcon Icon={ShoppingCartIcon} link={"/cart"}/>
                         <HeaderIcon Icon={BellIcon} link={"/notifications"}/>
                         <ThemeSwitcher/>
-
                         <Link to={"/login"}>
-                            <span className={"rounded-full inline-block overflow-hidden h-10 w-10 bg-white" +
-                                " dark:bg-slate-700/50 flex items-center"}>
+                            <span
+                                className={"rounded-full inline-block overflow-hidden h-10 w-10 bg-white flex items-center dark:bg-slate-700/50"}
+                            >
                                 <img src={images.andrew} className={"w-full h-full object-cover"}/>
                             </span>
                         </Link>
