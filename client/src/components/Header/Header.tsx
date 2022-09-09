@@ -4,7 +4,7 @@ import images from "../../constants/images";
 import {ShoppingCartIcon, BellIcon, PuzzlePieceIcon, MagnifyingGlassIcon} from "@heroicons/react/24/outline";
 import {Link} from "react-router-dom";
 import HeaderIcon from "./HeaderIcon";
-import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
+import ThemeSwitcher from "../ThemeSwitcher";
 
 const Header: FC = memo(() => {
     return (

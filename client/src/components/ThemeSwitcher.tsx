@@ -1,8 +1,8 @@
 import React, {memo, useEffect, useState} from 'react';
 import {Listbox} from "@headlessui/react";
 import {ComputerDesktopIcon, MoonIcon, SunIcon} from "@heroicons/react/24/outline";
-import ThemeSwitcherSection from "./ThemeSwitcherSection";
-import {IIcon} from "../../types/IIcon";
+import {IIcon} from "../types/IIcon";
+import {ChevronDownIcon} from "@heroicons/react/20/solid";
 
 interface Itheme {
     id: number,
@@ -55,30 +55,45 @@ const TestThemeSwitcher = memo(() => {
     }, [])
 
     return (
-        <Listbox value={selectedTheme} onChange={switchTheme}>
-            <Listbox.Button>
-                <selectedTheme.Icon className={"w-8 h-8 text-slate-500 dark:text-slate-400"}/>
-            </Listbox.Button>
-            <Listbox.Options
-                className={"absolute top-full right-0 mt-2 lg:mt-8 w-36 bg-white rounded-lg py-1 shadow-xl dark:text-slate-300 dark:bg-slate-800 overflow-hidden"}>
-                {themes.map((theme) => (
-                    <Listbox.Option
-                        key={theme.id}
-                        value={theme}
-                    >
-                        {({active, selected}) => (
-                            <li
-                                className={`px-2 py-1 cursor-pointer 
+        <div className={"relative"}>
+
+            <Listbox value={selectedTheme} onChange={switchTheme}>
+                <Listbox.Button
+                    className={"flex items-center border border-gray-300 rounded-lg h-10 px-2 space-x-1.5 text-slate-600"}>
+                    <span className={"capitalize text-sm"}>{localStorage.theme}</span>
+                    {localStorage.theme === "system"
+                        ? window.matchMedia('(prefers-color-scheme: dark)').matches
+                            ? <MoonIcon className={"w-6 h-6"}/>
+                            : <SunIcon className={"w-6 h-6"}/>
+                        : <selectedTheme.Icon className={"w-6 h-6"}/>
+                    }
+                    <ChevronDownIcon className={"w-3 h-3"}/>
+                </Listbox.Button>
+                <Listbox.Options
+                    className={"absolute top-full right-0 mt-8 lg:mt-8 w-36 bg-white rounded-lg py-1 shadow-xl dark:text-slate-300 dark:bg-slate-800 overflow-hidden"}>
+                    {themes.map((theme) => (
+                        <Listbox.Option
+                            key={theme.id}
+                            value={theme}
+                        >
+                            {({active, selected}) => (
+                                <li
+                                    className={`px-2 py-1 cursor-pointer 
                                 ${active ? "bg-gray-100 dark:bg-slate-700 " : ""}
                                 ${selected ? "text-blue-600 dark:text-sky-500" : ""}`}
-                            >
-                                <ThemeSwitcherSection Icon={theme.Icon} className={""} title={theme.mode}/>
-                            </li>
-                        )}
-                    </Listbox.Option>
-                ))}
-            </Listbox.Options>
-        </Listbox>
+                                >
+                                    <div className={"flex capitalize"}>
+                                        <theme.Icon className={"w-6 h-6 mr-2"}/>
+                                        {theme.mode}
+                                    </div>
+                                </li>
+                            )}
+                        </Listbox.Option>
+                    ))}
+                </Listbox.Options>
+            </Listbox>
+        </div>
+
     );
 });
 
