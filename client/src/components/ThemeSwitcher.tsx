@@ -56,10 +56,9 @@ const TestThemeSwitcher = memo(() => {
 
     return (
         <div className={"relative"}>
-
             <Listbox value={selectedTheme} onChange={switchTheme}>
                 <Listbox.Button
-                    className={"flex items-center border border-gray-300 rounded-lg h-10 px-2 space-x-1.5 text-slate-600"}>
+                    className={"flex items-center border border-gray-300 h-10 px-4 space-x-1.5 text-slate-600 rounded-3xl dark:border-slate-600 dark:text-slate-300 dark:bg-slate-800"}>
                     <span className={"capitalize text-sm"}>{localStorage.theme}</span>
                     {localStorage.theme === "system"
                         ? window.matchMedia('(prefers-color-scheme: dark)').matches

@@ -12,7 +12,7 @@ const Search: FC<SearchProps> = ({placeholder, className}) => {
     return (
         <div className={rootClasses}>
             <span className={"mr-4 flex justify-center items-center"}>
-                <MagnifyingGlassIcon className={"text-gray-500 h-5 w-5"}/>
+                <MagnifyingGlassIcon className={"text-slate-300 h-5 w-5"}/>
             </span>
             <Input type={"text"} placeholder={placeholder} className={"dark:bg-transparent border-none"}/>
         </div>
