@@ -28,13 +28,13 @@ public class CartRepository implements RedisRepository {
 
 
     @Override
-    public void persistCart(Cart cart) {
-        hashOperations.putIfAbsent(cart.getUserId(),cart.getGameId(),cart.getShoppingSet());
+    public void createCartEntry(Cart cart) {
+        hashOperations.put(cart.getUserId(),cart.getGameId(),cart.getShoppingSet());
     }
 
     @Override
-    public Cart getCartBySessionId(String sessionId) {
-        return (Cart) hashOperations.get(key, sessionId);
+    public Cart getCartByUserId(String userId, String gameId) {
+        return (Cart) hashOperations.get(userId, gameId);
     }
 
     @Override
@@ -44,6 +44,6 @@ public class CartRepository implements RedisRepository {
 
     @Override
     public void updateCart(Cart cart) {
-        persistCart(cart);
+        createCartEntry(cart);
     }
 }

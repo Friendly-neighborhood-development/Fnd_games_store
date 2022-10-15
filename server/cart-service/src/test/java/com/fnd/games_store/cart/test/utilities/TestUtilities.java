@@ -7,6 +7,11 @@ import java.math.BigDecimal;
 public class TestUtilities {
 
 
+    protected String userId = "user_1";
+
+    protected String gameId = "game_1";
+
+
     protected TestUtilities() {
 
     }
