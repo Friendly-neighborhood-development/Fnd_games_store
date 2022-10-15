@@ -6,8 +6,10 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Repository;
 
 @NoArgsConstructor
+@Repository
 public class CartRepository implements RedisRepository {
 
     private String key;
@@ -27,7 +29,7 @@ public class CartRepository implements RedisRepository {
 
     @Override
     public void persistCart(Cart cart) {
-        hashOperations.put(key,cart.getUserId(),cart);
+        hashOperations.putIfAbsent(cart.getUserId(),cart.getGameId(),cart.getShoppingSet());
     }
 
     @Override
@@ -36,8 +38,8 @@ public class CartRepository implements RedisRepository {
     }
 
     @Override
-    public void deleteCartById(String userId) {
-        hashOperations.delete(key, userId);
+    public void deleteCartById(String userId, String gameId) {
+        hashOperations.delete(userId, gameId);
     }
 
     @Override

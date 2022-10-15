@@ -6,13 +6,11 @@ import com.fnd.games_store.cart.entity.Cart;
 import com.fnd.games_store.cart.entity.Game;
 import com.fnd.games_store.cart.repository.implementation.CartRepository;
 import com.fnd.games_store.cart.test.utilities.TestUtilities;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import org.junit.jupiter.api.Test;
+//import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -48,7 +46,7 @@ public class AddCartToRedisTest extends TestUtilities {
 
     @AfterEach
     void afterTestCleanUp(){
-        repository.deleteCartById("user_1");
+        repository.deleteCartById("user_1","game_1");
     }
 
 

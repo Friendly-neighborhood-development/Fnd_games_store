@@ -9,7 +9,7 @@ public interface RedisRepository {
 
     public Cart getCartBySessionId(String sessionId);
 
-    public void deleteCartById(String userId);
+    public void deleteCartById(String cartId, String userId);
 
     public void updateCart(Cart cart);
 

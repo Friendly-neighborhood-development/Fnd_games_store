@@ -19,7 +19,7 @@ public class Cart implements Serializable {
 
     private String gameId;
 
-    private Set<Game> gameObjects;
+    private Set<Game> shoppingSet;
 
 
     @Override
@@ -27,11 +27,11 @@ public class Cart implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cart cart = (Cart) o;
-        return Objects.equals(userId, cart.userId) && Objects.equals(gameId, cart.gameId) && Objects.equals(gameObjects, cart.gameObjects);
+        return Objects.equals(userId, cart.userId) && Objects.equals(gameId, cart.gameId) && Objects.equals(shoppingSet, cart.shoppingSet);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, gameId, gameObjects);
+        return Objects.hash(userId, gameId, shoppingSet);
     }
 }
