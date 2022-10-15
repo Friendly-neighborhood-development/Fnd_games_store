@@ -16,8 +16,6 @@ public class ContextLoadsTest {
     @Autowired
     GameController controller;
 
-
-
     @Test
     void contextLoadsTest(){
         assertThat(controller).isNotNull();

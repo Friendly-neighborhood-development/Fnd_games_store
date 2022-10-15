@@ -15,7 +15,7 @@ public class CartRepository implements RedisRepository {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
-    private HashOperations hashOperations;
+    private HashOperations<String,String,Object> hashOperations;
 
 
     @Autowired
@@ -27,7 +27,7 @@ public class CartRepository implements RedisRepository {
 
     @Override
     public void persistCart(Cart cart) {
-        hashOperations.put(key,cart.getSessionId(),cart);
+        hashOperations.put(key,cart.getUserId(),cart);
     }
 
     @Override
@@ -36,8 +36,8 @@ public class CartRepository implements RedisRepository {
     }
 
     @Override
-    public void deleteCartById(String cartId) {
-        hashOperations.delete(key, cartId);
+    public void deleteCartById(String userId) {
+        hashOperations.delete(key, userId);
     }
 
     @Override
