@@ -12,7 +12,7 @@ public interface RedisRepository {
 
     public List<List<Game>> getCartContent(String userId);
 
-    public void deleteCartById(String userId);
+    public void deleteGameInCart(String userId, String gameId);
 
     public void updateCart(Cart cart);
 

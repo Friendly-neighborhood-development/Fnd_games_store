@@ -39,8 +39,8 @@ public class CartRepository implements RedisRepository {
     }
 
     @Override
-    public void deleteCartById(String userId) {
-        hashOperations.delete(userId);
+    public void deleteGameInCart(String userId, String gameId) {
+        hashOperations.delete(userId, gameId);
     }
 
     @Override
