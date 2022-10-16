@@ -6,7 +6,9 @@ import com.fnd.games_store.cart.repository.implementation.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class TestUtilities {
@@ -20,7 +22,7 @@ public class TestUtilities {
     @Autowired
     protected CartRepository repository;
 
-    protected Set<Game> shoppingList = new HashSet<>();
+    protected List<Game> shoppingList = new ArrayList<>();
 
     protected Cart testCart = new Cart();
 

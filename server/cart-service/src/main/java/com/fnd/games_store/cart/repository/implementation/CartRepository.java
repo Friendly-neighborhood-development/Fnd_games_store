@@ -9,22 +9,20 @@ import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.Set;
+import java.util.List;
 
 @NoArgsConstructor
 @Repository
 public class CartRepository implements RedisRepository {
 
-    private String key;
-
     @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    private RedisTemplate<String, List<Game>> redisTemplate;
 
-    private HashOperations<String,String,Object> hashOperations;
+    private HashOperations<String,String,List<Game>> hashOperations;
 
 
     @Autowired
-    public CartRepository(RedisTemplate<String, Object> redisTemplate) {
+    public CartRepository(RedisTemplate<String, List<Game>> redisTemplate) {
         this.redisTemplate = redisTemplate;
         hashOperations = redisTemplate.opsForHash();
     }
@@ -32,17 +30,17 @@ public class CartRepository implements RedisRepository {
 
     @Override
     public void createCartEntry(Cart cart) {
-        hashOperations.put(cart.getUserId(),cart.getGameId(),cart.getShoppingSet());
+        hashOperations.put(cart.getUserId(),cart.getGameId(),cart.getShoppingList());
     }
 
     @Override
-    public Set<Game> getCartByUserId(String userId, String gameId) {
-        return (Set<Game>) hashOperations.get(userId, gameId);
+    public List<List<Game>> getCartContent(String userId) {
+        return hashOperations.values(userId);
     }
 
     @Override
-    public void deleteCartById(String userId, String gameId) {
-        hashOperations.delete(userId, gameId);
+    public void deleteCartById(String userId) {
+        hashOperations.delete(userId);
     }
 
     @Override

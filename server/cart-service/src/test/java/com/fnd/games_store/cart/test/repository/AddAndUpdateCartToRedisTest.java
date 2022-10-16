@@ -13,33 +13,38 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(classes = CartApplication.class)
 @Slf4j
-public class AddCartToRedisTest extends TestUtilities {
+public class AddAndUpdateCartToRedisTest extends TestUtilities {
+
+
+    @Test
+    //TODO refactor test name
+    void getShoppingSetShouldReturnProperSet(){
+        assertThat(testCart.getShoppingList()).isEqualTo(repository.getCartContent("user_1"));
+    }
+
+
+    private void updateCart(){
+
+    }
 
 
 
     @BeforeEach
-    void testSetUp(){
+    private void testSetUp(){
 
         shoppingList.add(createTestGameEntity("1"));
         shoppingList.add(createTestGameEntity("2"));
 
         testCart.setUserId(userId);
         testCart.setGameId(gameId);
-        testCart.setShoppingSet(shoppingList);
+        testCart.setShoppingList(shoppingList);
 
         repository.createCartEntry(testCart);
     }
 
-    @Test
-    //TODO refactor test name
-    void getShoppingSetShouldReturnProperSet(){
-        assertThat(testCart.getShoppingSet()).isEqualTo(repository.getCartByUserId("user_1", "game_1"));
-    }
-
-
     @AfterEach
-    void afterTestCleanUp(){
-        repository.deleteCartById("user_1","game_1");
+    private void afterTestCleanUp(){
+        repository.deleteCartById("user_1");
     }
 
 
