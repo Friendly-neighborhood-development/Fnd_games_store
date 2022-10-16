@@ -28,7 +28,7 @@ public class AddAndUpdateCartToRedisTest extends TestUtilities {
 
     @Test
     void getShoppingSetShouldReturnProperSet(){
-        assertThat(repository.getCartContent("user_1")).isEqualTo(testGameList);
+        assertThat(repository.getCartContent(userId)).isEqualTo(testGameList);
     }
 
 
@@ -54,7 +54,7 @@ public class AddAndUpdateCartToRedisTest extends TestUtilities {
 
     @AfterEach
     private void afterTestCleanUp(){
-        repository.deleteGameInCart("user_1", "game_1" );
+        repository.deleteGameInCart(userId, userId);
     }
 
 
