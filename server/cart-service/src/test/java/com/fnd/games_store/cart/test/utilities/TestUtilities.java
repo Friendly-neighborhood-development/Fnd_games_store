@@ -1,8 +1,13 @@
 package com.fnd.games_store.cart.test.utilities;
 
+import com.fnd.games_store.cart.entity.Cart;
 import com.fnd.games_store.cart.entity.Game;
+import com.fnd.games_store.cart.repository.implementation.CartRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TestUtilities {
 
@@ -10,6 +15,14 @@ public class TestUtilities {
     protected String userId = "user_1";
 
     protected String gameId = "game_1";
+
+
+    @Autowired
+    protected CartRepository repository;
+
+    protected Set<Game> shoppingList = new HashSet<>();
+
+    protected Cart testCart = new Cart();
 
 
     protected TestUtilities() {

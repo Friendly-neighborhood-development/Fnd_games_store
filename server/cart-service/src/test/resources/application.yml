@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: cart-service
+  profiles:
+    active: test
+
+
+
+
