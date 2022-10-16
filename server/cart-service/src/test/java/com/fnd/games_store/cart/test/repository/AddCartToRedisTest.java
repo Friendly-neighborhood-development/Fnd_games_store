@@ -47,7 +47,7 @@ public class AddCartToRedisTest extends TestUtilities {
     @Test
     //TODO refactor test name
     void test1(){
-        assertThat(testCart).isEqualTo(repository.getCartByUserId("user_1", "game_1"));
+        assertThat(testCart.getShoppingSet()).isEqualTo(repository.getCartByUserId("user_1", "game_1"));
     }
 
 

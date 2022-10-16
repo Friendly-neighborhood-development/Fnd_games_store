@@ -4,6 +4,7 @@ package com.fnd.games_store.cart.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -12,6 +13,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Cart implements Serializable {
 
 
@@ -34,4 +36,7 @@ public class Cart implements Serializable {
     public int hashCode() {
         return Objects.hash(userId, gameId, shoppingSet);
     }
+
+
+
 }

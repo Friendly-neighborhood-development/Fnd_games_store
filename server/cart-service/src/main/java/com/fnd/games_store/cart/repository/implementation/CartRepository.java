@@ -1,12 +1,15 @@
 package com.fnd.games_store.cart.repository.implementation;
 
 import com.fnd.games_store.cart.entity.Cart;
+import com.fnd.games_store.cart.entity.Game;
 import com.fnd.games_store.cart.repository.RedisRepository;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.util.Set;
 
 @NoArgsConstructor
 @Repository
@@ -33,8 +36,8 @@ public class CartRepository implements RedisRepository {
     }
 
     @Override
-    public Cart getCartByUserId(String userId, String gameId) {
-        return (Cart) hashOperations.get(userId, gameId);
+    public Set<Game> getCartByUserId(String userId, String gameId) {
+        return (Set<Game>) hashOperations.get(userId, gameId);
     }
 
     @Override
