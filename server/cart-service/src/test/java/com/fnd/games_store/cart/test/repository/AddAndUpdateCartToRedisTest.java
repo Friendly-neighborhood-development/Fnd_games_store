@@ -2,6 +2,7 @@ package com.fnd.games_store.cart.test.repository;
 
 
 import com.fnd.games_store.cart.CartApplication;
+import com.fnd.games_store.cart.entity.Cart;
 import com.fnd.games_store.cart.entity.Game;
 import com.fnd.games_store.cart.test.utilities.TestUtilities;
 import lombok.extern.slf4j.Slf4j;
@@ -20,15 +21,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AddAndUpdateCartToRedisTest extends TestUtilities {
 
 
+
+
+
+    List<Game> testGameList = new ArrayList<>();
+
     @Test
-    //TODO refactor test name
     void getShoppingSetShouldReturnProperSet(){
-//        assertThat(repository.getCartContent("user_1")).isEqualTo(testCart.getShoppingList());
+        assertThat(repository.getCartContent("user_1")).isEqualTo(testGameList);
     }
 
 
     private void updateCart(){
-        List<Game> list = new ArrayList<>(testCart.getShoppingList());
+//        List<Game> list = new ArrayList<>(testCart.getShoppingList());
     }
 
 
@@ -36,18 +41,15 @@ public class AddAndUpdateCartToRedisTest extends TestUtilities {
     @BeforeEach
     private void testSetUp(){
 
-        shoppingList.add(createTestGameEntity("1"));
-        shoppingList.add(createTestGameEntity("2"));
-
-        testCart.setUserId(userId);
-        testCart.setGameId(gameId);
-        testCart.setShoppingList(shoppingList);
-
-
-        log.info("test cart: "+testCart.getShoppingList().toString());
-        log.info("repository" + repository.getCartContent("user_1"));
+        testGameList.add(createTestGameEntity("1"));
 
         repository.createCartEntry(testCart);
+
+        log.info("test cart: "+testCart.getGameData().toString());
+        log.info("test cart list: "+ testGameList.toString());
+        log.info("repository" + repository.getCartContent(userId));
+
+
     }
 
     @AfterEach

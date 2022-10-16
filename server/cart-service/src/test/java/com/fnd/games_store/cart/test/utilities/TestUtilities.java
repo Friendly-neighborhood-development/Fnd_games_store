@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class TestUtilities {
 
@@ -21,8 +19,6 @@ public class TestUtilities {
 
     @Autowired
     protected CartRepository repository;
-
-    protected List<Game> shoppingList = new ArrayList<>();
 
     protected Cart testCart = new Cart();
 

@@ -15,8 +15,7 @@ public class SecurityConfiguration {
 
         http.authorizeRequests().antMatchers("/addItem").permitAll().anyRequest().authenticated();
 
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
-
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
 
         return http.build();
     }

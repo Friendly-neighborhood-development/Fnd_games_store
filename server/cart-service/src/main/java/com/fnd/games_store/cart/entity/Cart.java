@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -21,19 +20,18 @@ public class Cart implements Serializable {
 
     private String gameId;
 
-    private List<Game> shoppingList;
-
+    private Game gameData;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cart cart = (Cart) o;
-        return Objects.equals(userId, cart.userId) && Objects.equals(gameId, cart.gameId) && Objects.equals(shoppingList, cart.shoppingList);
+        return Objects.equals(userId, cart.userId) && Objects.equals(gameId, cart.gameId) && Objects.equals(gameData, cart.gameData);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, gameId, shoppingList);
+        return Objects.hash(userId, gameId, gameData);
     }
 }

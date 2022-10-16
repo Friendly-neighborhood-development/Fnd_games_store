@@ -1,7 +1,6 @@
 package com.fnd.games_store.cart.repository.implementation;
 
 import com.fnd.games_store.cart.entity.Cart;
-import com.fnd.games_store.cart.entity.Game;
 import com.fnd.games_store.cart.repository.RedisRepository;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +15,13 @@ import java.util.List;
 public class CartRepository implements RedisRepository {
 
     @Autowired
-    private RedisTemplate<String, List<Game>> redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
-    private HashOperations<String,String,List<Game>> hashOperations;
+    private HashOperations<String,String,Object> hashOperations;
 
 
     @Autowired
-    public CartRepository(RedisTemplate<String, List<Game>> redisTemplate) {
+    public CartRepository(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
         hashOperations = redisTemplate.opsForHash();
     }
@@ -30,17 +29,18 @@ public class CartRepository implements RedisRepository {
 
     @Override
     public void createCartEntry(Cart cart) {
-        hashOperations.put(cart.getUserId(),cart.getGameId(),cart.getShoppingList());
+        hashOperations.put(cart.getUserId(),cart.getGameId(),cart.getGameData());
     }
 
     @Override
-    public List<List<Game>> getCartContent(String userId) {
+    public List<Object> getCartContent(String userId) {
+//        return (List<Game>) hashOperations.get(sessionId, userId);
         return hashOperations.values(userId);
     }
 
     @Override
-    public void deleteGameInCart(String userId, String gameId) {
-        hashOperations.delete(userId, gameId);
+    public void deleteGameInCart(String sessionId, String userId) {
+        hashOperations.delete(sessionId, userId);
     }
 
     @Override
