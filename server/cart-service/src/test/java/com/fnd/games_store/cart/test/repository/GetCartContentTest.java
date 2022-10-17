@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.SpringVersion;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -40,17 +41,22 @@ public class GetCartContentTest {
     }
 
     @BeforeEach
-    private void testSetUp(){
+    void testSetUp(){
 
 
         testCart.setUserId(userId);
         testCart.setGameId(gameId);
         testCart.setGameData(createTestGameEntity("1"));
 
+
+
+
         testGameList.add(createTestGameEntity("1"));
 
         repository.createCartEntry(testCart);
 
+
+        log.info(SpringVersion.getVersion());
         log.info("test cart: "+testCart.getGameData().toString());
         log.info("test cart list: "+ testGameList.toString());
         log.info("repository" + repository.getCartContent(userId));
@@ -59,7 +65,7 @@ public class GetCartContentTest {
     }
 
     @AfterEach
-    private void afterTestCleanUp(){
+    void afterTestCleanUp(){
         repository.deleteGameInCart(userId, userId);
     }
 
