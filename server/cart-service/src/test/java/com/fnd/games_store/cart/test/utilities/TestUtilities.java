@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class TestUtilities {
 
 
@@ -16,6 +17,7 @@ public class TestUtilities {
 
     protected String gameId = "game_1";
 
+    protected List<Game> testGameList = new ArrayList<>();
 
     @Autowired
     protected CartRepository repository;

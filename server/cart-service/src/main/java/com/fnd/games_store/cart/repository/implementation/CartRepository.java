@@ -34,7 +34,6 @@ public class CartRepository implements RedisRepository {
 
     @Override
     public List<Object> getCartContent(String userId) {
-//        return (List<Game>) hashOperations.get(sessionId, userId);
         return hashOperations.values(userId);
     }
 
