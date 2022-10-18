@@ -1,25 +1,29 @@
 package com.fnd.games_store.cart.test.repository;
 
 
-import com.fnd.games_store.cart.CartApplication;
 import com.fnd.games_store.cart.test.utilities.TestUtilities;
+
+import com.fnd.games_store.cart.CartApplication;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.SpringVersion;
-
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(classes = CartApplication.class)
 @Slf4j
-public class GetCartContentTest extends TestUtilities {
+public class DeleteGameTest extends TestUtilities {
 
-   @Test
-    void getCartContent_ShouldReturnProperContent(){
-        assertThat(testGameList).isEqualTo(repository.getCartContent(userId));
+
+
+    @Test
+    void deleteGameInCart_ShouldDeleteGameEntry(){
+        repository.deleteGameEntry(userId, "game_2");
+        log.info(repository.getCartContent(userId).toString());
+        log.info(testGameList.get(0).toString());
+        assertThat(repository.getCartContent(userId).get(0)).isEqualTo(testGameList.get(0));
     }
 
     @BeforeEach
@@ -30,18 +34,29 @@ public class GetCartContentTest extends TestUtilities {
         testCart.setGameData(createTestGameEntity("1"));
 
         testGameList.add(createTestGameEntity("1"));
+        testGameList.add(createTestGameEntity("2"));
 
         repository.createCartEntry(testCart);
 
-        log.info(SpringVersion.getVersion());
-        log.info("test cart: "+testCart.getGameData().toString());
-        log.info("repository" + repository.getCartContent(userId));
+        testCart.setGameId("game_2");
+        testCart.setGameData(createTestGameEntity("2"));
+
+        repository.createCartEntry(testCart);
+
+        log.info(repository.getCartContent(userId).toString());
 
     }
 
     @AfterEach
     void afterTestCleanUp(){
         repository.deleteGameEntry(userId, gameId);
+        repository.deleteGameEntry(userId, "game_2");
     }
 
- }
+
+
+
+
+
+
+}

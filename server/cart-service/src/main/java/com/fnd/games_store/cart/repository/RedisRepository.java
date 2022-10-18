@@ -11,7 +11,7 @@ public interface RedisRepository {
 
     public List<Object> getCartContent(String userId);
 
-    public void deleteGameInCart(String sessionId, String userId);
+    public void deleteGameEntry(String userId, String gameId);
 
     public void updateCart(Cart cart);
 
