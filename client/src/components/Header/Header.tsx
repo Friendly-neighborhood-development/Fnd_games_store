@@ -1,10 +1,11 @@
 import React, {FC, memo} from 'react';
-import Search from "../UI/Search";
 import images from "../../constants/images";
-import {ShoppingCartIcon, BellIcon, PuzzlePieceIcon, MagnifyingGlassIcon} from "@heroicons/react/24/outline";
+import {BellIcon, PuzzlePieceIcon} from "@heroicons/react/24/outline";
 import {Link} from "react-router-dom";
 import HeaderIcon from "./HeaderIcon";
 import ThemeSwitcher from "../ThemeSwitcher";
+import Cart from '../Cart/Cart';
+import Search from "../UI/Search";
 
 const Header: FC = memo(() => {
     return (
@@ -12,26 +13,22 @@ const Header: FC = memo(() => {
             className={"w-full border-b border-slate-500/30 hidden sticky lg:block top-0 z-10 bg-white shadow-lg shadow-gray-500/10 dark:backdrop-blur dark:bg-slate-900/80 dark:shadow-none"}>
             <div className="container mx-auto">
                 <div className={"w-full justify-between items-center py-4 flex"}>
-                    <Link to={"/games"}>
-                        <div className={"mr-4 text-blue-600 flex items-center dark:text-sky-500"}>
-                            <PuzzlePieceIcon className={"w-8 h-8"}/>
-                            <span className={"ml-2 dark:text-white md:text-3xl text-xl"}>Games Store</span>
-                        </div>
+                    <Link to={"/games"} className={"mr-4 flex items-center"}>
+                        <PuzzlePieceIcon className={"w-10 h-10 text-blue-600 dark:text-sky-500"}/>
+                        <span className={"ml-2 dark:text-white md:text-3xl text-xl"}>Games Store</span>
                     </Link>
                     <nav className={"flex items-center space-x-4 relative"}>
-                        <Search
-                            className={"hidden sm:flex bg-white border border-slate-500/30"}
-                            placeholder={"Искать в магазине.."}
-                        />
-                        <MagnifyingGlassIcon className={"sm:hidden w-6 h-6 text-gray-500"}/>
-                        <HeaderIcon Icon={ShoppingCartIcon} link={"/cart"}/>
-                        <HeaderIcon Icon={BellIcon} link={"/notifications"}/>
+                        <Search placeholder={"Искать в магазине"}/>
                         <ThemeSwitcher/>
+                        <Cart/>
+                        <HeaderIcon link={"/notifications"}>
+                            <BellIcon className={"text-slate-500 w-3/5 h-3/5 dark:text-slate-300"}/>
+                        </HeaderIcon>
                         <Link to={"/login"}>
                             <span
                                 className={"rounded-full inline-block overflow-hidden h-10 w-10 bg-white flex items-center dark:bg-slate-700/50"}
                             >
-                                <img src={images.andrew} className={"w-full h-full object-cover"}/>
+                                <img src={images.andrew} className={"w-full h-full object-cover"} alt={"profile pic"}/>
                             </span>
                         </Link>
                     </nav>

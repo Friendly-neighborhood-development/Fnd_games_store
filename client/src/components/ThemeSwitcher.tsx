@@ -50,7 +50,6 @@ const TestThemeSwitcher = memo(() => {
         }
     }
     useEffect(() => {
-        // шото с этим сделать
         switchTheme(themes.find(theme => theme.mode === localStorage.theme) || themes[2])
     }, [])
 
@@ -58,7 +57,7 @@ const TestThemeSwitcher = memo(() => {
         <div className={"relative"}>
             <Listbox value={selectedTheme} onChange={switchTheme}>
                 <Listbox.Button
-                    className={"flex items-center border border-gray-300 h-10 px-4 space-x-1.5 text-slate-600 rounded-3xl dark:border-slate-600 dark:text-slate-300 dark:bg-slate-800"}>
+                    className={"flex items-center border border-gray-300 h-10 px-4 space-x-1.5 text-slate-600 rounded-3xl hover:bg-gray-200/30 dark:hover:bg-slate-500/50 dark:border-slate-600 dark:text-slate-300 dark:bg-slate-800"}>
                     <span className={"capitalize text-sm"}>{localStorage.theme}</span>
                     {localStorage.theme === "system"
                         ? window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -76,7 +75,7 @@ const TestThemeSwitcher = memo(() => {
                             value={theme}
                         >
                             {({active, selected}) => (
-                                <li
+                                <div
                                     className={`px-2 py-1 cursor-pointer 
                                 ${active ? "bg-gray-100 dark:bg-slate-700 " : ""}
                                 ${selected ? "text-blue-600 dark:text-sky-500" : ""}`}
@@ -85,7 +84,7 @@ const TestThemeSwitcher = memo(() => {
                                         <theme.Icon className={"w-6 h-6 mr-2"}/>
                                         {theme.mode}
                                     </div>
-                                </li>
+                                </div>
                             )}
                         </Listbox.Option>
                     ))}
