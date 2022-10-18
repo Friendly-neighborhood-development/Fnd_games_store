@@ -1,13 +1,11 @@
 import axios from "axios";
-import {BASE_API_URL} from "../constants/baseApiURL";
+import {BASE_AUTH_URL} from "../constants/baseAuthUrl";
 
-
-const $api = axios.create({
-    withCredentials: true,
-    baseURL: BASE_API_URL
+const $authApi = axios.create({
+    baseURL:BASE_AUTH_URL
 })
 
-$api.interceptors.request.use((config) => {
+$authApi.interceptors.request.use((config) => {
     if (config.headers === undefined) {
         config.headers = {};
     }
@@ -15,4 +13,4 @@ $api.interceptors.request.use((config) => {
     return config
 })
 
-export default $api
+export default $authApi

@@ -7,7 +7,6 @@ interface GameState {
     error: string
 }
 
-
 const initialState: GameState = {
     games: [],
     isLoading: false,
@@ -32,5 +31,7 @@ export const gameSlice = createSlice({
         },
     }
 })
+
+export const {gamesFetching, gamesFetchingSuccess, gamesFetchingError} = gameSlice.actions
 
 export default gameSlice.reducer

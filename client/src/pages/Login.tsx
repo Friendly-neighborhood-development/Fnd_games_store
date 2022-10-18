@@ -1,14 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import NotLoginLayout from "../components/layouts/NotLoginLayout";
 import {Link} from "react-router-dom";
 import {PuzzlePieceIcon} from "@heroicons/react/24/outline";
 import Input from "../components/UI/Input";
 import Button from "../components/UI/Button";
+import {useAppDispatch, useAppSelector} from "../hooks/redux";
+import {login} from "../store/actions/authAction";
 
 const Login = () => {
+    const [username, setUsername] = useState<string>("")
+    const [password, setPassword] = useState<string>("")
+    const dispatch = useAppDispatch()
+    const {isLoading, error} = useAppSelector(state => state.auth)
+
     const formHandler = (e: React.SyntheticEvent) => {
         e.preventDefault()
     }
+
     return (
         <NotLoginLayout>
             <div className={"pt-6 w-80 flex flex-col items-center"}>
@@ -23,19 +31,24 @@ const Login = () => {
                     onSubmit={formHandler}
                 >
                     <Input
-                        type={"email"}
-                        label={"Email"}
+                        type={"text"}
+                        label={"Username"}
                         className={"rounded-md py-1 my-2 border-gray-500/30 dark:border-gray-500/50 border dark:bg-slate-900"}
                         autoComplete={"username"}
+                        value={username}
+                        onChange={(e) => setUsername(e.currentTarget.value)}
                     />
                     <Input
                         type={"password"}
                         label={"Password"}
                         className={"rounded-md py-1 my-2 border-gray-500/30 dark:border-gray-500/50 border dark:bg-slate-900"}
+                        value={password}
+                        onChange={(e) => setPassword(e.currentTarget.value)}
                     />
                     <Button
                         className={"bg-green-500 dark:bg-green-700 hover:bg-green-600 dark:hover:bg-green-600 w-full text-white"}
                         type={"submit"}
+                        onClick={() => dispatch(login(username, password))}
                         // value={"Submit"}
                     >
                         Sign in

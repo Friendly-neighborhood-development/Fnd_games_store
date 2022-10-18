@@ -1,13 +1,13 @@
 import {AppDispatch} from "../store";
 import axios from "axios";
 import {gameSlice} from "../reducers/gameSlice";
-import {BASE_SERVER_URL} from "../../constants/baseServerURL";
+import {BASE_API_URL} from "../../constants/baseApiURL";
 
-export const fetchGames = () =>  async (dispatch: AppDispatch) => {
+export const fetchGames = () => async (dispatch: AppDispatch) => {
     try {
         dispatch(gameSlice.actions.gamesFetching())
         // здесь с помощью generic у get можно сразу определить тип получаемых данных
-        const res = await axios.get(`${BASE_SERVER_URL}/games/getAll`)
+        const res = await axios.get(`${BASE_API_URL}/games/getAll`)
         dispatch(gameSlice.actions.gamesFetchingSuccess(res.data))
     } catch (e) {
         if (axios.isAxiosError(e))
