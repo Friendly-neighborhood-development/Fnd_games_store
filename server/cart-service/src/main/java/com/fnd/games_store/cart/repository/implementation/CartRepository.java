@@ -28,7 +28,7 @@ public class CartRepository implements RedisRepository {
 
 
     @Override
-    public void createCartEntry(Cart cart) {
+    public void updateCart(Cart cart) {
         hashOperations.put(cart.getUserId(),cart.getGameId(),cart.getGameData());
     }
 
@@ -42,8 +42,5 @@ public class CartRepository implements RedisRepository {
         hashOperations.delete(userId, gameId);
     }
 
-    @Override
-    public void updateCart(Cart cart) {
-        createCartEntry(cart);
-    }
+
 }

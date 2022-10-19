@@ -21,13 +21,11 @@ public class DeleteGameTest extends TestUtilities {
     @Test
     void deleteGameInCart_ShouldDeleteGameEntry(){
         repository.deleteGameEntry(userId, "game_2");
-        log.info(repository.getCartContent(userId).toString());
-        log.info(testGameList.get(0).toString());
         assertThat(repository.getCartContent(userId).get(0)).isEqualTo(testGameList.get(0));
     }
 
     @BeforeEach
-    void testSetUp(){
+    void testSetup(){
 
         testCart.setUserId(userId);
         testCart.setGameId(gameId);
@@ -36,12 +34,12 @@ public class DeleteGameTest extends TestUtilities {
         testGameList.add(createTestGameEntity("1"));
         testGameList.add(createTestGameEntity("2"));
 
-        repository.createCartEntry(testCart);
+        repository.updateCart(testCart);
 
         testCart.setGameId("game_2");
         testCart.setGameData(createTestGameEntity("2"));
 
-        repository.createCartEntry(testCart);
+        repository.updateCart(testCart);
 
         log.info(repository.getCartContent(userId).toString());
 

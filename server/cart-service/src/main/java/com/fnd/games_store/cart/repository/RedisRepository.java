@@ -7,12 +7,12 @@ import java.util.List;
 public interface RedisRepository {
 
 
-    public void createCartEntry(Cart cart);
+    public void updateCart(Cart cart);
 
     public List<Object> getCartContent(String userId);
 
     public void deleteGameEntry(String userId, String gameId);
 
-    public void updateCart(Cart cart);
+
 
 }

@@ -23,7 +23,7 @@ public class GetCartContentTest extends TestUtilities {
     }
 
     @BeforeEach
-    void testSetUp(){
+    void testSetup(){
 
         testCart.setUserId(userId);
         testCart.setGameId(gameId);
@@ -31,7 +31,7 @@ public class GetCartContentTest extends TestUtilities {
 
         testGameList.add(createTestGameEntity("1"));
 
-        repository.createCartEntry(testCart);
+        repository.updateCart(testCart);
 
         log.info(SpringVersion.getVersion());
         log.info("test cart: "+testCart.getGameData().toString());

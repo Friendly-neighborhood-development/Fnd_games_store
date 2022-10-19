@@ -2,6 +2,7 @@ package com.fnd.games_store.cart.test.utilities;
 
 import com.fnd.games_store.cart.entity.Cart;
 import com.fnd.games_store.cart.entity.Game;
+import com.fnd.games_store.cart.repository.RedisRepository;
 import com.fnd.games_store.cart.repository.implementation.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,7 +21,7 @@ public class TestUtilities {
     protected List<Game> testGameList = new ArrayList<>();
 
     @Autowired
-    protected CartRepository repository;
+    protected RedisRepository repository;
 
     protected Cart testCart = new Cart();
 
