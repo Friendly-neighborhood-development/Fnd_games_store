@@ -20,7 +20,7 @@ public class CartService implements CartCrudService {
     }
 
     @Override
-    public Optional<Cart> getCartContent(String cartId) {
+    public Optional<Cart> getCartContent(String userId) {
         return Optional.empty();
     }
 

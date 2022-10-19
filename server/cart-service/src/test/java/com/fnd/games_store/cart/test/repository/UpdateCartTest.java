@@ -1,7 +1,7 @@
 package com.fnd.games_store.cart.test.repository;
 
 import com.fnd.games_store.cart.CartApplication;
-import com.fnd.games_store.cart.test.utilities.TestUtilities;
+import com.fnd.games_store.cart.test.utilities.RepositoryTestUtilities;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 @SpringBootTest(classes = CartApplication.class)
-public class UpdateCartTest extends TestUtilities {
+public class UpdateCartTest extends RepositoryTestUtilities {
 
 
 

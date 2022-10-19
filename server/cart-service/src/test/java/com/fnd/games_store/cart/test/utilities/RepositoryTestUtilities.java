@@ -3,7 +3,6 @@ package com.fnd.games_store.cart.test.utilities;
 import com.fnd.games_store.cart.entity.Cart;
 import com.fnd.games_store.cart.entity.Game;
 import com.fnd.games_store.cart.repository.RedisRepository;
-import com.fnd.games_store.cart.repository.implementation.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TestUtilities {
+public class RepositoryTestUtilities {
 
 
     protected String userId = "user_1";
@@ -26,7 +25,7 @@ public class TestUtilities {
     protected Cart testCart = new Cart();
 
 
-    protected TestUtilities() {
+    protected RepositoryTestUtilities() {
 
     }
 
