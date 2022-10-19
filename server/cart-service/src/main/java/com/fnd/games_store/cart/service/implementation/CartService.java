@@ -4,6 +4,7 @@ import com.fnd.games_store.cart.entity.Cart;
 import com.fnd.games_store.cart.repository.RedisRepository;
 import com.fnd.games_store.cart.service.CartCrudService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,18 +14,18 @@ public class CartService implements CartCrudService {
 
     private RedisRepository redisRepository;
 
-    @Override
-    public void persistCart(Cart cart) {
-
+    @Autowired
+    public CartService(RedisRepository redisRepository) {
+        this.redisRepository = redisRepository;
     }
 
     @Override
-    public Optional<Cart> getCartById(String cartId) {
+    public Optional<Cart> getCartContent(String cartId) {
         return Optional.empty();
     }
 
     @Override
-    public void deleteCartById(String cartId) {
+    public void deleteGameEntry(String userId, String gameId) {
 
     }
 
