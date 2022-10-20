@@ -16,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
 
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -52,6 +53,9 @@ public class UpdateCartTest extends RepositoryTestUtilities{
 
         when(repository.getCartContent(userId)).thenReturn(testGameList);
 
+        doReturn(testGameList).when(repository).updateCart(testCart);
+
+        doReturn(null).when(repository).deleteGameEntry(userId,gameId);
     }
 
 
