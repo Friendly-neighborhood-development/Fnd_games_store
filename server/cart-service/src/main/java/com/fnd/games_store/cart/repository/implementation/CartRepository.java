@@ -1,6 +1,7 @@
 package com.fnd.games_store.cart.repository.implementation;
 
 import com.fnd.games_store.cart.entity.Cart;
+import com.fnd.games_store.cart.entity.Game;
 import com.fnd.games_store.cart.repository.RedisRepository;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,13 @@ import java.util.List;
 public class CartRepository implements RedisRepository {
 
     @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    private RedisTemplate<String, Game> redisTemplate;
 
-    private HashOperations<String,String,Object> hashOperations;
+    private HashOperations<String,String,Game> hashOperations;
 
 
     @Autowired
-    public CartRepository(RedisTemplate<String, Object> redisTemplate) {
+    public CartRepository(RedisTemplate<String, Game> redisTemplate) {
         this.redisTemplate = redisTemplate;
         hashOperations = redisTemplate.opsForHash();
     }
@@ -33,7 +34,7 @@ public class CartRepository implements RedisRepository {
     }
 
     @Override
-    public List<Object> getCartContent(String userId) {
+    public List<Game> getCartContent(String userId) {
         return hashOperations.values(userId);
     }
 

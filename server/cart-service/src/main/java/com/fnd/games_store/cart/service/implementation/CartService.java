@@ -1,5 +1,8 @@
 package com.fnd.games_store.cart.service.implementation;
 
+import com.fnd.games_store.cart.dto.CartRequestDTO;
+import com.fnd.games_store.cart.dto.CartResponseDTO;
+import com.fnd.games_store.cart.dto.GameResponseDTO;
 import com.fnd.games_store.cart.entity.Cart;
 import com.fnd.games_store.cart.repository.RedisRepository;
 import com.fnd.games_store.cart.service.CartCrudService;
@@ -20,17 +23,17 @@ public class CartService implements CartCrudService {
     }
 
     @Override
-    public Optional<Cart> getCartContent(String userId) {
+    public Optional<GameResponseDTO> getCartContent(String userId) {
         return Optional.empty();
     }
 
     @Override
-    public void deleteGameEntry(String userId, String gameId) {
+    public CartResponseDTO deleteGameEntry(String userId, String gameId) {
 
     }
 
     @Override
-    public void updateCart(Cart cart) {
-
+    public CartResponseDTO updateCart(CartRequestDTO cart) {
+        return new CartResponseDTO();
     }
 }

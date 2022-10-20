@@ -8,7 +8,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.SpringVersion;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,16 +31,11 @@ public class GetCartContentTest extends RepositoryTestUtilities {
         testGameList.add(createTestGameEntity("1"));
 
         repository.updateCart(testCart);
-
-        log.info(SpringVersion.getVersion());
-        log.info("test cart: "+testCart.getGameData().toString());
-        log.info("repository" + repository.getCartContent(userId));
-
+        log.info(repository.getCartContent(userId).toString());
     }
 
     @AfterEach
     void afterTestCleanUp(){
-        repository.deleteGameEntry(userId, gameId);
+//        repository.deleteGameEntry(userId, gameId);
     }
-
  }
