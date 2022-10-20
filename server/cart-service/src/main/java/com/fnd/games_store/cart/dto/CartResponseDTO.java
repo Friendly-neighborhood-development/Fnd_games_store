@@ -1,4 +1,6 @@
 package com.fnd.games_store.cart.dto;
 
-public class CartResponseDTO {
+import com.fnd.games_store.cart.entity.Cart;
+
+public class CartResponseDTO extends Cart {
 }

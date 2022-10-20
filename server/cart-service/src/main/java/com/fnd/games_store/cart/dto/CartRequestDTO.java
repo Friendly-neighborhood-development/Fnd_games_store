@@ -1,4 +1,6 @@
 package com.fnd.games_store.cart.dto;
 
-public class CartRequestDTO {
+import com.fnd.games_store.cart.entity.Cart;
+
+public class CartRequestDTO extends Cart {
 }
