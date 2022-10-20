@@ -29,7 +29,7 @@ public class CartService implements CartCrudService {
 
     @Override
     public CartResponseDTO deleteGameEntry(String userId, String gameId) {
-
+        return new CartResponseDTO();
     }
 
     @Override
