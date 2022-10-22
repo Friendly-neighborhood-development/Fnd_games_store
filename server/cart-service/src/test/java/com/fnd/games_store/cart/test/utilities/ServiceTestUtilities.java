@@ -3,10 +3,6 @@ package com.fnd.games_store.cart.test.utilities;
 import com.fnd.games_store.cart.dto.CartRequestDTO;
 import com.fnd.games_store.cart.dto.CartResponseDTO;
 import com.fnd.games_store.cart.dto.GameResponseDTO;
-import com.fnd.games_store.cart.entity.Cart;
-import com.fnd.games_store.cart.entity.Game;
-import com.fnd.games_store.cart.repository.RedisRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;

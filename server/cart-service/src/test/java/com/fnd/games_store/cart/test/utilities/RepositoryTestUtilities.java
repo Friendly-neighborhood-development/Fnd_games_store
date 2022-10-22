@@ -2,7 +2,7 @@ package com.fnd.games_store.cart.test.utilities;
 
 import com.fnd.games_store.cart.entity.Cart;
 import com.fnd.games_store.cart.entity.Game;
-import com.fnd.games_store.cart.repository.RedisRepository;
+import com.fnd.games_store.cart.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
@@ -20,7 +20,7 @@ public class RepositoryTestUtilities {
     protected List<Game> testGameList = new ArrayList<>();
 
     @Autowired
-    protected RedisRepository repository;
+    protected CartRepository repository;
 
     protected Cart testCart = new Cart();
 

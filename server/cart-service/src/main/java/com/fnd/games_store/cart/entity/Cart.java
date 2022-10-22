@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -13,12 +15,11 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@RedisHash("Cart")
 public class Cart implements Serializable {
 
-
+    @Id
     private String userId;
-
-    private String gameId;
 
     private Game gameData;
 
@@ -27,11 +28,11 @@ public class Cart implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cart cart = (Cart) o;
-        return Objects.equals(userId, cart.userId) && Objects.equals(gameId, cart.gameId) && Objects.equals(gameData, cart.gameData);
+        return Objects.equals(userId, cart.userId) && Objects.equals(gameData, cart.gameData);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, gameId, gameData);
+        return Objects.hash(userId, gameData);
     }
 }
