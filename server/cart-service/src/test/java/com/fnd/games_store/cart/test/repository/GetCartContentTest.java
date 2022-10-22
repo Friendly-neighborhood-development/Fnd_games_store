@@ -2,7 +2,6 @@ package com.fnd.games_store.cart.test.repository;
 
 
 import com.fnd.games_store.cart.CartApplication;
-import com.fnd.games_store.cart.entity.Cart;
 import com.fnd.games_store.cart.repository.CartRepository;
 import com.fnd.games_store.cart.test.utilities.RepositoryTestUtilities;
 import lombok.extern.slf4j.Slf4j;
@@ -24,14 +23,18 @@ public class GetCartContentTest extends RepositoryTestUtilities {
 
 
    @Test
-    void getCartContent_ShouldReturnProperContent(){
+    void getCartContent_ShouldReturnSavedTestCart(){
+       log.info(repository.findById(userId).get().toString());
+       log.info(testCart.toString());
+
        assertThat(repository.findById(userId)).get().isEqualTo(testCart);
     }
 
     @BeforeEach
     void testSetup(){
         testCart.setUserId(userId);
-        testCart.setGameData(createTestGameEntity("1"));
+        testCartGameData.add(createTestGameEntity("1"));
+        testCart.setGameData(testCartGameData);
 
         repository.save(testCart);
 

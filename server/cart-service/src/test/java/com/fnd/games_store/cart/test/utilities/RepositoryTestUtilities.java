@@ -7,23 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class RepositoryTestUtilities {
-
-
-    protected String userId = "user_1";
-
-    protected String gameId = "game_1";
-
-    protected List<Game> testGameList = new ArrayList<>();
-
     @Autowired
     protected CartRepository repository;
 
+    protected String userId = "user_1";
+
+
+    protected Set<Game> testCartGameData= new HashSet<>();
+
     protected Cart testCart = new Cart();
 
+    protected Cart updatedCart = new Cart();
 
     protected RepositoryTestUtilities() {
 

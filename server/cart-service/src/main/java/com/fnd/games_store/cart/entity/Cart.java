@@ -10,6 +10,7 @@ import org.springframework.data.redis.core.RedisHash;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -21,7 +22,7 @@ public class Cart implements Serializable {
     @Id
     private String userId;
 
-    private Game gameData;
+    private Set<Game> gameData;
 
     @Override
     public boolean equals(Object o) {
