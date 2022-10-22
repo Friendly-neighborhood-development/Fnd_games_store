@@ -40,10 +40,7 @@ public class GetCartContentTest extends RepositoryTestUtilities {
 
     }
 
-    @AfterEach
-    void afterTestCleanup(){
-        repository.deleteAll();
-    }
+
 
 
  }

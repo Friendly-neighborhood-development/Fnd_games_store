@@ -3,6 +3,7 @@ package com.fnd.games_store.cart.test.utilities;
 import com.fnd.games_store.cart.entity.Cart;
 import com.fnd.games_store.cart.entity.Game;
 import com.fnd.games_store.cart.repository.CartRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
@@ -22,8 +23,6 @@ public class RepositoryTestUtilities {
     protected Set<Game> testCartGameData= new HashSet<>();
 
     protected Cart testCart = new Cart();
-
-    protected Cart updatedCart = new Cart();
 
     protected RepositoryTestUtilities() {
 
@@ -46,7 +45,10 @@ public class RepositoryTestUtilities {
         return game;
     }
 
-
+    @AfterEach
+    protected void afterTestCleanup(){
+        repository.deleteAll();
+    }
 
 
 

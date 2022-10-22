@@ -5,7 +5,6 @@ import com.fnd.games_store.cart.test.utilities.RepositoryTestUtilities;
 
 import com.fnd.games_store.cart.CartApplication;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,41 +19,30 @@ public class DeleteGameTest extends RepositoryTestUtilities {
 
     @Test
     void deleteGameInCart_ShouldDeleteGameEntry(){
-//        repository.deleteGameEntry(userId, "game_2");
-//        assertThat(repository.getCartContent(userId).get(0)).isEqualTo(testGameList.get(0));
+
+        testCartGameData.remove((createTestGameEntity("1")));
+        repository.save(testCart);
+
+        assertThat(repository.findById(userId).get()).isEqualTo(testCart);
+
+//        log.info("cart persisted in db: "+repository.findById(userId).get().toString());
+//        log.info("updated cart: "+testCart.toString());
+
     }
+
 
     @BeforeEach
     void testSetup(){
+        testCart.setUserId(userId);
+        testCartGameData.add(createTestGameEntity("1"));
+        testCart.setGameData(testCartGameData);
 
-//        testCart.setUserId(userId);
-//        testCart.setGameId(gameId);
-//        testCart.setGameData(createTestGameEntity("1"));
-//
-//        testGameList.add(createTestGameEntity("1"));
-//        testGameList.add(createTestGameEntity("2"));
-//
-//        repository.updateCart(testCart);
-//
-//        testCart.setGameId("game_2");
-//        testCart.setGameData(createTestGameEntity("2"));
-//
-//        repository.updateCart(testCart);
-//
-//        log.info(repository.getCartContent(userId).toString());
+        testCartGameData.add(createTestGameEntity("2"));
+        testCart.setGameData(testCartGameData);
+
+        repository.save(testCart);
 
     }
-
-    @AfterEach
-    void afterTestCleanUp(){
-//        repository.deleteGameEntry(userId, gameId);
-//        repository.deleteGameEntry(userId, "game_2");
-    }
-
-
-
-
-
 
 
 }
