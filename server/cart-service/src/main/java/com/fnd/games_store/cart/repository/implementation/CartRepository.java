@@ -20,6 +20,7 @@ public class CartRepository implements RedisRepository {
 
     private HashOperations<String,String,Game> hashOperations;
 
+    private final String cartHashKey = "";
 
     @Autowired
     public CartRepository(RedisTemplate<String, Game> redisTemplate) {
@@ -29,8 +30,9 @@ public class CartRepository implements RedisRepository {
 
 
     @Override
-    public void updateCart(Cart cart) {
+    public Cart updateCart(Cart cart) {
         hashOperations.put(cart.getUserId(),cart.getGameId(),cart.getGameData());
+        return cart;
     }
 
     @Override

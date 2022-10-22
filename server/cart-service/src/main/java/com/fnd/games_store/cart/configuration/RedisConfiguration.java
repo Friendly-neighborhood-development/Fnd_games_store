@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.util.List;
 
@@ -28,6 +30,10 @@ public class RedisConfiguration {
     public RedisTemplate<String, Game> redisTemplate() {
         RedisTemplate<String, Game> template = new RedisTemplate<>();
         template.setConnectionFactory(lettuceConnectionFactory());
+        template.setEnableTransactionSupport(true);
+        template.setHashKeySerializer(new StringRedisSerializer());
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new JdkSerializationRedisSerializer());
         return template;
     }
 

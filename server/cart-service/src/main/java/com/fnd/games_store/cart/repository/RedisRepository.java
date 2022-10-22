@@ -8,7 +8,7 @@ import java.util.List;
 public interface RedisRepository {
 
 
-    public void updateCart(Cart cart);
+    public Cart updateCart(Cart cart);
 
     public List<Game> getCartContent(String userId);
 
