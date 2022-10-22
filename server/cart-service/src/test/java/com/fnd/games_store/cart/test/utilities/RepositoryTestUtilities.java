@@ -31,6 +31,7 @@ public class RepositoryTestUtilities {
 
     protected Game createTestGameEntity(String differenceParameter){
         Game game = new Game();
+        game.setGameId("id"+ differenceParameter);
         game.setName("name" + differenceParameter);
         game.setGenre("genre" + differenceParameter);
         game.setReleaseDate("date" + differenceParameter);
