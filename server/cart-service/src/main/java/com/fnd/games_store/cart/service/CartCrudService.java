@@ -8,11 +8,11 @@ import com.fnd.games_store.cart.entity.Game;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface CartCrudService {
 
     public CartResponseDTO updateCart(CartRequestDTO cart);
-    public Optional<GameResponseDTO> getCartContent(String userId);
-    public CartResponseDTO deleteGameEntry(String userId, String gameId);
+    public Set<GameResponseDTO> getCartContent(String userId);
 
 }

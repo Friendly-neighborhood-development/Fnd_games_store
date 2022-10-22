@@ -1,11 +1,10 @@
-package com.fnd.games_store.cart.test.repository;
+package com.fnd.games_store.cart.test.repository_integration_test;
 
 
 import com.fnd.games_store.cart.CartApplication;
 import com.fnd.games_store.cart.repository.CartRepository;
 import com.fnd.games_store.cart.test.utilities.RepositoryTestUtilities;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

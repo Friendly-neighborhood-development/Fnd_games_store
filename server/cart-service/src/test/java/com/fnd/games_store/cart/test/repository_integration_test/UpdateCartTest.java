@@ -1,4 +1,4 @@
-package com.fnd.games_store.cart.test.repository;
+package com.fnd.games_store.cart.test.repository_integration_test;
 
 import com.fnd.games_store.cart.CartApplication;
 import com.fnd.games_store.cart.test.utilities.RepositoryTestUtilities;
