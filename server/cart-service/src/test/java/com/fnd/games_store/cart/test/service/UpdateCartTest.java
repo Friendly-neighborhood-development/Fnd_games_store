@@ -20,7 +20,7 @@ public class UpdateCartTest extends ServiceTestUtilities {
 
 
     @Test
-    void test1(){
+    void updateCartTest_ShouldReturnProperCart(){
         assertThat(service.updateCart(testCartRequest)).isEqualTo(testCartResponse);
 
         verify(repository).save(testCart);
