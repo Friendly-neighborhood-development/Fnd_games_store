@@ -4,6 +4,7 @@ import com.fnd.games_store.cart.dto.CartRequestDTO;
 import com.fnd.games_store.cart.dto.CartResponseDTO;
 import com.fnd.games_store.cart.dto.GameResponseDTO;
 import com.fnd.games_store.cart.entity.Cart;
+import com.fnd.games_store.cart.entity.Game;
 import com.fnd.games_store.cart.repository.CartRepository;
 import com.fnd.games_store.cart.service.CartCrudService;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,6 +40,6 @@ public class CartService implements CartCrudService {
 
         repository.save(updatingCart);
 
-        return new CartResponseDTO(incomingCartData);
+        return new CartResponseDTO(repository.findById(incomingCartData.getUserId()).orElse(new Cart()));
     }
 }

@@ -14,8 +14,8 @@ import java.util.Objects;
 import java.util.Set;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @RedisHash("Cart")
 public class Cart implements Serializable {
@@ -24,12 +24,6 @@ public class Cart implements Serializable {
     private String userId;
 
     private Set<Game> gameData;
-
-
-    public Cart(CartResponseDTO cartResponseDTO){
-        this.userId = cartResponseDTO.getUserId();
-        this.gameData = cartResponseDTO.getGameData();
-    }
 
 
 
