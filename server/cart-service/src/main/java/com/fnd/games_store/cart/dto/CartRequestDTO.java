@@ -10,14 +10,11 @@ import java.util.Set;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class CartRequestDTO {
 
     private String userId;
 
     private Set<Game> gameData;
-
-
-
-
 
 }
