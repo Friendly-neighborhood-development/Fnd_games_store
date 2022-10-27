@@ -4,14 +4,17 @@ import com.fnd.games_store.cart.controller.CartCrudController;
 import com.fnd.games_store.cart.dto.CartRequestDTO;
 import com.fnd.games_store.cart.dto.CartResponseDTO;
 import com.fnd.games_store.cart.service.CartCrudService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(value = "localhost:3000")
+@Slf4j
 public class CartController implements CartCrudController {
 
 
@@ -24,8 +27,8 @@ public class CartController implements CartCrudController {
 
     @Override
     @PostMapping("/v1/update")
-    public ResponseEntity<CartResponseDTO> updateCart(CartRequestDTO cartRequestDTO) {
+    public ResponseEntity<CartResponseDTO> updateCart(@RequestBody CartRequestDTO cartRequestDTO) {
         service.updateCart(cartRequestDTO);
-        return ResponseEntity.ok(new CartResponseDTO(cartRequestDTO.getUserId(),cartRequestDTO.getGameData()));
+        return ResponseEntity.ok(new CartResponseDTO(cartRequestDTO));
     }
 }

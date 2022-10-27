@@ -24,6 +24,7 @@ public class CartResponseDTO {
         this.gameData = cart.getGameData();
     }
 
+
     public CartResponseDTO(CartRequestDTO cartRequestDTO){
         this.userId = cartRequestDTO.getUserId();
         this.gameData = cartRequestDTO.getGameData();
