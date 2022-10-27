@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Set;
+
 @RestController
 @CrossOrigin(value = "localhost:3000")
 @Slf4j
@@ -36,8 +38,7 @@ public class CartController implements CartCrudController {
 
     @Override
     @PostMapping("/v1/getContent")
-    public ResponseEntity<GameResponseDTO> getCartContent(GameRequestDTO gameRequestDTO) {
-        service.getCartContent(gameRequestDTO.getUserId());
-        return ResponseEntity.ok(new GameResponseDTO());
+    public ResponseEntity<Set<GameResponseDTO>> getCartContent(GameRequestDTO gameRequestDTO) {
+        return ResponseEntity.ok(service.getCartContent(gameRequestDTO.getUserId()));
     }
 }

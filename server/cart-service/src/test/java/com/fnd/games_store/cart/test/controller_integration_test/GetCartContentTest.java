@@ -67,7 +67,7 @@ public class GetCartContentTest {
     void testSetup(){
 
     }
-    
+
 
     protected GameRequestDTO createAppropriateGameRequestDTO(String userId){
         return new GameRequestDTO(userId);
