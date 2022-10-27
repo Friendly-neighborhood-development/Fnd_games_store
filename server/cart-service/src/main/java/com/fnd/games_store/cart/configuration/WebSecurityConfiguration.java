@@ -23,7 +23,7 @@ public class WebSecurityConfiguration {
 
         http.cors().disable();
 
-        http.csrf().disable().headers().disable();
+        http.csrf().disable();
 
         return http.build();
 
