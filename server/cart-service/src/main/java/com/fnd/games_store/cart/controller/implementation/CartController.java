@@ -3,6 +3,8 @@ package com.fnd.games_store.cart.controller.implementation;
 import com.fnd.games_store.cart.controller.CartCrudController;
 import com.fnd.games_store.cart.dto.CartRequestDTO;
 import com.fnd.games_store.cart.dto.CartResponseDTO;
+import com.fnd.games_store.cart.dto.GameRequestDTO;
+import com.fnd.games_store.cart.dto.GameResponseDTO;
 import com.fnd.games_store.cart.service.CartCrudService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +32,12 @@ public class CartController implements CartCrudController {
     public ResponseEntity<CartResponseDTO> updateCart(@RequestBody CartRequestDTO cartRequestDTO) {
         service.updateCart(cartRequestDTO);
         return ResponseEntity.ok(new CartResponseDTO(cartRequestDTO));
+    }
+
+    @Override
+    @PostMapping("/v1/getContent")
+    public ResponseEntity<GameResponseDTO> getCartContent(GameRequestDTO gameRequestDTO) {
+        service.getCartContent(gameRequestDTO.getUserId());
+        return ResponseEntity.ok(new GameResponseDTO());
     }
 }
