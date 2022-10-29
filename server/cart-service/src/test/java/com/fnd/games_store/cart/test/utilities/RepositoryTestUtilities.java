@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,7 +20,7 @@ public class RepositoryTestUtilities {
     protected String userId = "user_1";
 
 
-    protected Set<Game> testCartGameData= new HashSet<>();
+    protected List<Game> testCartGameData= new ArrayList<>();
 
     protected Cart testCart = new Cart();
 

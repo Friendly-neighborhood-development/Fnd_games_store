@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -38,7 +39,7 @@ public class CartController implements CartCrudController {
 
     @Override
     @PostMapping("/v1/getContent")
-    public ResponseEntity<Set<GameResponseDTO>> getCartContent(@RequestBody GameRequestDTO gameRequestDTO) {
+    public ResponseEntity<List<GameResponseDTO>> getCartContent(@RequestBody GameRequestDTO gameRequestDTO) {
         return ResponseEntity.ok(service.getCartContent(gameRequestDTO.getUserId()));
     }
 }

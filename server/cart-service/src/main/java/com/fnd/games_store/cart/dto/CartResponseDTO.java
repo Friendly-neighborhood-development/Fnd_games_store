@@ -4,6 +4,7 @@ import com.fnd.games_store.cart.entity.Cart;
 import com.fnd.games_store.cart.entity.Game;
 import lombok.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -15,7 +16,7 @@ public class CartResponseDTO {
 
     private String userId;
 
-    private Set<Game> gameData;
+    private List<Game> gameData;
 
     public CartResponseDTO(Cart cart){
         this.userId = cart.getUserId();

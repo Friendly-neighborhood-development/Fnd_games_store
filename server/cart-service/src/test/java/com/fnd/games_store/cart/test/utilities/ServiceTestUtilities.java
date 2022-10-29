@@ -11,7 +11,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class ServiceTestUtilities {
@@ -23,9 +25,9 @@ public class ServiceTestUtilities {
     protected CartService service;
 
 
-    protected Set<Game> testGameSet = new HashSet<>();
+    protected List<Game> testGameSet = new ArrayList<>();
 
-    protected Set<GameResponseDTO> testGameSetDTO = new HashSet<>();
+    protected List<GameResponseDTO> testGameSetDTO = new ArrayList<>();
     protected String userId = "user_1";
 
 

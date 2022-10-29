@@ -6,6 +6,7 @@ import com.fnd.games_store.cart.dto.GameRequestDTO;
 import com.fnd.games_store.cart.dto.GameResponseDTO;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
 import java.util.Set;
 
 public interface CartCrudController {
@@ -13,6 +14,6 @@ public interface CartCrudController {
 
     public ResponseEntity<CartResponseDTO> updateCart(CartRequestDTO cartRequestDTO);
 
-    public ResponseEntity<Set<GameResponseDTO>> getCartContent(GameRequestDTO gameRequestDTO);
+    public ResponseEntity<List<GameResponseDTO>> getCartContent(GameRequestDTO gameRequestDTO);
 
 }

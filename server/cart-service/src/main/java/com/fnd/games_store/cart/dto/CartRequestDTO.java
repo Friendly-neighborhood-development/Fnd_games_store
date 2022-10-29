@@ -1,13 +1,12 @@
 package com.fnd.games_store.cart.dto;
 
-import com.fnd.games_store.cart.entity.Cart;
 import com.fnd.games_store.cart.entity.Game;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.Set;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -17,6 +16,6 @@ public class CartRequestDTO {
 
     private String userId;
 
-    private Set<Game> gameData;
+    private List<Game> gameData;
 
 }
