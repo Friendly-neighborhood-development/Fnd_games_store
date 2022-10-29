@@ -38,7 +38,7 @@ public class CartController implements CartCrudController {
 
     @Override
     @PostMapping("/v1/getContent")
-    public ResponseEntity<Set<GameResponseDTO>> getCartContent(GameRequestDTO gameRequestDTO) {
+    public ResponseEntity<Set<GameResponseDTO>> getCartContent(@RequestBody GameRequestDTO gameRequestDTO) {
         return ResponseEntity.ok(service.getCartContent(gameRequestDTO.getUserId()));
     }
 }

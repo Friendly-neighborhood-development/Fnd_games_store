@@ -51,6 +51,7 @@ public class UpdateCartTest extends ControllerTestUtilities {
         testGameSet.add(createTestGameEntity(1));
 
         when(service.updateCart(createAppropriateCartRequest(userId,testGameSet))).thenReturn(createAppropriateCartResponse(userId, testGameSet));
+
     }
 
 
