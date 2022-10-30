@@ -27,19 +27,18 @@ const SmHeader: FC = memo(() => {
     return (
         <>
             <header
-                className={"w-full border-b border-slate-500/30 lg:hidden sticky top-0 z-10 bg-white dark:bg-slate-900/80 shadow-lg dark:shadow-none shadow-gray-500/10 backdrop-blur"}>
+                className={"w-full border-b border-slate-500/30 lg:hidden sticky top-0 z-10 bg-white shadow-gray-500/10 backdrop-blur dark:bg-slate-900/80 shadow-lg dark:shadow-none"}>
                 <div className="container mx-auto">
                     <div className={"w-full justify-between items-center flex  py-3"}>
                         <MagnifyingGlassIcon className={"w-6 h-6 dark:text-gray-100 cursor-pointer"}/>
                         <Link to={"/games"} className={"flex items-center"}>
-                            <PuzzlePieceIcon className={"w-6 h-6 text-blue-500"}/>
+                            <PuzzlePieceIcon className={"w-6 h-6 text-blue-600"}/>
                             <span className={"dark:text-gray-100 text-xl ml-1"}>Games Store</span>
                         </Link>
                         <Bars3Icon
                             className={"w-6 h-6 dark:text-gray-100 cursor-pointer"}
                             onClick={() => setModalVisible(!modal)}
                         />
-
                     </div>
                 </div>
             </header>
@@ -74,7 +73,6 @@ const SmHeader: FC = memo(() => {
                 </div>
             }
         </>
-
     );
 });
 

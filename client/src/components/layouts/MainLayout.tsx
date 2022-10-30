@@ -18,12 +18,12 @@ const MainLayout: FC<MainLayoutProps> = ({children}) => {
         <div className="text-slate-900 bg-gray-100 flex flex-col min-h-screen dark:text-slate-200 dark:bg-slate-900">
                 <Header/>
                 <SmHeader/>
-            <div className="container mx-auto ">
+            <main className="container mx-auto ">
                 <Sidebar/>
                 <div className={"lg:ml-64"}>
                     {children}
                 </div>
-            </div>
+            </main>
         </div>
 
     );
