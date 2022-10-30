@@ -1,10 +1,9 @@
 import React, {FC, memo} from 'react';
 import images from "../../constants/images";
-import {BellIcon, PuzzlePieceIcon} from "@heroicons/react/24/outline";
+import {BellIcon, PuzzlePieceIcon, ShoppingCartIcon} from "@heroicons/react/24/outline";
 import {Link} from "react-router-dom";
 import HeaderIcon from "./HeaderIcon";
 import ThemeSwitcher from "../ThemeSwitcher";
-import Cart from '../Cart/Cart';
 import Search from "../UI/Search";
 
 const Header: FC = memo(() => {
@@ -20,7 +19,9 @@ const Header: FC = memo(() => {
                     <nav className={"flex items-center space-x-4 relative"}>
                         <Search placeholder={"Искать в магазине"}/>
                         <ThemeSwitcher/>
-                        <Cart/>
+                        <HeaderIcon link={"/cart"}>
+                            <ShoppingCartIcon className={"text-slate-500 w-3/5 h-3/5 dark:text-slate-300"}/>
+                        </HeaderIcon>
                         <HeaderIcon link={"/notifications"}>
                             <BellIcon className={"text-slate-500 w-3/5 h-3/5 dark:text-slate-300"}/>
                         </HeaderIcon>

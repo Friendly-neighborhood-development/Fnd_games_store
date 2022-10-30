@@ -2,6 +2,7 @@ import React, {FC, useEffect} from 'react';
 import Header from "../Header/Header";
 import SmHeader from "../Header/SmHeader";
 import Sidebar from "../Sidebar";
+import Footer from "../Footer";
 
 interface MainLayoutProps {
     children?: React.ReactNode
@@ -16,14 +17,15 @@ const MainLayout: FC<MainLayoutProps> = ({children}) => {
     }, [])
     return (
         <div className="text-slate-900 bg-gray-100 flex flex-col min-h-screen dark:text-slate-200 dark:bg-slate-900">
-                <Header/>
-                <SmHeader/>
+            <Header/>
+            <SmHeader/>
             <main className="container mx-auto ">
                 <Sidebar/>
                 <div className={"lg:ml-64"}>
                     {children}
                 </div>
             </main>
+            <Footer/>
         </div>
 
     );
