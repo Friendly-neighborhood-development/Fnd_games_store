@@ -23,7 +23,7 @@ public class LoginController implements UserLogin {
     LoginService loginService;
 
     @Override
-    @PostMapping("/login")
+    @PostMapping("/v1/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO loginRequestDTO, HttpSession session) {
         String generatedToken = loginService.login(loginRequestDTO.getUsername(), loginRequestDTO.getPassword());
 

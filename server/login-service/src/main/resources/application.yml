@@ -2,5 +2,5 @@ spring:
   application:
     name: login-service
   profiles:
-    active: dev
+    active: standalone
 
