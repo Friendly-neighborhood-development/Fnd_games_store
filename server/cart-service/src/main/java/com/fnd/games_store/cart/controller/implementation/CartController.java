@@ -1,10 +1,8 @@
 package com.fnd.games_store.cart.controller.implementation;
 
 import com.fnd.games_store.cart.controller.CartCrudController;
-import com.fnd.games_store.cart.dto.CartRequestDTO;
-import com.fnd.games_store.cart.dto.CartResponseDTO;
-import com.fnd.games_store.cart.dto.GameRequestDTO;
-import com.fnd.games_store.cart.dto.GameResponseDTO;
+import com.fnd.games_store.cart.controller.OrderProcessor;
+import com.fnd.games_store.cart.dto.*;
 import com.fnd.games_store.cart.service.CartCrudService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @CrossOrigin(value = "localhost:3000")
 @Slf4j
-public class CartController implements CartCrudController {
+public class CartController implements CartCrudController, OrderProcessor {
 
 
     private final CartCrudService service;
@@ -41,5 +38,11 @@ public class CartController implements CartCrudController {
     @PostMapping("/v1/getContent")
     public ResponseEntity<List<GameResponseDTO>> getCartContent(@RequestBody GameRequestDTO gameRequestDTO) {
         return ResponseEntity.ok(service.getCartContent(gameRequestDTO.getUserId()));
+    }
+
+    @Override
+    @PostMapping("v1/orders")
+    public ResponseEntity<OrderResponseDTO> processOrder() {
+        return ResponseEntity.ok(new OrderResponseDTO());
     }
 }
