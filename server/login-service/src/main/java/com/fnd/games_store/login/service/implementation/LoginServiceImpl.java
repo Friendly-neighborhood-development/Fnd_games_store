@@ -30,9 +30,6 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public String login(String username, String password) {
 
-
-
-
         UserDetails loadedUser = userDetails.loadUserByUsername(username);
 
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username,password,loadedUser.getAuthorities()));

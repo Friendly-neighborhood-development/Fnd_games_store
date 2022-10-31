@@ -1,7 +1,10 @@
 .gradle/
+.idea/
 games-service/build
 registry-service/build
 config-service/build
 gateway-service/build
 login-service/build
 cart-service/build
+notification-service/build
+build

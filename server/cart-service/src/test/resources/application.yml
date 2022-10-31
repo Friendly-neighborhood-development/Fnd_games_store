@@ -2,7 +2,7 @@ spring:
   application:
     name: cart-service
   profiles:
-    active: local
+    active: test
 
 
 
