@@ -18,12 +18,10 @@ public class WebSecurityConfiguration {
     @Autowired
     JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
-
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http.authorizeHttpRequests().antMatchers("/login","/validate").permitAll().anyRequest().authenticated()
+        http.authorizeHttpRequests().antMatchers("/v1/login","/validate").permitAll().anyRequest().authenticated()
                 .and()
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS)

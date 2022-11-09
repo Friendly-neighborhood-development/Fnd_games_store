@@ -1,8 +1,4 @@
 spring:
-#  cache:
-#    cache-names: games_catalogue_cache
-#    cafeine:
-#      spec: maximumSize=500,expireAfterAccess=600s
   cloud:
     config:
       enabled: false
@@ -15,7 +11,7 @@ spring:
     database: h2
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     properties:
   datasource:
     database-platform: org.hibernate.dialect.H2Dialect
@@ -29,12 +25,10 @@ spring:
       path: /h2
 server:
   servlet:
-    context-path: /games
-  port: 8080
+    context-path: /login
+  port: 8082
 
-#flyway:
-#    user: sa
-#    password:
-#    schemas: app-db
-#    url: jdbc:h2:mem:testdb
-#    locations: filesystem:db/migration
+variables:
+  security:
+    access_secret: OTFBRjg3MUMwOUYxODlFNDc3NEQwNTAxMTg0M0M0NzI5QTczNDY1QUU4MTA5MUFERjZFNDIxNTk0QTZDOUYyQg==
+    access_expiration: 90000000
