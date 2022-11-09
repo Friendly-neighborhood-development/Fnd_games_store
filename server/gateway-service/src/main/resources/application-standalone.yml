@@ -1,0 +1,39 @@
+spring:
+  cloud:
+    config:
+      enabled: false
+    discovery:
+      enabled: false
+    gateway:
+      routes:
+        - id: games_service
+          uri: http://localhost:8081/games
+          predicates:
+            - Path=/games/getAll
+        - id: games_service
+          uri: http://localhost:8081/games
+          predicates:
+            - Path=/games/get/**
+        - id: cart_service
+          uri: http://localhost:8083/cart
+          predicates:
+            - Path=/cart/v1/update
+        - id: cart_service
+          uri: http://localhost:8083/cart
+          predicates:
+            - Path=/cart/v1/getContent
+        - id: cart_service
+          uri: http://localhost:8083/cart
+          predicates:
+            - Path=/cart/v1/orders
+        - id: login_service
+          uri: http://localhost:8082/login
+          predicates:
+            - Path=/login/v1/login
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
