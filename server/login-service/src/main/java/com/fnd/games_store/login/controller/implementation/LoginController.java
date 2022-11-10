@@ -26,9 +26,6 @@ public class LoginController implements UserLogin {
     @PostMapping("/v1/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO loginRequestDTO, HttpSession session) {
         String generatedToken = loginService.login(loginRequestDTO.getUsername(), loginRequestDTO.getPassword());
-
-        log.info(session.getId());
-
         return ResponseEntity.ok(new LoginResponseDTO(generatedToken));
     }
 
