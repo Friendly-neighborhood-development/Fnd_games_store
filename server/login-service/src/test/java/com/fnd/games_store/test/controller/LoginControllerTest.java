@@ -42,7 +42,7 @@ public class LoginControllerTest {
 
 //    @Test
     void controllerShouldReturnProperString() throws Exception {
-            MvcResult requestResult = this.mvc.perform(get("/login")
+            MvcResult requestResult = this.mvc.perform(get("/v1/login")
                             .content(new LoginResponseDTO("token").getToken())
                             .contentType(MediaType.APPLICATION_JSON)
                             .accept(MediaType.APPLICATION_JSON)).

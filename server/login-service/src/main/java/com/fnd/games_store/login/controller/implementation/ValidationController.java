@@ -25,7 +25,7 @@ public class ValidationController implements UserValidation {
     }
 
     @Override
-    @PostMapping("/validate")
+    @PostMapping("/v1/validate")
     public Boolean validateUser(@RequestBody ValidationRequestDTO validationRequestDTO) {
 
 
