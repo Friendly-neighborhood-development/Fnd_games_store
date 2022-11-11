@@ -11,13 +11,13 @@ import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
-public class AuthenticationGatewayFilterFactory extends AbstractGatewayFilterFactory<AuthenticationGatewayFilterFactory.Config> {
-
+public class JwtValidationGatewayFilterFactory extends AbstractGatewayFilterFactory<JwtValidationGatewayFilterFactory.Config> {
 
     @Autowired
     private WebClient webClient;
 
-    public AuthenticationGatewayFilterFactory() {
+
+    public JwtValidationGatewayFilterFactory() {
         super(Config.class);
     }
 
@@ -29,9 +29,14 @@ public class AuthenticationGatewayFilterFactory extends AbstractGatewayFilterFac
 
             ServerHttpRequest.Builder builder = exchange.getRequest().mutate();
 
+            Mono<Void> result = webClient.get().uri("localhost:8090/test").retrieve().bodyToMono(Void.class);
+            result.subscribe();
+
+            log.info(result.toString());
+
             log.info("=================REQUEST FILTERED================");
 
-//            webClient.post().uri("localhost:8082/login/v1/validate");
+
 
             return chain.filter(exchange.mutate().request(builder.build()).build());
         };

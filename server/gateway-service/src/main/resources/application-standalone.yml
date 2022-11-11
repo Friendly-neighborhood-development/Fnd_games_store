@@ -30,12 +30,20 @@ spring:
           uri: http://localhost:8082/login
           predicates:
             - Path=/login/v1/login
+        - id: login-service
+          uri: http://localhost:8082/login
+          predicates:
+            - Path=/login/v1/validate
           filters:
-            - name: Authentication
-
+            - name: JwtValidation
 eureka:
   instance:
     preferIpAddress: true
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+
+variables:
+  webclient:
+    timeout: 1000
