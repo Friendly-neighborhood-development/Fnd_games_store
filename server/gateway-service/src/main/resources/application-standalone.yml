@@ -30,12 +30,13 @@ spring:
           uri: http://localhost:8082/login
           predicates:
             - Path=/login/v1/login
-        - id: login-service
-          uri: http://localhost:8082/login
+        - id: cart-service
+          uri: http://localhost:8083/cart
           predicates:
-            - Path=/login/v1/validate
+            - Path=/cart/v1/content
           filters:
             - name: JwtValidation
+
 eureka:
   instance:
     preferIpAddress: true

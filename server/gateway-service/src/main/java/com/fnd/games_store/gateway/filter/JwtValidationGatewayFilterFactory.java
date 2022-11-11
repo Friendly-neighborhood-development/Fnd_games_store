@@ -36,8 +36,6 @@ public class JwtValidationGatewayFilterFactory extends AbstractGatewayFilterFact
 
             log.info("=================REQUEST FILTERED================");
 
-
-
             return chain.filter(exchange.mutate().request(builder.build()).build());
         };
     }
