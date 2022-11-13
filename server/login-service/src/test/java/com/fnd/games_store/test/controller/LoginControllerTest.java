@@ -3,17 +3,15 @@ package com.fnd.games_store.test.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fnd.games_store.login.LoginApplication;
-import com.fnd.games_store.login.controller.dto.LoginResponseDTO;
+import com.fnd.games_store.login.dto.LoginResponseDTO;
 import com.fnd.games_store.login.service.implementation.LoginServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcExtensionsKt;
 import org.springframework.test.web.servlet.MvcResult;
 
 import static org.assertj.core.api.Assertions.assertThat;

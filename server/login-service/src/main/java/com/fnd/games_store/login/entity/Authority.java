@@ -10,6 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "authorities")
@@ -27,8 +28,7 @@ public class Authority implements GrantedAuthority {
 
     private String authority;
 
-    @ManyToOne(cascade =  CascadeType.ALL)
-    @JoinColumn(name = "account_id")
-    private Account account;
+    @ManyToMany(mappedBy = "authorities")
+    private List<Account> account;
 
 }

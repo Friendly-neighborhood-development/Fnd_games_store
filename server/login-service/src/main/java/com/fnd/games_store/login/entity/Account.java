@@ -28,7 +28,10 @@ public class Account {
 
     private String password;
 
-    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "account_authority",
+              joinColumns = @JoinColumn(name = "account_id", referencedColumnName = "id"),
+              inverseJoinColumns = @JoinColumn(name = "authority_id",  referencedColumnName = "id"))
     private List<Authority> authorities;
 
 
