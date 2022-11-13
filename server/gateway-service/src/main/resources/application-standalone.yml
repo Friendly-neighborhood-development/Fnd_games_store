@@ -29,7 +29,7 @@ spring:
         - id: login_service
           uri: http://localhost:8082/login
           predicates:
-            - Path=/login/v1/login
+            - Path=/login/v1/authorization
         - id: cart-service
           uri: http://localhost:8083/cart
           predicates:

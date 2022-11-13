@@ -9,8 +9,7 @@ username varchar(50)  UNIQUE NOT NULL,
 password varchar NOT NULL,
 authority_id varchar(50) NOT NULL,
 
-FOREIGN KEY(authority_id)
-REFERENCES authorities(authority_id));
+FOREIGN KEY(authority_id) REFERENCES authorities(authority_id));
 
 
 

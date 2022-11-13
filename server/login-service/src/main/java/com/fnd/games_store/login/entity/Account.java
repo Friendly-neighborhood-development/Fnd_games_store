@@ -22,16 +22,13 @@ public class Account {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name ="uuid", strategy ="uuid2")
-    @Column(name = "account_id")
     private String id;
 
     private String username;
 
     private String password;
 
-    @Column(name = "authority_id")
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "authority_id")
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
     private List<Authority> authorities;
 
 

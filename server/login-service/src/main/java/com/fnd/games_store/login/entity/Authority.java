@@ -23,11 +23,12 @@ public class Authority implements GrantedAuthority {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name ="uuid", strategy ="uuid2")
-    @Column(name = "authority_id")
     private String id;
 
     private String authority;
 
-
+    @ManyToOne(cascade =  CascadeType.ALL)
+    @JoinColumn(name = "account_id")
+    private Account account;
 
 }

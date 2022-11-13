@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface UserValidation {
 
-//    public ResponseEntity<ValidationResponseDTO> validateUser(HttpServletRequest request);
-    public Boolean validateUser(ValidationRequestDTO validationRequestDTO);
+    public ResponseEntity<ValidationResponseDTO> validateUser(String authHeader);
 
 
 }

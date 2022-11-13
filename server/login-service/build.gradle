@@ -49,7 +49,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation 'org.flywaydb:flyway-core'
     implementation group: 'com.h2database', name: 'h2', version: '2.0.202'
     implementation 'junit:junit:4.13.2'

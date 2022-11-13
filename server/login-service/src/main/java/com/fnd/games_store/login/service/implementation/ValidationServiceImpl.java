@@ -4,8 +4,10 @@ import com.fnd.games_store.login.jwt_utils.JwtValidator;
 import com.fnd.games_store.login.service.ValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class ValidationServiceImpl implements ValidationService {
 
     private final JwtValidator jwtValidator;
@@ -17,6 +19,6 @@ public class ValidationServiceImpl implements ValidationService {
 
     @Override
     public Boolean validate(String token) {
-        return jwtValidator.validateJwtToken(token);
+        return jwtValidator.validateJwtToken(token.substring(7));
     }
 }

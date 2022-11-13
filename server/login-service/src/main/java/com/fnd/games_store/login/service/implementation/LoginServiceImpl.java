@@ -11,9 +11,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Slf4j
+@Transactional
 public class LoginServiceImpl implements LoginService {
 
     private final AuthenticationManager authenticationManager;
@@ -37,10 +39,6 @@ public class LoginServiceImpl implements LoginService {
         UsernamePasswordAuthenticationToken authToken =  new UsernamePasswordAuthenticationToken(username,password, loadedUser.getAuthorities());
 
         SecurityContextHolder.getContext().setAuthentication(authToken);
-
-        log.info(SecurityContextHolder.getContext().getAuthentication().toString());
-
-        log.info(SecurityContextHolder.getContext().getAuthentication().getName());
 
         return jwtGenerator.generateJwtToken(loadedUser);
 

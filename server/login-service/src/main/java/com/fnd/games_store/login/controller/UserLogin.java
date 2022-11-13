@@ -8,6 +8,6 @@ import javax.servlet.http.HttpSession;
 
 public interface UserLogin {
 
-    public ResponseEntity<LoginResponseDTO> login(LoginRequestDTO loginRequestDTO, HttpSession session);
+    public ResponseEntity<LoginResponseDTO> login(LoginRequestDTO loginRequestDTO);
 
 }
