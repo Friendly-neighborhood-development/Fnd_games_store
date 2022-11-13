@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS accounts_authorities
 (account_id varchar NOT NULL,
  authority_id varchar NOT NULL,
 
+ PRIMARY KEY (account_id, authority_id),
  FOREIGN KEY(account_id) REFERENCES accounts(account_id),
  FOREIGN KEY(authority_id) REFERENCES authorities(authority_id));
 

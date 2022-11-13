@@ -24,11 +24,12 @@ public class Authority implements GrantedAuthority {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name ="uuid", strategy ="uuid2")
+    @Column(name = "authority_id")
     private String id;
 
     private String authority;
 
-    @ManyToMany(mappedBy = "authorities")
+    @ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
     private List<Account> account;
 
 }
