@@ -35,9 +35,13 @@ public class RegistrationTest {
     @Test
     void getAnythingFromDbTest(){
 
-        log.error(accountRepository.findById("1").get().toString());
+//        log.error(accountRepository.findById("1").get().toString());
 //        assertThat(accountRepository.findAll()).isNotNull();
+        assertThat(authorityRepository.findAll()).isNotNull();
+        log.error(authorityRepository.findById("1").get().toString());
+
     }
+
 
 
 

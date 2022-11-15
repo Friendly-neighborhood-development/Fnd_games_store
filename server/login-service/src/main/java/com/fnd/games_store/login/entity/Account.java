@@ -1,13 +1,12 @@
 package com.fnd.games_store.login.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Setter
 @Getter
+@ToString
 public class Account {
 
     @Id
@@ -27,30 +27,10 @@ public class Account {
 
     private String password;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "accounts_authorities",
-              joinColumns = @JoinColumn(name = "account_id", referencedColumnName = "account_id"),
-              inverseJoinColumns = @JoinColumn(name = "authority_id",  referencedColumnName = "authority_id"))
+            joinColumns = @JoinColumn(name = "account_id"),
+            inverseJoinColumns = @JoinColumn(name ="authority_id"))
     private List<Authority> authorities;
 
-    private String authorityName;
-
-
-
-    public Account(String username, String password, List<Authority> authorities) {
-        this.username = username;
-        this.password = password;
-        this.authorities = authorities;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Account{" +
-                "id='" + id + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-//                ", authorities=" + authorities +
-                '}';
-    }
 }
