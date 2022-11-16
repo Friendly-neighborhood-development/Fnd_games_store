@@ -1,6 +1,7 @@
 package com.fnd.games_store.login.service.implementation;
 
 
+import com.fnd.games_store.login.jwt_utils.JwtGenerator;
 import com.fnd.games_store.login.jwt_utils.implementation.JwtGeneratorImpl;
 import com.fnd.games_store.login.jwt_utils.implementation.UserDetailsServiceImpl;
 import com.fnd.games_store.login.service.LoginService;
@@ -10,6 +11,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,11 +21,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class LoginServiceImpl implements LoginService {
 
     private final AuthenticationManager authenticationManager;
-    private final UserDetailsServiceImpl userDetails;
-    private final JwtGeneratorImpl jwtGenerator;
+    private final UserDetailsService userDetails;
+    private final JwtGenerator jwtGenerator;
 
     @Autowired
-    public LoginServiceImpl(AuthenticationManager authenticationManager, UserDetailsServiceImpl userDetails, JwtGeneratorImpl jwtGenerator) {
+    public LoginServiceImpl(AuthenticationManager authenticationManager, UserDetailsService userDetails, JwtGenerator jwtGenerator) {
         this.authenticationManager = authenticationManager;
         this.userDetails = userDetails;
         this.jwtGenerator = jwtGenerator;
@@ -36,13 +38,11 @@ public class LoginServiceImpl implements LoginService {
 
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username,password,loadedUser.getAuthorities()));
 
-        UsernamePasswordAuthenticationToken authToken =  new UsernamePasswordAuthenticationToken(username,password, loadedUser.getAuthorities());
+//        UsernamePasswordAuthenticationToken authToken =  new UsernamePasswordAuthenticationToken(username,password, loadedUser.getAuthorities());
 
-        SecurityContextHolder.getContext().setAuthentication(authToken);
+//        SecurityContextHolder.getContext().setAuthentication(authToken);
 
         return jwtGenerator.generateJwtToken(loadedUser);
-
-
 
     }
 

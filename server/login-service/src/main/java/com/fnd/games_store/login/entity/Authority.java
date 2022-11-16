@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "authorities")
 @NoArgsConstructor
 @Data
-public class Authority {
+public class Authority implements GrantedAuthority{
 
     @NotNull
     @Id
