@@ -38,12 +38,6 @@ public class LoginServiceImpl implements LoginService {
 
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username,password,loadedUser.getAuthorities()));
 
-//        UsernamePasswordAuthenticationToken authToken =  new UsernamePasswordAuthenticationToken(username,password, loadedUser.getAuthorities());
-
-//        SecurityContextHolder.getContext().setAuthentication(authToken);
-
         return jwtGenerator.generateJwtToken(loadedUser);
-
     }
-
 }

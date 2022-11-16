@@ -7,6 +7,8 @@ import com.fnd.games_store.login.jwt_utils.JwtGenerator;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator.Builder;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.fnd.games_store.login.repository.AccountRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.GrantedAuthority;
@@ -25,23 +27,26 @@ public class JwtGeneratorImpl implements JwtGenerator {
     @Value("${variables.security.access_expiration}")
     private Long accessTokenExpirationDuration;
 
+    @Autowired
+    AccountRepository accountRepository;
+
+
 
     @Override
     public String generateJwtToken(UserDetails userDetails) {
 
-        Builder builder = JWT.create().withSubject(userDetails.getUsername());
+        String userName = userDetails.getUsername();
 
+        List<GrantedAuthority> listOfAuthorities = new ArrayList<>();
+        listOfAuthorities.addAll(userDetails.getAuthorities());
 
-        List<GrantedAuthority> list = new ArrayList<>();
-        list.addAll(userDetails.getAuthorities());
-
-
+        String userId = accountRepository.findUserByUsername(userName).get().getId();
 
         Map<String, Object> payLoad = new HashMap<>();
+        payLoad.put("authorities", listOfAuthorities);
+        payLoad.put("userId", userId);
 
-        payLoad.put("authorities", list);
-
-        return builder.withIssuedAt(new Date()).withExpiresAt(new Date(System.currentTimeMillis() + accessTokenExpirationDuration))
+        return JWT.create().withSubject(userName).withIssuedAt(new Date()).withExpiresAt(new Date(System.currentTimeMillis() + accessTokenExpirationDuration))
                 .withSubject(userDetails.getUsername())
                 .withHeader(payLoad)
                 .sign(Algorithm.HMAC256(jwtAccessSecret));

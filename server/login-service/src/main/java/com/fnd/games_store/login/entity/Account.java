@@ -14,7 +14,6 @@ import java.util.List;
 @NoArgsConstructor
 @Setter
 @Getter
-@ToString
 public class Account {
 
     @Id
@@ -33,4 +32,14 @@ public class Account {
             inverseJoinColumns = @JoinColumn(name ="authority_id"))
     private List<Authority> authorities;
 
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+//                ", authorities=" + authorities +
+                '}';
+    }
 }

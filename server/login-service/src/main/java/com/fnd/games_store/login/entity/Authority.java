@@ -14,7 +14,8 @@ import java.util.List;
 @Entity
 @Table(name = "authorities")
 @NoArgsConstructor
-@Data
+@Setter
+@Getter
 public class Authority implements GrantedAuthority{
 
     @NotNull
@@ -27,8 +28,17 @@ public class Authority implements GrantedAuthority{
     private String authority;
 
 
-    @ManyToMany(mappedBy = "authorities")
+    @ManyToMany
     @JsonIgnore
     private List<Account> accounts;
 
+
+    @Override
+    public String toString() {
+        return "Authority{" +
+                "id='" + id + '\'' +
+                ", authority='" + authority + '\'' +
+//                ", accounts=" + accounts +
+                '}';
+    }
 }
