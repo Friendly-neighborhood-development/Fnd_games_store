@@ -9,10 +9,13 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
+
 @RestController
 @Slf4j
 @CrossOrigin
-public class ValidationController implements UserValidation {
+public class ValidationController {
 
 
     private final ValidationService validationService;
@@ -22,10 +25,13 @@ public class ValidationController implements UserValidation {
         this.validationService = validationService;
     }
 
-    @Override
+//    @Override
     @PostMapping("/v1/validate")
-    public ResponseEntity<ValidationResponseDTO> validateUser(@RequestHeader(HttpHeaders.AUTHORIZATION) String authHeader) {
-        Boolean isIncomingTokenValid = validationService.validate(authHeader);
+    public ResponseEntity<ValidationResponseDTO> validateUser(@RequestHeader Map<String,String> headers) {
+
+        headers.entrySet().stream().forEach(System.out::println);
+
+        Boolean isIncomingTokenValid = validationService.validate(headers.get("Authorization"));
         return ResponseEntity.ok(new ValidationResponseDTO(isIncomingTokenValid));
     }
 
