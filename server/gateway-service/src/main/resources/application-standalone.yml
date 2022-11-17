@@ -34,8 +34,11 @@ spring:
           uri: http://localhost:8083/cart
           predicates:
             - Path=/cart/v1/content
-          filters:
-            - name: JwtValidation
+        - id: cart-service
+          uri: http://localhost:8083/cart
+          predicates:
+            - Path=/cart/v1/update
+
 
 eureka:
   instance:

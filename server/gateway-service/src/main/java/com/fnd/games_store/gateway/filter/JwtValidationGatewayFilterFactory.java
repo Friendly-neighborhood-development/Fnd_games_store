@@ -31,10 +31,13 @@ public class JwtValidationGatewayFilterFactory extends AbstractGatewayFilterFact
 
             ServerHttpRequest.Builder builder = exchange.getRequest().mutate();
 
-            Mono<ResponseEntity> result = webClient.post().uri("localhost:8082/login/v1/validate").retrieve().bodyToMono(ResponseEntity.class);
-            result.subscribe();
+//            Mono<ResponseEntity> result = webClient.post().uri("localhost:8082/login/v1/validate").retrieve().bodyToMono(ResponseEntity.class);
+//            result.subscribe();
 
-            log.info(result.toString());
+//            log.info(result.toString());
+
+            log.info(exchange.getRequest().getBody().toString());
+
 
             log.info("=================REQUEST FILTERED================");
 
