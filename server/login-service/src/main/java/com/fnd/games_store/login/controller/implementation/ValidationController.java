@@ -28,7 +28,7 @@ public class ValidationController {
 //    @Override
     @PostMapping("/v1/validate")
     public ResponseEntity<ValidationResponseDTO> validateUser(@RequestHeader Map<String,String> headers) {
-
+        log.info("=========================accessed=============================");
         headers.entrySet().stream().forEach(System.out::println);
 
         Boolean isIncomingTokenValid = validationService.validate(headers.get("Authorization"));
