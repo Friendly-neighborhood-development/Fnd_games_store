@@ -1,4 +1,4 @@
-package com.fnd.games_store.gateway.dto;
+package com.fnd.games_store.cart.dto;
 
 
 import lombok.AllArgsConstructor;
