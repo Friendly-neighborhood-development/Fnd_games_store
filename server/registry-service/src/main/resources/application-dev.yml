@@ -1,8 +1,4 @@
 spring:
-  activate:
-    on-profile: dev
-  application:
-    name: registry-service
   config:
     import: optional:configserver:http://localhost:8001
     fail-fast: true

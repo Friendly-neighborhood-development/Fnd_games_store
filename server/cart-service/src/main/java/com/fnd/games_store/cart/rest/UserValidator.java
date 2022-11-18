@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.Map;
 
 
-@FeignClient("login-service")
+@FeignClient(name = "login-service")
 public interface UserValidator {
 
 
