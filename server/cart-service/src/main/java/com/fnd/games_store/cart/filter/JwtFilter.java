@@ -32,16 +32,17 @@ public class JwtFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        Map<String,String> headers = new HashMap<>();
 
-        String token = request.getHeader("Authorization").substring(7);
 
-        headers.put("token",token);
+        String token = request.getHeader("authorization");
 
 
         log.warn(token);
 
-        ResponseEntity<ValidationResponseDTO> validationResult = userValidator.validateUser(headers);
+
+        userValidator.validateUser(token);
+
+
 
 //        log.info(validationResult.getIsTokenValid().toString());
 //
