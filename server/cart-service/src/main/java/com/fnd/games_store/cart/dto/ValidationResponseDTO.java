@@ -1,17 +1,16 @@
 package com.fnd.games_store.cart.dto;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import lombok.*;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter
+@Getter
 public class ValidationResponseDTO {
 
     private Boolean isTokenValid;
-
 
 
 }

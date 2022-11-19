@@ -45,6 +45,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation group: 'com.auth0', name: 'java-jwt', version: '3.19.2'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.14.0'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

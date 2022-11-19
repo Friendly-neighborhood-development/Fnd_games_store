@@ -14,7 +14,6 @@ import java.util.Map;
 
 @RestController
 @Slf4j
-@CrossOrigin
 public class ValidationController {
 
 
@@ -26,13 +25,16 @@ public class ValidationController {
     }
 
 //    @Override
-    @PostMapping("/v1/validate")
+    @PostMapping(path = "/v1/validate")
     public ResponseEntity<ValidationResponseDTO> validateUser(@RequestHeader Map<String,String> headers) {
 
         headers.entrySet().stream().forEach(System.out::println);
-        log.info(headers.get("authorization"));
-        Boolean isIncomingTokenValid = validationService.validate(headers.get("authorization"));
-        log.info(headers.get(isIncomingTokenValid));
+        log.info("first log "+headers.get("authorization"));
+
+        String incomingUserToken = headers.get("authorization");
+
+        Boolean isIncomingTokenValid = validationService.validate(incomingUserToken);
+        log.info("second log "+isIncomingTokenValid.toString());
         return ResponseEntity.ok(new ValidationResponseDTO(isIncomingTokenValid));
     }
 
