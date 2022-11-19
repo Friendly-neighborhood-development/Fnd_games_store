@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class LoginResponseDTO {
 
+    private String userId;
     private String token;
 
 }

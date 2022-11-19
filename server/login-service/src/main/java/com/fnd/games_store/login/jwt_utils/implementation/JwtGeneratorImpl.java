@@ -27,28 +27,14 @@ public class JwtGeneratorImpl implements JwtGenerator {
     @Value("${variables.security.access_expiration}")
     private Long accessTokenExpirationDuration;
 
-    @Autowired
-    AccountRepository accountRepository;
-
-
 
     @Override
     public String generateJwtToken(UserDetails userDetails) {
 
         String userName = userDetails.getUsername();
 
-        List<GrantedAuthority> listOfAuthorities = new ArrayList<>();
-        listOfAuthorities.addAll(userDetails.getAuthorities());
-
-        String userId = accountRepository.findUserByUsername(userName).get().getId();
-
-        Map<String, Object> payLoad = new HashMap<>();
-        payLoad.put("authorities", listOfAuthorities);
-        payLoad.put("userId", userId);
-
         return JWT.create().withSubject(userName).withIssuedAt(new Date()).withExpiresAt(new Date(System.currentTimeMillis() + accessTokenExpirationDuration))
                 .withSubject(userDetails.getUsername())
-                .withHeader(payLoad)
                 .sign(Algorithm.HMAC256(jwtAccessSecret));
     }
 
