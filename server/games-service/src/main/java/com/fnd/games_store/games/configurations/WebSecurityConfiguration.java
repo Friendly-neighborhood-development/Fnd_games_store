@@ -1,6 +1,7 @@
 package com.fnd.games_store.games.configurations;
 
-import com.fnd.games_store.games.filter.AuthorityValidationFilter;
+import com.fnd.games_store.games.filter.AdminAuthorityValidationFilter;
+import com.fnd.games_store.games.filter.StaffAuthorityValidationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,19 +14,26 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfiguration {
 
 
-    private final AuthorityValidationFilter authorityValidationFilter;
-    @Autowired
-    public WebSecurityConfiguration(AuthorityValidationFilter authorityValidationFilter) {
-        this.authorityValidationFilter = authorityValidationFilter;
-    }
+    private final AdminAuthorityValidationFilter adminAuthorityValidationFilter;
 
+    private final StaffAuthorityValidationFilter staffAuthorityValidationFilter;
+
+    @Autowired
+    public WebSecurityConfiguration(AdminAuthorityValidationFilter adminAuthorityValidationFilter, StaffAuthorityValidationFilter staffAuthorityValidationFilter) {
+        this.adminAuthorityValidationFilter = adminAuthorityValidationFilter;
+        this.staffAuthorityValidationFilter = staffAuthorityValidationFilter;
+    }
 
     @Bean
     public SecurityFilterChain filter(HttpSecurity http) throws Exception {
 
-        http.authorizeRequests().antMatchers("/v1/catalogue/all", "/h2/**").permitAll().anyRequest().authenticated();
+        http.authorizeRequests().antMatchers("/v1/catalogue/all", "/v1/catalogue/**").permitAll().anyRequest().authenticated().and()
+                .addFilterBefore(adminAuthorityValidationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(staffAuthorityValidationFilter, UsernamePasswordAuthenticationFilter.class);
 
-        http.addFilterBefore(authorityValidationFilter, UsernamePasswordAuthenticationFilter.class);
+
+
+
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
 

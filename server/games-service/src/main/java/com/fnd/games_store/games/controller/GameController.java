@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @NoArgsConstructor
 @CrossOrigin
-//@RequestMapping("/v1/catalogue")
+@RequestMapping("/v1/catalogue")
 public class GameController {
 
 
@@ -28,7 +28,7 @@ public class GameController {
         return gameService.getGameById(requestedGameId);
     }
 
-    @GetMapping("/v1/catalogue/all")
+    @GetMapping("/all")
     public List<GameResponseDTO> getGameCatalogue(){
         return gameService.getGamesCatalogue();
     }
