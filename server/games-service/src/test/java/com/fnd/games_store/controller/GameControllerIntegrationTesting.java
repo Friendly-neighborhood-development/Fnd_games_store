@@ -42,7 +42,7 @@ public class GameControllerIntegrationTesting extends TestUtilities {
 
 
 
-        MvcResult requestResult = this.mvc.perform(post("/create").
+        MvcResult requestResult = this.mvc.perform(post("/new").
                 content(createGameControllerRequest(createAppropriateGameRequestDTO())).
                 contentType(MediaType.APPLICATION_JSON).
                 accept(MediaType.APPLICATION_JSON)).

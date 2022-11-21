@@ -1,8 +1,4 @@
 spring:
-#  cache:
-#    cache-names: games_catalogue_cache
-#    cafeine:
-#      spec: maximumSize=500,expireAfterAccess=600s
   cloud:
     config:
       enabled: false
@@ -31,10 +27,3 @@ server:
   servlet:
     context-path: /games
   port: 8081
-
-#flyway:
-#    user: sa
-#    password:
-#    schemas: app-db
-#    url: jdbc:h2:mem:testdb
-#    locations: filesystem:db/migration

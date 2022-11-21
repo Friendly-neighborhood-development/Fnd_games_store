@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @NoArgsConstructor
 @CrossOrigin
+//@RequestMapping("/v1/catalogue")
 public class GameController {
 
 
@@ -22,27 +23,27 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    @GetMapping("/get/{requestedGameId}")
+    @GetMapping("/{requestedGameId}")
     public GameResponseDTO getGameById(@PathVariable String requestedGameId){
         return gameService.getGameById(requestedGameId);
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/v1/catalogue/all")
     public List<GameResponseDTO> getGameCatalogue(){
         return gameService.getGamesCatalogue();
     }
 
-    @PostMapping("/create")
+    @PostMapping("/new")
     public GameResponseDTO createGameEntry(@RequestBody GameRequestDTO creatingGameBody){
         return gameService.createGameEntry(creatingGameBody);
     }
 
-    @PutMapping("/update/{updatingGameId}")
+    @PutMapping("/updating/{updatingGameId}")
     public GameResponseDTO updateGameEntry(@PathVariable String updatingGameId, @RequestBody GameRequestDTO newGameBody){
         return gameService.updateGameEntry(updatingGameId, newGameBody);
     }
 
-    @DeleteMapping("/delete/{deletingGameId}")
+    @DeleteMapping("/deleting/{deletingGameId}")
     public void deleteGameEntry(@PathVariable String deletingGameId){
         gameService.deleteGameEntry(deletingGameId);
     }
