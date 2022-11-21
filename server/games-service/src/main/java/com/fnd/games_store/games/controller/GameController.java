@@ -23,7 +23,7 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    @GetMapping("/{requestedGameId}")
+    @GetMapping("/specific/{requestedGameId}")
     public GameResponseDTO getGameById(@PathVariable String requestedGameId){
         return gameService.getGameById(requestedGameId);
     }
