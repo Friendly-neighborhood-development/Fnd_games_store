@@ -9,24 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Component
 @Slf4j
-public class StaffAuthorityValidationFilter extends GenericFilter {
-//    @Override
-//    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-//
-//        log.info("==============STAFF===================");
-//
-//        filterChain.doFilter(request,response);
-//
-//
-//    }
-
+public class StaffAuthorityValidationFilter extends OncePerRequestFilter {
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
         log.info("==============STAFF===================");
 
-        chain.doFilter(request,response);
+        filterChain.doFilter(request,response);
+
     }
+
+
 }
