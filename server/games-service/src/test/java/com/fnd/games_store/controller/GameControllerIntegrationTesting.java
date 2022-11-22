@@ -3,7 +3,7 @@ package com.fnd.games_store.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fnd.games_store.utilities.TestUtilities;
 import com.fnd.games_store.games.GamesApplication;
-import com.fnd.games_store.games.controller.dto.GameResponseDTO;
+import com.fnd.games_store.games.dto.GameResponseDTO;
 import com.fnd.games_store.games.service.GameService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

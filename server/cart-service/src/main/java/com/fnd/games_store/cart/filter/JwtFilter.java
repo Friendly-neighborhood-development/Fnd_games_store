@@ -1,7 +1,7 @@
 package com.fnd.games_store.cart.filter;
 
 import com.fnd.games_store.cart.exception.UserValidationFailedException;
-import com.fnd.games_store.cart.rest.UserValidator;
+import com.fnd.games_store.cart.rest.UserValidationClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,10 +18,10 @@ import java.io.IOException;
 public class JwtFilter extends OncePerRequestFilter {
 
 
-    private final UserValidator userValidator;
+    private final UserValidationClient userValidator;
 
     @Autowired
-    public JwtFilter(UserValidator userValidator) {
+    public JwtFilter(UserValidationClient userValidator) {
         this.userValidator = userValidator;
     }
 

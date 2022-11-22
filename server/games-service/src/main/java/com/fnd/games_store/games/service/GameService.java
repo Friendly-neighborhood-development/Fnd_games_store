@@ -2,9 +2,9 @@ package com.fnd.games_store.games.service;
 
 
 
-import com.fnd.games_store.games.controller.dto.GameRequestDTO;
+import com.fnd.games_store.games.dto.GameRequestDTO;
 import com.fnd.games_store.games.entity.Game;
-import com.fnd.games_store.games.controller.dto.GameResponseDTO;
+import com.fnd.games_store.games.dto.GameResponseDTO;
 import com.fnd.games_store.games.exceptions.GameAlreadyExistException;
 import com.fnd.games_store.games.exceptions.GameNotFoundException;
 import com.fnd.games_store.games.repository.GameRepository;
