@@ -19,10 +19,10 @@ public class WebSecurityConfiguration {
     @Autowired
     JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
-//    @Bean
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http.authorizeHttpRequests().antMatchers("/v1/authorization","/v1/validate", "/h2/**").permitAll().anyRequest().authenticated()
+        http.authorizeHttpRequests().antMatchers("/v1/authorization","/v1/validate").permitAll().anyRequest().authenticated()
                 .and()
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
@@ -30,13 +30,6 @@ public class WebSecurityConfiguration {
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint);
 
         return http.build();
-    }
-
-
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring()
-                .antMatchers("/**");
     }
 
 
@@ -51,5 +44,9 @@ public class WebSecurityConfiguration {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring()
+                .antMatchers("/h2/*");
+    }
 }

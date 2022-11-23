@@ -30,7 +30,7 @@ public class WebSecurityConfiguration {
 
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(staffAuthorityValidationFilter());
-        registration.addUrlPatterns("/v1/catalogue/new");
+        registration.addUrlPatterns("/v1/catalogue/new","/v1/catalogue/updating/*");
         registration.setName("staffAuthorityValidationFilter");
         return registration;
     }
@@ -41,7 +41,7 @@ public class WebSecurityConfiguration {
 
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(adminAuthorityValidationFilter());
-        registration.addUrlPatterns("/v1/catalogue/deleting/*","/v1/catalogue/new");
+        registration.addUrlPatterns("/v1/catalogue/deleting/*");
         registration.setName("adminAuthorityValidationFilter");
         return registration;
     }
