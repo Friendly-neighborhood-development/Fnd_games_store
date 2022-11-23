@@ -28,13 +28,10 @@ public class ValidationController {
     @PostMapping(path = "/v1/validate")
     public ResponseEntity<ValidationResponseDTO> validateUser(@RequestHeader Map<String,String> headers) {
 
-        headers.entrySet().stream().forEach(System.out::println);
-        log.info("first log "+headers.get("authorization"));
-
+//        headers.entrySet().stream().forEach(System.out::println);
         String incomingUserToken = headers.get("authorization");
 
         Boolean isIncomingTokenValid = validationService.validate(incomingUserToken);
-        log.info("second log "+isIncomingTokenValid.toString());
         return ResponseEntity.ok(new ValidationResponseDTO(isIncomingTokenValid));
     }
 
