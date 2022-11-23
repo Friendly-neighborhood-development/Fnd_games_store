@@ -6,6 +6,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -29,17 +30,18 @@ public class WebSecurityConfiguration {
 
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(staffAuthorityValidationFilter());
-        registration.addUrlPatterns("/v1/catalogue/specific/*");
+        registration.addUrlPatterns("/v1/catalogue/new");
         registration.setName("staffAuthorityValidationFilter");
         return registration;
     }
+
 
     @Bean
     public FilterRegistrationBean adminAuthorityValidationFilterRegistration() {
 
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(adminAuthorityValidationFilter());
-        registration.addUrlPatterns("/v1/catalogue/all");
+        registration.addUrlPatterns("/v1/catalogue/deleting/*","/v1/catalogue/new");
         registration.setName("adminAuthorityValidationFilter");
         return registration;
     }
@@ -48,7 +50,7 @@ public class WebSecurityConfiguration {
 
 
     @Bean
-    public SecurityFilterChain filterSettings(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securitySettings(HttpSecurity http) throws Exception {
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
 
@@ -60,6 +62,12 @@ public class WebSecurityConfiguration {
 
         return http.build();
 
+    }
+
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring()
+                .antMatchers("/v1/catalogue/all","/v1/catalogue/specific/*");
     }
 
 
