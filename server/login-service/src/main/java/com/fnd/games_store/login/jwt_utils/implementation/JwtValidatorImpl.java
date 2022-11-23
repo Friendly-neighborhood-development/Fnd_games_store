@@ -6,6 +6,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.Verification;
 import com.fnd.games_store.login.exception.BadTokenCredentialsException;
 import com.fnd.games_store.login.exception.JwtVerificationException;
+import com.fnd.games_store.login.jwt_utils.JwtAuthorityValidator;
 import com.fnd.games_store.login.jwt_utils.JwtValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class JwtValidatorImpl implements JwtValidator {
+public class JwtValidatorImpl implements JwtValidator, JwtAuthorityValidator {
 
     @Value("${variables.security.access_secret}")
     private String jwtAccessSecret;
@@ -29,6 +30,10 @@ public class JwtValidatorImpl implements JwtValidator {
         return isTokenValid;
     }
 
+    @Override
+    public Boolean validateJwtTokenAuthorities(String token) {
+        return null;
+    }
 
 
     private Boolean verifyTokenSignature(String token) {
@@ -71,5 +76,6 @@ public class JwtValidatorImpl implements JwtValidator {
     private DecodedJWT parseToken(String token) {
         return JWT.decode(token);
     }
+
 
 }
