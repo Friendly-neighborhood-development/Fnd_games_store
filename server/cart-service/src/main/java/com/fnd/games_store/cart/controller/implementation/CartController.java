@@ -35,13 +35,13 @@ public class CartController implements CartCrudController, OrderProcessor {
     }
 
     @Override
-    @PostMapping("/v1/getContent")
+    @PostMapping("/v1/content")
     public ResponseEntity<List<GameResponseDTO>> getCartContent(@RequestBody GameRequestDTO gameRequestDTO) {
         return ResponseEntity.ok(service.getCartContent(gameRequestDTO.getUserId()));
     }
 
     @Override
-    @PostMapping("v1/orders")
+    @PostMapping("v1/orders/new")
     public ResponseEntity<OrderResponseDTO> processOrder() {
         return ResponseEntity.ok(new OrderResponseDTO());
     }

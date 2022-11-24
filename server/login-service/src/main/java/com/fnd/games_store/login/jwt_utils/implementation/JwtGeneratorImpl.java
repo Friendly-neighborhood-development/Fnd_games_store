@@ -1,17 +1,23 @@
 package com.fnd.games_store.login.jwt_utils.implementation;
 
+import com.fnd.games_store.login.entity.Authority;
 import com.fnd.games_store.login.jwt_utils.JwtGenerator;
 
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator.Builder;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.fnd.games_store.login.repository.AccountRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.mapping.Attributes2GrantedAuthoritiesMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
+import java.util.*;
+
 @Component
 public class JwtGeneratorImpl implements JwtGenerator {
 
@@ -22,12 +28,15 @@ public class JwtGeneratorImpl implements JwtGenerator {
     private Long accessTokenExpirationDuration;
 
 
+
+
     @Override
     public String generateJwtToken(UserDetails userDetails) {
-        Builder builder = JWT.create().withSubject(userDetails.getUsername());
 
-        return builder.withIssuedAt(new Date()).withExpiresAt(new Date(System.currentTimeMillis() + accessTokenExpirationDuration))
-                .withSubject(userDetails.getUsername())
+        String userName = userDetails.getUsername();
+
+        return JWT.create().withSubject(userName)
+                .withIssuedAt(new Date()).withExpiresAt(new Date(System.currentTimeMillis() + accessTokenExpirationDuration))
                 .sign(Algorithm.HMAC256(jwtAccessSecret));
     }
 

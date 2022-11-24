@@ -6,9 +6,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/Friendly-neighborhood-development/games_store_development_environment_configurations
+          uri: file://home/sergey/Idea-wokspace/games_store_development_environment_configurations
           skipSslValidation: true
-
-  security:
-    user:
-      password: admin

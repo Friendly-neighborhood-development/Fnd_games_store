@@ -29,7 +29,16 @@ spring:
         - id: login_service
           uri: http://localhost:8082/login
           predicates:
-            - Path=/login/v1/login
+            - Path=/login/v1/authorization
+        - id: cart-service
+          uri: http://localhost:8083/cart
+          predicates:
+            - Path=/cart/v1/content
+        - id: cart-service
+          uri: http://localhost:8083/cart
+          predicates:
+            - Path=/cart/v1/update
+
 
 eureka:
   instance:
@@ -37,3 +46,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+
+variables:
+  webclient:
+    timeout: 1000

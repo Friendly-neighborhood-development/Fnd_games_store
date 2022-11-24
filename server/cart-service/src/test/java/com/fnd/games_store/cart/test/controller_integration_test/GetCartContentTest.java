@@ -40,7 +40,7 @@ public class GetCartContentTest extends ControllerTestUtilities {
     @Test
     void getCartContent_ShouldReturnProperData() throws Exception {
 
-        MvcResult result = this.mvc.perform(post("/v1/getContent")
+        MvcResult result = this.mvc.perform(post("/v1/content")
                                 .content(jsonGameRequestDTO(createAppropriateGameRequestDTO(userId)))
                                 .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
                                 .andExpect(status().isOk())
@@ -57,7 +57,7 @@ public class GetCartContentTest extends ControllerTestUtilities {
     @Test
     void getCartContent_ShouldReturnInstanceOfList() throws Exception {
 
-        MvcResult result = this.mvc.perform(post("/v1/getContent")
+        MvcResult result = this.mvc.perform(post("/v1/content")
                         .content(jsonGameRequestDTO(createAppropriateGameRequestDTO(userId)))
                         .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

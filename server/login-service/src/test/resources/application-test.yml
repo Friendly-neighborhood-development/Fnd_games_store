@@ -11,7 +11,7 @@ spring:
     database: h2
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     properties:
   datasource:
     database-platform: org.hibernate.dialect.H2Dialect
@@ -25,5 +25,5 @@ spring:
       path: /h2
 server:
   servlet:
-    context-path: /games
-  port: 8090
+    context-path: /login
+  port: 8082

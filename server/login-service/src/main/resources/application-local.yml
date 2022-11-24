@@ -4,11 +4,6 @@ spring:
       enabled: false
     discovery:
       enabled: false
-  redis:
-    host: localhost
-    port: 6379
-  session:
-    store-type: redis
   jpa:
     flyway:
       enabled: true
@@ -24,7 +19,13 @@ spring:
     username: postgres
     password: root
     driver-class-name: org.postgresql.Driver
-    activate:
-      on-profile: "local"
+
 server:
-  port: 8090
+  servlet:
+    context-path: /login
+  port: 8082
+
+variables:
+  security:
+    access_secret: OTFBRjg3MUMwOUYxODlFNDc3NEQwNTAxMTg0M0M0NzI5QTczNDY1QUU4MTA5MUFERjZFNDIxNTk0QTZDOUYyQg==
+    access_expiration: 90000000

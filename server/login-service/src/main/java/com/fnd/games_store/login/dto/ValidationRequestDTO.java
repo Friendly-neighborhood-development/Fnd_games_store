@@ -1,12 +1,13 @@
-package com.fnd.games_store.login.controller.dto;
+package com.fnd.games_store.login.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
 @Data
-public class LoginResponseDTO {
+@AllArgsConstructor
+@NoArgsConstructor
+public class ValidationRequestDTO {
 
     private String token;
 

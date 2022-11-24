@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
-public class CaffeineConfig {
+public class CaffeineConfiguration {
 
     @Bean
     public CaffeineCacheManager caffeineCacheManager(){

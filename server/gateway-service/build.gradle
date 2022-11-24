@@ -13,9 +13,6 @@ repositories {
     mavenCentral()
 }
 
-bootJar {
-    enabled = false
-}
 
 jar {
     manifest {
@@ -34,14 +31,8 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
-//    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-//    // https://mvnrepository.com/artifact/io.github.openfeign/feign-jackson
-//    implementation group: 'io.github.openfeign', name: 'feign-jackson', version: '9.3.1'
-//    implementation group: 'com.auth0', name: 'java-jwt', version: '3.19.2'
-//    // https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core
-//    implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '9.0.63'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'

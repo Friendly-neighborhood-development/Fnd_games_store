@@ -6,5 +6,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/Friendly-neighborhood-development/games_store_production_environment_configurations
+          uri: https://github.com/Friendly-neighborhood-development/games_store_environment_configurations
           skipSslValidation: true

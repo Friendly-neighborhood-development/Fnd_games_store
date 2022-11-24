@@ -4,6 +4,8 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.Verification;
+import com.fnd.games_store.login.exception.BadTokenCredentialsException;
+import com.fnd.games_store.login.exception.JwtVerificationException;
 import com.fnd.games_store.login.jwt_utils.JwtValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,36 +25,26 @@ public class JwtValidatorImpl implements JwtValidator {
 
         if (verifyTokenSignature(token) && verifyTokenCredentials(token)) {
             isTokenValid = true;
-            log.warn("token verification for user: "+ getUsernameFromToken(token) +" with expiration date: " + parseToken(token).getExpiresAt() + " completed succesfully");
-        } else throw new RuntimeException("Token has not been verified");
-
+        } else throw new JwtVerificationException("Token has not been verified");
         return isTokenValid;
     }
-
-
 
     private Boolean verifyTokenSignature(String token) {
 
         Boolean isTokenValid = false;
 
+        Verification verifier = JWT.require(Algorithm.HMAC256(jwtAccessSecret));
+
+        verifier.build().verify(parseToken(token));
+
         try {
-            Verification verifier = JWT.require(Algorithm.HMAC256(jwtAccessSecret));
-
-            verifier.build().verify(parseToken(token));
-
             isTokenValid = true;
-
-        } catch (RuntimeException e) {
+        } catch (JwtVerificationException e) {
             e.printStackTrace();
-
         }
 
         return isTokenValid;
     }
-
-
-
-
 
     private Boolean verifyTokenCredentials(String token) {
 
@@ -64,16 +56,17 @@ public class JwtValidatorImpl implements JwtValidator {
 
         if (isTokenExpired && isUsernameValid) {
             isTokenValid = true;
-
-        } else throw new RuntimeException("Bad token credentials");
-
+        } else throw new BadTokenCredentialsException("Bad token credentials");
         return isTokenValid;
 
     }
 
     private String getUsernameFromToken(String token) {
+//        log.info("header "+parseToken(token).getHeader());
+        log.info("user " + parseToken(token).getClaims());
         return parseToken(token).getSubject();
     }
+
 
 
     private DecodedJWT parseToken(String token) {

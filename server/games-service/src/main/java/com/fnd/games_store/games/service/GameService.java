@@ -1,15 +1,14 @@
 package com.fnd.games_store.games.service;
 
 
-import com.fnd.games_store.games.GamesApplication;
-import com.fnd.games_store.games.controller.dto.GameRequestDTO;
+
+import com.fnd.games_store.games.dto.GameRequestDTO;
 import com.fnd.games_store.games.entity.Game;
-import com.fnd.games_store.games.controller.dto.GameResponseDTO;
+import com.fnd.games_store.games.dto.GameResponseDTO;
 import com.fnd.games_store.games.exceptions.GameAlreadyExistException;
 import com.fnd.games_store.games.exceptions.GameNotFoundException;
 import com.fnd.games_store.games.repository.GameRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.cache.annotation.CacheConfig;
@@ -22,9 +21,8 @@ import java.util.stream.Collectors;
 @CacheConfig(cacheNames = "games")
 @Cacheable
 @Service
+@Slf4j
 public class GameService {
-
-    private final Logger logger = LoggerFactory.getLogger(GamesApplication.class);
 
     private final GameRepository gameRepository;
 
@@ -39,7 +37,6 @@ public class GameService {
     }
 
    public List<GameResponseDTO> getGamesCatalogue(){
-        logger.info("games_catalogue cached");
         return gameRepository.findAll().stream().map(GameResponseDTO::new).collect(Collectors.toList());
     }
 

@@ -1,17 +1,18 @@
-package com.fnd.games_store.login.controller.dto;
+package com.fnd.games_store.games.dto;
 
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter
+@Getter
 public class ValidationResponseDTO {
 
     private Boolean isTokenValid;
-
 
 
 }

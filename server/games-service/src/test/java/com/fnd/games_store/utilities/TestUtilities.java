@@ -2,8 +2,8 @@ package com.fnd.games_store.utilities;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fnd.games_store.games.controller.dto.GameRequestDTO;
-import com.fnd.games_store.games.controller.dto.GameResponseDTO;
+import com.fnd.games_store.games.dto.GameRequestDTO;
+import com.fnd.games_store.games.dto.GameResponseDTO;
 import com.fnd.games_store.games.entity.Game;
 
 import java.math.BigDecimal;
