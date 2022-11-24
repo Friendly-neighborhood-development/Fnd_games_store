@@ -13,9 +13,6 @@ repositories {
     mavenCentral()
 }
 
-bootJar {
-    enabled = false
-}
 
 jar {
     manifest {
