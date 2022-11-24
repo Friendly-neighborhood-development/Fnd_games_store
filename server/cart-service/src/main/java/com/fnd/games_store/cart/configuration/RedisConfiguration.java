@@ -28,24 +28,6 @@ public class RedisConfiguration {
 	 }
 
 
-
-
-//    @Bean
-//    public RedisTemplate<String, Object> redisTemplate() {
-//        RedisTemplate<String, Object> template = new RedisTemplate<>();
-//        template.setConnectionFactory(lettuceConnectionFactory());
-//        template.setEnableTransactionSupport(true);
-//        template.setHashKeySerializer(new StringRedisSerializer());
-//        template.setKeySerializer(new StringRedisSerializer());
-//        template.setValueSerializer(new JdkSerializationRedisSerializer());
-//        return template;
-//    }
-
-//    @Bean
-//    JedisConnectionFactory jedisConnectionFactory() {
-//        return new JedisConnectionFactory();
-//    }
-
     @Bean
     public RedisTemplate<String, Object> redisTemplate() {
         RedisTemplate<String, Object> template = new RedisTemplate<>();

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface UserValidationClient {
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "login/v1/validation", consumes = "application/json", produces = "application/json")
+    @RequestMapping(method = RequestMethod.POST, value = "login/v1/validate", consumes = "application/json", produces = "application/json")
     ResponseEntity<ValidationResponseDTO> validateUser(@RequestHeader("Authorization") String AuthorizationHeaderValue);
 
 }
