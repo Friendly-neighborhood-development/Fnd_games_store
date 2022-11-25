@@ -25,7 +25,7 @@ games store is composed of microservices developed with Spring(Java) and UI base
 * Testing: Junit5, Mockito
 
 <a name="Contact-us"><h3>Architecture</h3></a>
-![Homepage](documentation/images/architecture.png)
+![Homepage](server/documentation/images/architecture.png)
 
 <a name="Backend-stack"><h3>Features</h3></a>
 * This application uses Netflix Eureka as a registry service
