@@ -27,3 +27,27 @@ server:
   servlet:
     context-path: /games
   port: 8081
+
+
+#spring:
+#  jpa:
+#    flyway:
+#      enabled: true
+#      validate-on-migrate: true
+#    database: POSTGRESQL
+#    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+#    hibernate:
+#      ddl-auto: none
+#    properties:
+#  datasource:
+#    platform: postgres
+#    url: jdbc:postgresql://localhost:5432/games_service_database
+#    username: postgres
+#    password: root
+#    driver-class-name: org.postgresql.Driver
+#    activate:
+#      on-profile: "dev"
+#server:
+#  servlet:
+#    context-path: /games
+#  port: 8081

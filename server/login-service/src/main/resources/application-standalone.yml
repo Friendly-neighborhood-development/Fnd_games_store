@@ -32,3 +32,32 @@ variables:
   security:
     access_secret: OTFBRjg3MUMwOUYxODlFNDc3NEQwNTAxMTg0M0M0NzI5QTczNDY1QUU4MTA5MUFERjZFNDIxNTk0QTZDOUYyQg==
     access_expiration: 90000000
+
+
+#spring:
+#  jpa:
+#    flyway:
+#      enabled: true
+#      validate-on-migrate: true
+#    database: POSTGRESQL
+#    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+#    hibernate:
+#      ddl-auto: none
+#    properties:
+#  datasource:
+#    platform: postgres
+#    url: jdbc:postgresql://localhost:5432/login_service_database
+#    username: postgres
+#    password: root
+#    driver-class-name: org.postgresql.Driver
+#
+#server:
+#  servlet:
+#    context-path: /login
+#  port: 8082
+#
+#
+#variables:
+#  security:
+#    access_secret: OTFBRjg3MUMwOUYxODlFNDc3NEQwNTAxMTg0M0M0NzI5QTczNDY1QUU4MTA5MUFERjZFNDIxNTk0QTZDOUYyQg==
+#    access_expiration: 90000000
