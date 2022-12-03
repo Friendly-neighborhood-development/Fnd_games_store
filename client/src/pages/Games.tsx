@@ -13,11 +13,11 @@ const Games = () => {
 
     return (
         <MainLayout>
-            <main className={"w-full flex flex-col"}>
+            <div className={"w-full flex flex-col"}>
                 <GamesCategory title={"Популярные"} type={"popular"} games={games} isLoading={isLoading} error={error}/>
                 <GamesCategory title={"Распродажа"} type={"sale"} games={games} isLoading={isLoading} error={error}/>
                 <GamesCategory title={"Новинки"} type={"new"} games={games} isLoading={isLoading} error={error}/>
-            </main>
+            </div>
         </MainLayout>
     );
 };

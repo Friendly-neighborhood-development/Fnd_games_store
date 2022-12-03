@@ -31,10 +31,10 @@ const Test: FC = memo(() => {
             await dispatch(login("admin", "password"))
             console.log(localStorage.token + " - 2");
             const res = await axios.get<IGame[]>(
-                `${BASE_API_URL}/getAll`,
+                `${BASE_API_URL}/games/getAll`,
                 {headers: {Authorization: "Bearer " + localStorage.getItem("token")}}
             )
-            console.log("Сейчас запрос по адресу /getAll");
+            console.log("Сейчас запрос по адресу /games /getAll");
             console.log(res.data);
         }
         fetchData()

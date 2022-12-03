@@ -8,7 +8,7 @@ interface CartRowProps {
 const CartRow: FC<CartRowProps> = ({game}) => {
     const {name, price, base64Image, discount} = game
     return (
-        <div className={"flex p-4 space-x-4 dark:bg-slate-800 rounded-lg"}>
+        <div className={"flex p-2 lg:p-4 space-x-4 dark:bg-slate-800 rounded-lg"}>
             <div className={"w-32 h-32 rounded overflow-hidden flex items-center justify-center"}>
                 <img src={base64Image} alt={name}/>
             </div>

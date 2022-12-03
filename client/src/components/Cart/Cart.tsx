@@ -57,7 +57,7 @@ const Cart: FC<CartProps> = () => {
                                 leaveTo="opacity-0 scale-95"
                             >
                                 <Dialog.Panel
-                                    className="w-full max-w-md md:max-w-lg  transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all dark:bg-slate-700 dark:text-white" >
+                                    className="w-full max-w-md md:max-w-lg  transform overflow-hidden rounded-2xl bg-white p-4 lg:p-6 text-left align-middle shadow-xl transition-all dark:bg-slate-700 dark:text-white" >
                                     <Dialog.Title
                                         as="h3"
                                         className="text-lg font-medium leading-6 text-gray-900 dark:text-white"
@@ -65,7 +65,7 @@ const Cart: FC<CartProps> = () => {
                                         Your cart
                                     </Dialog.Title>
                                     <div className="mt-2 space-y-4">
-                                        {games.map(game => <CartRow game={game}/> )}
+                                        {games.map(game => <CartRow game={game} key={game.id}/> )}
                                     </div>
                                     <div className={'p-2 flex justify-end'}>
                                     </div>
