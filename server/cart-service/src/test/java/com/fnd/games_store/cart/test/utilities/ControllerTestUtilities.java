@@ -57,7 +57,7 @@ public class ControllerTestUtilities {
 
     protected Game createTestGameEntity(int differenceParameter){
         Game game = new Game();
-        game.setGameId("id"+ differenceParameter);
+        game.setId("id"+ differenceParameter);
         game.setName("name" + differenceParameter);
         game.setGenre("genre" + differenceParameter);
         game.setReleaseDate("date" + differenceParameter);
@@ -92,7 +92,7 @@ public class ControllerTestUtilities {
 
     protected GameResponseDTO createTestGameResponse(int differenceParameter){
         GameResponseDTO game = new GameResponseDTO();
-        game.setGameId("id"+ differenceParameter);
+        game.setId("id"+ differenceParameter);
         game.setName("name" + differenceParameter);
         game.setGenre("genre" + differenceParameter);
         game.setReleaseDate("date" + differenceParameter);

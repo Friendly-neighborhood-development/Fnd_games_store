@@ -1,7 +1,5 @@
 package com.fnd.games_store.cart.test.utilities;
 
-import com.fnd.games_store.cart.dto.CartRequestDTO;
-import com.fnd.games_store.cart.dto.CartResponseDTO;
 import com.fnd.games_store.cart.dto.GameResponseDTO;
 import com.fnd.games_store.cart.entity.Cart;
 import com.fnd.games_store.cart.entity.Game;
@@ -12,9 +10,7 @@ import org.mockito.Mock;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ServiceTestUtilities {
 
@@ -45,7 +41,7 @@ public class ServiceTestUtilities {
 
     protected Game createTestGameEntity(int differenceParameter){
         Game game = new Game();
-        game.setGameId("id"+ differenceParameter);
+        game.setId("id"+ differenceParameter);
         game.setName("name" + differenceParameter);
         game.setGenre("genre" + differenceParameter);
         game.setReleaseDate("date" + differenceParameter);
@@ -63,7 +59,7 @@ public class ServiceTestUtilities {
 
     protected GameResponseDTO createTestGameResponse(int differenceParameter){
         GameResponseDTO game = new GameResponseDTO();
-        game.setGameId("id"+ differenceParameter);
+        game.setId("id"+ differenceParameter);
         game.setName("name" + differenceParameter);
         game.setGenre("genre" + differenceParameter);
         game.setReleaseDate("date" + differenceParameter);
