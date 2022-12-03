@@ -4,13 +4,13 @@ import {ComputerDesktopIcon, MoonIcon, SunIcon} from "@heroicons/react/24/outlin
 import {IIcon} from "../types/IIcon";
 import {ChevronDownIcon} from "@heroicons/react/20/solid";
 
-interface Itheme {
+interface ITheme {
     id: number,
     mode: "light" | "dark" | "system"
     Icon: React.FC<IIcon>
 }
 
-const themes: Array<Itheme> = [
+const themes: Array<ITheme> = [
     {id: 1, mode: 'light', Icon: SunIcon},
     {id: 2, mode: 'dark', Icon: MoonIcon},
     {id: 3, mode: 'system', Icon: ComputerDesktopIcon},
@@ -18,13 +18,13 @@ const themes: Array<Itheme> = [
 
 const TestThemeSwitcher = memo(() => {
     const [selectedTheme, setSelectedTheme] = useState(themes[0])
-    const switchTheme = (theme: Itheme) => {
+    const switchTheme = (theme: ITheme) => {
         switch (theme.mode) {
             case "light":
                 localStorage.theme = "light"
                 document.documentElement.classList.add('light')
                 document.documentElement.classList.remove('dark')
-                document.documentElement.style.backgroundColor = "#f3f4f6"
+                document.documentElement.style.backgroundColor = "#ffffff"
                 setSelectedTheme(themes[0])
                 break
             case "dark":
