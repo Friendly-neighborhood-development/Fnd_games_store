@@ -38,11 +38,11 @@ public class GameControllerIntegrationTesting extends TestUtilities {
 
 
     @Test
-    void test1() throws Exception {
+    void createGameEntry_ShouldReturnProperGameEntry() throws Exception {
 
 
 
-        MvcResult requestResult = this.mvc.perform(post("/new").
+        MvcResult requestResult = this.mvc.perform(post("/v1/catalogue/new").
                 content(createGameControllerRequest(createAppropriateGameRequestDTO())).
                 contentType(MediaType.APPLICATION_JSON).
                 accept(MediaType.APPLICATION_JSON)).
@@ -50,6 +50,7 @@ public class GameControllerIntegrationTesting extends TestUtilities {
                 andReturn();
         String body = requestResult.getResponse().getContentAsString();
         GameResponseDTO gameResponseDTO = new ObjectMapper().readValue(body, GameResponseDTO.class);
+
         assertThat(gameResponseDTO).isEqualTo(createAppropriateGameResponseDTO());
 
 
