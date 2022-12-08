@@ -45,7 +45,7 @@ public class GameResponseDTO {
     @Override
     public String toString() {
         return "{" +
-                "gameId=" + id +
+                "id=" + id +
                 ", name=" + name +
                 ", genre=" + genre +
                 ", releaseDate=" + releaseDate +

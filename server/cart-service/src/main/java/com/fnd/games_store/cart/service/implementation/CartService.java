@@ -29,13 +29,9 @@ public class CartService implements CartCrudService {
     @Override
     public List<GameResponseDTO> getCartContent(String userId) {
 
-        Boolean isCartEmpty = !repository.findById(userId).isPresent();
+        Cart cart = repository.findById(userId).orElse(new Cart());
 
-        if(isCartEmpty) {
-            return new ArrayList<>();
-        } else {
-            return repository.findById(userId).get().getGameData().stream().map(GameResponseDTO::new).collect(Collectors.toList());
-        }
+        return cart.getGameData().stream().map(GameResponseDTO::new).collect(Collectors.toList());
     }
 
 

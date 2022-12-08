@@ -7,14 +7,13 @@ import com.fnd.games_store.cart.CartApplication;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(classes = CartApplication.class)
 @Slf4j
-public class DeleteGameTest extends RepositoryTestUtilities {
+public class Repository_DeleteGameTest extends RepositoryTestUtilities {
 
 
 

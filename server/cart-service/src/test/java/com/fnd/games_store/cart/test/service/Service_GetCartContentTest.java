@@ -2,7 +2,6 @@ package com.fnd.games_store.cart.test.service;
 
 
 import com.fnd.games_store.cart.test.utilities.ServiceTestUtilities;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -18,7 +17,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-public class GetCartContentTest extends ServiceTestUtilities {
+public class Service_GetCartContentTest extends ServiceTestUtilities {
 
 
 
@@ -31,6 +30,11 @@ public class GetCartContentTest extends ServiceTestUtilities {
         verify(repository).findById(userId);
 
     }
+
+
+
+
+
 
 
     @BeforeEach
