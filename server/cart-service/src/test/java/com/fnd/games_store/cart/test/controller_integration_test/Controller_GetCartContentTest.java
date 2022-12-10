@@ -1,5 +1,6 @@
 package com.fnd.games_store.cart.test.controller_integration_test;
 
+import com.fnd.games_store.cart.CartApplication;
 import com.fnd.games_store.cart.dto.GameResponseDTO;
 import com.fnd.games_store.cart.dto.ValidationResponseDTO;
 import com.fnd.games_store.cart.test.configuration.TestSecurityConfiguration;
@@ -23,8 +24,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-@SpringBootTest
-@Import(TestSecurityConfiguration.class)
+@SpringBootTest(classes = CartApplication.class)
 @AutoConfigureMockMvc
 @Slf4j
 public class Controller_GetCartContentTest extends ControllerTestUtilities {
