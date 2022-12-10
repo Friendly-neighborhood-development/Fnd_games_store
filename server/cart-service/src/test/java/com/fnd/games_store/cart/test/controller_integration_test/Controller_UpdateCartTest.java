@@ -32,6 +32,7 @@ public class Controller_UpdateCartTest extends ControllerTestUtilities {
     void test_updateCartContent() throws Exception {
 
         MvcResult result = this.mvc.perform(post("/v1/update")
+                                    .header("authorization", "")
                                     .content(jsonCartRequestDTO(createAppropriateCartRequest(userId,testGameSet)))
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .accept(MediaType.APPLICATION_JSON))

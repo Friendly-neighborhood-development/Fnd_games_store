@@ -1,4 +1,4 @@
-package com.fnd.games_store.cart.test;
+package com.fnd.games_store.cart.test.filter;
 
 import com.fnd.games_store.cart.filter.JwtFilter;
 import com.fnd.games_store.cart.rest.UserValidationClient;
