@@ -1,30 +1,23 @@
 package com.fnd.games_store.cart.test.controller_integration_test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import com.fnd.games_store.cart.CartApplication;
-import com.fnd.games_store.cart.dto.GameRequestDTO;
 import com.fnd.games_store.cart.dto.GameResponseDTO;
-import com.fnd.games_store.cart.service.CartCrudService;
+import com.fnd.games_store.cart.dto.ValidationResponseDTO;
+import com.fnd.games_store.cart.test.configuration.TestSecurityConfiguration;
 import com.fnd.games_store.cart.test.utilities.ControllerTestUtilities;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MvcResult;
 
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
@@ -34,13 +27,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = CartApplication.class)
 @AutoConfigureMockMvc
 @Slf4j
-public class GetCartContentTest extends ControllerTestUtilities {
+public class Controller_GetCartContentTest extends ControllerTestUtilities {
+
 
 
     @Test
     void getCartContent_ShouldReturnProperData() throws Exception {
 
         MvcResult result = this.mvc.perform(post("/v1/content")
+                                .header("authorization", "")
                                 .content(jsonGameRequestDTO(createAppropriateGameRequestDTO(userId)))
                                 .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
                                 .andExpect(status().isOk())
@@ -50,7 +45,8 @@ public class GetCartContentTest extends ControllerTestUtilities {
 
         List<GameResponseDTO> response = objectMapper.readValue(body, ArrayList.class);
 
-        assertThat(response.toString()).isEqualTo(testGameResponse.toString());
+        assertThat(testGameResponse.toString()).isEqualTo(response.toString());
+
 
     }
 
@@ -58,6 +54,7 @@ public class GetCartContentTest extends ControllerTestUtilities {
     void getCartContent_ShouldReturnInstanceOfList() throws Exception {
 
         MvcResult result = this.mvc.perform(post("/v1/content")
+                        .header("authorization", "")
                         .content(jsonGameRequestDTO(createAppropriateGameRequestDTO(userId)))
                         .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -83,6 +80,19 @@ public class GetCartContentTest extends ControllerTestUtilities {
 
         when(service.getCartContent(userId)).thenReturn(testGameResponse);
 
+    }
+
+    @BeforeEach
+    void userValidationFeignClientSetup(){
+
+        Boolean tokenIsValid = true;
+
+        ValidationResponseDTO response = new ValidationResponseDTO();
+        response.setIsTokenValid(true);
+
+        ResponseEntity<ValidationResponseDTO> responseBody = ResponseEntity.ok(response);
+
+        when(userValidationClient.validateUser("")).thenReturn(responseBody);
     }
 
 }

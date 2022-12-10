@@ -4,6 +4,7 @@ package com.fnd.games_store.cart.test.controller_integration_test;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fnd.games_store.cart.CartApplication;
 import com.fnd.games_store.cart.dto.CartResponseDTO;
+import com.fnd.games_store.cart.dto.ValidationResponseDTO;
 import com.fnd.games_store.cart.test.utilities.ControllerTestUtilities;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MvcResult;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,12 +26,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = CartApplication.class)
 @AutoConfigureMockMvc
 @Slf4j
-public class UpdateCartTest extends ControllerTestUtilities {
+public class Controller_UpdateCartTest extends ControllerTestUtilities {
 
     @Test
     void test_updateCartContent() throws Exception {
 
         MvcResult result = this.mvc.perform(post("/v1/update")
+                                    .header("authorization", "")
                                     .content(jsonCartRequestDTO(createAppropriateCartRequest(userId,testGameSet)))
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .accept(MediaType.APPLICATION_JSON))
@@ -54,6 +57,18 @@ public class UpdateCartTest extends ControllerTestUtilities {
 
     }
 
+    @BeforeEach
+    void userValidationFeignClientSetup(){
+
+        Boolean tokenIsValid = true;
+
+        ValidationResponseDTO response = new ValidationResponseDTO();
+        response.setIsTokenValid(true);
+
+        ResponseEntity<ValidationResponseDTO> responseBody = ResponseEntity.ok(response);
+
+        when(userValidationClient.validateUser("")).thenReturn(responseBody);
+    }
 
 
 }

@@ -7,6 +7,7 @@ import com.fnd.games_store.cart.dto.CartResponseDTO;
 import com.fnd.games_store.cart.dto.GameRequestDTO;
 import com.fnd.games_store.cart.dto.GameResponseDTO;
 import com.fnd.games_store.cart.entity.Game;
+import com.fnd.games_store.cart.rest.UserValidationClient;
 import com.fnd.games_store.cart.service.CartCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -21,6 +22,8 @@ public class ControllerTestUtilities {
     @Autowired
     protected MockMvc mvc;
 
+    @MockBean
+    protected UserValidationClient userValidationClient;
     @MockBean
     protected CartCrudService service;
     protected ObjectMapper objectMapper = new ObjectMapper();
@@ -57,7 +60,7 @@ public class ControllerTestUtilities {
 
     protected Game createTestGameEntity(int differenceParameter){
         Game game = new Game();
-        game.setGameId("id"+ differenceParameter);
+        game.setId("id"+ differenceParameter);
         game.setName("name" + differenceParameter);
         game.setGenre("genre" + differenceParameter);
         game.setReleaseDate("date" + differenceParameter);
@@ -92,7 +95,7 @@ public class ControllerTestUtilities {
 
     protected GameResponseDTO createTestGameResponse(int differenceParameter){
         GameResponseDTO game = new GameResponseDTO();
-        game.setGameId("id"+ differenceParameter);
+        game.setId("id"+ differenceParameter);
         game.setName("name" + differenceParameter);
         game.setGenre("genre" + differenceParameter);
         game.setReleaseDate("date" + differenceParameter);
