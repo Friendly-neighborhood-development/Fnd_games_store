@@ -17,13 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 
-@Component
 @Slf4j
 public class JwtFilter extends OncePerRequestFilter {
 
-
-    @Autowired
-    private Environment environment;
 
     private final UserValidationClient userValidator;
 
@@ -37,19 +33,11 @@ public class JwtFilter extends OncePerRequestFilter {
 
         String token = request.getHeader("authorization");
 
-        Boolean isTestProfileActive = Arrays.stream(environment.getActiveProfiles()).anyMatch(env -> env.equalsIgnoreCase("test"));
+        Boolean isUserValid = userValidator.validateUser(token).getBody().getIsTokenValid();
 
-
-        if(isTestProfileActive){
+        if (isUserValid){
             filterChain.doFilter(request, response);
-        } else {
-            Boolean isUserValid = userValidator.validateUser(token).getBody().getIsTokenValid();
-
-            if (isUserValid){
-                filterChain.doFilter(request, response);
-            } else throw new UserValidationFailedException("Failed to validate user");
-        }
-
+        } else throw new UserValidationFailedException("Failed to validate user");
 
 
     }
