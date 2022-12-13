@@ -16,18 +16,18 @@ import org.springframework.stereotype.Component;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 
-    private final AccountRepository accountReposiory;
+    private final AccountRepository accountRepository;
 
 
     @Autowired
-    public UserDetailsServiceImpl(AccountRepository accountReposiory) {
-        this.accountReposiory = accountReposiory;
+    public UserDetailsServiceImpl(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
     }
 
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        final Account userAccount = accountReposiory.findUserByUsername(username).orElseThrow(()-> new AccountNotFoundException("Account not found"));
+        final Account userAccount = accountRepository.findUserByUsername(username).orElseThrow(()-> new AccountNotFoundException("Account not found"));
         return new User(userAccount.getUsername(),userAccount.getPassword(), userAccount.getAuthorities());
     }
 
