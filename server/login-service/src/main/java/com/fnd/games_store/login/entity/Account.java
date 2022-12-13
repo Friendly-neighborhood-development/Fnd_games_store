@@ -32,6 +32,14 @@ public class Account {
             inverseJoinColumns = @JoinColumn(name ="authority_id"))
     private List<Authority> authorities;
 
+    private String email;
+    private boolean accountNonExpired;
+
+    private boolean accountNonLocked;
+
+    private boolean credentialsNonExpired;
+
+    private boolean enabled;
 
     @Override
     public String toString() {
@@ -40,6 +48,11 @@ public class Account {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
 //                ", authorities=" + authorities +
+                ", email='" + email + '\'' +
+                ", accountNonExpired=" + accountNonExpired +
+                ", accountNonLocked=" + accountNonLocked +
+                ", credentialsNonExpired=" + credentialsNonExpired +
+                ", enabled=" + enabled +
                 '}';
     }
 }
