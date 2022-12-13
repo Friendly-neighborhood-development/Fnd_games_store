@@ -1,6 +1,7 @@
 package com.fnd.games_store.login.jwt_utils.implementation;
 
 import com.fnd.games_store.login.entity.Account;
+import com.fnd.games_store.login.exception.AccountNotFoundException;
 import com.fnd.games_store.login.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        final Account userAccount = accountReposiory.findUserByUsername(username).get();
+        final Account userAccount = accountReposiory.findUserByUsername(username).orElseThrow(()-> new AccountNotFoundException("Account not found"));
         return new User(userAccount.getUsername(),userAccount.getPassword(), userAccount.getAuthorities());
     }
 
