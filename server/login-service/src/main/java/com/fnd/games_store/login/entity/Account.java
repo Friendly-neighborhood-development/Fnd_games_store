@@ -1,12 +1,9 @@
 package com.fnd.games_store.login.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,13 +30,13 @@ public class Account {
     private List<Authority> authorities;
 
     private String email;
-    private boolean accountNonExpired;
+    private Boolean isAccountNonExpired;
 
-    private boolean accountNonLocked;
+    private Boolean isAccountNonLocked;
 
-    private boolean credentialsNonExpired;
+    private Boolean isCredentialsNonExpired;
 
-    private boolean enabled;
+    private Boolean isAccountEnabled;
 
     @Override
     public String toString() {
@@ -49,10 +46,10 @@ public class Account {
                 ", password='" + password + '\'' +
 //                ", authorities=" + authorities +
                 ", email='" + email + '\'' +
-                ", accountNonExpired=" + accountNonExpired +
-                ", accountNonLocked=" + accountNonLocked +
-                ", credentialsNonExpired=" + credentialsNonExpired +
-                ", enabled=" + enabled +
+                ", accountNonExpired=" + isAccountNonExpired +
+                ", accountNonLocked=" + isAccountNonLocked +
+                ", credentialsNonExpired=" + isCredentialsNonExpired +
+                ", enabled=" + isAccountEnabled +
                 '}';
     }
 }
