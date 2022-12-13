@@ -5,13 +5,12 @@ import com.fnd.games_store.login.exception.AccountNotFoundException;
 import com.fnd.games_store.login.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
-import java.util.Collection;
+import java.time.OffsetDateTime;
 
 
 @Component
@@ -33,10 +32,22 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return new User(userAccount.getUsername(),
                         userAccount.getPassword(),
                         userAccount.getIsAccountEnabled(),
-                        userAccount.getIsAccountNonExpired(),
-                        userAccount.getIsCredentialsNonExpired(),
+                        checkIfDateExpired(userAccount.getExpirationDate()),
+                        checkIfDateExpired(userAccount.getCredentialsExpirationDate()),
                         userAccount.getIsAccountNonLocked(),
                         userAccount.getAuthorities());
+    }
+
+    private Boolean checkIfDateExpired(OffsetDateTime checkingDate){
+
+        OffsetDateTime currentDate = OffsetDateTime.now();
+
+        if(currentDate.isBefore(checkingDate)){
+            return true;
+        } else{
+            return false;
+        }
+
     }
 
 

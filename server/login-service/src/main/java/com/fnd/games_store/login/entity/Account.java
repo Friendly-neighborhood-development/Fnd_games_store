@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 @Entity
@@ -30,12 +31,13 @@ public class Account {
     private List<Authority> authorities;
 
     private String email;
-    private Boolean isAccountNonExpired;
-
+    @Column(name = "expiration_date")
+    private OffsetDateTime expirationDate;
+    @Column(name = "is_account_non_locked")
     private Boolean isAccountNonLocked;
-
-    private Boolean isCredentialsNonExpired;
-
+    @Column(name = "credentials_expiration_date")
+    private OffsetDateTime credentialsExpirationDate;
+    @Column(name ="is_account_enabled")
     private Boolean isAccountEnabled;
 
     @Override
@@ -46,9 +48,9 @@ public class Account {
                 ", password='" + password + '\'' +
 //                ", authorities=" + authorities +
                 ", email='" + email + '\'' +
-                ", accountNonExpired=" + isAccountNonExpired +
+                ", expirationDate=" + expirationDate +
                 ", accountNonLocked=" + isAccountNonLocked +
-                ", credentialsNonExpired=" + isCredentialsNonExpired +
+                ", credentialsExpirationDate=" + credentialsExpirationDate +
                 ", enabled=" + isAccountEnabled +
                 '}';
     }
