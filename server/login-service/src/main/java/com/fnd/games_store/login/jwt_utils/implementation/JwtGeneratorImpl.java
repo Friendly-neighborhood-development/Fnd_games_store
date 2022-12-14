@@ -28,12 +28,11 @@ public class JwtGeneratorImpl implements JwtGenerator {
     private Long accessTokenExpirationDuration;
 
 
-
-
     @Override
     public String generateJwtToken(UserDetails userDetails) {
 
         String userName = userDetails.getUsername();
+
 
         return JWT.create().withSubject(userName)
                 .withIssuedAt(new Date()).withExpiresAt(new Date(System.currentTimeMillis() + accessTokenExpirationDuration))

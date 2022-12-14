@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(classes = LoginApplication.class)
 @Slf4j
-public class JwtGeneratorTest {
+public class JwtGenerator_UnitTest {
 
     @Autowired
     JwtGeneratorImpl jwtGeneratorImpl;
