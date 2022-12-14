@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "accounts")
@@ -53,5 +54,19 @@ public class Account {
                 ", credentialsExpirationDate=" + credentialsExpirationDate +
                 ", enabled=" + isAccountEnabled +
                 '}';
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return Objects.equals(id, account.id) && Objects.equals(username, account.username) && Objects.equals(password, account.password) && Objects.equals(authorities, account.authorities) && Objects.equals(email, account.email) && Objects.equals(expirationDate, account.expirationDate) && Objects.equals(isAccountNonLocked, account.isAccountNonLocked) && Objects.equals(credentialsExpirationDate, account.credentialsExpirationDate) && Objects.equals(isAccountEnabled, account.isAccountEnabled);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, password, authorities, email, expirationDate, isAccountNonLocked, credentialsExpirationDate, isAccountEnabled);
     }
 }
