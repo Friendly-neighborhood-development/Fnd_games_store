@@ -35,9 +35,8 @@ public class JwtValidatorImpl implements JwtValidator {
 
         Verification verifier = JWT.require(Algorithm.HMAC256(jwtAccessSecret));
 
-        verifier.build().verify(parseToken(token));
-
         try {
+            verifier.build().verify(parseToken(token));
             isTokenValid = true;
         } catch (JwtVerificationException e) {
             e.printStackTrace();
