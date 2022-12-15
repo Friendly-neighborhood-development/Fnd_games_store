@@ -15,6 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.test.context.BootstrapWith;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +62,7 @@ public class LoadUserByUserName_IntegrationTest {
 
 
     private User userFromDB(String username){
-        final Account userAccount = repository.findUserByUsername(username).orElseThrow(()-> new AccountNotFoundException("Account not found"));
+        final Account userAccount = repository.findAccountByUsername(username).orElseThrow(()-> new AccountNotFoundException("Account not found"));
         return new User(userAccount.getUsername(),
                 userAccount.getPassword(),
                 userAccount.getIsAccountEnabled(),
@@ -71,9 +72,9 @@ public class LoadUserByUserName_IntegrationTest {
                 userAccount.getAuthorities());
     }
 
-    private Boolean checkIfDateExpired(OffsetDateTime checkingDate) {
+    private Boolean checkIfDateExpired(LocalDate checkingDate) {
 
-        OffsetDateTime currentDate = OffsetDateTime.now();
+        LocalDate currentDate = LocalDate.now();
 
         if (currentDate.isBefore(checkingDate)) {
             return true;

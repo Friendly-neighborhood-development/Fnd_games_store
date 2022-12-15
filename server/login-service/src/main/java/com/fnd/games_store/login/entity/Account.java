@@ -4,6 +4,8 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -33,11 +35,11 @@ public class Account {
 
     private String email;
     @Column(name = "expiration_date")
-    private OffsetDateTime expirationDate;
+    private LocalDate expirationDate;
     @Column(name = "is_account_non_locked")
     private Boolean isAccountNonLocked;
     @Column(name = "credentials_expiration_date")
-    private OffsetDateTime credentialsExpirationDate;
+    private LocalDate credentialsExpirationDate;
     @Column(name ="is_account_enabled")
     private Boolean isAccountEnabled;
 

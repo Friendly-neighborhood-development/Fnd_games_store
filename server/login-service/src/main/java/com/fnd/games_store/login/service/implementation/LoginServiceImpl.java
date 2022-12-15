@@ -2,7 +2,6 @@ package com.fnd.games_store.login.service.implementation;
 
 
 import com.fnd.games_store.login.dto.LoginResponseDTO;
-import com.fnd.games_store.login.entity.Authority;
 import com.fnd.games_store.login.jwt_utils.JwtGenerator;
 import com.fnd.games_store.login.repository.AccountRepository;
 import com.fnd.games_store.login.service.LoginService;
@@ -14,9 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.HashMap;
-import java.util.List;
 
 @Service
 @Slf4j
@@ -42,7 +38,7 @@ public class LoginServiceImpl implements LoginService {
 
         UserDetails loadedUser = userDetails.loadUserByUsername(username);
 
-        String userId = accountRepository.findUserByUsername(username).get().getId();
+        String userId = accountRepository.findAccountByUsername(username).get().getId();
 
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username,password,loadedUser.getAuthorities()));
 

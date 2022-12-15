@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 
@@ -28,7 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        final Account userAccount = accountRepository.findUserByUsername(username).orElseThrow(()-> new AccountNotFoundException("Account not found"));
+        final Account userAccount = accountRepository.findAccountByUsername(username).orElseThrow(()-> new AccountNotFoundException("Account not found"));
         return new User(userAccount.getUsername(),
                         userAccount.getPassword(),
                         userAccount.getIsAccountEnabled(),
@@ -38,9 +40,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                         userAccount.getAuthorities());
     }
 
-    private Boolean checkIfDateExpired(OffsetDateTime checkingDate){
+    private Boolean checkIfDateExpired(LocalDate checkingDate){
 
-        OffsetDateTime currentDate = OffsetDateTime.now();
+        LocalDate currentDate = LocalDate.now();
 
         if(currentDate.isBefore(checkingDate)){
             return true;
