@@ -64,11 +64,11 @@ public class Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return Objects.equals(id, account.id) && Objects.equals(username, account.username) && Objects.equals(password, account.password) && Objects.equals(authorities, account.authorities) && Objects.equals(email, account.email) && Objects.equals(expirationDate, account.expirationDate) && Objects.equals(isAccountNonLocked, account.isAccountNonLocked) && Objects.equals(credentialsExpirationDate, account.credentialsExpirationDate) && Objects.equals(isAccountEnabled, account.isAccountEnabled);
+        return Objects.equals(id, account.id) && Objects.equals(username, account.username) && Objects.equals(password, account.password) && Objects.equals(email, account.email) && Objects.equals(expirationDate, account.expirationDate) && Objects.equals(isAccountNonLocked, account.isAccountNonLocked) && Objects.equals(credentialsExpirationDate, account.credentialsExpirationDate) && Objects.equals(isAccountEnabled, account.isAccountEnabled);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, authorities, email, expirationDate, isAccountNonLocked, credentialsExpirationDate, isAccountEnabled);
+        return Objects.hash(id, username, password, email, expirationDate, isAccountNonLocked, credentialsExpirationDate, isAccountEnabled);
     }
 }
