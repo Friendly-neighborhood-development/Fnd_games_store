@@ -32,9 +32,6 @@ public class GenerateJwtToken_UnitTest {
         assertThat(getUsernameFromToken(generateTestToken(generateUserDetails()))).isEqualTo(getUsernameFromToken(referenceToken));
     }
 
-
-
-
     private UserDetails generateUserDetails(){
         List<GrantedAuthority> adminGrantedAuthorities = new ArrayList<>();
 
