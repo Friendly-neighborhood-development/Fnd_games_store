@@ -32,7 +32,7 @@ public class RegistrationTest {
         this.authorityRepository = authorityRepository;
     }
 
-    @Test
+//    @Test
     void getAnythingFromDbTest(){
        assertThat(authorityRepository.findAll()).isNotNull();
     }
