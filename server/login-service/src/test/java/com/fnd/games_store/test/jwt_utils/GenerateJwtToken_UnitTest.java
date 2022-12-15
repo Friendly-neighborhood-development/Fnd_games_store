@@ -47,7 +47,7 @@ public class GenerateJwtToken_UnitTest {
 
 
     private String generateTestToken(UserDetails userDetails){
-        return jwtGenerator.generateJwtToken(generateUserDetails());
+        return jwtGenerator.generateJwtToken(generateUserDetails("admin"));
     }
 
     private String getUsernameFromToken(String token) {
