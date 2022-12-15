@@ -29,22 +29,13 @@ public class GenerateJwtToken_UnitTest {
 
     @Test
     void generateJwtToken_ShouldReturnTokenWithSpecifiedUsername(){
-        assertThat(getUsernameFromToken(generateTestToken(generateUserDetails()))).isEqualTo(getUsernameFromToken(referenceToken));
+        assertThat(getUsernameFromToken(generateTestToken(generateUserDetails("admin")))).isEqualTo(getUsernameFromToken(referenceToken));
     }
 
-    private UserDetails generateUserDetails(){
+    private UserDetails generateUserDetails(String username){
         List<GrantedAuthority> adminGrantedAuthorities = new ArrayList<>();
 
-//        Authority adminAuthority = new Authority("1", "super_user");
-//        Authority staffAuthority = new Authority("2", "staff_user");
-//        Authority regularAuthority = new Authority("3", "regular_user");
-//
-//
-//        adminGrantedAuthorities.add(adminAuthority);
-//        adminGrantedAuthorities.add(staffAuthority);
-//        adminGrantedAuthorities.add(regularAuthority);
-
-        return new User("admin",
+        return new User(username,
                 "",
                 true,
                 true,
