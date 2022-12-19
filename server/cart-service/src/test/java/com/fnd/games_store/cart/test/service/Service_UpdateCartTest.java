@@ -15,7 +15,7 @@ import org.mockito.quality.Strictness;
 import java.util.Optional;
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-public class Repository_UpdateCartTest extends ServiceTestUtilities {
+public class Service_UpdateCartTest extends ServiceTestUtilities {
 
 
 
