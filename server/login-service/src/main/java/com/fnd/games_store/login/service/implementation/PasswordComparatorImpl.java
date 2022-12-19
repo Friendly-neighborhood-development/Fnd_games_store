@@ -9,12 +9,11 @@ public class PasswordComparatorImpl implements PasswordComparator {
 
 
     @Override
-    public Boolean passwordComparator(String incomingPassword, String actualPassword) {
+    public Boolean compare(String incomingPassword, String actualPassword) {
 
         if (incomingPassword.equals(actualPassword)){
             return true;
         } else throw new InvalidPasswordException("invalid password");
-
 
     }
 }
