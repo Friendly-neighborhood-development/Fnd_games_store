@@ -5,7 +5,6 @@ import com.fnd.games_store.login.entity.Account;
 import com.fnd.games_store.login.entity.Authority;
 import com.fnd.games_store.login.jwt_utils.JwtGenerator;
 import com.fnd.games_store.login.repository.AccountRepository;
-import com.fnd.games_store.login.service.LoginService;
 import com.fnd.games_store.login.service.implementation.LoginServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -72,7 +71,7 @@ public class Login_UnitTest {
 
     }
 
-
+    //TODO refactor this with stream later
     private User createProperAdminUserInstance(){
 
         List<GrantedAuthority> adminGrantedAuthorities = new ArrayList<>();
