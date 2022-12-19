@@ -39,12 +39,4 @@ public class JwtGeneratorImpl implements JwtGenerator {
                 .sign(Algorithm.HMAC256(jwtAccessSecret));
     }
 
-    @Profile("test")
-    public String getJwtAccessSecret() {
-        return jwtAccessSecret;
-    }
-    @Profile("test")
-    public Long getAccessTokenExpirationDuration() {
-        return accessTokenExpirationDuration;
-    }
 }
