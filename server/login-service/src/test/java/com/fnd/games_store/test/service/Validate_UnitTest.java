@@ -21,7 +21,6 @@ import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
-@MockitoSettings(strictness = Strictness.LENIENT)
 public class Validate_UnitTest {
 
 
@@ -31,11 +30,14 @@ public class Validate_UnitTest {
     @InjectMocks
     private ValidationServiceImpl validationService;
 
-    private String incomingToken = "============================token";
+    private String incomingTokenHeader = "============================token";
+
+    private String incomingToken = incomingTokenHeader.substring(7);
+
 
     @Test
     void validate_ShouldReturnTrueForCorrectToken(){
-        assertThat(validationService.validate(incomingToken)).isTrue();
+        assertThat(validationService.validate(incomingTokenHeader)).isTrue();
     }
 
 
