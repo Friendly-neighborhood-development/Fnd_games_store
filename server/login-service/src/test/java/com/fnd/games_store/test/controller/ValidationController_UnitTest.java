@@ -2,11 +2,14 @@ package com.fnd.games_store.test.controller;
 
 
 import com.fnd.games_store.login.LoginApplication;
+import com.fnd.games_store.login.service.ValidationService;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -15,6 +18,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -28,23 +32,29 @@ public class ValidationController_UnitTest {
     @Autowired
     private MockMvc mvc;
 
-    private String referenceHeaderName = "Authorization";
+    private String referenceHeaderName = "authorization";
 
     private String referenceHeaderValue = "Bearer  ";
+
+
+    @MockBean
+    ValidationService validationService;
 
 
     @Test
     void validateUser_ShouldDetermineIfHeaderIsPresent() throws Exception {
 
 
-        MvcResult result = mvc.perform(post("/v1/validate")
+        MvcResult requestResult = this.mvc.perform(post("/v1/validate")
                 .header(referenceHeaderName,referenceHeaderValue)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
 
-        log.info(result.getRequest().getHeader(referenceHeaderName));
+        String body = requestResult.getResponse().getContentAsString();
+
+        log.info(body);
 
 
 
@@ -52,6 +62,9 @@ public class ValidationController_UnitTest {
     }
 
 
-
+    @BeforeEach
+    void testSetup(){
+        when(validationService.validate(referenceHeaderValue)).thenReturn(true);
+    }
 
 }
