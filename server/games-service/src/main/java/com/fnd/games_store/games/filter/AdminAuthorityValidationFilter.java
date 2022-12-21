@@ -16,8 +16,8 @@ import java.io.IOException;
 public class AdminAuthorityValidationFilter extends OncePerRequestFilter {
 
 
-//    @Autowired
-//    private AuthorityValidationClient authorityValidationClient;
+    @Autowired
+    private AuthorityValidationClient authorityValidationClient;
 
     public AdminAuthorityValidationFilter() {
     }
@@ -26,7 +26,7 @@ public class AdminAuthorityValidationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
 
-//        authorityValidationClient.validateUserWithAuthority(request.getHeader("authorization"));
+        authorityValidationClient.validateUserWithAuthority(request.getHeader("authorization"));
 
         log.info(request.getHeader("authorization"));
 
