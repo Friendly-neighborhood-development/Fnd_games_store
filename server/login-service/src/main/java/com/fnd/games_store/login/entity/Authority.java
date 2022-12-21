@@ -10,6 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "authorities")
@@ -33,6 +34,11 @@ public class Authority implements GrantedAuthority{
     private List<Account> accounts;
 
 
+    public Authority(String id, String authority) {
+        this.id = id;
+        this.authority = authority;
+    }
+
     @Override
     public String toString() {
         return "Authority{" +
@@ -40,5 +46,19 @@ public class Authority implements GrantedAuthority{
                 ", authority='" + authority + '\'' +
 //                ", accounts=" + accounts +
                 '}';
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Authority authority1 = (Authority) o;
+        return Objects.equals(id, authority1.id) && Objects.equals(authority, authority1.authority) && Objects.equals(accounts, authority1.accounts);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, authority, accounts);
     }
 }

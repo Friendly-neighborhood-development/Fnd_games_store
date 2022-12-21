@@ -6,6 +6,7 @@ import lombok.*;
 @Data
 @Getter
 @Setter
+@NoArgsConstructor
 public class LoginResponseDTO {
 
     private String userId;

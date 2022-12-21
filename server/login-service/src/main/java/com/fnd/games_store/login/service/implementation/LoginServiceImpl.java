@@ -2,36 +2,31 @@ package com.fnd.games_store.login.service.implementation;
 
 
 import com.fnd.games_store.login.dto.LoginResponseDTO;
-import com.fnd.games_store.login.entity.Authority;
 import com.fnd.games_store.login.jwt_utils.JwtGenerator;
 import com.fnd.games_store.login.repository.AccountRepository;
 import com.fnd.games_store.login.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.HashMap;
-import java.util.List;
 
 @Service
 @Slf4j
 @Transactional
 public class LoginServiceImpl implements LoginService {
 
-    private final AuthenticationManager authenticationManager;
+    private final PasswordEncoder passwordEncoder;
     private final UserDetailsService userDetails;
     private final JwtGenerator jwtGenerator;
 
     private final AccountRepository accountRepository;
 
     @Autowired
-    public LoginServiceImpl(AuthenticationManager authenticationManager, UserDetailsService userDetails, JwtGenerator jwtGenerator, AccountRepository accountRepository) {
-        this.authenticationManager = authenticationManager;
+    public LoginServiceImpl(PasswordEncoder passwordEncoder, UserDetailsService userDetails, JwtGenerator jwtGenerator, AccountRepository accountRepository) {
+        this.passwordEncoder = passwordEncoder;
         this.userDetails = userDetails;
         this.jwtGenerator = jwtGenerator;
         this.accountRepository = accountRepository;
@@ -42,9 +37,9 @@ public class LoginServiceImpl implements LoginService {
 
         UserDetails loadedUser = userDetails.loadUserByUsername(username);
 
-        String userId = accountRepository.findUserByUsername(username).get().getId();
+        String userId = accountRepository.findAccountByUsername(username).get().getId();
 
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username,password,loadedUser.getAuthorities()));
+        passwordEncoder.matches(password, loadedUser.getPassword());
 
         return new LoginResponseDTO(userId, jwtGenerator.generateJwtToken(loadedUser));
     }

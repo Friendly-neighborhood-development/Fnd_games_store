@@ -6,7 +6,12 @@ CREATE TABLE IF NOT EXISTS authorities
 CREATE TABLE IF NOT EXISTS accounts
 (account_id varchar PRIMARY KEY UNIQUE NOT NULL,
 username varchar(50)  UNIQUE NOT NULL,
-password varchar NOT NULL);
+password varchar NOT NULL,
+email varchar NOT NULL,
+expiration_date date NOT NULL,
+is_account_non_locked boolean NOT NULL,
+credentials_expiration_date date NOT NULL,
+is_account_enabled boolean NOT NULL);
 
 
 CREATE TABLE IF NOT EXISTS accounts_authorities

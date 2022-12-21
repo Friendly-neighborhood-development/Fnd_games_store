@@ -1,13 +1,14 @@
 package com.fnd.games_store.login.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "accounts")
@@ -32,6 +33,15 @@ public class Account {
             inverseJoinColumns = @JoinColumn(name ="authority_id"))
     private List<Authority> authorities;
 
+    private String email;
+    @Column(name = "expiration_date")
+    private LocalDate expirationDate;
+    @Column(name = "is_account_non_locked")
+    private Boolean isAccountNonLocked;
+    @Column(name = "credentials_expiration_date")
+    private LocalDate credentialsExpirationDate;
+    @Column(name ="is_account_enabled")
+    private Boolean isAccountEnabled;
 
     @Override
     public String toString() {
@@ -40,6 +50,25 @@ public class Account {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
 //                ", authorities=" + authorities +
+                ", email='" + email + '\'' +
+                ", expirationDate=" + expirationDate +
+                ", accountNonLocked=" + isAccountNonLocked +
+                ", credentialsExpirationDate=" + credentialsExpirationDate +
+                ", enabled=" + isAccountEnabled +
                 '}';
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return Objects.equals(id, account.id) && Objects.equals(username, account.username) && Objects.equals(password, account.password) && Objects.equals(email, account.email) && Objects.equals(expirationDate, account.expirationDate) && Objects.equals(isAccountNonLocked, account.isAccountNonLocked) && Objects.equals(credentialsExpirationDate, account.credentialsExpirationDate) && Objects.equals(isAccountEnabled, account.isAccountEnabled);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, password, email, expirationDate, isAccountNonLocked, credentialsExpirationDate, isAccountEnabled);
     }
 }
