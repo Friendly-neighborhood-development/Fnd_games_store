@@ -1,7 +1,9 @@
 package com.fnd.games_store.test.controller;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fnd.games_store.login.LoginApplication;
+import com.fnd.games_store.login.dto.ValidationResponseDTO;
 import com.fnd.games_store.login.service.ValidationService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,9 +38,10 @@ public class ValidationController_UnitTest {
 
     private String referenceHeaderValue = "Bearer  ";
 
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     @MockBean
-    ValidationService validationService;
+    private ValidationService validationService;
 
 
     @Test
@@ -52,11 +55,11 @@ public class ValidationController_UnitTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        String body = requestResult.getResponse().getContentAsString();
+        String requestBody = requestResult.getResponse().getContentAsString();
 
-        log.info(body);
+        ValidationResponseDTO response = objectMapper.readValue(requestBody,  ValidationResponseDTO.class);
 
-
+        assertThat(response).isEqualTo(createSuccessfulTokenValidationResponse());
 
 
     }
@@ -66,5 +69,10 @@ public class ValidationController_UnitTest {
     void testSetup(){
         when(validationService.validate(referenceHeaderValue)).thenReturn(true);
     }
+
+    private ValidationResponseDTO createSuccessfulTokenValidationResponse(){
+        return new ValidationResponseDTO(true);
+    }
+
 
 }

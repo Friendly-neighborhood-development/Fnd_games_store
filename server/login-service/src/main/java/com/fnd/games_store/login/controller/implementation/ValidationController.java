@@ -32,7 +32,6 @@ public class ValidationController implements UserValidation{
         String incomingUserToken = headers.get("authorization");
         log.info(incomingUserToken);
 
-
         Boolean isIncomingTokenValid = validationService.validate(incomingUserToken);
 
         return ResponseEntity.ok(new ValidationResponseDTO(isIncomingTokenValid));
