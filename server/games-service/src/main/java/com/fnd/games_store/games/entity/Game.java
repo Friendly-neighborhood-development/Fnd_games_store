@@ -40,7 +40,6 @@ public class Game {
             joinColumns = {@JoinColumn(name = "game_id")}, inverseJoinColumns = {@JoinColumn(name ="genre_id")})
     private List<Genre> genre;
 
-//    private String genre;
     private String releaseDate;
     private String developer;
     private String publisher;
@@ -65,20 +64,5 @@ public class Game {
         this.description = description;
         this.base64Image=base64Image;
     }
-
-//    public Game(String name, String genre, String releaseDate, String developer, String publisher, String platform,
-//                String features, BigDecimal price, BigDecimal discount, String description, String base64Image) {
-//        this.name = name;
-//        this.genre = genre;
-//        this.releaseDate = releaseDate;
-//        this.developer = developer;
-//        this.publisher = publisher;
-//        this.platform = platform;
-//        this.features = features;
-//        this.price = price;
-//        this.discount = discount;
-//        this.description = description;
-//        this.base64Image=base64Image;
-//    }
 
 }
