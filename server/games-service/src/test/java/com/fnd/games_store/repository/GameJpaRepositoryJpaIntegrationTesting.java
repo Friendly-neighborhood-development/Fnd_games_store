@@ -3,7 +3,7 @@ package com.fnd.games_store.repository;
 
 import com.fnd.games_store.games.GamesApplication;
 import com.fnd.games_store.games.entity.Game;
-import com.fnd.games_store.games.repository.GameRepository;
+import com.fnd.games_store.games.repository.GameJpaRepository;
 import com.fnd.games_store.utilities.TestUtilities;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -24,17 +24,17 @@ import static org.assertj.core.api.Assertions.*;
 @BootstrapWith(SpringBootTestContextBootstrapper.class)
 @SpringBootTest(classes = GamesApplication.class)
 
-public class GameRepositoryJpaIntegrationTesting extends TestUtilities {
+public class GameJpaRepositoryJpaIntegrationTesting extends TestUtilities {
 
     @Autowired
-    GameRepository gameRepository;
+    GameJpaRepository gameJpaRepository;
 
     @Autowired
     TestEntityManager testEntityManager;
 
     @Test
     void createdEntityShouldEqualsReturnedEntity(){
-        Game returnedGameFromDb = gameRepository.getGameByName("name");
+        Game returnedGameFromDb = gameJpaRepository.getGameByName("name");
         String returnedGameFromDbId = returnedGameFromDb.getId();
         assertThat(createTestGameEntity(returnedGameFromDbId)).isEqualTo(returnedGameFromDb);
     }
