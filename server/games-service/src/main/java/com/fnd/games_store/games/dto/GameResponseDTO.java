@@ -45,20 +45,20 @@ public class GameResponseDTO {
         this.base64Image = base64Image;
     }
 
-    public GameResponseDTO(Game game){
-        this.id = game.getId();
-        this.name = game.getName();
-        this.genre = game.getGenre();
-        this.releaseDate = game.getReleaseDate();
-        this.developer = game.getDeveloper();
-        this.publisher = game.getPublisher();
-        this.platform = game.getPlatform();
-        this.features = game.getFeatures();
-        this.price = game.getPrice();
-        this.discount = game.getDiscount();
-        this.description = game.getDescription();
-        this.base64Image=game.getBase64Image();
-    }
+//    public GameResponseDTO(Game game){
+//        this.id = game.getId();
+//        this.name = game.getName();
+//        this.genre = game.getGenre();
+//        this.releaseDate = game.getReleaseDate();
+//        this.developer = game.getDeveloper();
+//        this.publisher = game.getPublisher();
+//        this.platform = game.getPlatform();
+//        this.features = game.getFeatures();
+//        this.price = game.getPrice();
+//        this.discount = game.getDiscount();
+//        this.description = game.getDescription();
+//        this.base64Image=game.getBase64Image();
+//    }
 
 
 }

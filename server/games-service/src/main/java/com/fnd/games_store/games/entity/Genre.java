@@ -9,6 +9,7 @@ import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "genres")
@@ -24,9 +25,9 @@ public class Genre {
     @Column(name = "genre_id")
     private String id;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "genre")
     @JsonIgnore
-    private Game game;
+    private List<Game> game;
 
     private String genre;
 
