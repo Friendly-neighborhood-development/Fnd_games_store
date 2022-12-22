@@ -29,7 +29,7 @@ public class Genre {
     @JsonIgnore
     private List<Game> game;
 
-    private String genre;
+    private String name;
 
 
 }
