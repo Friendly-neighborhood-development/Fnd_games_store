@@ -2,7 +2,7 @@ package com.fnd.games_store.games.controller;
 
 import com.fnd.games_store.games.dto.GameRequestDTO;
 import com.fnd.games_store.games.dto.GameResponseDTO;
-import com.fnd.games_store.games.service.GameService;
+import com.fnd.games_store.games.service.implementation.GameService;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

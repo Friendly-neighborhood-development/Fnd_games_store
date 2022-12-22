@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fnd.games_store.utilities.TestUtilities;
 import com.fnd.games_store.games.GamesApplication;
 import com.fnd.games_store.games.dto.GameResponseDTO;
-import com.fnd.games_store.games.service.GameService;
+import com.fnd.games_store.games.service.implementation.GameService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
