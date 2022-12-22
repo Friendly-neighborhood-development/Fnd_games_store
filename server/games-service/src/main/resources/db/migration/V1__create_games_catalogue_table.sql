@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS games_catalogue
+CREATE TABLE IF NOT EXISTS games
 (game_id varchar(255) PRIMARY KEY UNIQUE NOT NULL,
 name varchar(255) UNIQUE NOT NULL,
 genre varchar(255) NOT NULL,

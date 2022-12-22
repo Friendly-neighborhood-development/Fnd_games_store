@@ -11,6 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -19,7 +20,7 @@ import java.util.Objects;
 
 
 @Entity
-@Table(name = "games_catalogue")
+@Table(name = "games")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -33,6 +34,16 @@ public class Game {
     @Column(name = "game_id")
     private String id;
     private String name;
+//    @OneToMany(mappedBy = "genres")
+//    @JoinTable(name = "games_catalogue_genres")
+
+//    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+//    @JoinTable(name = "accounts_authorities",
+//            joinColumns = @JoinColumn(name = "account_id"),
+//            inverseJoinColumns = @JoinColumn(name ="authority_id"))
+
+//    private List<String> genre;
+
     private String genre;
     private String releaseDate;
     private String developer;
@@ -43,6 +54,21 @@ public class Game {
     private BigDecimal discount;
     private String description;
     private String base64Image;
+
+//    public Game(String name, List<String> genre, String releaseDate, String developer, String publisher, String platform,
+//                String features, BigDecimal price, BigDecimal discount, String description, String base64Image) {
+//        this.name = name;
+//        this.genre = genre;
+//        this.releaseDate = releaseDate;
+//        this.developer = developer;
+//        this.publisher = publisher;
+//        this.platform = platform;
+//        this.features = features;
+//        this.price = price;
+//        this.discount = discount;
+//        this.description = description;
+//        this.base64Image=base64Image;
+//    }
 
     public Game(String name, String genre, String releaseDate, String developer, String publisher, String platform,
                 String features, BigDecimal price, BigDecimal discount, String description, String base64Image) {
@@ -59,17 +85,4 @@ public class Game {
         this.base64Image=base64Image;
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Game game = (Game) o;
-        return id != null && Objects.equals(id, game.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }
