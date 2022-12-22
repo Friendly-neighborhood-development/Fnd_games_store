@@ -37,14 +37,13 @@ public class Game {
 //    @OneToMany(mappedBy = "genres")
 //    @JoinTable(name = "games_catalogue_genres")
 
-//    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
-//    @JoinTable(name = "accounts_authorities",
-//            joinColumns = @JoinColumn(name = "account_id"),
-//            inverseJoinColumns = @JoinColumn(name ="authority_id"))
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "games_genres",
+            joinColumns = @JoinColumn(name = "account_id"),
+            inverseJoinColumns = @JoinColumn(name ="authority_id"))
+    private List<String> genre;
 
-//    private List<String> genre;
-
-    private String genre;
+//    private String genre;
     private String releaseDate;
     private String developer;
     private String publisher;
@@ -55,22 +54,7 @@ public class Game {
     private String description;
     private String base64Image;
 
-//    public Game(String name, List<String> genre, String releaseDate, String developer, String publisher, String platform,
-//                String features, BigDecimal price, BigDecimal discount, String description, String base64Image) {
-//        this.name = name;
-//        this.genre = genre;
-//        this.releaseDate = releaseDate;
-//        this.developer = developer;
-//        this.publisher = publisher;
-//        this.platform = platform;
-//        this.features = features;
-//        this.price = price;
-//        this.discount = discount;
-//        this.description = description;
-//        this.base64Image=base64Image;
-//    }
-
-    public Game(String name, String genre, String releaseDate, String developer, String publisher, String platform,
+    public Game(String name, List<String> genre, String releaseDate, String developer, String publisher, String platform,
                 String features, BigDecimal price, BigDecimal discount, String description, String base64Image) {
         this.name = name;
         this.genre = genre;
@@ -84,5 +68,20 @@ public class Game {
         this.description = description;
         this.base64Image=base64Image;
     }
+
+//    public Game(String name, String genre, String releaseDate, String developer, String publisher, String platform,
+//                String features, BigDecimal price, BigDecimal discount, String description, String base64Image) {
+//        this.name = name;
+//        this.genre = genre;
+//        this.releaseDate = releaseDate;
+//        this.developer = developer;
+//        this.publisher = publisher;
+//        this.platform = platform;
+//        this.features = features;
+//        this.price = price;
+//        this.discount = discount;
+//        this.description = description;
+//        this.base64Image=base64Image;
+//    }
 
 }

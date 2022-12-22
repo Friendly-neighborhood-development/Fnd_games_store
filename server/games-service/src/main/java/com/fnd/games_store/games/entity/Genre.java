@@ -24,11 +24,10 @@ public class Genre {
     @Column(name = "genre_id")
     private String id;
 
-//    @ManyToMany
-//    @JsonIgnore
-//    private Game game;
+    @ManyToMany
+    @JsonIgnore
+    private Game game;
 
-    @Column(name = "genre_name")
     private String genre;
 
 

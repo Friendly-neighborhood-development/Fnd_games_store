@@ -6,12 +6,12 @@ spring:
       enabled: false
   jpa:
     flyway:
-      enabled: true
-      validate-on-migrate: true
+      enabled: false
+      validate-on-migrate: false
     database: h2
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     properties:
   datasource:
     database-platform: org.hibernate.dialect.H2Dialect
