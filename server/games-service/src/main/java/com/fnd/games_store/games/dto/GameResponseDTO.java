@@ -3,6 +3,7 @@ package com.fnd.games_store.games.dto;
 
 import com.fnd.games_store.games.entity.Game;
 import com.fnd.games_store.games.entity.Genre;
+import com.fnd.games_store.games.entity.Publisher;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -19,7 +20,7 @@ public class GameResponseDTO {
     private List<Genre> genre;
     private String releaseDate;
     private String developer;
-    private String publisher;
+    private List<Publisher> publisher;
     private String platform;
     private String features;
     private BigDecimal price;
@@ -32,7 +33,7 @@ public class GameResponseDTO {
     }
 
     public GameResponseDTO(String name, List<Genre> genre, String releaseDate, String developer,
-                          String publisher, String platform, String features, BigDecimal price,
+                          List<Publisher> publisher, String platform, String features, BigDecimal price,
                           BigDecimal discount, String description, String base64Image) {
         this.name = name;
         this.genre = genre;

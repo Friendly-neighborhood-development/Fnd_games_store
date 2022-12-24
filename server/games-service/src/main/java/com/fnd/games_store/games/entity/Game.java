@@ -37,12 +37,18 @@ public class Game {
 
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "game_genre",
-            joinColumns = {@JoinColumn(name = "game_id")}, inverseJoinColumns = {@JoinColumn(name ="genre_id")})
+               joinColumns = {@JoinColumn(name = "game_id")},
+               inverseJoinColumns = {@JoinColumn(name ="genre_id")})
     private List<Genre> genre;
 
     private String releaseDate;
     private String developer;
-    private String publisher;
+
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "game_publisher",
+               joinColumns = {@JoinColumn(name = "game_id")},
+               inverseJoinColumns = {@JoinColumn(name = "publisher_id")})
+    private List<Publisher> publisher;
     private String platform;
     private String features;
     private BigDecimal price;
@@ -50,7 +56,7 @@ public class Game {
     private String description;
     private String base64Image;
 
-    public Game(String name, List<Genre> genre, String releaseDate, String developer, String publisher, String platform,
+    public Game(String name, List<Genre> genre, String releaseDate, String developer, List<Publisher> publisher, String platform,
                 String features, BigDecimal price, BigDecimal discount, String description, String base64Image) {
         this.name = name;
         this.genre = genre;
