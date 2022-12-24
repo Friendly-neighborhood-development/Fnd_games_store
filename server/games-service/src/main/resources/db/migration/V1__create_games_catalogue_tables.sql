@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS publishers
 publisher_name varchar(255) NOT NULL);
 
 CREATE TABLE IF NOT EXISTS developers
-(developer_id varchar(255) PRIMARY KEY NOT NULL,
+(developer_id varchar(255) PRIMARY KEY UNIQUE NOT NULL,
 developer_name varchar(255) NOT NULL);
 
 
@@ -27,7 +27,8 @@ discount numeric(10,2) NOT NULL,
 description varchar NOT NULL,
 base64Image varchar NOT NULL,
 
-FOREIGN KEY(publisher_id) REFERENCES publishers(publisher_id )
+FOREIGN KEY(publisher_id) REFERENCES publishers(publisher_id),
+FOREIGN KEY(developer_id) REFERENCES developers(developer_id)
 
 );
 

@@ -23,7 +23,7 @@ public class Developer {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name ="uuid", strategy ="uuid2")
-    @Column(name = "game_id")
+    @Column(name = "developer_id")
     private String id;
 
     @Column(name = "developer_name")
