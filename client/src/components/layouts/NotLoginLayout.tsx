@@ -6,7 +6,7 @@ interface NotLoginLayoutProps {
 
 const NotLoginLayout: FC<NotLoginLayoutProps> = ({children}) => {
     return (
-        <div className="text-slate-800 dark:text-slate-400 bg-white dark:bg-slate-900 flex">
+        <div className="text-slate-800 flex bg-white dark:bg-slate-900 dark:text-slate-400">
             <div className="container mx-auto min-h-screen flex flex-col items-center">
                 {children}
             </div>

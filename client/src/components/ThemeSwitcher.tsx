@@ -68,7 +68,7 @@ const TestThemeSwitcher = memo(() => {
                     <ChevronDownIcon className={"w-3 h-3"}/>
                 </Listbox.Button>
                 <Listbox.Options
-                    className={"absolute top-full right-0 mt-8 lg:mt-8 w-36 bg-white rounded-lg py-1 shadow-xl dark:text-slate-300 dark:bg-slate-800 overflow-hidden"}>
+                    className={"absolute top-full right-0 mt-8 lg:mt-8 w-36 bg-white rounded-lg py-1 shadow-xl overflow-hidden dark:text-slate-300 dark:bg-slate-800"}>
                     {themes.map((theme) => (
                         <Listbox.Option
                             key={theme.id}
