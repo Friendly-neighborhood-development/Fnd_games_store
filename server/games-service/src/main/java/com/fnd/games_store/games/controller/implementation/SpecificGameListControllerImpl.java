@@ -5,6 +5,7 @@ import com.fnd.games_store.games.controller.SpecificGameListController;
 import com.fnd.games_store.games.dto.GameResponseDTO;
 import com.fnd.games_store.games.service.GamePagingAndSortingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,8 +26,8 @@ public class SpecificGameListControllerImpl implements SpecificGameListControlle
 
     @Override
     @GetMapping("v1/catalogue/edited")
-    public ResponseEntity<List<GameResponseDTO>> getEditedList(@RequestParam Integer page, @RequestParam Integer pageSize) {
-        return ResponseEntity.ok(gameService.getSpecifiedGameList(page,pageSize));
+    public ResponseEntity<List<GameResponseDTO>> getEditedList(@RequestParam Integer page, @RequestParam Integer pageSize, @RequestParam String field) {
+        return ResponseEntity.ok(gameService.getSpecifiedGameList(page,pageSize, Sort.by(Sort.Direction.ASC, field)));
     }
 
     @Override

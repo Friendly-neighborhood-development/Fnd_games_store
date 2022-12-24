@@ -5,6 +5,7 @@ import com.fnd.games_store.games.repository.GameRepository;
 import com.fnd.games_store.games.service.GamePagingAndSortingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,8 +24,8 @@ public class GamePagingAndSortingServiceImpl implements GamePagingAndSortingServ
 
 
     @Override
-    public List<GameResponseDTO> getSpecifiedGameList(Integer page, Integer pageSize) {
-        return repository.findAll(PageRequest.of(page,pageSize)).stream().map(GameResponseDTO::new).collect(Collectors.toList());
+    public List<GameResponseDTO> getSpecifiedGameList(Integer page, Integer pageSize, Sort sort) {
+        return repository.findAll(PageRequest.of(page,pageSize, sort)).stream().map(GameResponseDTO::new).collect(Collectors.toList());
     }
 
 
