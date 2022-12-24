@@ -20,7 +20,7 @@ public class GameResponseDTO {
     private Developer developer;
     private Publisher publisher;
     private List<Platform> platform;
-    private String features;
+    private List<Feature> features;
     private BigDecimal price;
     private BigDecimal discount;
     private String description;
@@ -31,7 +31,7 @@ public class GameResponseDTO {
     }
 
     public GameResponseDTO(String name, List<Genre> genre, String releaseDate, Developer developer,
-                          Publisher publisher, List<Platform> platform, String features, BigDecimal price,
+                          Publisher publisher, List<Platform> platform, List<Feature> features, BigDecimal price,
                           BigDecimal discount, String description, String base64Image) {
         this.name = name;
         this.genre = genre;
