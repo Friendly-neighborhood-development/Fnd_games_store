@@ -2,10 +2,12 @@ package com.fnd.games_store.games.dto;
 
 
 import com.fnd.games_store.games.entity.Game;
+import com.fnd.games_store.games.entity.Genre;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,7 +16,7 @@ import java.time.OffsetDateTime;
 public class GameResponseDTO {
     private String id;
     private String name;
-    private String genre;
+    private List<Genre> genre;
     private String releaseDate;
     private String developer;
     private String publisher;
@@ -29,7 +31,7 @@ public class GameResponseDTO {
 
     }
 
-    public GameResponseDTO(String name, String genre, String releaseDate, String developer,
+    public GameResponseDTO(String name, List<Genre> genre, String releaseDate, String developer,
                           String publisher, String platform, String features, BigDecimal price,
                           BigDecimal discount, String description, String base64Image) {
         this.name = name;
@@ -45,20 +47,20 @@ public class GameResponseDTO {
         this.base64Image = base64Image;
     }
 
-//    public GameResponseDTO(Game game){
-//        this.id = game.getId();
-//        this.name = game.getName();
-//        this.genre = game.getGenre();
-//        this.releaseDate = game.getReleaseDate();
-//        this.developer = game.getDeveloper();
-//        this.publisher = game.getPublisher();
-//        this.platform = game.getPlatform();
-//        this.features = game.getFeatures();
-//        this.price = game.getPrice();
-//        this.discount = game.getDiscount();
-//        this.description = game.getDescription();
-//        this.base64Image=game.getBase64Image();
-//    }
+    public GameResponseDTO(Game game){
+        this.id = game.getId();
+        this.name = game.getName();
+        this.genre = game.getGenre();
+        this.releaseDate = game.getReleaseDate();
+        this.developer = game.getDeveloper();
+        this.publisher = game.getPublisher();
+        this.platform = game.getPlatform();
+        this.features = game.getFeatures();
+        this.price = game.getPrice();
+        this.discount = game.getDiscount();
+        this.description = game.getDescription();
+        this.base64Image=game.getBase64Image();
+    }
 
 
 }
