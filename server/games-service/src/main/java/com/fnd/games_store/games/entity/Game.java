@@ -42,13 +42,13 @@ public class Game {
     private List<Genre> genre;
 
     private String releaseDate;
-    private String developer;
+    @ManyToOne
+    @JoinColumn(name = "developer_id")
+    private Developer developer;
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinTable(name = "game_publisher",
-               joinColumns = {@JoinColumn(name = "game_id")},
-               inverseJoinColumns = {@JoinColumn(name = "publisher_id")})
-    private List<Publisher> publisher;
+    @ManyToOne
+    @JoinColumn(name = "publisher_id")
+    private Publisher publisher;
     private String platform;
     private String features;
     private BigDecimal price;
@@ -56,7 +56,7 @@ public class Game {
     private String description;
     private String base64Image;
 
-    public Game(String name, List<Genre> genre, String releaseDate, String developer, List<Publisher> publisher, String platform,
+    public Game(String name, List<Genre> genre, String releaseDate, Developer developer,Publisher publisher, String platform,
                 String features, BigDecimal price, BigDecimal discount, String description, String base64Image) {
         this.name = name;
         this.genre = genre;

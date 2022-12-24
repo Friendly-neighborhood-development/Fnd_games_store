@@ -1,6 +1,7 @@
 package com.fnd.games_store.games.dto;
 
 
+import com.fnd.games_store.games.entity.Developer;
 import com.fnd.games_store.games.entity.Game;
 import com.fnd.games_store.games.entity.Genre;
 import com.fnd.games_store.games.entity.Publisher;
@@ -19,8 +20,8 @@ public class GameResponseDTO {
     private String name;
     private List<Genre> genre;
     private String releaseDate;
-    private String developer;
-    private List<Publisher> publisher;
+    private Developer developer;
+    private Publisher publisher;
     private String platform;
     private String features;
     private BigDecimal price;
@@ -32,8 +33,8 @@ public class GameResponseDTO {
 
     }
 
-    public GameResponseDTO(String name, List<Genre> genre, String releaseDate, String developer,
-                          List<Publisher> publisher, String platform, String features, BigDecimal price,
+    public GameResponseDTO(String name, List<Genre> genre, String releaseDate, Developer developer,
+                          Publisher publisher, String platform, String features, BigDecimal price,
                           BigDecimal discount, String description, String base64Image) {
         this.name = name;
         this.genre = genre;
