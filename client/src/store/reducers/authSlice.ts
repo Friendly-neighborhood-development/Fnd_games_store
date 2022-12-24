@@ -1,36 +1,40 @@
-import {IGame} from "../../models/IGame";
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {gameSlice} from "./gameSlice";
+import {createSlice} from "@reduxjs/toolkit";
+import {auth} from "../actions/authAction";
 
 
-interface authState{
-    isLoading: boolean,
+interface AuthState {
+    token: string
+    userId: string
+    loading: "idle" | "pending" | "succeeded" | "failed"
     error: string
 }
 
-const initialState:authState ={
-    isLoading: false,
-    error:""
+const initialState: AuthState = {
+    token: "",
+    userId: "",
+    loading: "idle",
+    error: ""
 }
 
 export const authSlice = createSlice({
-    name:"auth",
+    name: "auth",
     initialState,
-    reducers:{
-        authRequest(state) {
-            state.isLoading = true
-        },
-        authRequestSuccess(state) {
-            state.isLoading = false
-            state.error = ""
-        },
-        authRequestError(state, action:PayloadAction<string>) {
-            state.isLoading = false
-            state.error = action.payload
-        },
+    reducers: {},
+    extraReducers:(builder) =>{
+        builder.addCase(auth.pending, (state) => {
+            state.loading = "pending"
+        })
+            .addCase(auth.fulfilled, (state, action) => {
+                state.loading = "succeeded"
+                state.token = action.payload.token
+                state.userId = action.payload.userId
+            })
+            .addCase(auth.rejected, (state, action) => {
+                state.loading = "failed"
+                console.log(action.error)
+            })
     }
 })
 
-export const {authRequest, authRequestSuccess, authRequestError} = authSlice.actions
 
 export default authSlice.reducer
