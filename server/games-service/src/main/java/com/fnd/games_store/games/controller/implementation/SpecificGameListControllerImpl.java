@@ -1,9 +1,9 @@
 package com.fnd.games_store.games.controller.implementation;
 
 
-import com.fnd.games_store.games.controller.PagedAndSortedGameList;
+import com.fnd.games_store.games.controller.SpecificGameListController;
 import com.fnd.games_store.games.dto.GameResponseDTO;
-import com.fnd.games_store.games.service.GameCataloguePagerAndSorter;
+import com.fnd.games_store.games.service.GamePagingAndSortingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class EditedGamePageController implements PagedAndSortedGameList {
+public class SpecificGameListControllerImpl implements SpecificGameListController {
 
 
-    private final GameCataloguePagerAndSorter gameListService;
+    private final GamePagingAndSortingService gameListService;
 
     @Autowired
-    public EditedGamePageController(GameCataloguePagerAndSorter gameListService) {
+    public SpecificGameListControllerImpl(GamePagingAndSortingService gameListService) {
         this.gameListService = gameListService;
     }
 

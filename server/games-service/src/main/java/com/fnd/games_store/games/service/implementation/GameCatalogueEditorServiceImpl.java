@@ -2,7 +2,7 @@ package com.fnd.games_store.games.service.implementation;
 
 
 
-import com.fnd.games_store.games.service.GameCatalogueEditor;
+import com.fnd.games_store.games.service.GameCatalogueEditorService;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.cache.annotation.CacheConfig;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Cacheable
 @Service
 @Slf4j
-public class GameService implements GameCatalogueEditor {
+public class GameCatalogueEditorServiceImpl implements GameCatalogueEditorService {
 
 //    private final GameJpaRepository gameJpaRepository;
 //

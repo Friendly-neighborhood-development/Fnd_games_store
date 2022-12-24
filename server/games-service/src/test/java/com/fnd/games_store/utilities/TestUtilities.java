@@ -47,7 +47,7 @@ public class TestUtilities {
         GameResponseDTO gameResponseDTO = new GameResponseDTO();
         gameResponseDTO.setId(gameRequestDTO.getId());
         gameResponseDTO.setName(gameRequestDTO.getName());
-        gameResponseDTO.setGenre(gameRequestDTO.getGenre());
+//        gameResponseDTO.setGenre(gameRequestDTO.getGenre());
         gameResponseDTO.setReleaseDate(gameRequestDTO.getReleaseDate());
         gameResponseDTO.setDeveloper(gameRequestDTO.getDeveloper());
         gameResponseDTO.setPublisher(gameRequestDTO.getPublisher());
@@ -65,7 +65,7 @@ public class TestUtilities {
         GameResponseDTO gameResponseDTO = new GameResponseDTO();
         gameResponseDTO.setId("1");
         gameResponseDTO.setName("name");
-        gameResponseDTO.setGenre("genre");
+//        gameResponseDTO.setGenre("genre");
         gameResponseDTO.setReleaseDate("date");
         gameResponseDTO.setDeveloper("developer");
         gameResponseDTO.setPublisher("publisher");

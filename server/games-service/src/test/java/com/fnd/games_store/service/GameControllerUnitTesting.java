@@ -6,7 +6,7 @@ import com.fnd.games_store.games.controller.GameController;
 
 import com.fnd.games_store.games.dto.GameResponseDTO;
 import com.fnd.games_store.games.exceptions.GameNotFoundException;
-import com.fnd.games_store.games.service.implementation.GameService;
+import com.fnd.games_store.games.service.implementation.GameCatalogueEditorServiceImpl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,7 +26,7 @@ import static org.mockito.Mockito.when;
 public class GameControllerUnitTesting extends TestUtilities {
 
     @Mock
-    private GameService gameService;
+    private GameCatalogueEditorServiceImpl gameService;
 
     @InjectMocks
     private GameController gameController;

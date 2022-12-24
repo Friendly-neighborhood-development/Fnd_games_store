@@ -1,10 +1,9 @@
 package com.fnd.games_store.games.service.implementation;
 
 import com.fnd.games_store.games.dto.GameResponseDTO;
-import com.fnd.games_store.games.entity.Game;
 import com.fnd.games_store.games.repository.GameJpaRepository;
 import com.fnd.games_store.games.repository.GamePagingAndSortingRepository;
-import com.fnd.games_store.games.service.GameCataloguePagerAndSorter;
+import com.fnd.games_store.games.service.GamePagingAndSortingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +11,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class GamePagingAndSortingService implements GameCataloguePagerAndSorter {
+public class GamePagingAndSortingServiceImpl implements GamePagingAndSortingService {
 
 
     private final GameJpaRepository jpaRepository;
 
     private final GamePagingAndSortingRepository pagingAndSortingRepository;
     @Autowired
-    public GamePagingAndSortingService(GameJpaRepository jpaRepository, GamePagingAndSortingRepository pagingAndSortingRepository) {
+    public GamePagingAndSortingServiceImpl(GameJpaRepository jpaRepository, GamePagingAndSortingRepository pagingAndSortingRepository) {
         this.jpaRepository = jpaRepository;
         this.pagingAndSortingRepository = pagingAndSortingRepository;
     }
