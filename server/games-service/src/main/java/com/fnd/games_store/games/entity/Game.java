@@ -49,6 +49,7 @@ public class Game {
     @ManyToOne
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
+
     private String platform;
     private String features;
     private BigDecimal price;
