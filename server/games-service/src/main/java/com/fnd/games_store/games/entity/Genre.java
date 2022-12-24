@@ -29,6 +29,7 @@ public class Genre {
     @JsonIgnore
     private List<Game> game;
 
+    @Column(name = "genre_name")
     private String name;
 
 

@@ -22,6 +22,7 @@ public class Publisher {
     @Column(name = "publisher_id")
     private String id;
 
+    @Column(name = "publisher_name")
     private String name;
 
 

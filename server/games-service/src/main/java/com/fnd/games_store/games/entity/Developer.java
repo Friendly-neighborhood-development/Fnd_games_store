@@ -26,6 +26,7 @@ public class Developer {
     @Column(name = "game_id")
     private String id;
 
+    @Column(name = "developer_name")
     private String name;
 
     @OneToMany(mappedBy = "developer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

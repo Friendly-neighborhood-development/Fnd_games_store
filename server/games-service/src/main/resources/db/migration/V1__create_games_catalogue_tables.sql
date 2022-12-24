@@ -1,11 +1,14 @@
 CREATE TABLE IF NOT EXISTS genres
 (genre_id varchar(255) PRIMARY KEY UNIQUE NOT NULL,
-name varchar(255) NOT NULL);
+genre_name varchar(255) NOT NULL);
 
 CREATE TABLE IF NOT EXISTS publishers
 (publisher_id varchar(255) PRIMARY KEY UNIQUE NOT NULL,
-name varchar(255) NOT NULL);
+publisher_name varchar(255) NOT NULL);
 
+CREATE TABLE IF NOT EXISTS developers
+(developer_id varchar(255) PRIMARY KEY NOT NULL,
+developer_name varchar(255) NOT NULL);
 
 
 
@@ -15,9 +18,9 @@ CREATE TABLE IF NOT EXISTS games
 (game_id varchar(255) PRIMARY KEY UNIQUE NOT NULL,
 name varchar(255) UNIQUE NOT NULL,
 release_date varchar(50) NOT NULL,
-developer varchar(200) NOT NULL,
+developer_id varchar(255) NOT NULL,
 publisher_id varchar(255) NOT NULL,
-platform varchar(200) NOT NULL,
+platform varchar(255) NOT NULL,
 features varchar(255) NOT NULL,
 price numeric(10,2) NOT NULL,
 discount numeric(10,2) NOT NULL,
