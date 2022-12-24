@@ -145,7 +145,7 @@ public class TestUtilities {
         game.setDeveloper("developer");
         game.setPublisher("publisher");
         game.setPlatform("platform");
-        game.setFeatures("features");
+        game.setFeature("features");
         game.setPrice(BigDecimal.valueOf(1000));
         game.setDiscount(BigDecimal.valueOf(200));
         game.setDescription("description");

@@ -5,7 +5,6 @@ import com.fnd.games_store.games.entity.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
 import java.util.List;
 
 @Getter
@@ -54,7 +53,7 @@ public class GameResponseDTO {
         this.developer = game.getDeveloper();
         this.publisher = game.getPublisher();
         this.platform = game.getPlatform();
-        this.features = game.getFeatures();
+        this.features = game.getFeature();
         this.price = game.getPrice();
         this.discount = game.getDiscount();
         this.description = game.getDescription();

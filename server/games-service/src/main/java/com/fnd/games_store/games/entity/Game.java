@@ -6,13 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @author SergeyPodgorny
@@ -58,7 +56,7 @@ public class Game {
     @JoinTable(name = "game_feature",
             joinColumns = {@JoinColumn(name = "game_id")},
             inverseJoinColumns = {@JoinColumn(name ="feature_id")})
-    private List<Feature> features;
+    private List<Feature> feature;
     private BigDecimal price;
     private BigDecimal discount;
     private String description;
@@ -72,7 +70,7 @@ public class Game {
         this.developer = developer;
         this.publisher = publisher;
         this.platform = platform;
-        this.features = features;
+        this.feature = features;
         this.price = price;
         this.discount = discount;
         this.description = description;

@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "feature")
+@Table(name = "features")
 @NoArgsConstructor
 @Getter
 @Setter
