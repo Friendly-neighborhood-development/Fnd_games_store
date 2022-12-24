@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SpecificGameListController {
 
-    ResponseEntity<List<GameResponseDTO>> getEditedList();
+    ResponseEntity<List<GameResponseDTO>> getEditedList(Integer page, Integer pageSize);
 
-
+    ResponseEntity<List<GameResponseDTO>> getUnEditedList();
 }
