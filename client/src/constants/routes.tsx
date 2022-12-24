@@ -1,6 +1,5 @@
 import React from "react";
 import {Navigate} from "react-router-dom";
-import Test from "../pages/Test";
 
 // lazy loading for pages
 const Games = React.lazy(() => import("../pages/Games"))
@@ -25,6 +24,5 @@ export const routes: Array<routeProps> = [
     {path: "/cart", element: <Cart/>},
     {path: "/notifications", element: <Notifications/>},
     {path: "/error", element: <Error/>},
-    {path: "/test", element: <Test/>},
     {path: "*", element: <Navigate to="/error"/>},
 ]

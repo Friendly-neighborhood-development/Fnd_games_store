@@ -1,6 +1,5 @@
 import $api from "../http/api";
 import {AxiosResponse} from "axios";
-import {AuthResponse} from "../models/response/AuthResponse";
 import {IGame} from "../models/IGame";
 
 export default class GameService{
