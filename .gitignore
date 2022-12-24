@@ -1,10 +1,12 @@
-<<<<<<< HEAD
 .idea/
 .gradle/
+.DS_Store
+
+
 games-service/build
 registry-service/build
 config-service/build
 gateway-service/build
-=======
-.DS_Store
->>>>>>> client
+
+
+
