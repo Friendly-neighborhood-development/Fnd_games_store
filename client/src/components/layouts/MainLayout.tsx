@@ -23,9 +23,9 @@ const MainLayout: FC<MainLayoutProps> = ({children}) => {
                 <Sidebar/>
                 <div className={"lg:ml-64"}>
                     {children}
+                    <Footer/>
                 </div>
             </main>
-            <Footer/>
         </div>
 
     );
