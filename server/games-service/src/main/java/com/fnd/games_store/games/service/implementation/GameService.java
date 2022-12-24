@@ -2,27 +2,18 @@ package com.fnd.games_store.games.service.implementation;
 
 
 
-import com.fnd.games_store.games.dto.GameRequestDTO;
-import com.fnd.games_store.games.entity.Game;
-import com.fnd.games_store.games.dto.GameResponseDTO;
-import com.fnd.games_store.games.exceptions.GameAlreadyExistException;
-import com.fnd.games_store.games.exceptions.GameNotFoundException;
-import com.fnd.games_store.games.repository.GameJpaRepository;
+import com.fnd.games_store.games.service.GameCatalogueEditor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-
-import java.util.List;
-import java.util.stream.Collectors;
 @CacheConfig(cacheNames = "games")
 @Cacheable
 @Service
 @Slf4j
-public class GameService {
+public class GameService implements GameCatalogueEditor {
 
 //    private final GameJpaRepository gameJpaRepository;
 //
