@@ -26,8 +26,12 @@ public class SpecificGameListControllerImpl implements SpecificGameListControlle
 
     @Override
     @GetMapping("v1/catalogue/edited")
-    public ResponseEntity<List<GameResponseDTO>> getEditedList(@RequestParam Integer page, @RequestParam Integer pageSize, @RequestParam String field) {
-        return ResponseEntity.ok(gameService.getSpecifiedGameList(page,pageSize, Sort.by(Sort.Direction.ASC, field)));
+    public ResponseEntity<List<GameResponseDTO>> getEditedList(@RequestParam Integer page, @RequestParam Integer pageSize, @RequestParam String sortField, @RequestParam Boolean ascOrder) {
+        if (ascOrder){
+            return ResponseEntity.ok(gameService.getSpecifiedGameList(page,pageSize, Sort.by(sortField)));
+        } else {
+            return ResponseEntity.ok(gameService.getSpecifiedGameList(page,pageSize, Sort.by(Sort.Direction.DESC, sortField)));
+        }
     }
 
     @Override

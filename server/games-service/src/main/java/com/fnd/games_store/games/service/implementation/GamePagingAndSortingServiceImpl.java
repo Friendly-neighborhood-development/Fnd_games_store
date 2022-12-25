@@ -24,8 +24,8 @@ public class GamePagingAndSortingServiceImpl implements GamePagingAndSortingServ
 
 
     @Override
-    public List<GameResponseDTO> getSpecifiedGameList(Integer page, Integer pageSize, Sort sort) {
-        return repository.findAll(PageRequest.of(page,pageSize, sort)).stream().map(GameResponseDTO::new).collect(Collectors.toList());
+    public List<GameResponseDTO> getSpecifiedGameList(Integer page, Integer pageSize, Sort sortBy) {
+        return repository.findAll(PageRequest.of(page,pageSize, sortBy)).stream().map(GameResponseDTO::new).collect(Collectors.toList());
     }
 
 
