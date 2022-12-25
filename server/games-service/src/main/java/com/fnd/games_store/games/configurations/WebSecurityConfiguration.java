@@ -68,7 +68,7 @@ public class WebSecurityConfiguration {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring()
-                .antMatchers("/v1/catalogue/all","/v1/catalogue/specific/*");
+                .antMatchers("/v1/catalogue/all","/v1/catalogue/specific/*", "/h2/*");
     }
 
 
