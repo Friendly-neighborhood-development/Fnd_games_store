@@ -11,5 +11,4 @@ public interface SpecificGameListController {
 
     ResponseEntity<List<GameResponseDTO>> getEditedList(Integer page, Integer pageSize,  String sortField, Boolean descOrder);
 
-    ResponseEntity<List<GameResponseDTO>> getUnEditedList();
 }

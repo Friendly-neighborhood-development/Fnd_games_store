@@ -34,11 +34,4 @@ public class SpecificGameListControllerImpl implements SpecificGameListControlle
         }
     }
 
-    @Override
-    @GetMapping("v1/catalogue/all")
-    public ResponseEntity<List<GameResponseDTO>> getUnEditedList(){
-        return ResponseEntity.ok(gameService.getAll());
-    }
-
-
 }
