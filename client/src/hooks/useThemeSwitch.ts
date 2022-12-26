@@ -5,7 +5,7 @@ import {themes} from "../constants/themes";
 export const useSwitchTheme = () => {
     const [selectedTheme, setSelectedTheme] = useState(themes[0])
     const switchTheme = (theme: ITheme) => {
-        switch (theme.mode) {
+        switch (theme.title) {
             case "light":
                 localStorage.theme = "light"
                 document.documentElement.classList.add('light')
