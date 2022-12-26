@@ -1,9 +1,10 @@
 import React from 'react';
 import images from "../constants/images";
+import {PuzzlePieceIcon} from "@heroicons/react/20/solid";
 
 const Footer = () => {
     return (
-        <footer className={"mt-4 w-full py-4 lg:py-6 border-t border-slate-500/30 dark:bg-slate-900"}>
+        <footer className={"dark:bg-slate-900 mt-4 w-full py-4 lg:py-6 border-t border-slate-500/30"}>
             <div className={"mx-auto flex lg:items-center justify-between flex-col lg:flex-row"}>
                 <div className={"flex items-center space-x-2"}>
                     <span className={"text-gray-700 text-sm dark:text-gray-400"}>Copyright &#169; 2022 Friendly neighborhood development</span>

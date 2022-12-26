@@ -4,17 +4,20 @@ import {Link} from "react-router-dom";
 import {PuzzlePieceIcon} from "@heroicons/react/24/outline";
 import Input from "../components/UI/Input";
 import Button from "../components/UI/Button";
-import {useAppDispatch} from "../hooks/redux";
-import {auth} from "../store/actions/authAction";
+import {useAppDispatch, useAppSelector} from "../hooks/redux";
 
 const Login = () => {
     const [username, setUsername] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const dispatch = useAppDispatch()
+    const {loading, error} = useAppSelector(state => state.auth)
 
     const formHandler = (e: React.SyntheticEvent) => {
         e.preventDefault()
-        dispatch(auth({username, password}))
+    }
+
+    const submitHandler = () => {
+
     }
 
     return (
@@ -44,17 +47,17 @@ const Login = () => {
                         className={"rounded-md py-1 my-2 border-gray-500/30 dark:border-gray-500/50 border dark:bg-slate-900"}
                         value={password}
                         onChange={(e) => setPassword(e.currentTarget.value)}
-                        autoComplete={"password"}
                     />
                     <Button
                         className={"bg-green-500 dark:bg-green-700 hover:bg-green-600 dark:hover:bg-green-600 w-full text-white"}
                         type={"submit"}
+                        onClick={submitHandler}
+                        // value={"Submit"}
                     >
                         Sign in
                     </Button>
                 </form>
-                <div
-                    className={"text-sm bg-white dark:bg-transparent p-4 rounded-lg border border-gray-500/30 dark:border-gray-500/50 w-full mt-4 flex justify-center"}>
+                <div className={"text-sm bg-white dark:bg-transparent p-4 rounded-lg border border-gray-500/30 dark:border-gray-500/50 w-full mt-4 flex justify-center"}>
                     <span className={"dark:text-slate-200"}>New to Games Store?</span>
                     <Link to={"/register"} className={"ml-1 text-blue-600 dark:text-sky-500"}>
                         Create an account .
