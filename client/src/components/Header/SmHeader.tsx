@@ -27,16 +27,16 @@ const SmHeader: FC = memo(() => {
     return (
         <>
             <header
-                className={"w-full border-b border-slate-500/30 lg:hidden sticky top-0 z-10 bg-white shadow-gray-500/10 backdrop-blur dark:bg-slate-900/80 shadow-lg dark:shadow-none"}>
+                className={"w-full border-b border-slate-500/30 lg:hidden sticky top-0 z-10 bg-white shadow-gray-500/10 backdrop-blur shadow-lg dark:bg-slate-900/80 dark:shadow-none"}>
                 <div className="container mx-auto">
                     <div className={"w-full justify-between items-center flex  py-3"}>
-                        <MagnifyingGlassIcon className={"w-6 h-6 dark:text-gray-100 cursor-pointer"}/>
+                        <MagnifyingGlassIcon className={"w-6 h-6 cursor-pointer dark:text-gray-100"}/>
                         <Link to={"/games"} className={"flex items-center"}>
                             <PuzzlePieceIcon className={"w-6 h-6 text-blue-600"}/>
-                            <span className={"dark:text-gray-100 text-xl ml-1"}>Games Store</span>
+                            <span className={"text-xl ml-1 dark:text-gray-100"}>Games Store</span>
                         </Link>
                         <Bars3Icon
-                            className={"w-6 h-6 dark:text-gray-100 cursor-pointer"}
+                            className={"w-6 h-6 cursor-pointer dark:text-gray-100"}
                             onClick={() => setModalVisible(!modal)}
                         />
                     </div>
@@ -45,11 +45,11 @@ const SmHeader: FC = memo(() => {
             {modal &&
                 <div className={"fixed z-50 inset-0"}>
                     <div
-                        className={"fixed inset-0 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80 font-semibold dark:text-slate-300"}
+                        className={"fixed inset-0 bg-black/20 backdrop-blur-sm  font-semibold dark:bg-slate-900/80 dark:text-slate-300"}
                         onClick={() => setModalVisible(!modal)}
                     >
                         <div
-                            className={"fixed top-4 right-4 w-full max-w-xs bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6 text-base"}
+                            className={"fixed top-4 right-4 w-full max-w-xs bg-white rounded-lg shadow-lg p-6 text-base dark:bg-slate-800"}
                             onClick={(e) => e.stopPropagation()}
                         >
                             <button
@@ -64,7 +64,7 @@ const SmHeader: FC = memo(() => {
                                 <li><SmHeaderLink href={"/login"} title={"Login"} Icon={UserIcon}/></li>
                             </ul>
                             <div
-                                className={"pt-6 mt-6 border-t-slate-200 dark:border-t-slate-200/10 border-t flex items-center justify-between text-slate-700 dark:text-slate-400 font-normal"}>
+                                className={"pt-6 mt-6 border-t-slate-200 border-t flex items-center justify-between text-slate-700 font-normal dark:text-slate-400 dark:border-t-slate-200/10"}>
                                 Switch theme
                                 <ThemeSwitcher/>
                             </div>
