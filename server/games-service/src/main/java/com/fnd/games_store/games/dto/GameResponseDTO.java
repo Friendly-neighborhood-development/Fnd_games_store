@@ -1,11 +1,11 @@
 package com.fnd.games_store.games.dto;
 
 
-import com.fnd.games_store.games.entity.Game;
+import com.fnd.games_store.games.entity.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,12 +14,12 @@ import java.time.OffsetDateTime;
 public class GameResponseDTO {
     private String id;
     private String name;
-    private String genre;
+    private List<Genre> genre;
     private String releaseDate;
-    private String developer;
-    private String publisher;
-    private String platform;
-    private String features;
+    private Developer developer;
+    private Publisher publisher;
+    private List<Platform> platform;
+    private List<Feature> features;
     private BigDecimal price;
     private BigDecimal discount;
     private String description;
@@ -29,8 +29,8 @@ public class GameResponseDTO {
 
     }
 
-    public GameResponseDTO(String name, String genre, String releaseDate, String developer,
-                          String publisher, String platform, String features, BigDecimal price,
+    public GameResponseDTO(String name, List<Genre> genre, String releaseDate, Developer developer,
+                          Publisher publisher, List<Platform> platform, List<Feature> features, BigDecimal price,
                           BigDecimal discount, String description, String base64Image) {
         this.name = name;
         this.genre = genre;
@@ -53,7 +53,7 @@ public class GameResponseDTO {
         this.developer = game.getDeveloper();
         this.publisher = game.getPublisher();
         this.platform = game.getPlatform();
-        this.features = game.getFeatures();
+        this.features = game.getFeature();
         this.price = game.getPrice();
         this.discount = game.getDiscount();
         this.description = game.getDescription();

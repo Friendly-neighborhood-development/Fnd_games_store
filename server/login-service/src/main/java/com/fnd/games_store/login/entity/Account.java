@@ -29,8 +29,8 @@ public class Account {
 
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "accounts_authorities",
-            joinColumns = @JoinColumn(name = "account_id"),
-            inverseJoinColumns = @JoinColumn(name ="authority_id"))
+            joinColumns = @JoinColumn(name = "game_id"),
+            inverseJoinColumns = @JoinColumn(name ="genre_id"))
     private List<Authority> authorities;
 
     private String email;

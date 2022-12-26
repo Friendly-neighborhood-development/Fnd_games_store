@@ -6,12 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Objects;
+import java.util.List;
 
 /**
  * @author SergeyPodgorny
@@ -19,7 +18,7 @@ import java.util.Objects;
 
 
 @Entity
-@Table(name = "games_catalogue")
+@Table(name = "games")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -33,26 +32,45 @@ public class Game {
     @Column(name = "game_id")
     private String id;
     private String name;
-    private String genre;
+
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "game_genre",
+               joinColumns = {@JoinColumn(name = "game_id")},
+               inverseJoinColumns = {@JoinColumn(name ="genre_id")})
+    private List<Genre> genre;
+
     private String releaseDate;
-    private String developer;
-    private String publisher;
-    private String platform;
-    private String features;
+    @ManyToOne
+    @JoinColumn(name = "developer_id")
+    private Developer developer;
+
+    @ManyToOne
+    @JoinColumn(name = "publisher_id")
+    private Publisher publisher;
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "game_platform",
+            joinColumns = {@JoinColumn(name = "game_id")},
+            inverseJoinColumns = {@JoinColumn(name ="platform_id")})
+    private List<Platform> platform;
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "game_feature",
+            joinColumns = {@JoinColumn(name = "game_id")},
+            inverseJoinColumns = {@JoinColumn(name ="feature_id")})
+    private List<Feature> feature;
     private BigDecimal price;
     private BigDecimal discount;
     private String description;
     private String base64Image;
 
-    public Game(String name, String genre, String releaseDate, String developer, String publisher, String platform,
-                String features, BigDecimal price, BigDecimal discount, String description, String base64Image) {
+    public Game(String name, List<Genre> genre, String releaseDate, Developer developer,Publisher publisher, List<Platform> platform,
+                List<Feature> features, BigDecimal price, BigDecimal discount, String description, String base64Image) {
         this.name = name;
         this.genre = genre;
         this.releaseDate = releaseDate;
         this.developer = developer;
         this.publisher = publisher;
         this.platform = platform;
-        this.features = features;
+        this.feature = features;
         this.price = price;
         this.discount = discount;
         this.description = description;
@@ -60,16 +78,4 @@ public class Game {
     }
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Game game = (Game) o;
-        return id != null && Objects.equals(id, game.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import {Routes, Route} from "react-router-dom";
 import {routes} from "../constants/routes";
-import MainLayout from "./layouts/MainLayout";
 import NotLoginLayout from "./layouts/NotLoginLayout";
 
 const AppRouter = () => {
