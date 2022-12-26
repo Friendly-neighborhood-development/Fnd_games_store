@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import MainLayout from "../components/layouts/MainLayout";
 import NotLoginLayout from "../components/layouts/NotLoginLayout";
 
 const Error = () => {

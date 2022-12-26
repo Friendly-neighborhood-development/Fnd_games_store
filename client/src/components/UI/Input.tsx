@@ -23,7 +23,6 @@ const Input: FC<CustomInputProps> = ({className, label, ...props}) => {
                 : <input className={rootClasses} {...props} />
             }
         </>
-
     )
 }
 

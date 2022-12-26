@@ -11,7 +11,6 @@ const NotLoginLayout: FC<NotLoginLayoutProps> = ({children}) => {
                 {children}
             </div>
         </div>
-
     );
 };
 

@@ -43,7 +43,6 @@ const GameCard: FC<GameCardProps> = memo(({name, description, base64Image, price
                 </Link>
             }
         </>
-
     );
 });
 
