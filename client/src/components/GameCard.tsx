@@ -26,13 +26,13 @@ const GameCard: FC<GameCardProps> = memo(({name, description, base64Image, price
                                 : (discount
                                     ? <div className={"flex justify-between items-center"}>
                                         <span
-                                            className={"flex items-center p-2 bg-blue-600 rounded-md text-xs text-whit dark:bg-sky-300/[0.15]e dark:text-sky-400"}
+                                            className={"flex items-center p-2 bg-blue-600 dark:bg-sky-300/[0.15] text-white dark:text-sky-400 rounded-md text-xs"}
                                         >
                                             -{discount}%
                                         </span>
                                         <div className={"ml-2 flex-wrap flex justify-end items-center"}>
                                             <div className={"line-through text-slate-400"}>{price} ₽</div>
-                                            <div className={"ml-2 dark:text-slate-200"}>
+                                            <div className={"dark:text-slate-200 ml-2"}>
                                                 {+(price - price * discount / 100).toFixed(2)} ₽
                                             </div>
                                         </div>
@@ -43,6 +43,7 @@ const GameCard: FC<GameCardProps> = memo(({name, description, base64Image, price
                 </Link>
             }
         </>
+
     );
 });
 

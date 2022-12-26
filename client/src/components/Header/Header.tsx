@@ -14,7 +14,7 @@ const Header: FC = memo(() => {
                 <div className={"w-full justify-between items-center py-4 flex"}>
                     <Link to={"/games"} className={"mr-4 flex items-center"}>
                         <PuzzlePieceIcon className={"w-10 h-10 text-blue-600 dark:text-sky-500"}/>
-                        <span className={"ml-2  md:text-3xl text-xl dark:text-white"}>Games Store</span>
+                        <span className={"ml-2 dark:text-white md:text-3xl text-xl"}>Games Store</span>
                     </Link>
                     <nav className={"flex items-center space-x-4 relative"}>
                         <Search placeholder={"Искать в магазине"}/>

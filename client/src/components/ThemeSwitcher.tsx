@@ -1,19 +1,61 @@
-import React, {memo, useEffect} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {Listbox} from "@headlessui/react";
-import {MoonIcon, SunIcon} from "@heroicons/react/24/outline";
+import {ComputerDesktopIcon, MoonIcon, SunIcon} from "@heroicons/react/24/outline";
+import {IIcon} from "../types/IIcon";
 import {ChevronDownIcon} from "@heroicons/react/20/solid";
-import {useSwitchTheme} from "../hooks/useThemeSwitch";
-import {themes} from "../constants/themes";
 
-const ThemeSwitcher = memo(() => {
-    const {selectedTheme, setSelectedTheme} = useSwitchTheme()
+interface ITheme {
+    id: number,
+    mode: "light" | "dark" | "system"
+    Icon: React.FC<IIcon>
+}
+
+const themes: Array<ITheme> = [
+    {id: 1, mode: 'light', Icon: SunIcon},
+    {id: 2, mode: 'dark', Icon: MoonIcon},
+    {id: 3, mode: 'system', Icon: ComputerDesktopIcon},
+]
+
+const TestThemeSwitcher = memo(() => {
+    const [selectedTheme, setSelectedTheme] = useState(themes[0])
+    const switchTheme = (theme: ITheme) => {
+        switch (theme.mode) {
+            case "light":
+                localStorage.theme = "light"
+                document.documentElement.classList.add('light')
+                document.documentElement.classList.remove('dark')
+                document.documentElement.style.backgroundColor = "#ffffff"
+                setSelectedTheme(themes[0])
+                break
+            case "dark":
+                localStorage.theme = 'dark'
+                document.documentElement.classList.add('dark')
+                document.documentElement.classList.remove('light')
+                document.documentElement.style.backgroundColor = "#0f172a"
+                setSelectedTheme(themes[1])
+                break
+            default:
+                localStorage.theme = "system"
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark')
+                    document.documentElement.classList.remove('light')
+                    document.documentElement.style.backgroundColor = "#0f172a"
+                    setSelectedTheme(themes[2])
+                } else {
+                    document.documentElement.classList.add('light')
+                    document.documentElement.classList.remove('dark')
+                    document.documentElement.style.backgroundColor = "#f3f4f6"
+                    setSelectedTheme(themes[2])
+                }
+        }
+    }
     useEffect(() => {
-        setSelectedTheme(themes.find(theme => theme.mode === localStorage.theme) || themes[2])
+        switchTheme(themes.find(theme => theme.mode === localStorage.theme) || themes[2])
     }, [])
 
     return (
         <div className={"relative"}>
-            <Listbox value={selectedTheme} onChange={setSelectedTheme}>
+            <Listbox value={selectedTheme} onChange={switchTheme}>
                 <Listbox.Button
                     className={"flex items-center border border-gray-300 h-10 px-4 space-x-1.5 text-slate-600 rounded-3xl hover:bg-gray-200/30 dark:hover:bg-slate-500/50 dark:border-slate-600 dark:text-slate-300 dark:bg-slate-800"}>
                     <span className={"capitalize text-sm"}>{localStorage.theme}</span>
@@ -26,7 +68,7 @@ const ThemeSwitcher = memo(() => {
                     <ChevronDownIcon className={"w-3 h-3"}/>
                 </Listbox.Button>
                 <Listbox.Options
-                    className={"absolute top-full right-0 mt-8 lg:mt-8 w-36 bg-white rounded-lg py-1 shadow-xl overflow-hidden dark:text-slate-300 dark:bg-slate-800"}>
+                    className={"absolute top-full right-0 mt-8 lg:mt-8 w-36 bg-white rounded-lg py-1 shadow-xl dark:text-slate-300 dark:bg-slate-800 overflow-hidden"}>
                     {themes.map((theme) => (
                         <Listbox.Option
                             key={theme.id}
@@ -53,4 +95,4 @@ const ThemeSwitcher = memo(() => {
     );
 });
 
-export default ThemeSwitcher;
+export default TestThemeSwitcher;

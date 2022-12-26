@@ -7,7 +7,7 @@ interface CustomInputProps {
     placeholder?: string;
     className?: string
     label?: string
-    autoComplete?: "new-password" | "username" | "password"
+    autoComplete?: "on" | "off" | "username"
 
 }
 
@@ -23,6 +23,7 @@ const Input: FC<CustomInputProps> = ({className, label, ...props}) => {
                 : <input className={rootClasses} {...props} />
             }
         </>
+
     )
 }
 

@@ -5,6 +5,7 @@ import {useAppDispatch, useAppSelector} from "../hooks/redux";
 
 const Games = () => {
     const {games, isLoading, error} = useAppSelector(state => state.game)
+    const dispatch = useAppDispatch()
 
     return (
         <MainLayout>
