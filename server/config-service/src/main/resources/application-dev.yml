@@ -6,5 +6,5 @@ spring:
     config:
       server:
         git:
-          uri: file://home/sergey/Idea-wokspace/games_store_development_environment_configurations
+          uri: file://home/sergey/workspace-idea/games_store_environment_configurations
           skipSslValidation: true

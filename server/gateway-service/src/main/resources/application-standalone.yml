@@ -28,6 +28,8 @@ spring:
             - Path=/cart/v1/orders
         - id: login_service
           uri: http://localhost:8082/login
+          filters:
+            - AddResponseHeader=Access-Control-Allow-Origin, http://localhost:3000/
           predicates:
             - Path=/login/v1/authorization
         - id: cart-service
