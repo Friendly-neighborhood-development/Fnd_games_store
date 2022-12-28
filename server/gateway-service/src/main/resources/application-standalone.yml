@@ -27,6 +27,9 @@ spring:
           uri: http://localhost:8081/games
           predicates:
             - Path=/games/get/**
+
+
+
         - id: cart_service
           uri: http://localhost:8083/cart
           predicates:
@@ -39,18 +42,13 @@ spring:
           uri: http://localhost:8083/cart
           predicates:
             - Path=/cart/v1/orders
+
+
+
         - id: login_service
           uri: http://localhost:8082/login
           predicates:
             - Path=/login/v1/authorization
-        - id: cart-service
-          uri: http://localhost:8083/cart
-          predicates:
-            - Path=/cart/v1/content
-        - id: cart-service
-          uri: http://localhost:8083/cart
-          predicates:
-            - Path=/cart/v1/update
 
 
 eureka:
