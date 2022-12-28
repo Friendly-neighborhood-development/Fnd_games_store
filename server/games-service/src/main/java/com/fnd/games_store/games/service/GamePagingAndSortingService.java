@@ -11,5 +11,7 @@ public interface GamePagingAndSortingService {
 
     List<GameResponseDTO> getSpecifiedGameList(Integer pageNumber, Integer gamesOnPage, Sort sortBy);
 
+    GameResponseDTO getGameByName(String name);
+
 
 }
