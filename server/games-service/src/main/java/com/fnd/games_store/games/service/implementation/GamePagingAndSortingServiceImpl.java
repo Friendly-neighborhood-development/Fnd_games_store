@@ -28,4 +28,9 @@ public class GamePagingAndSortingServiceImpl implements GamePagingAndSortingServ
         return repository.findAll(PageRequest.of(page,pageSize, sortBy)).stream().map(GameResponseDTO::new).collect(Collectors.toList());
     }
 
+    @Override
+    public GameResponseDTO getGameByName(String name) {
+        return new GameResponseDTO(repository.getGameByName(name));
+    }
+
 }
