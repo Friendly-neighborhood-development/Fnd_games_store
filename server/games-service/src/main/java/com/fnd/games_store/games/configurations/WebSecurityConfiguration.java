@@ -53,6 +53,8 @@ public class WebSecurityConfiguration {
     @Bean
     public SecurityFilterChain securitySettings(HttpSecurity http) throws Exception {
 
+        http.authorizeHttpRequests().antMatchers("/v1/catalogue/*", "v1/catalogue/list/*").permitAll().anyRequest().authenticated();
+
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
 
         http.formLogin().disable();
@@ -66,9 +68,9 @@ public class WebSecurityConfiguration {
     }
 
     @Bean
+    @Profile("standalone")
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring()
-                .antMatchers("/v1/catalogue/all","/v1/catalogue/specific/*", "/h2/*");
+        return (web) -> web.ignoring().antMatchers( "/h2/*");
     }
 
 
