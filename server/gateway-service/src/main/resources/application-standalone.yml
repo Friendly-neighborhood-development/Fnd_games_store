@@ -22,11 +22,11 @@ spring:
         - id: games_service
           uri: http://localhost:8081/games
           predicates:
-            - Path=/games/getAll
+            - Path=/games/v1/catalogue/list/**"
         - id: games_service
           uri: http://localhost:8081/games
           predicates:
-            - Path=/games/get/**
+            - Path=/games/v1/catalogue/**
 
 
 
