@@ -6,5 +6,4 @@ public interface SpecificGameService {
 
     GameResponseDTO getGameByName(String name);
 
-
 }
