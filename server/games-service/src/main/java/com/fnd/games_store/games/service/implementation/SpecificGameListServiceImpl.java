@@ -32,9 +32,6 @@ public class SpecificGameListServiceImpl implements SpecificGameListService {
         return repository.findAll(PageRequest.of(page,pageSize, sortBy)).stream().map(GameResponseDTO::new).collect(Collectors.toList());
     }
 
-    @Override
-    public GameResponseDTO getGameByName(String name) {
-        return new GameResponseDTO(repository.getGameByName(name).orElseThrow(GameNotFoundException::new));
-    }
+
 
 }
