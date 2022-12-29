@@ -22,7 +22,7 @@ public class SpecificGameControllerImpl implements SpecificGameController {
     }
 
     @Override
-    @GetMapping("v1/catalogue/{name}")
+    @GetMapping("/v1/catalogue/{name}")
     public ResponseEntity<GameResponseDTO> getSpecifiedGame(@PathVariable String name) {
         return ResponseEntity.ok(service.getGameByName(name));
     }
