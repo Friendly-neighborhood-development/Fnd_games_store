@@ -10,7 +10,7 @@ public interface SpecificGameListService {
 
     List<GameResponseDTO> getSpecifiedGameList(Integer pageNumber, Integer gamesOnPage, Sort sortBy);
 
-    GameResponseDTO getGameByName(String name);
+
 
 
 }
