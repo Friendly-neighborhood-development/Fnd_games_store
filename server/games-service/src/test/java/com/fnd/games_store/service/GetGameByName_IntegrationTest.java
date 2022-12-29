@@ -18,6 +18,7 @@ import org.springframework.test.context.BootstrapWith;
 import static org.assertj.core.api.Assertions.*;
 
 
+
 @SpringBootTest(classes = GamesApplication.class)
 @Slf4j
 public class GetGameByName_IntegrationTest {
@@ -26,10 +27,7 @@ public class GetGameByName_IntegrationTest {
     @Autowired
     private GameRepository repository;
 
-    @Autowired
-    private GamePagingAndSortingServiceImpl testableService;
-
-    private GameResponseDTO referenceGame;
+    private Game referenceGame;
 
     private String referenceGameName = "DOOM Eternal";
 
@@ -39,22 +37,16 @@ public class GetGameByName_IntegrationTest {
         assertThat(referenceGame).isEqualTo(createAppropriateGameResponseDTO());
     }
 
+
     @BeforeEach
     void testSetup(){
-
-//        Game gameFromDb = repository.getGameByName(referenceGameName);
-//        log.info(gameFromDb.getName());
-        referenceGame = new GameResponseDTO(repository.getGameByName(referenceGameName));
-//        referenceGame.setId("1");
-//        referenceGame.setBase64Image("");
-//        referenceGame.setDescription("");
+        referenceGame = repository.getGameByName(referenceGameName).get();
+        log.info(referenceGame.getName());
+        log.info(referenceGame.getDeveloper().getName());
     }
 
-
-
-
-    private GameResponseDTO createAppropriateGameResponseDTO() {
-        GameResponseDTO returnableGame = new GameResponseDTO();
+    private Game createAppropriateGameResponseDTO() {
+        Game returnableGame = new Game();
         returnableGame.setId("1");
         returnableGame.setName("Doom Eternal");
         returnableGame.setReleaseDate("2019");
