@@ -7,8 +7,6 @@ import java.util.Optional;
 
 public interface GameRepository extends JpaRepository<Game, String> {
 
-
-    public Game getGameById(String id);
     public Optional<Game> getGameByName(String name);
 
 }
