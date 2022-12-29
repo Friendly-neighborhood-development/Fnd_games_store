@@ -1,25 +1,8 @@
 package com.fnd.games_store.service;
 
 import com.fnd.games_store.games.GamesApplication;
-import com.fnd.games_store.games.dto.GameResponseDTO;
-import com.fnd.games_store.games.entity.Game;
-import com.fnd.games_store.games.repository.GameRepository;
-import com.fnd.games_store.games.service.GamePagingAndSortingService;
-import com.fnd.games_store.games.service.implementation.GamePagingAndSortingServiceImpl;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.Session;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTestContextBootstrapper;
-import org.springframework.test.context.BootstrapWith;
-
-import javax.persistence.EntityManager;
-
-import static org.assertj.core.api.Assertions.*;
-
 
 
 @SpringBootTest(classes = GamesApplication.class)

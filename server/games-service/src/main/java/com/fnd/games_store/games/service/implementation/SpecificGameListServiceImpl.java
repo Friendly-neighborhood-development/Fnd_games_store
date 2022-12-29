@@ -3,7 +3,7 @@ package com.fnd.games_store.games.service.implementation;
 import com.fnd.games_store.games.dto.GameResponseDTO;
 import com.fnd.games_store.games.exceptions.GameNotFoundException;
 import com.fnd.games_store.games.repository.GameRepository;
-import com.fnd.games_store.games.service.GamePagingAndSortingService;
+import com.fnd.games_store.games.service.SpecificGameListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -16,13 +16,13 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
-public class GamePagingAndSortingServiceImpl implements GamePagingAndSortingService {
+public class SpecificGameListServiceImpl implements SpecificGameListService {
 
 
     private final GameRepository repository;
 
     @Autowired
-    public GamePagingAndSortingServiceImpl(GameRepository repository) {
+    public SpecificGameListServiceImpl(GameRepository repository) {
         this.repository = repository;
     }
 
