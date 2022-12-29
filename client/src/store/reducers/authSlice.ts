@@ -28,6 +28,8 @@ export const authSlice = createSlice({
                 state.loading = "succeeded"
                 state.token = action.payload.token
                 state.userId = action.payload.userId
+                localStorage.setItem("token", state.token)
+                localStorage.setItem("userId", state.userId)
             })
             .addCase(auth.rejected, (state, action) => {
                 state.loading = "failed"

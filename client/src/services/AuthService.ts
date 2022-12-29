@@ -1,10 +1,10 @@
 import {AxiosResponse} from "axios";
 import {AuthResponse} from "../models/response/AuthResponse";
 import {IUser} from "../models/IUser";
-import $api from "../http/api";
+import $authApi from "../http/authApi";
 
 export class AuthService {
     static auth(user: IUser):Promise<AxiosResponse<AuthResponse>>{
-        return $api.post('/login/v1/authorization', user)
+        return $authApi.post('/login/v1/authorization', user)
     }
 }
