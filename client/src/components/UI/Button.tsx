@@ -5,7 +5,7 @@ interface ButtonProps {
     className?: string;
     type?: "button" | "submit"
     value?: string
-    onClick?: (arg0: any) => any
+    onClick?: any
 }
 
 const Button: FC<ButtonProps> = ({className, children, ...props}) => {
