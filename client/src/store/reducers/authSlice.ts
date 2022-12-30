@@ -7,13 +7,15 @@ interface AuthState {
     userId: string
     loading: "idle" | "pending" | "succeeded" | "failed"
     error: string
+    isAuth: boolean
 }
 
 const initialState: AuthState = {
     token: "",
     userId: "",
     loading: "idle",
-    error: ""
+    error: "",
+    isAuth: false
 }
 
 export const authSlice = createSlice({
@@ -28,6 +30,9 @@ export const authSlice = createSlice({
                 state.loading = "succeeded"
                 state.token = action.payload.token
                 state.userId = action.payload.userId
+                state.isAuth = true
+                localStorage.setItem("token", state.token)
+                localStorage.setItem("userId", state.userId)
             })
             .addCase(auth.rejected, (state, action) => {
                 state.loading = "failed"
