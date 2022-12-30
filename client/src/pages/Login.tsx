@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import NotLoginLayout from "../components/layouts/NotLoginLayout";
 import {Link} from "react-router-dom";
 import {PuzzlePieceIcon} from "@heroicons/react/24/outline";
@@ -7,7 +7,7 @@ import Button from "../components/UI/Button";
 import {useAppDispatch} from "../hooks/redux";
 import {auth} from "../store/actions/authAction";
 
-const Login = () => {
+const Login:FC = () => {
     const [username, setUsername] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const dispatch = useAppDispatch()

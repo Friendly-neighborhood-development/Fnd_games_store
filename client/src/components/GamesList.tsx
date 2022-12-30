@@ -1,19 +1,20 @@
 import React, {FC, memo, useEffect} from 'react';
 import GameCard from "./GameCard";
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
+import {fetchGames} from "../store/actions/gamesAction";
+import {useNavigate} from "react-router-dom";
 
 
 const GamesList: FC = memo(() => {
-    const {games, isLoading, error} = useAppSelector(state => state.game)
+    const {games, loading, error} = useAppSelector(state => state.game)
+    const navigate = useNavigate()
     const dispatch = useAppDispatch()
     useEffect(() => {
-        // TODO
+        dispatch(fetchGames({page: 0, pageSize: 6, sortField: "name", ascOrder: true}))
+        if (loading === "failed")
+            navigate("/error")
     }, []);
 
-    if (!games.length)
-        return (
-            <h1>Произошла ошибка при подгрузке игр, повторите позже</h1>
-        )
 
     return (
         <section className={"w-full my-4"}>
@@ -25,7 +26,7 @@ const GamesList: FC = memo(() => {
                         <GameCard
                             {...game}
                             key={game.id}
-                            skeleton={isLoading}
+                            skeleton={loading === "succeeded"}
                         />)}
                 </div>
             }
