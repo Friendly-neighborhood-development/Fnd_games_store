@@ -23,7 +23,7 @@ const GameCard: FC<GameCardProps> = memo(({name, description, base64Image, price
                         : (discount
                             ? <div className={"flex justify-between items-center"}>
                                         <span
-                                            className={"flex items-center p-2 bg-blue-600 rounded-md text-xs text-whit dark:bg-sky-300/[0.15]e dark:text-sky-400"}
+                                            className={"flex items-center p-2 bg-blue-600 rounded-md text-xs text-white dark:bg-sky-300/[0.15] dark:text-sky-400"}
                                         >
                                             -{discount}%
                                         </span>
