@@ -18,6 +18,10 @@ const GamesList: FC = memo(() => {
 
     return (
         <section className={"w-full my-4"}>
+            <div className={""}>
+                <div className={"text-xl mb-2"}>Games</div>
+                <div className={"lg:hidden"}>filter</div>
+            </div>
             {error
                 ? <h1>Ошибка: {error}</h1>
                 : <div
