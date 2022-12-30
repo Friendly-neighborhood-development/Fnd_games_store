@@ -10,13 +10,10 @@ const GamesList: FC = memo(() => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     useEffect(() => {
-        dispatch(fetchGames())
-        if (!games.length)
+        dispatch(fetchGames({page: 0, pageSize: 6, sortField: "name", ascOrder: true}))
+        if (loading === "failed")
             navigate("/error")
     }, []);
-
-
-
 
 
     return (

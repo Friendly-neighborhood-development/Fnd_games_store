@@ -1,15 +1,16 @@
 import {IGame} from "../../models/IGame";
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
+import {fetchGames} from "../actions/gamesAction";
 
 interface GameState {
     games: IGame[],
-    isLoading: boolean,
+    loading: "idle" | "pending" | "succeeded" | "failed",
     error: string
 }
 
 const initialState: GameState = {
     games: [],
-    isLoading: false,
+    loading: "idle",
     error: ""
 }
 
@@ -17,21 +18,21 @@ export const gameSlice = createSlice({
     name: "games",
     initialState,
     reducers: {
-        gamesFetching(state) {
-            state.isLoading = true
-        },
-        gamesFetchingSuccess(state, action:PayloadAction<IGame[]>) {
-            state.isLoading = false
-            state.error = ""
-            state.games = action.payload
-        },
-        gamesFetchingError(state, action:PayloadAction<string>) {
-            state.isLoading = false
-            state.error = action.payload
-        },
+    },
+    extraReducers:(builder) =>{
+        builder.addCase(fetchGames.pending, (state) => {
+            state.loading = "pending"
+        })
+            .addCase(fetchGames.fulfilled, (state, action) => {
+                state.loading = "succeeded"
+                state.games = action.payload
+            })
+            .addCase(fetchGames.rejected, (state, action) => {
+                state.loading = "failed"
+                console.log(action.error)
+            })
     }
 })
 
-export const {gamesFetching, gamesFetchingSuccess, gamesFetchingError} = gameSlice.actions
 
 export default gameSlice.reducer
