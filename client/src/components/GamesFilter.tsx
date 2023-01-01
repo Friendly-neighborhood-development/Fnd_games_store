@@ -1,4 +1,4 @@
-import React, {FC, Fragment, useEffect, useState} from 'react';
+import React, {FC, Fragment, useState} from 'react';
 import {Listbox} from "@headlessui/react";
 import {CheckIcon, ChevronDownIcon} from "@heroicons/react/20/solid";
 import Button from "./UI/Button";
@@ -12,6 +12,7 @@ export const GamesFilter: FC = () => {
     const [selectedPage, setSelectedPage] = useState(pages[0])
     const [selectedOrder, setSelectedOrder] = useState(orders[0])
     const [selectedPageSize, setSelectedPageSize] = useState(pageSizes[1])
+
     const filterHandler = () => {
         dispatch(fetchGames({
             page: +selectedPage.title - 1,
@@ -20,9 +21,6 @@ export const GamesFilter: FC = () => {
             ascOrder: selectedOrder.title === "direct"
         }))
     }
-    useEffect(() => {
-        filterHandler()
-    }, [])
     const resetFilter = () => {
         setSelectedField(fields[0])
         setSelectedPage(pages[0])
