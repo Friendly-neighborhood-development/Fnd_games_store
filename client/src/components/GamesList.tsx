@@ -8,7 +8,7 @@ import {GamesFilter} from "./GamesFilter";
 
 
 const GamesList: FC = memo(() => {
-    const {games, loading, error} = useAppSelector(state => state.game)
+    const {games, loading, error} = useAppSelector(state => state.games)
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     useEffect(() => {
