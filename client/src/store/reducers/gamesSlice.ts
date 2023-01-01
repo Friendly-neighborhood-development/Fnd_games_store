@@ -2,13 +2,13 @@ import {IGame} from "../../models/IGame";
 import {createSlice} from "@reduxjs/toolkit";
 import {fetchGames} from "../actions/gamesAction";
 
-interface GameState {
+interface GamesState {
     games: IGame[],
     loading: "idle" | "pending" | "succeeded" | "failed",
     error: string
 }
 
-const initialState: GameState = {
+const initialState: GamesState = {
     games: [],
     loading: "idle",
     error: ""
