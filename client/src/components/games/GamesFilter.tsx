@@ -1,10 +1,10 @@
 import React, {FC, Fragment, useState} from 'react';
 import {Listbox} from "@headlessui/react";
 import {CheckIcon, ChevronDownIcon} from "@heroicons/react/20/solid";
-import Button from "./UI/Button";
-import {useAppDispatch} from "../hooks/redux";
-import {fetchGames} from "../store/actions/gamesAction";
-import {fields, orders, pages, pageSizes} from "../constants/filter";
+import Button from "../UI/Button";
+import {useAppDispatch} from "../../hooks/redux";
+import {fetchGames} from "../../store/actions/gamesAction";
+import {fields, orders, pages, pageSizes} from "../../constants/filter";
 
 export const GamesFilter: FC = () => {
     const dispatch = useAppDispatch()

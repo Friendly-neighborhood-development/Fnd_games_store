@@ -1,11 +1,11 @@
 import React, {FC, memo, useEffect} from 'react';
-import GameCard from "./GameCard";
-import {useAppDispatch, useAppSelector} from "../hooks/redux";
-import {fetchGames} from "../store/actions/gamesAction";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {fetchGames} from "../../store/actions/gamesAction";
 import {useNavigate} from "react-router-dom";
-import Sidebar from "./Sidebar";
+import Sidebar from "../Sidebar";
 import {GamesFilter} from "./GamesFilter";
-import {defaultFilterTitles} from "../constants/filter";
+import {defaultFilterTitles} from "../../constants/filter";
+import GameCard from "./game/GameCard";
 
 
 const GamesList: FC = memo(() => {
