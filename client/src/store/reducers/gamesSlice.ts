@@ -14,7 +14,7 @@ const initialState: GameState = {
     error: ""
 }
 
-export const gameSlice = createSlice({
+export const gamesSlice = createSlice({
     name: "games",
     initialState,
     reducers: {
@@ -35,4 +35,4 @@ export const gameSlice = createSlice({
 })
 
 
-export default gameSlice.reducer
+export default gamesSlice.reducer
