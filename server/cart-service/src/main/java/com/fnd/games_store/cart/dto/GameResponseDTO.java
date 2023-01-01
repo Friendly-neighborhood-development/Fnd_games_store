@@ -36,16 +36,16 @@ public class GameResponseDTO {
 
     @Override
     public String toString() {
-        return "GameResponseDTO{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", releaseDate='" + releaseDate + '\'' +
-                ", gameUrl='" + gameUrl + '\'' +
+        return "{" +
+                "id=" + id +
+                ", name=" + name +
+                ", releaseDate=" + releaseDate +
+                ", gameUrl=" + gameUrl +
                 ", price=" + price +
                 ", discount=" + discount +
-                ", description='" + description + '\'' +
-                ", base64Image='" + base64Image + '\'' +
-                '}';
+                ", description=" + description +
+                ", base64Image=" + base64Image +
+                "}";
     }
 
 
