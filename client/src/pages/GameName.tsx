@@ -30,11 +30,10 @@ const GameName = () => {
                     <div>{game?.description}</div>
                 </div>
                 <div className={"w-1/4 space-y-4 "}>
-
                     <div className={"flex justify-between border-b border-b-slate-800 py-1"}>
                         <div>genre</div>
                         <div>{game?.genre?.map((g) => (
-                            <> {g.name}</>
+                            <span key={g.id}> {g.name}</span>
                         ))}</div>
                     </div>
                     <div className={"flex justify-between border-b border-b-slate-800 py-1"}>
@@ -48,13 +47,13 @@ const GameName = () => {
                     <div className={"flex justify-between border-b border-b-slate-800 py-1"}>
                         <div>features</div>
                         <div>{game?.features?.map((feature) => (
-                            <> {feature.name}</>
+                            <span key={feature.name}> {feature.name}</span>
                         ))}</div>
                     </div>
                     <div className={"flex justify-between border-b border-b-slate-800 py-1"}>
                         <div>platform</div>
                         <div>{game?.platform?.map((pl) => (
-                            <> {pl.name}</>
+                            <span key={pl.name}> {pl.name}</span>
                         ))}</div>
                     </div>
                     <div className={"flex justify-between border-b border-b-slate-800 py-1"}>
