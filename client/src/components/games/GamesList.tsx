@@ -1,23 +1,23 @@
 import React, {FC, memo, useEffect} from 'react';
-import GameCard from "./GameCard";
-import {useAppDispatch, useAppSelector} from "../hooks/redux";
-import {fetchGames} from "../store/actions/gamesAction";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {fetchGames} from "../../store/actions/gamesAction";
 import {useNavigate} from "react-router-dom";
-import Sidebar from "./Sidebar";
+import Sidebar from "../Sidebar";
 import {GamesFilter} from "./GamesFilter";
+import {defaultFilterTitles} from "../../constants/filter";
+import GameCard from "./game/GameCard";
 
 
 const GamesList: FC = memo(() => {
-    const {games, loading, error} = useAppSelector(state => state.game)
+    const {games, loading, error} = useAppSelector(state => state.games)
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     useEffect(() => {
-        dispatch(fetchGames({page: 0, pageSize: 6, sortField: "name", ascOrder: true}))
+        dispatch(fetchGames(defaultFilterTitles))
     }, []);
 
     if (loading === "failed")
         navigate("/error")
-
 
     return (
         <section className={"w-full my-4"}>

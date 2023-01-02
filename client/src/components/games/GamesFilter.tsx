@@ -1,36 +1,10 @@
 import React, {FC, Fragment, useState} from 'react';
 import {Listbox} from "@headlessui/react";
 import {CheckIcon, ChevronDownIcon} from "@heroicons/react/20/solid";
-import Button from "./UI/Button";
-import {useAppDispatch} from "../hooks/redux";
-import {fetchGames} from "../store/actions/gamesAction";
-
-const fields = [
-    {id: 1, title: 'name'},
-    {id: 2, title: 'discount'},
-    {id: 3, title: 'releaseDate'},
-    {id: 4, title: 'platform'},
-    {id: 5, title: 'price'},
-]
-
-const pages = [
-    {id: 1, title: "1"},
-    {id: 2, title: "2"},
-    {id: 3, title: "3"},
-    {id: 4, title: "4"},
-    {id: 5, title: "5"},
-]
-
-const orders = [
-    {id: 1, title: "direct"},
-    {id: 2, title: "reverse"},
-]
-
-const pageSizes = [
-    {id:1, title: 5},
-    {id:2, title: 10},
-    {id:3, title: 20},
-]
+import Button from "../UI/Button";
+import {useAppDispatch} from "../../hooks/redux";
+import {fetchGames} from "../../store/actions/gamesAction";
+import {fields, orders, pages, pageSizes} from "../../constants/filter";
 
 export const GamesFilter: FC = () => {
     const dispatch = useAppDispatch()
@@ -38,6 +12,15 @@ export const GamesFilter: FC = () => {
     const [selectedPage, setSelectedPage] = useState(pages[0])
     const [selectedOrder, setSelectedOrder] = useState(orders[0])
     const [selectedPageSize, setSelectedPageSize] = useState(pageSizes[1])
+
+    const filterHandler = () => {
+        dispatch(fetchGames({
+            page: +selectedPage.title - 1,
+            pageSize: selectedPageSize.title,
+            sortField: selectedField.title,
+            ascOrder: selectedOrder.title === "direct"
+        }))
+    }
     const resetFilter = () => {
         setSelectedField(fields[0])
         setSelectedPage(pages[0])
@@ -179,13 +162,8 @@ export const GamesFilter: FC = () => {
                 </Listbox>
             </div>
             <Button
-                className={"text-white bg-blue-600 shadow-md shadow-blue-600/50 dark:bg-sky-400 dark:shadow-sky-500/30 dark:text-slate-800"}
-                onClick={() => dispatch(fetchGames({
-                    page: +selectedPage.title - 1,
-                    pageSize: selectedPageSize.title,
-                    sortField: selectedField.title,
-                    ascOrder: selectedOrder.title === "direct"
-                }))}>
+                className={"text-white bg-blue-600 dark:bg-sky-400 dark:text-slate-800"}
+                onClick={filterHandler}>
                 Apply filters
             </Button>
         </div>

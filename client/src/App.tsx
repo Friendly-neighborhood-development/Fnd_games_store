@@ -4,13 +4,9 @@ import AppRouter from "./components/AppRouter";
 
 const App: FC = () => {
     return (
-        <React.StrictMode>
-            <Router>
-                <AppRouter/>
-            </Router>
-        </React.StrictMode>
-
-
+        <Router>
+            <AppRouter/>
+        </Router>
     );
 }
 
