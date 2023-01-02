@@ -162,7 +162,7 @@ export const GamesFilter: FC = () => {
                 </Listbox>
             </div>
             <Button
-                className={"text-white bg-blue-600 shadow-md shadow-blue-600/50 dark:bg-sky-400 dark:shadow-sky-500/30 dark:text-slate-800"}
+                className={"text-white bg-blue-600 dark:bg-sky-400 dark:text-slate-800"}
                 onClick={filterHandler}>
                 Apply filters
             </Button>
