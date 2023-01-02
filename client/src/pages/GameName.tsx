@@ -20,7 +20,6 @@ const GameName = () => {
     if (loading === "failed") {
         navigate("/error")
     }
-    console.log(game)
 
     return (
         <MainLayout>
