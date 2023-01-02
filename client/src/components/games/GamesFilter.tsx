@@ -6,7 +6,11 @@ import {useAppDispatch} from "../../hooks/redux";
 import {fetchGames} from "../../store/actions/gamesAction";
 import {fields, orders, pages, pageSizes} from "../../constants/filter";
 
-export const GamesFilter: FC = () => {
+interface GamesFilterProps{
+    setModalVisible?:(visible: boolean) => void
+}
+
+export const GamesFilter: FC<GamesFilterProps> = ({setModalVisible}) => {
     const dispatch = useAppDispatch()
     const [selectedField, setSelectedField] = useState(fields[0])
     const [selectedPage, setSelectedPage] = useState(pages[0])
@@ -20,6 +24,10 @@ export const GamesFilter: FC = () => {
             sortField: selectedField.title,
             ascOrder: selectedOrder.title === "direct"
         }))
+        if (setModalVisible) {
+            setModalVisible(false)
+        }
+
     }
     const resetFilter = () => {
         setSelectedField(fields[0])
