@@ -9,7 +9,7 @@ interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = ({className, children, ...props}) => {
-    const rootClasses = "px-6 py-2 text-sm self-center cursor-pointer rounded capitalize " + className
+    const rootClasses = "px-6 lg:py-2 py-3 text-sm self-center cursor-pointer rounded capitalize " + className
     return (
         <button className={rootClasses} {...props}>
             {children}
