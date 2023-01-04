@@ -5,6 +5,7 @@ import {useAppDispatch, useAppSelector} from "../hooks/redux";
 import {fetchOneGame} from "../store/actions/gameAction";
 import {GamePrice} from "../components/games/game/GamePrice";
 import Button from "../components/UI/Button";
+import {GameSpecificationRow} from "../components/games/game/GameSpecificationRow";
 
 const GameName = () => {
     const {name} = useParams()
@@ -24,48 +25,31 @@ const GameName = () => {
     return (
         <MainLayout>
             <h1 className={"text-3xl"}>{game.name}</h1>
-            <div className={"flex"}>
-                <div className={"w-3/4 pr-20"}>
-                    <img src={game?.base64Image}/>
-                    <div>{game?.description}</div>
+            <div className={"flex flex-col lg:flex-row"}>
+                <div className={"lg:w-2/3 lg:pr-10"}>
+                    <div className={"mb-3 min-w-full h-96 overflow-hidden bg-gradient-to-b from-sky-400/20 to-blue-700/20 flex justify-center rounded-lg"}>
+                        <img className={"lg:rounded-lg lg:w-72"} src={game?.base64Image}/>
+                    </div>
+                    <div className={"hidden lg:block"}>{game?.description}</div>
                 </div>
-                <div className={"w-1/4 space-y-4 "}>
-                    <div className={"flex justify-between border-b border-b-slate-800 py-1"}>
-                        <div>genre</div>
-                        <div>{game?.genre?.map((g) => (
-                            <span key={g.id}> {g.name}</span>
-                        ))}</div>
+                <div className={"lg:w-1/3"}>
+                    <div className={"flex flex-col-reverse lg:flex-col space-y-4"}>
+                        <div className={"space-y-4 mt-4 lg:mt-0"}>
+                            <GameSpecificationRow title={"genre"} arrayValue={game.genre}/>
+                            <GameSpecificationRow title={"developer"} value={game.developer?.name}/>
+                            <GameSpecificationRow title={"publisher"} value={game.publisher?.name}/>
+                            <GameSpecificationRow title={"features"} arrayValue={game.features}/>
+                            <GameSpecificationRow title={"platform"} arrayValue={game.platform}/>
+                            <GameSpecificationRow title={"release date"} value={game.releaseDate}/>
+                        </div>
+                        <div className={"space-y-4"}>
+                            <GamePrice price={game?.price} discount={game?.discount}/>
+                            <Button
+                                className={"capitalize text-white bg-blue-600 w-full dark:bg-sky-500 dark:text-slate-800"}>
+                                add to cart
+                            </Button>
+                        </div>
                     </div>
-                    <div className={"flex justify-between border-b border-b-slate-800 py-1"}>
-                        <div>developer</div>
-                        <div>{game?.developer?.name}</div>
-                    </div>
-                    <div className={"flex justify-between border-b border-b-slate-800 py-1"}>
-                        <div>publisher</div>
-                        <div>{game?.publisher?.name}</div>
-                    </div>
-                    <div className={"flex justify-between border-b border-b-slate-800 py-1"}>
-                        <div>features</div>
-                        <div>{game?.features?.map((feature) => (
-                            <span key={feature.name}> {feature.name}</span>
-                        ))}</div>
-                    </div>
-                    <div className={"flex justify-between border-b border-b-slate-800 py-1"}>
-                        <div>platform</div>
-                        <div>{game?.platform?.map((pl) => (
-                            <span key={pl.name}> {pl.name}</span>
-                        ))}</div>
-                    </div>
-                    <div className={"flex justify-between border-b border-b-slate-800 py-1"}>
-                        <div>release date</div>
-                        <div>{game?.releaseDate}</div>
-                    </div>
-                    <GamePrice price={game?.price} discount={game?.discount}/>
-                    <Button
-                        className={"capitalize text-white bg-blue-600 w-full dark:bg-sky-500 dark:text-slate-800"}>
-                        add to cart
-                    </Button>
-
                 </div>
             </div>
         </MainLayout>
