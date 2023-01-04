@@ -5,6 +5,7 @@ import Button from "../UI/Button";
 import {useAppDispatch} from "../../hooks/redux";
 import {fetchGames} from "../../store/actions/gamesAction";
 import {fields, orders, pages, pageSizes} from "../../constants/filter";
+import {GamesFilterField} from "./GamesFilterField";
 
 interface GamesFilterProps{
     setModalVisible?:(visible: boolean) => void
@@ -20,7 +21,7 @@ export const GamesFilter: FC<GamesFilterProps> = ({setModalVisible}) => {
     const filterHandler = () => {
         dispatch(fetchGames({
             page: +selectedPage.title - 1,
-            pageSize: selectedPageSize.title,
+            pageSize: +selectedPageSize.title,
             sortField: selectedField.title,
             ascOrder: selectedOrder.title === "direct"
         }))
@@ -41,134 +42,10 @@ export const GamesFilter: FC<GamesFilterProps> = ({setModalVisible}) => {
                 <div>Filter</div>
                 <div onClick={resetFilter} className={"cursor-pointer"}>Reset</div>
             </div>
-            <div>
-                <div className={"text-sm"}>Sort by</div>
-                <Listbox value={selectedField} onChange={setSelectedField}>
-                    <Listbox.Button
-                        className={"flex items-center justify-between bg-gray-100 py-1 px-2 rounded-lg w-full dark:bg-slate-900"}>
-                        {selectedField.title}
-                        <ChevronDownIcon className={"w-4 h-4"}/>
-                    </Listbox.Button>
-                    <Listbox.Options className={"rounded-lg overflow-hidden bg-gray-100 mt-2"}>
-                        {fields.map((field) => (
-                            <Listbox.Option key={field.id} value={field} as={Fragment}>
-                                {({active, selected}) => (
-                                    <li
-                                        className={"flex items-center py-1 px-2 cursor-pointer " + `${
-                                            active
-                                                ? 'bg-blue-600 text-white dark:text-slate-900 dark:bg-sky-500'
-                                                : 'bg-gray-100 text-black dark:bg-slate-900 dark:text-white'
-                                        }`}
-                                    >
-                                        <div className={"w-4 h-4"}>
-                                            {selected && <CheckIcon className={"w-4 h-4"}/>}
-                                        </div>
-                                        <div className={"ml-2"}>
-                                            {field.title}
-                                        </div>
-                                    </li>
-                                )}
-                            </Listbox.Option>
-                        ))}
-                    </Listbox.Options>
-                </Listbox>
-            </div>
-            <div>
-                <div className={"text-sm"}>Page</div>
-                <Listbox value={selectedPage} onChange={setSelectedPage}>
-                    <Listbox.Button
-                        className={"flex items-center justify-between bg-gray-100 py-1 px-2 rounded-lg w-full dark:bg-slate-900"}>
-                        {selectedPage.title}
-                        <ChevronDownIcon className={"w-4 h-4"}/>
-                    </Listbox.Button>
-                    <Listbox.Options className={"rounded-lg overflow-hidden bg-gray-100 mt-2"}>
-                        {pages.map((field) => (
-                            <Listbox.Option key={field.id} value={field} as={Fragment}>
-                                {({active, selected}) => (
-                                    <li
-                                        className={"flex items-center py-1 px-2 cursor-pointer " + `${
-                                            active
-                                                ? 'bg-blue-600 text-white dark:text-slate-900 dark:bg-sky-500'
-                                                : 'bg-gray-100 text-black dark:bg-slate-900 dark:text-white'
-                                        }`}
-                                    >
-                                        <div className={"w-4 h-4"}>
-                                            {selected && <CheckIcon className={"w-4 h-4"}/>}
-                                        </div>
-                                        <div className={"ml-2"}>
-                                            {field.title}
-                                        </div>
-                                    </li>
-                                )}
-                            </Listbox.Option>
-                        ))}
-                    </Listbox.Options>
-                </Listbox>
-            </div>
-            <div>
-                <div className={"text-sm"}>Order</div>
-                <Listbox value={selectedOrder} onChange={setSelectedOrder}>
-                    <Listbox.Button
-                        className={"flex items-center justify-between bg-gray-100 py-1 px-2 rounded-lg w-full dark:bg-slate-900"}>
-                        {selectedOrder.title}
-                        <ChevronDownIcon className={"w-4 h-4"}/>
-                    </Listbox.Button>
-                    <Listbox.Options className={"rounded-lg overflow-hidden bg-gray-100 mt-2"}>
-                        {orders.map((order) => (
-                            <Listbox.Option key={order.id} value={order} as={Fragment}>
-                                {({active, selected}) => (
-                                    <li
-                                        className={"flex items-center py-1 px-2 cursor-pointer " + `${
-                                            active
-                                                ? 'bg-blue-600 text-white dark:text-slate-900 dark:bg-sky-500'
-                                                : 'bg-gray-100 text-black dark:bg-slate-900 dark:text-white'
-                                        }`}
-                                    >
-                                        <div className={"w-4 h-4"}>
-                                            {selected && <CheckIcon className={"w-4 h-4"}/>}
-                                        </div>
-                                        <div className={"ml-2"}>
-                                            {order.title}
-                                        </div>
-                                    </li>
-                                )}
-                            </Listbox.Option>
-                        ))}
-                    </Listbox.Options>
-                </Listbox>
-            </div>
-            <div>
-                <div className={"text-sm"}>Page size</div>
-                <Listbox value={selectedPageSize} onChange={setSelectedPageSize}>
-                    <Listbox.Button
-                        className={"flex items-center justify-between bg-gray-100 py-1 px-2 rounded-lg w-full dark:bg-slate-900"}>
-                        {selectedPageSize.title}
-                        <ChevronDownIcon className={"w-4 h-4"}/>
-                    </Listbox.Button>
-                    <Listbox.Options className={"rounded-lg overflow-hidden bg-gray-100 mt-2"}>
-                        {pageSizes.map((pageSize) => (
-                            <Listbox.Option key={pageSize.id} value={pageSize} as={Fragment}>
-                                {({active, selected}) => (
-                                    <li
-                                        className={"flex items-center py-1 px-2 cursor-pointer " + `${
-                                            active
-                                                ? 'bg-blue-600 text-white dark:text-slate-900 dark:bg-sky-500'
-                                                : 'bg-gray-100 text-black dark:bg-slate-900 dark:text-white'
-                                        }`}
-                                    >
-                                        <div className={"w-4 h-4"}>
-                                            {selected && <CheckIcon className={"w-4 h-4"}/>}
-                                        </div>
-                                        <div className={"ml-2"}>
-                                            {pageSize.title}
-                                        </div>
-                                    </li>
-                                )}
-                            </Listbox.Option>
-                        ))}
-                    </Listbox.Options>
-                </Listbox>
-            </div>
+            <GamesFilterField title={"Sort by"} selectedValue={selectedField} setSelectedValue={setSelectedField} values={fields}/>
+            <GamesFilterField title={"Page"} selectedValue={selectedPage} setSelectedValue={setSelectedPage} values={pages}/>
+            <GamesFilterField title={"Order"} selectedValue={selectedOrder} setSelectedValue={setSelectedOrder} values={orders}/>
+            <GamesFilterField title={"Page size"} selectedValue={selectedPageSize} setSelectedValue={setSelectedPageSize} values={pageSizes}/>
             <Button
                 className={"text-white bg-blue-600 dark:bg-sky-400 dark:text-slate-800"}
                 onClick={filterHandler}>
