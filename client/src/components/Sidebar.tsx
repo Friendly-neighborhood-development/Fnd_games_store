@@ -6,7 +6,7 @@ interface SidebarProps {
 
 const Sidebar: FC<SidebarProps> = memo(({children}) => {
     return (
-        <div className={"hidden lg:block fixed top-24 w-56 bg-white rounded-lg dark:bg-slate-800 p-3"}>
+        <div className={"hidden lg:block fixed top-24 w-56 bg-white rounded-lg p-3 dark:bg-slate-800"}>
             {children}
         </div>
     );

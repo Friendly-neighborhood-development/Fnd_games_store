@@ -15,7 +15,7 @@ export const ListBox: FC<ListBoxProps> = ({children, selectedValue, setSelectedV
             <Listbox.Button
                 className={"flex items-center border border-gray-300 h-10 px-4 space-x-1.5 text-slate-600 rounded-3xl hover:bg-gray-200/30 dark:hover:bg-slate-500/50 dark:border-slate-600 dark:text-slate-300 dark:bg-slate-800"}>
                 {children}
-                <ChevronDownIcon className={"w-3 h-3"}/>
+                <ChevronDownIcon className={"w-4 h-4"}/>
             </Listbox.Button>
             <Listbox.Options
                 className={"absolute top-full right-0 mt-8 lg:mt-8 w-36 bg-white rounded-lg py-1 shadow-xl overflow-hidden dark:text-slate-300 dark:bg-slate-800"}>

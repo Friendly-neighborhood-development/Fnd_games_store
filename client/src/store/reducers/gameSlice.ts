@@ -1,38 +1,34 @@
 import {IGame} from "../../models/IGame";
 import {createSlice} from "@reduxjs/toolkit";
-import {fetchGames} from "../actions/gamesAction";
+import {fetchOneGame} from "../actions/gameAction";
 
-interface GameState {
-    games: IGame[],
-    loading: "idle" | "pending" | "succeeded" | "failed",
+interface gameState {
+    game: IGame
+    loading: "idle" | "pending" | "succeeded" | "failed"
     error: string
 }
 
-const initialState: GameState = {
-    games: [],
+const initialState: gameState = {
+    game: {} as IGame,
     loading: "idle",
     error: ""
 }
 
-export const gameSlice = createSlice({
-    name: "games",
+const gameSlice = createSlice({
+    name: "game",
     initialState,
-    reducers: {
-    },
-    extraReducers:(builder) =>{
-        builder.addCase(fetchGames.pending, (state) => {
+    reducers: {},
+    extraReducers: (builder) => {
+        builder.addCase(fetchOneGame.pending, (state) => {
             state.loading = "pending"
+        }).addCase(fetchOneGame.fulfilled, (state, action) => {
+            state.loading = "succeeded"
+            state.game = action.payload
+        }).addCase(fetchOneGame.rejected, (state, action) => {
+            state.loading = "failed"
+            console.log(action.error)
         })
-            .addCase(fetchGames.fulfilled, (state, action) => {
-                state.loading = "succeeded"
-                state.games = action.payload
-            })
-            .addCase(fetchGames.rejected, (state, action) => {
-                state.loading = "failed"
-                console.log(action.error)
-            })
     }
 })
-
 
 export default gameSlice.reducer

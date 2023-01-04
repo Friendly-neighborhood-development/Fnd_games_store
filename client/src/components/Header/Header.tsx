@@ -17,7 +17,7 @@ const Header: FC = memo(() => {
                         <span className={"ml-2  md:text-3xl text-xl dark:text-white"}>Games Store</span>
                     </Link>
                     <nav className={"flex items-center space-x-4 relative"}>
-                        <Search placeholder={"Искать в магазине"}/>
+                        <Search placeholder={"Search in the store"}/>
                         <ThemeSwitcher/>
                         <HeaderIcon link={"/cart"}>
                             <ShoppingCartIcon className={"text-slate-500 w-3/5 h-3/5 dark:text-slate-300"}/>
