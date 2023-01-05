@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fnd.games_store.games.GamesApplication;
 import com.fnd.games_store.games.dto.game.GameResponseDTO;
 import com.fnd.games_store.games.service.implementation.SpecificGameServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(classes = GamesApplication.class)
 @AutoConfigureMockMvc
+@Slf4j
 public class GetSpecifiedGame {
 
 
@@ -52,6 +54,8 @@ public class GetSpecifiedGame {
         String requestBody = requestResult.getResponse().getContentAsString();
 
         GameResponseDTO actualResult = objectMapper.readValue(requestBody, GameResponseDTO.class);
+
+        log.info(actualResult.toString());
 
         assertThat(actualResult).isEqualTo(createAppropriateGameResponseDTO());
 

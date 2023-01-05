@@ -34,6 +34,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(classes = GamesApplication.class)
@@ -73,31 +74,16 @@ public class GetEditedList_AscOrder {
         log.info(uri);
 
         MvcResult mvcResult = this.mvc.perform(get(uri)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+                        .accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
                         .andExpect(status().isOk()).andReturn();
 
         String requestBody = mvcResult.getResponse().getContentAsString();
 
-//        List<GameResponseDTO> actualResult = objectMapper.readValue(requestBody, new TypeReference<List<GameResponseDTO>>() {});
-
-
-
-        CollectionType listType = objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, GameResponseDTO.class);
-
-
-        List<GameResponseDTO> dtoList = objectMapper.readValue(requestBody, listType);
+        List<GameResponseDTO> dtoList = objectMapper.readValue(requestBody, new TypeReference<List<GameResponseDTO>>() {});
 
         exptectedGameList.stream().forEach(System.out::println);
-
         dtoList.stream().forEach(System.out::println);
-
-
-
-//        Boolean isTestPassed = actualResult.get(0).equals(serviceGameList.get(0));
-
-//        Boolean bool = Objects.equals(actualResult, serviceGameList);
-//        assertThat(bool).isTrue();
 
         assertThat(dtoList).isEqualTo(exptectedGameList);
 
