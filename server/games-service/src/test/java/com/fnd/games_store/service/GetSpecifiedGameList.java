@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest(classes = GamesApplication.class)
 @Transactional
-public class GetSpecifiedGameList_IntegrationTest {
+public class GetSpecifiedGameList {
 
 
     @Autowired
