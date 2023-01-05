@@ -1,7 +1,9 @@
 package com.fnd.games_store.controller;
 
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
 import com.fnd.games_store.games.GamesApplication;
 import com.fnd.games_store.games.dto.game.GameResponseDTO;
 import com.fnd.games_store.games.repository.GameRepository;
@@ -22,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -60,7 +61,7 @@ public class GetEditedList_AscOrder {
 
     private String uri = "/v1/catalogue/list?" + "page=" + page + "&" + "pageSize=" + pageSize + "&" + "sortField="+sortField + "&" + "ascOrder=" + ascOrder;
 
-    private List<GameResponseDTO> serviceGameList;
+    private List<GameResponseDTO> exptectedGameList;
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
@@ -78,11 +79,18 @@ public class GetEditedList_AscOrder {
 
         String requestBody = mvcResult.getResponse().getContentAsString();
 
-        List<GameResponseDTO> actualResult = objectMapper.readValue(requestBody, ArrayList.class);
+//        List<GameResponseDTO> actualResult = objectMapper.readValue(requestBody, new TypeReference<List<GameResponseDTO>>() {});
 
 
-        serviceGameList.stream().forEach(System.out::println);
 
+        CollectionType listType = objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, GameResponseDTO.class);
+
+
+        List<GameResponseDTO> dtoList = objectMapper.readValue(requestBody, listType);
+
+        exptectedGameList.stream().forEach(System.out::println);
+
+        dtoList.stream().forEach(System.out::println);
 
 
 
@@ -91,6 +99,7 @@ public class GetEditedList_AscOrder {
 //        Boolean bool = Objects.equals(actualResult, serviceGameList);
 //        assertThat(bool).isTrue();
 
+        assertThat(dtoList).isEqualTo(exptectedGameList);
 
     }
 
@@ -99,7 +108,7 @@ public class GetEditedList_AscOrder {
     @BeforeEach
     void testSetup(){
 
-        serviceGameList = loadGamesListFromMockedDB();
+        exptectedGameList = loadGamesListFromMockedDB();
 
         when(service.getSpecifiedGameList(page,pageSize, sortBy)).thenReturn(loadGamesListFromMockedDB());
 
