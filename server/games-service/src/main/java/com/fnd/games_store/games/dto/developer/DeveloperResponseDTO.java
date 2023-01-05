@@ -1,15 +1,13 @@
 package com.fnd.games_store.games.dto.developer;
 
 import com.fnd.games_store.games.entity.Developer;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
 @EqualsAndHashCode
 @ToString
+@NoArgsConstructor
 public class DeveloperResponseDTO {
 
 

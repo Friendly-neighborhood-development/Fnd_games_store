@@ -13,8 +13,6 @@ import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest(classes = GamesApplication.class)
 @Slf4j
-
-
 public class GetGameByName_IntegrationTest {
 
 
