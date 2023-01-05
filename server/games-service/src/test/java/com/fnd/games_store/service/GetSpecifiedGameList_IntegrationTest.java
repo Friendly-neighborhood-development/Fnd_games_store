@@ -5,7 +5,6 @@ import com.fnd.games_store.games.GamesApplication;
 import com.fnd.games_store.games.dto.game.GameResponseDTO;
 import com.fnd.games_store.games.repository.GameRepository;
 import com.fnd.games_store.games.service.SpecificGameListService;
-import com.fnd.games_store.games.service.SpecificGameService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
