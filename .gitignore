@@ -1,6 +1,7 @@
 .idea/
 .gradle/
 .DS_Store
+.vscode/
 
 
 games-service/build
