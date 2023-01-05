@@ -7,7 +7,6 @@ const GameName = React.lazy(() => import("../pages/GameName"))
 const Login = React.lazy(() => import("../pages/Login"))
 const Register = React.lazy(() => import("../pages/Register"))
 const Cart = React.lazy(() => import("../pages/Cart"))
-const Notifications = React.lazy(() => import("../pages/Notifications"))
 const Error = React.lazy(() => import("../pages/Error"))
 
 interface routeProps {
@@ -16,13 +15,20 @@ interface routeProps {
     exact?: boolean
 }
 
-export const routes: Array<routeProps> = [
+export const authorizedRoutes: Array<routeProps>= [
+    {path: "/games", element: <Games/>},
+    {path: "/games/:name", element: <GameName/>},
+    {path: "/cart", element: <Cart/>},
+    {path: "/error", element: <Error/>},
+    {path: "/login", element: <Navigate to="/games"/>},
+    {path: "*", element: <Navigate to="/error"/>},
+]
+
+export const notAuthorizedRoutes: Array<routeProps> = [
     {path: "/games", element: <Games/>},
     {path: "/games/:name", element: <GameName/>},
     {path: "/login", element: <Login/>},
     {path: "/register", element: <Register/>},
-    {path: "/cart", element: <Cart/>},
-    {path: "/notifications", element: <Notifications/>},
     {path: "/error", element: <Error/>},
     {path: "*", element: <Navigate to="/error"/>},
 ]

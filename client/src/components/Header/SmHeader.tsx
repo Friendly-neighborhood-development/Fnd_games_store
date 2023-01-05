@@ -60,7 +60,6 @@ const SmHeader: FC = memo(() => {
                             </button>
                             <ul className={"space-y-6"}>
                                 <li><SmHeaderLink href={"/cart"} title={"Cart"} Icon={ShoppingCartIcon}/></li>
-                                <li><SmHeaderLink href={"/notifications"} title={"Notifications"} Icon={BellIcon}/></li>
                                 <li><SmHeaderLink href={"/login"} title={"Login"} Icon={UserIcon}/></li>
                             </ul>
                             <div

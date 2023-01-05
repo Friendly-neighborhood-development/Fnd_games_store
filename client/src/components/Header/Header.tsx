@@ -1,12 +1,18 @@
 import React, {FC, memo} from 'react';
-import images from "../../constants/images";
-import {BellIcon, PuzzlePieceIcon, ShoppingCartIcon} from "@heroicons/react/24/outline";
+import {ArrowRightOnRectangleIcon, PuzzlePieceIcon, ShoppingCartIcon, UserIcon} from "@heroicons/react/24/outline";
 import {Link} from "react-router-dom";
 import HeaderIcon from "./HeaderIcon";
 import ThemeSwitcher from "../ThemeSwitcher";
 import Search from "../UI/Search";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {signOut} from "../../store/reducers/authSlice";
 
 const Header: FC = memo(() => {
+    const dispatch = useAppDispatch()
+    const {isAuth} = useAppSelector(state => state.auth)
+    const logoutHandler = () => {
+        dispatch(signOut())
+    }
     return (
         <header
             className={"w-full border-b border-slate-500/30 hidden sticky lg:block top-0 z-10 bg-white shadow-lg shadow-gray-500/10 dark:backdrop-blur dark:bg-slate-900/80 dark:shadow-none"}>
@@ -22,16 +28,17 @@ const Header: FC = memo(() => {
                         <HeaderIcon link={"/cart"}>
                             <ShoppingCartIcon className={"text-slate-500 w-3/5 h-3/5 dark:text-slate-300"}/>
                         </HeaderIcon>
-                        <HeaderIcon link={"/notifications"}>
-                            <BellIcon className={"text-slate-500 w-3/5 h-3/5 dark:text-slate-300"}/>
-                        </HeaderIcon>
-                        <Link to={"/login"}>
-                            <span
-                                className={"rounded-full inline-block overflow-hidden h-10 w-10 bg-white flex items-center dark:bg-slate-700/50"}
-                            >
-                                <img src={images.andrew} className={"w-full h-full object-cover"} alt={"profile pic"}/>
-                            </span>
-                        </Link>
+                        {isAuth ?
+                            <HeaderIcon link={"/login"} onClick={logoutHandler}>
+                                <ArrowRightOnRectangleIcon
+                                    className={"text-slate-500 w-3/5 h-3/5 dark:text-slate-300"}/>
+                            </HeaderIcon>
+                            :
+                            <HeaderIcon link={"/login"}>
+                                <UserIcon
+                                    className={"text-slate-500 w-3/5 h-3/5 dark:text-slate-300"}/>
+                            </HeaderIcon>
+                        }
                     </nav>
                 </div>
             </div>
