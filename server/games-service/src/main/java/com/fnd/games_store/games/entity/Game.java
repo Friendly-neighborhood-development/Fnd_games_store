@@ -42,7 +42,7 @@ public class Game {
     private String releaseDate;
     @ManyToOne
     @JoinColumn(name = "developer_id")
-    private Developer developer;
+    private DeveloperResponseDTO developer;
 
     @ManyToOne
     @JoinColumn(name = "publisher_id")
@@ -62,7 +62,7 @@ public class Game {
     private String description;
     private String base64Image;
 
-    public Game(String name, List<Genre> genre, String releaseDate, Developer developer,Publisher publisher, List<Platform> platform,
+    public Game(String name, List<Genre> genre, String releaseDate, DeveloperResponseDTO developer, Publisher publisher, List<Platform> platform,
                 List<Feature> features, BigDecimal price, BigDecimal discount, String description, String base64Image) {
         this.name = name;
         this.genre = genre;
