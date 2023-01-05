@@ -2,6 +2,7 @@ package com.fnd.games_store.games.dto.game;
 
 
 import com.fnd.games_store.games.dto.developer.DeveloperResponseDTO;
+import com.fnd.games_store.games.dto.feature.FeatureResponseDTO;
 import com.fnd.games_store.games.dto.genre.GenreResponseDTO;
 import com.fnd.games_store.games.dto.platform.PlatformResponseDTO;
 import com.fnd.games_store.games.dto.publisher.PublisherResponseDTO;
@@ -25,7 +26,7 @@ public class GameResponseDTO {
     private DeveloperResponseDTO developer;
     private PublisherResponseDTO publisher;
     private List<PlatformResponseDTO> platform;
-    private List<Feature> features;
+    private List<FeatureResponseDTO> features;
     private BigDecimal price;
     private BigDecimal discount;
     private String description;
@@ -36,7 +37,7 @@ public class GameResponseDTO {
     }
 
     public GameResponseDTO(String name, List<GenreResponseDTO> genre, String releaseDate, DeveloperResponseDTO developer,
-                          PublisherResponseDTO publisher, List<PlatformResponseDTO> platform, List<Feature> features, BigDecimal price,
+                          PublisherResponseDTO publisher, List<PlatformResponseDTO> platform, List<FeatureResponseDTO> features, BigDecimal price,
                           BigDecimal discount, String description, String base64Image) {
         this.name = name;
         this.genre = genre;
@@ -59,7 +60,7 @@ public class GameResponseDTO {
         this.developer = new DeveloperResponseDTO(game.getDeveloper());
         this.publisher = new PublisherResponseDTO(game.getPublisher());
         this.platform = game.getPlatform().stream().map(PlatformResponseDTO::new).collect(Collectors.toList());
-        this.features = game.getFeature();
+        this.features = game.getFeature().stream().map(FeatureResponseDTO::new).collect(Collectors.toList());
         this.price = game.getPrice();
         this.discount = game.getDiscount();
         this.description = game.getDescription();
