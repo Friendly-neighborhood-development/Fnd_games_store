@@ -4,12 +4,13 @@ import {Link} from "react-router-dom";
 import {PuzzlePieceIcon} from "@heroicons/react/24/outline";
 import Input from "../components/UI/Input";
 import Button from "../components/UI/Button";
-import {useAppDispatch} from "../hooks/redux";
+import {useAppDispatch, useAppSelector} from "../hooks/redux";
 import {auth} from "../store/actions/authAction";
 
 const Login:FC = () => {
     const [username, setUsername] = useState<string>("")
     const [password, setPassword] = useState<string>("")
+    const {loading} = useAppSelector(state => state.auth)
     const dispatch = useAppDispatch()
 
     const formHandler = (e: React.SyntheticEvent) => {
@@ -23,9 +24,11 @@ const Login:FC = () => {
                 <Link to={"/games"} className={"my-4"}>
                     <PuzzlePieceIcon className={"w-16 h-16 text-blue-600 dark:text-sky-500"}/>
                 </Link>
-                <h1 className={"text-xl dark:text-slate-200 mb-4"}>
+                <div className={"text-xl dark:text-slate-200 mb-4"}>
                     Sign in to Games Store
-                </h1>
+                </div>
+                {loading === "failed" &&
+                    <div className={"text-red-500 mb-3"}>Wrong username or password</div>}
                 <form
                     className={"p-4 bg-gray-50 rounded-md w-full space-y-2 flex flex-col border-gray-500/30 border dark:bg-slate-700/50 dark:text-slate-300 dark:border-gray-500/50"}
                     onSubmit={formHandler}
