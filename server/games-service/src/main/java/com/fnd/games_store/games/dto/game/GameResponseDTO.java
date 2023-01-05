@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @Setter
 @EqualsAndHashCode
 @ToString
+@NoArgsConstructor
 public class GameResponseDTO {
     private String id;
     private String name;
@@ -32,9 +33,6 @@ public class GameResponseDTO {
     private String description;
     private String base64Image;
 
-    public GameResponseDTO(){
-
-    }
 
     public GameResponseDTO(String name, List<GenreResponseDTO> genre, String releaseDate, DeveloperResponseDTO developer,
                           PublisherResponseDTO publisher, List<PlatformResponseDTO> platform, List<FeatureResponseDTO> features, BigDecimal price,
