@@ -1,8 +1,6 @@
 package com.fnd.games_store.games.controller;
 
-import com.fnd.games_store.games.dto.GameResponseDTO;
-import net.bytebuddy.TypeCache;
-import org.springframework.data.domain.Sort;
+import com.fnd.games_store.games.dto.game.GameResponseDTO;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;

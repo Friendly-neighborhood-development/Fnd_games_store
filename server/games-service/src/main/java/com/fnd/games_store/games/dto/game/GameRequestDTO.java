@@ -1,4 +1,4 @@
-package com.fnd.games_store.games.dto;
+package com.fnd.games_store.games.dto.game;
 
 import lombok.*;
 import java.math.BigDecimal;
