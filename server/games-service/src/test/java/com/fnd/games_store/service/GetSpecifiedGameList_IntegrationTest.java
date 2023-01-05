@@ -6,6 +6,7 @@ import com.fnd.games_store.games.dto.game.GameResponseDTO;
 import com.fnd.games_store.games.repository.GameRepository;
 import com.fnd.games_store.games.service.SpecificGameListService;
 import com.fnd.games_store.games.service.SpecificGameService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -36,17 +37,25 @@ public class GetSpecifiedGameList_IntegrationTest {
     private String sortField = "name";
     private Sort sortBy = Sort.by(sortField);
 
+    private List<GameResponseDTO> loadedGameListFromDB;
+
+    private List<GameResponseDTO> serviceGameList;
 
 
     @Test
     void getSpecifiedGameList_ShouldReturnProperGamesList() {
 
-        assertThat(service.getSpecifiedGameList(page,pageSize, sortBy)).isEqualTo(loadGamesListFromDB());
+        assertThat(serviceGameList).isEqualTo(loadedGameListFromDB);
 
     }
 
 
+    @BeforeEach
+    void testSetup(){
 
+        loadedGameListFromDB = loadGamesListFromDB();
+        serviceGameList = service.getSpecifiedGameList(page,pageSize, sortBy);
+    }
 
 
     private List<GameResponseDTO> loadGamesListFromDB(){
@@ -54,21 +63,6 @@ public class GetSpecifiedGameList_IntegrationTest {
         return repository.findAll(PageRequest.of(page,pageSize, sortBy)).stream().map(GameResponseDTO::new).collect(Collectors.toList());
 
     }
-//
-//    private List<GameResponseDTO> createGamesList(){
-//
-//        List<GameResponseDTO> createdGameList = new ArrayList<>();
-//
-//        createdGameList.add
-//
-//
-//
-//        return createdGameList;
-
-//    }
-
-
-
 
 
 }
