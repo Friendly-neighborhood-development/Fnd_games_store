@@ -12,13 +12,13 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Getter
 @Setter
-@EqualsAndHashCode
-@ToString
 @NoArgsConstructor
+@ToString
 public class GameResponseDTO {
     private String id;
     private String name;
@@ -66,4 +66,16 @@ public class GameResponseDTO {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if ((o instanceof GameResponseDTO)) return false;
+        GameResponseDTO that = (GameResponseDTO) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
