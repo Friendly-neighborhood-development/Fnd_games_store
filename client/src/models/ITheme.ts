@@ -2,7 +2,7 @@ import React from "react";
 import {IIcon} from "./IIcon";
 
 export interface ITheme {
-    id: number,
+    id: string,
     title: "light" | "dark" | "system"
     Icon: React.FC<IIcon>
 }
