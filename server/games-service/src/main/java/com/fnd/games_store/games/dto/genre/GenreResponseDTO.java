@@ -1,5 +1,6 @@
 package com.fnd.games_store.games.dto.genre;
 
+import com.fnd.games_store.games.entity.Genre;
 import com.fnd.games_store.games.entity.Publisher;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -23,8 +24,10 @@ public class GenreResponseDTO {
         this.name = name;
     }
 
-    public GenreResponseDTO(GenreResponseDTO genre) {
+    public GenreResponseDTO(Genre genre) {
         this.id = genre.getId();
         this.name = genre.getName();
     }
+
+
 }

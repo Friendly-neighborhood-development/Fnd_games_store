@@ -2,12 +2,15 @@ package com.fnd.games_store.games.dto.game;
 
 
 import com.fnd.games_store.games.dto.developer.DeveloperResponseDTO;
+import com.fnd.games_store.games.dto.genre.GenreResponseDTO;
 import com.fnd.games_store.games.dto.publisher.PublisherResponseDTO;
 import com.fnd.games_store.games.entity.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -16,7 +19,7 @@ import java.util.List;
 public class GameResponseDTO {
     private String id;
     private String name;
-    private List<Genre> genre;
+    private List<GenreResponseDTO> genre;
     private String releaseDate;
     private DeveloperResponseDTO developer;
     private PublisherResponseDTO publisher;
@@ -31,7 +34,7 @@ public class GameResponseDTO {
 
     }
 
-    public GameResponseDTO(String name, List<Genre> genre, String releaseDate, DeveloperResponseDTO developer,
+    public GameResponseDTO(String name, List<GenreResponseDTO> genre, String releaseDate, DeveloperResponseDTO developer,
                           PublisherResponseDTO publisher, List<Platform> platform, List<Feature> features, BigDecimal price,
                           BigDecimal discount, String description, String base64Image) {
         this.name = name;
@@ -50,7 +53,7 @@ public class GameResponseDTO {
     public GameResponseDTO(Game game){
         this.id = game.getId();
         this.name = game.getName();
-        this.genre = game.getGenre();
+        this.genre = game.getGenre().stream().map(GenreResponseDTO::new).collect(Collectors.toList());
         this.releaseDate = game.getReleaseDate();
         this.developer = new DeveloperResponseDTO(game.getDeveloper());
         this.publisher = new PublisherResponseDTO(game.getPublisher());
