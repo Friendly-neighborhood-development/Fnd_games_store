@@ -12,14 +12,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 
-import java.math.BigDecimal;
-
 import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest(classes = GamesApplication.class)
 @Slf4j
 @Transactional
-public class GetGameByName_IntegrationTest {
+public class GetGameByName {
 
 
     @Autowired
