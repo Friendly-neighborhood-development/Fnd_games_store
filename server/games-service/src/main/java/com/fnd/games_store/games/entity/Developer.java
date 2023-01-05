@@ -17,7 +17,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class DeveloperResponseDTO {
+public class Developer {
 
     @NotNull
     @Id
