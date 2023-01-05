@@ -18,10 +18,8 @@ import org.springframework.test.web.servlet.MvcResult;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -41,7 +39,9 @@ public class GetSpecifiedGame {
 
     private String gameName = "DOOM Eternal";
 
-    private ObjectMapper objectMapper = new ObjectMapper();;
+    private ObjectMapper objectMapper = new ObjectMapper();
+
+    private GameResponseDTO expectedGame;
 
     @Test
     void getSpecificGame_ShouldReturnProperGameResponseObject() throws Exception {
@@ -53,17 +53,20 @@ public class GetSpecifiedGame {
 
         String requestBody = requestResult.getResponse().getContentAsString();
 
-        GameResponseDTO actualResult = objectMapper.readValue(requestBody, GameResponseDTO.class);
+        GameResponseDTO mvcList = objectMapper.readValue(requestBody, GameResponseDTO.class);
 
-        log.info(actualResult.toString());
+        log.info(mvcList.toString());
+        log.info(expectedGame.toString());
 
-        assertThat(actualResult).isEqualTo(createAppropriateGameResponseDTO());
+        assertThat(mvcList).isEqualTo(expectedGame);
 
     }
 
 
     @BeforeEach
     void testSetup(){
+
+        expectedGame = createAppropriateGameResponseDTO();
 
         when(service.getGameByName(gameName)).thenReturn(createAppropriateGameResponseDTO());
 

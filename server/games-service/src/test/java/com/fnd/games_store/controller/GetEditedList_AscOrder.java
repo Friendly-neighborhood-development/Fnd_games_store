@@ -3,7 +3,6 @@ package com.fnd.games_store.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
 import com.fnd.games_store.games.GamesApplication;
 import com.fnd.games_store.games.dto.game.GameResponseDTO;
 import com.fnd.games_store.games.repository.GameRepository;
@@ -22,7 +21,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,11 +28,9 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.*;
 
 
-import static org.mockito.Mockito.verify;
+
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(classes = GamesApplication.class)
@@ -80,12 +76,12 @@ public class GetEditedList_AscOrder {
 
         String requestBody = mvcResult.getResponse().getContentAsString();
 
-        List<GameResponseDTO> dtoList = objectMapper.readValue(requestBody, new TypeReference<List<GameResponseDTO>>() {});
+        List<GameResponseDTO> mvcList = objectMapper.readValue(requestBody, new TypeReference<List<GameResponseDTO>>() {});
 
         exptectedGameList.stream().forEach(System.out::println);
-        dtoList.stream().forEach(System.out::println);
+        mvcList.stream().forEach(System.out::println);
 
-        assertThat(dtoList).isEqualTo(exptectedGameList);
+        assertThat(mvcList).isEqualTo(exptectedGameList);
 
     }
 
