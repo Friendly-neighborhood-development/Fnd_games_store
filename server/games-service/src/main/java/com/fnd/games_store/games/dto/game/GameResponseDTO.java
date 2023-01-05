@@ -2,6 +2,7 @@ package com.fnd.games_store.games.dto.game;
 
 
 import com.fnd.games_store.games.dto.developer.DeveloperResponseDTO;
+import com.fnd.games_store.games.dto.publisher.PublisherResponseDTO;
 import com.fnd.games_store.games.entity.*;
 import lombok.*;
 
@@ -18,7 +19,7 @@ public class GameResponseDTO {
     private List<Genre> genre;
     private String releaseDate;
     private DeveloperResponseDTO developer;
-    private Publisher publisher;
+    private PublisherResponseDTO publisher;
     private List<Platform> platform;
     private List<Feature> features;
     private BigDecimal price;
@@ -31,7 +32,7 @@ public class GameResponseDTO {
     }
 
     public GameResponseDTO(String name, List<Genre> genre, String releaseDate, DeveloperResponseDTO developer,
-                          Publisher publisher, List<Platform> platform, List<Feature> features, BigDecimal price,
+                          PublisherResponseDTO publisher, List<Platform> platform, List<Feature> features, BigDecimal price,
                           BigDecimal discount, String description, String base64Image) {
         this.name = name;
         this.genre = genre;
@@ -52,7 +53,7 @@ public class GameResponseDTO {
         this.genre = game.getGenre();
         this.releaseDate = game.getReleaseDate();
         this.developer = new DeveloperResponseDTO(game.getDeveloper());
-        this.publisher = game.getPublisher();
+        this.publisher = new PublisherResponseDTO(game.getPublisher());
         this.platform = game.getPlatform();
         this.features = game.getFeature();
         this.price = game.getPrice();
