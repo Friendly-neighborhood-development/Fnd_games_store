@@ -16,7 +16,7 @@ public class GameResponseDTO {
     private String name;
     private List<Genre> genre;
     private String releaseDate;
-    private Developer developer;
+    private DeveloperResponseDTO developer;
     private Publisher publisher;
     private List<Platform> platform;
     private List<Feature> features;
@@ -29,7 +29,7 @@ public class GameResponseDTO {
 
     }
 
-    public GameResponseDTO(String name, List<Genre> genre, String releaseDate, Developer developer,
+    public GameResponseDTO(String name, List<Genre> genre, String releaseDate, DeveloperResponseDTO developer,
                           Publisher publisher, List<Platform> platform, List<Feature> features, BigDecimal price,
                           BigDecimal discount, String description, String base64Image) {
         this.name = name;
