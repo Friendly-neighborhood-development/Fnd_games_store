@@ -28,6 +28,7 @@ export const authSlice = createSlice({
             state.token = initialState.token
             localStorage.removeItem("token")
             localStorage.removeItem("userId")
+            localStorage.removeItem("isAuth")
         },
         checkAuth: (state) => {
             const isAuth = localStorage.getItem("isAuth")
