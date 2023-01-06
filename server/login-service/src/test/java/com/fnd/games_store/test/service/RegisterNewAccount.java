@@ -4,23 +4,25 @@ package com.fnd.games_store.test.service;
 import com.fnd.games_store.login.LoginApplication;
 import com.fnd.games_store.login.dto.AccountRequestDTO;
 import com.fnd.games_store.login.entity.Account;
-import com.fnd.games_store.login.exception.AccountNotFoundException;
 import com.fnd.games_store.login.repository.AccountRepository;
 import com.fnd.games_store.login.service.AccountRegistration;
-import org.junit.jupiter.api.Assertions;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTestContextBootstrapper;
-import org.springframework.test.context.BootstrapWith;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.time.LocalDate;
+import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.*;
 
 
 @SpringBootTest(classes = LoginApplication.class)
+@Slf4j
 public class RegisterNewAccount{
 
 
@@ -29,6 +31,12 @@ public class RegisterNewAccount{
 
     @Autowired
     private AccountRegistration service;
+
+    @Autowired
+    private PasswordEncoder encoder;
+
+    @Value("${variables.common.new_account_expiration_date}")
+    private String expirationDate;
 
     private String username = "Alfonso";
 
@@ -45,14 +53,13 @@ public class RegisterNewAccount{
 
     @Test
     void register_ShouldSaveNewAccountEntityToDB(){
+////        Boolean areEntitiesEqual = loadedAccountEntityFromDB.equals(expectedAccountEntity);
+//
+//        Boolean areEntitiesEqual = Objects.equals(loadedAccountEntityFromDB, expectedAccountEntity);
+//
+//        assertThat(areEntitiesEqual).isTrue();
+
         assertThat(loadedAccountEntityFromDB).isEqualTo(expectedAccountEntity);
-    }
-
-
-
-    private AccountRequestDTO createAppropriateNewAccountDTO(String username, String password, String email){
-        AccountRequestDTO savingAccount = new AccountRequestDTO(username,password,email);
-        return savingAccount;
     }
 
     @BeforeEach
@@ -64,9 +71,34 @@ public class RegisterNewAccount{
 
         loadedAccountEntityFromDB = repository.findAccountByUsername(username).get();
 
+        expectedAccountEntity = creteAppropriateAccountEntity(username,password,email);
+
     }
 
 
+    public Account creteAppropriateAccountEntity(String username, String password, String email) {
+
+        Account newAccount = new Account();
+
+        log.info("service " + encoder.encode(password));
+
+        newAccount.setUsername(username);
+        newAccount.setPassword(encoder.encode(password));
+        newAccount.setEmail(email);
+        newAccount.setExpirationDate(LocalDate.parse(expirationDate));
+        newAccount.setIsAccountNonLocked(true);
+        newAccount.setCredentialsExpirationDate(LocalDate.parse(expirationDate));
+        newAccount.setIsAccountEnabled(true);
+
+        return newAccount;
+    }
+
+
+
+    private AccountRequestDTO createAppropriateNewAccountDTO(String username, String password, String email){
+        AccountRequestDTO savingAccount = new AccountRequestDTO(username,password,email);
+        return savingAccount;
+    }
 
 
 }

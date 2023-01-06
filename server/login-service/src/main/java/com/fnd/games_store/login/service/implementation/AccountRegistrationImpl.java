@@ -4,56 +4,62 @@ package com.fnd.games_store.login.service.implementation;
 import com.fnd.games_store.login.dto.AccountRequestDTO;
 import com.fnd.games_store.login.dto.AccountResponseDTO;
 import com.fnd.games_store.login.entity.Account;
+import com.fnd.games_store.login.entity.Authority;
 import com.fnd.games_store.login.repository.AccountRepository;
+import com.fnd.games_store.login.repository.AuthorityRepository;
 import com.fnd.games_store.login.service.AccountRegistration;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Column;
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @Slf4j
+@Transactional
 public class AccountRegistrationImpl implements AccountRegistration {
 
     @Value("${variables.common.new_account_expiration_date}")
     private String expirationDate;
 
-    private final AccountRepository repository;
+    private final AccountRepository accountRepository;
 
     private final PasswordEncoder encoder;
 
+    private final AuthorityRepository authorityRepository;
+
+    private List<Authority> regularUserAuthority;
+
     @Autowired
-    public AccountRegistrationImpl(AccountRepository repository, PasswordEncoder encoder) {
-        this.repository = repository;
+    public AccountRegistrationImpl(AccountRepository accountRepository, PasswordEncoder encoder, AuthorityRepository authorityRepository) {
+        this.accountRepository = accountRepository;
         this.encoder = encoder;
+        this.authorityRepository = authorityRepository;
     }
 
     @Override
     public AccountResponseDTO register(AccountRequestDTO accountRequestDTO) {
 
         Account newAccount = new Account();
+        regularUserAuthority.add(authorityRepository.findAuthorityByName("regular").get());
+
+        log.info("service " + encoder.encode(accountRequestDTO.getPassword()));
 
         newAccount.setUsername(accountRequestDTO.getUsername());
         newAccount.setPassword(encoder.encode(accountRequestDTO.getPassword()));
         newAccount.setEmail(accountRequestDTO.getEmail());
         newAccount.setExpirationDate(LocalDate.parse(expirationDate));
+        newAccount.setIsAccountNonLocked(true);
+        newAccount.setCredentialsExpirationDate(LocalDate.parse(expirationDate));
+        newAccount.setIsAccountEnabled(true);
 
-//        @Column(name = "expiration_date")
-//        private LocalDate expirationDate;
-//        @Column(name = "is_account_non_locked")
-//        private Boolean isAccountNonLocked;
-//        @Column(name = "credentials_expiration_date")
-//        private LocalDate credentialsExpirationDate;
-//        @Column(name ="is_account_enabled")
-//        private Boolean isAccountEnabled;
+        newAccount.setAuthorities(regularUserAuthority);
 
-
-
-        repository.save(newAccount);
+        accountRepository.save(newAccount);
 
         return new AccountResponseDTO(newAccount.getId(), newAccount.getUsername());
     }

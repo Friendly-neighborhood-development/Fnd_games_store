@@ -58,17 +58,43 @@ public class Account {
                 '}';
     }
 
-
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Account account = (Account) o;
-        return Objects.equals(id, account.id) && Objects.equals(username, account.username) && Objects.equals(password, account.password) && Objects.equals(email, account.email) && Objects.equals(expirationDate, account.expirationDate) && Objects.equals(isAccountNonLocked, account.isAccountNonLocked) && Objects.equals(credentialsExpirationDate, account.credentialsExpirationDate) && Objects.equals(isAccountEnabled, account.isAccountEnabled);
+    public boolean equals(Object object){
+        if (this == object) return true;
+
+        if(object!= null ||this.getClass() != object.getClass()) return false;
+
+        Account account = (Account) object;
+
+        return username.equals(account.getUsername());
     }
+
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, email, expirationDate, isAccountNonLocked, credentialsExpirationDate, isAccountEnabled);
+        return Objects.hash(username);
     }
+
+
+
+
+
+
+
+
+
+
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Account account = (Account) o;
+//        return username.equals(account.username);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(username);
+//    }
 }
