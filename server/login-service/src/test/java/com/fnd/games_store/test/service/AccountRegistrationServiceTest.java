@@ -28,7 +28,7 @@ import static org.assertj.core.api.Assertions.*;
 @SpringBootTest(classes = LoginApplication.class)
 @Slf4j
 @Transactional
-public class AccountRegistrationService {
+public class AccountRegistrationServiceTest {
 
 
     @Autowired
