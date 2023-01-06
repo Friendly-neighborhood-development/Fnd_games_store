@@ -22,7 +22,7 @@ public class WebSecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http.authorizeHttpRequests().antMatchers("/v1/authorization","/v1/validate").permitAll().anyRequest().authenticated()
+        http.authorizeHttpRequests().antMatchers("/v1/authorization","/v1/validate", "/v1/registration").permitAll().anyRequest().authenticated()
                 .and()
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
