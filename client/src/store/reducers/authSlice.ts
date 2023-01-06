@@ -33,6 +33,13 @@ export const authSlice = createSlice({
         checkAuth: (state) => {
             const isAuth = localStorage.getItem("isAuth")
             if(isAuth) state.isAuth = JSON.parse(isAuth)
+        },
+        setDefaultAuth: (state) => {
+            state.token = initialState.token
+            state.userId = initialState.userId
+            state.loading = initialState.loading
+            state.error = initialState.error
+            state.isAuth = initialState.isAuth
         }
     },
     extraReducers: (builder) => {
@@ -58,4 +65,4 @@ export const authSlice = createSlice({
 
 export default authSlice.reducer
 
-export const {signOut, checkAuth} = authSlice.actions
+export const {signOut, checkAuth, setDefaultAuth} = authSlice.actions

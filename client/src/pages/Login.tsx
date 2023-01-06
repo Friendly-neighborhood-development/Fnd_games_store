@@ -1,12 +1,13 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useState} from 'react';
 import SimpleLayout from "../components/layouts/SimpleLayout";
 import {Link} from "react-router-dom";
 import {PuzzlePieceIcon} from "@heroicons/react/24/outline";
 import Input from "../components/UI/Input";
-import {PrimaryButton} from "../components/UI/PrimaryButton";
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
 import {auth} from "../store/actions/authAction";
 import {SecondaryButton} from "../components/UI/SecondaryButton";
+import {ExclamationTriangleIcon} from "@heroicons/react/20/solid";
+import {setDefaultAuth} from "../store/reducers/authSlice";
 
 const Login: FC = () => {
     const [username, setUsername] = useState<string>("")
@@ -29,7 +30,10 @@ const Login: FC = () => {
                     Sign in to Games Store
                 </div>
                 {loading === "failed" &&
-                    <div className={"text-red-500 mb-3"}>Wrong username or password</div>}
+                    <div className={"text-red-500 mb-3 flex items-end space-x-2"}>
+                        <ExclamationTriangleIcon className={"w-5 h-5"}/>
+                        <span>Wrong username or password</span>
+                    </div>}
                 <form
                     className={"p-4 bg-gray-50 rounded-md w-full space-y-2 flex flex-col border-gray-500/30 border dark:bg-slate-700/50 dark:text-slate-300 dark:border-gray-500/50"}
                     onSubmit={formHandler}
@@ -41,6 +45,7 @@ const Login: FC = () => {
                         autoComplete={"username"}
                         value={username}
                         onChange={(e) => setUsername(e.currentTarget.value)}
+                        onFocus={() => dispatch(setDefaultAuth())}
                     />
                     <Input
                         type={"password"}
@@ -49,6 +54,7 @@ const Login: FC = () => {
                         value={password}
                         onChange={(e) => setPassword(e.currentTarget.value)}
                         autoComplete={"password"}
+                        onFocus={() => dispatch(setDefaultAuth())}
                     />
                     <SecondaryButton type={"submit"}>
                         Sign in
