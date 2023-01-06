@@ -49,6 +49,10 @@ spring:
           uri: http://localhost:8082/login
           predicates:
             - Path=/login/v1/authorization
+        - id: login_service
+          uri: http://localhost:8082/login
+          predicates:
+            - Path=/login/v1/registration
 
 
 eureka:

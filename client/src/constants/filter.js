@@ -20,9 +20,9 @@ export const orders = [
 ]
 
 export const pageSizes = [
-    {id: 1, title: 5},
-    {id: 2, title: 10},
-    {id: 3, title: 20},
+    {id: 1, title: "5"},
+    {id: 2, title: "10"},
+    {id: 3, title: "20"},
 ]
 
 const defaultFilter = {
@@ -34,7 +34,7 @@ const defaultFilter = {
 
 export const defaultFilterTitles={
     page: +pages[0].title - 1,
-    pageSize: pageSizes[1].title,
+    pageSize: +pageSizes[1].title,
     sortField: fields[0].title,
     ascOrder: orders[0].title === "direct"
 }

@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 
 @SpringBootTest(classes = LoginApplication.class)
 @AutoConfigureMockMvc
-public class LoginController_UnitTest {
+public class LoginControllerTest {
 
 
     @Autowired

@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = LoginApplication.class)
 @AutoConfigureMockMvc
 @Slf4j
-public class ValidationController_UnitTest {
+public class ValidationControllerTest {
 
 
     @Autowired

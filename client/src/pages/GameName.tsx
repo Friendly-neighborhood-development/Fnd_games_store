@@ -6,6 +6,7 @@ import {fetchOneGame} from "../store/actions/gameAction";
 import {GamePrice} from "../components/games/game/GamePrice";
 import Button from "../components/UI/Button";
 import {GameSpecificationRow} from "../components/games/game/GameSpecificationRow";
+import {clearGameData} from "../store/reducers/gameSlice";
 
 const GameName = () => {
     const {name} = useParams()
@@ -16,6 +17,9 @@ const GameName = () => {
     useEffect(() => {
         if (!name) navigate("/error")
         else dispatch(fetchOneGame(name))
+        return () => {
+            dispatch(clearGameData())
+        }
     }, [])
 
     if (loading === "failed") {

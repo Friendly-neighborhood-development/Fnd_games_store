@@ -21,8 +21,20 @@ const initialState: AuthState = {
 export const authSlice = createSlice({
     name: "auth",
     initialState,
-    reducers: {},
-    extraReducers:(builder) =>{
+    reducers: {
+        signOut: (state) => {
+            state.isAuth = initialState.isAuth
+            state.userId = initialState.userId
+            state.token = initialState.token
+            localStorage.removeItem("token")
+            localStorage.removeItem("userId")
+        },
+        checkAuth: (state) => {
+            const isAuth = localStorage.getItem("isAuth")
+            if(isAuth) state.isAuth = JSON.parse(isAuth)
+        }
+    },
+    extraReducers: (builder) => {
         builder.addCase(auth.pending, (state) => {
             state.loading = "pending"
         })
@@ -33,6 +45,7 @@ export const authSlice = createSlice({
                 state.isAuth = true
                 localStorage.setItem("token", state.token)
                 localStorage.setItem("userId", state.userId)
+                localStorage.setItem("isAuth", JSON.stringify(state.isAuth))
             })
             .addCase(auth.rejected, (state, action) => {
                 state.loading = "failed"
@@ -43,3 +56,5 @@ export const authSlice = createSlice({
 
 
 export default authSlice.reducer
+
+export const {signOut, checkAuth} = authSlice.actions

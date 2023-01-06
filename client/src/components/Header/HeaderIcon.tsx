@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 interface NavbarIconProps {
     children: React.ReactNode,
     link?: string,
+    onClick?: (arg0:any) => void
 }
 
 const HeaderIcon: FC<NavbarIconProps> = ({children, link, ...props}) => {

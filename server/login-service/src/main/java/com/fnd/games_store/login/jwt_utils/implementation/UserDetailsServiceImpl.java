@@ -11,8 +11,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 
 
 @Component
@@ -37,7 +35,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                         checkIfDateExpired(userAccount.getExpirationDate()),
                         checkIfDateExpired(userAccount.getCredentialsExpirationDate()),
                         userAccount.getIsAccountNonLocked(),
-                        userAccount.getAuthorities());
+                        userAccount.getAuthority());
     }
 
     private Boolean checkIfDateExpired(LocalDate checkingDate){

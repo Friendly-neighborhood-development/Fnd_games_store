@@ -13,4 +13,6 @@ public class AccountRequestDTO {
 
     private String password;
 
+    private String email;
+
 }

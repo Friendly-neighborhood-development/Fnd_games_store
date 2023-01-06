@@ -30,7 +30,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class Login_UnitTest {
+public class LoginServiceTest {
 
     @Mock
     private PasswordEncoder passwordEncoder;
@@ -107,7 +107,7 @@ public class Login_UnitTest {
         creatingAccount.setExpirationDate(date);
         creatingAccount.setCredentialsExpirationDate(date);
         creatingAccount.setIsAccountNonLocked(true);
-        creatingAccount.setAuthorities(adminGrantedAuthorities);
+        creatingAccount.setAuthority(adminGrantedAuthorities);
 
         return Optional.of(creatingAccount);
     }

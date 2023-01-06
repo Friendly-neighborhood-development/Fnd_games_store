@@ -20,8 +20,8 @@ const GamesList: FC = memo(() => {
         dispatch(fetchGames(defaultFilterTitles))
     }, []);
 
-    // if (loading === "failed")
-    //     navigate("/error")
+    if (loading === "failed")
+        navigate("/error")
 
     return (
         <section className={"w-full my-4"}>

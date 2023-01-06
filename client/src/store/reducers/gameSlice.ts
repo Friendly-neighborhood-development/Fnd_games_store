@@ -17,7 +17,11 @@ const initialState: gameState = {
 const gameSlice = createSlice({
     name: "game",
     initialState,
-    reducers: {},
+    reducers: {
+        clearGameData:(state) => {
+            state.game = initialState.game
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchOneGame.pending, (state) => {
             state.loading = "pending"
@@ -32,3 +36,5 @@ const gameSlice = createSlice({
 })
 
 export default gameSlice.reducer
+
+export const {clearGameData} = gameSlice.actions
