@@ -8,6 +8,7 @@ interface CustomInputProps {
     className?: string
     label?: string
     autoComplete?: "new-password" | "username" | "password"
+    onFocus?: () => any
 
 }
 
