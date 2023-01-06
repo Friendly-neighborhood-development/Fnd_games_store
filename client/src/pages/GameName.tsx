@@ -4,7 +4,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
 import {fetchOneGame} from "../store/actions/gameAction";
 import {GamePrice} from "../components/games/game/GamePrice";
-import Button from "../components/UI/Button";
+import {PrimaryButton} from "../components/UI/PrimaryButton";
 import {GameSpecificationRow} from "../components/games/game/GameSpecificationRow";
 import {clearGameData} from "../store/reducers/gameSlice";
 
@@ -49,10 +49,9 @@ const GameName = () => {
                         </div>
                         <div className={"space-y-4"}>
                             <GamePrice price={game?.price} discount={game?.discount}/>
-                            <Button
-                                className={"capitalize text-white bg-blue-600 w-full dark:bg-sky-500 dark:text-slate-800"}>
+                            <PrimaryButton>
                                 add to cart
-                            </Button>
+                            </PrimaryButton>
                         </div>
                     </div>
                     <div className={"lg:hidden mt-3"}>{game?.description}</div>
