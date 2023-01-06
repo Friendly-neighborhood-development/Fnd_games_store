@@ -7,7 +7,7 @@ import com.fnd.games_store.login.entity.Account;
 import com.fnd.games_store.login.entity.Authority;
 import com.fnd.games_store.login.repository.AccountRepository;
 import com.fnd.games_store.login.repository.AuthorityRepository;
-import com.fnd.games_store.login.service.AccountRegistration;
+import com.fnd.games_store.login.service.AccountRegistrationService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -36,7 +35,7 @@ public class RegisterNewAccount{
     private AccountRepository repository;
 
     @Autowired
-    private AccountRegistration service;
+    private AccountRegistrationService service;
 
     @Autowired
     private AuthorityRepository authorityRepository;

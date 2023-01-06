@@ -7,7 +7,7 @@ import com.fnd.games_store.login.entity.Account;
 import com.fnd.games_store.login.entity.Authority;
 import com.fnd.games_store.login.repository.AccountRepository;
 import com.fnd.games_store.login.repository.AuthorityRepository;
-import com.fnd.games_store.login.service.AccountRegistration;
+import com.fnd.games_store.login.service.AccountRegistrationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +22,7 @@ import java.util.List;
 @Service
 @Slf4j
 @Transactional
-public class AccountRegistrationImpl implements AccountRegistration {
+public class AccountRegistrationImpl implements AccountRegistrationService {
 
     @Value("${variables.common.new_account_expiration_date}")
     private String expirationDate;
