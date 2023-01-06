@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.*;
 @DataJpaTest
 @BootstrapWith(SpringBootTestContextBootstrapper.class)
 @SpringBootTest(classes = LoginApplication.class)
-public class FindUserByUsername extends RepositoryTestCommons{
+public class FindUserByUsernameRepositoryTest extends RepositoryTestCommons{
 
 
     @Autowired

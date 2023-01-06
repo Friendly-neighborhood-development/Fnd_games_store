@@ -4,7 +4,7 @@ package com.fnd.games_store.login.controller.implementation;
 import com.fnd.games_store.login.controller.UserRegistration;
 import com.fnd.games_store.login.dto.AccountRequestDTO;
 import com.fnd.games_store.login.dto.AccountResponseDTO;
-import com.fnd.games_store.login.service.AccountRegistrationService;
+import com.fnd.games_store.login.service.AccountRegistration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class RegistrationController implements UserRegistration {
 
 
-    private final AccountRegistrationService service;
+    private final AccountRegistration service;
 
     @Autowired
-    public RegistrationController(AccountRegistrationService service) {
+    public RegistrationController(AccountRegistration service) {
         this.service = service;
     }
 

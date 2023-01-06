@@ -30,7 +30,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class Login_UnitTest {
+public class LoginServiceTest {
 
     @Mock
     private PasswordEncoder passwordEncoder;

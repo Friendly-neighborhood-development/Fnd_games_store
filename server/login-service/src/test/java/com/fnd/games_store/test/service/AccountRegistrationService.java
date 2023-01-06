@@ -7,7 +7,7 @@ import com.fnd.games_store.login.entity.Account;
 import com.fnd.games_store.login.entity.Authority;
 import com.fnd.games_store.login.repository.AccountRepository;
 import com.fnd.games_store.login.repository.AuthorityRepository;
-import com.fnd.games_store.login.service.AccountRegistrationService;
+import com.fnd.games_store.login.service.AccountRegistration;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,14 +28,14 @@ import static org.assertj.core.api.Assertions.*;
 @SpringBootTest(classes = LoginApplication.class)
 @Slf4j
 @Transactional
-public class RegisterNewAccount{
+public class AccountRegistrationService {
 
 
     @Autowired
     private AccountRepository repository;
 
     @Autowired
-    private AccountRegistrationService service;
+    private AccountRegistration service;
 
     @Autowired
     private AuthorityRepository authorityRepository;

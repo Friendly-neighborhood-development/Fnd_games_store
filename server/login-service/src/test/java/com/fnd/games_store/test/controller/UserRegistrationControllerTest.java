@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(classes = LoginApplication.class)
 @AutoConfigureMockMvc
-public class UserRegistrationTest {
+public class UserRegistrationControllerTest {
 
 
 
