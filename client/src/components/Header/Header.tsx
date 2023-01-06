@@ -18,7 +18,7 @@ const Header: FC = memo(() => {
             className={"w-full border-b border-slate-500/30 hidden sticky lg:block top-0 z-10 bg-white shadow-lg shadow-gray-500/10 dark:backdrop-blur dark:bg-slate-900/80 dark:shadow-none"}>
             <div className="container mx-auto">
                 <div className={"w-full justify-between items-center py-4 flex"}>
-                    <Link to={"/games"} className={"mr-4 flex items-center"}>
+                    <Link to={"/"} className={"mr-4 flex items-center"}>
                         <PuzzlePieceIcon className={"w-10 h-10 text-blue-600 dark:text-sky-500"}/>
                         <span className={"ml-2  md:text-3xl text-xl dark:text-white"}>Games Store</span>
                     </Link>

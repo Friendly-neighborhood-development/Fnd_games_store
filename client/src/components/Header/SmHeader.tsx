@@ -31,7 +31,7 @@ const SmHeader: FC = memo(() => {
                 <div className="container mx-auto">
                     <div className={"w-full justify-between items-center flex  py-3"}>
                         <MagnifyingGlassIcon className={"w-6 h-6 cursor-pointer dark:text-gray-100"}/>
-                        <Link to={"/games"} className={"flex items-center"}>
+                        <Link to={"/"} className={"flex items-center"}>
                             <PuzzlePieceIcon className={"w-6 h-6 text-blue-600"}/>
                             <span className={"text-xl ml-1 dark:text-gray-100"}>Games Store</span>
                         </Link>

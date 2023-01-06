@@ -16,16 +16,16 @@ interface routeProps {
 }
 
 export const authorizedRoutes: Array<routeProps>= [
-    {path: "/games", element: <Games/>},
+    {path: "/", element: <Games/>},
     {path: "/games/:name", element: <GameName/>},
     {path: "/cart", element: <Cart/>},
     {path: "/error", element: <Error/>},
-    {path: "/login", element: <Navigate to="/games"/>},
+    {path: "/login", element: <Navigate to="/"/>},
     {path: "*", element: <Navigate to="/error"/>},
 ]
 
 export const notAuthorizedRoutes: Array<routeProps> = [
-    {path: "/games", element: <Games/>},
+    {path: "/", element: <Games/>},
     {path: "/games/:name", element: <GameName/>},
     {path: "/login", element: <Login/>},
     {path: "/register", element: <Register/>},
