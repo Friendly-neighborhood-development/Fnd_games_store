@@ -4,19 +4,22 @@ package com.fnd.games_store.test.service;
 import com.fnd.games_store.login.LoginApplication;
 import com.fnd.games_store.login.dto.AccountRequestDTO;
 import com.fnd.games_store.login.entity.Account;
+import com.fnd.games_store.login.exception.AccountNotFoundException;
 import com.fnd.games_store.login.repository.AccountRepository;
 import com.fnd.games_store.login.service.AccountRegistration;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTestContextBootstrapper;
 import org.springframework.test.context.BootstrapWith;
 
-@DataJpaTest
-@BootstrapWith(SpringBootTestContextBootstrapper.class)
+import static org.assertj.core.api.Assertions.*;
+
+
 @SpringBootTest(classes = LoginApplication.class)
 public class RegisterNewAccount{
 
@@ -42,7 +45,7 @@ public class RegisterNewAccount{
 
     @Test
     void register_ShouldSaveNewAccountEntityToDB(){
-
+        assertThat(loadedAccountEntityFromDB).isEqualTo(expectedAccountEntity);
     }
 
 
@@ -53,10 +56,13 @@ public class RegisterNewAccount{
     }
 
     @BeforeEach
-    void testSetup(){
+    void testSetup() {
+
         newAccountData = createAppropriateNewAccountDTO(username,password,email);
 
         service.register(newAccountData);
+
+        loadedAccountEntityFromDB = repository.findAccountByUsername(username).get();
 
     }
 
