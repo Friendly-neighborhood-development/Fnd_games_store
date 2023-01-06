@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,7 +33,7 @@ public class AccountRegistrationImpl implements AccountRegistration {
 
     private final AuthorityRepository authorityRepository;
 
-    private List<Authority> regularUserAuthority;
+    private List<Authority> accountAuthoritiesList = new ArrayList<>();
 
     @Autowired
     public AccountRegistrationImpl(AccountRepository accountRepository, PasswordEncoder encoder, AuthorityRepository authorityRepository) {
@@ -45,9 +46,10 @@ public class AccountRegistrationImpl implements AccountRegistration {
     public AccountResponseDTO register(AccountRequestDTO accountRequestDTO) {
 
         Account newAccount = new Account();
-        regularUserAuthority.add(authorityRepository.findAuthorityByName("regular").get());
+        Authority regularUserAuthority = authorityRepository.findById("3").get();
 
-        log.info("service " + encoder.encode(accountRequestDTO.getPassword()));
+
+        log.info("service " + regularUserAuthority);
 
         newAccount.setUsername(accountRequestDTO.getUsername());
         newAccount.setPassword(encoder.encode(accountRequestDTO.getPassword()));
@@ -57,7 +59,8 @@ public class AccountRegistrationImpl implements AccountRegistration {
         newAccount.setCredentialsExpirationDate(LocalDate.parse(expirationDate));
         newAccount.setIsAccountEnabled(true);
 
-        newAccount.setAuthorities(regularUserAuthority);
+        accountAuthoritiesList.add(regularUserAuthority);
+        newAccount.setAuthorities(accountAuthoritiesList);
 
         accountRepository.save(newAccount);
 

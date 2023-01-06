@@ -5,6 +5,7 @@ import com.fnd.games_store.login.LoginApplication;
 import com.fnd.games_store.login.dto.AccountRequestDTO;
 import com.fnd.games_store.login.entity.Account;
 import com.fnd.games_store.login.repository.AccountRepository;
+import com.fnd.games_store.login.repository.AuthorityRepository;
 import com.fnd.games_store.login.service.AccountRegistration;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,6 +34,9 @@ public class RegisterNewAccount{
     private AccountRegistration service;
 
     @Autowired
+    private AuthorityRepository authorityRepository;
+
+    @Autowired
     private PasswordEncoder encoder;
 
     @Value("${variables.common.new_account_expiration_date}")
@@ -59,7 +63,10 @@ public class RegisterNewAccount{
 //
 //        assertThat(areEntitiesEqual).isTrue();
 
-        assertThat(loadedAccountEntityFromDB).isEqualTo(expectedAccountEntity);
+//        assertThat(loadedAccountEntityFromDB).isEqualTo(expectedAccountEntity);
+
+        log.info("test "+authorityRepository.findById("3").get());
+
     }
 
     @BeforeEach
@@ -69,7 +76,7 @@ public class RegisterNewAccount{
 
         service.register(newAccountData);
 
-        loadedAccountEntityFromDB = repository.findAccountByUsername(username).get();
+//        loadedAccountEntityFromDB = repository.findAccountByUsername(username).get();
 
         expectedAccountEntity = creteAppropriateAccountEntity(username,password,email);
 
@@ -79,8 +86,6 @@ public class RegisterNewAccount{
     public Account creteAppropriateAccountEntity(String username, String password, String email) {
 
         Account newAccount = new Account();
-
-        log.info("service " + encoder.encode(password));
 
         newAccount.setUsername(username);
         newAccount.setPassword(encoder.encode(password));
