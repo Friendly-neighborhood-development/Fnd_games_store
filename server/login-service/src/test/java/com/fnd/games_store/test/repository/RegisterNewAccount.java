@@ -3,11 +3,14 @@ package com.fnd.games_store.test.repository;
 
 import com.fnd.games_store.login.LoginApplication;
 import com.fnd.games_store.login.dto.AccountRequestDTO;
-import com.fnd.games_store.login.dto.AccountResponseDTO;
+import com.fnd.games_store.login.entity.Account;
 import com.fnd.games_store.login.repository.AccountRepository;
+import com.fnd.games_store.login.service.AccountRegistration;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTestContextBootstrapper;
 import org.springframework.test.context.BootstrapWith;
@@ -15,12 +18,14 @@ import org.springframework.test.context.BootstrapWith;
 @DataJpaTest
 @BootstrapWith(SpringBootTestContextBootstrapper.class)
 @SpringBootTest(classes = LoginApplication.class)
-public class AccountRegistration extends RepositoryTestCommons{
+public class RegisterNewAccount extends RepositoryTestCommons{
 
 
     @Autowired
     private AccountRepository repository;
 
+    @Autowired
+    private AccountRegistration service;
 
     private String username = "Alfonso";
 
@@ -30,6 +35,9 @@ public class AccountRegistration extends RepositoryTestCommons{
 
     private AccountRequestDTO newAccountData;
 
+    private Account loadedAccountEntityFromDB;
+
+    private Account expectedAccountEntity;
 
 
     @Test
@@ -44,7 +52,13 @@ public class AccountRegistration extends RepositoryTestCommons{
         return savingAccount;
     }
 
+    @BeforeEach
+    void testSetup(){
+        newAccountData = createAppropriateNewAccountDTO(username,password,email);
 
+        service.register(newAccountData);
+
+    }
 
 
 
