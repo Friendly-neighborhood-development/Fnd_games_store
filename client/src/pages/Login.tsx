@@ -22,7 +22,7 @@ const Login: FC = () => {
     return (
         <NotLoginLayout>
             <div className={"pt-6 w-80 flex flex-col items-center"}>
-                <Link to={"/games"} className={"my-4"}>
+                <Link to={"/"} className={"my-4"}>
                     <PuzzlePieceIcon className={"w-16 h-16 text-blue-600 dark:text-sky-500"}/>
                 </Link>
                 <div className={"text-xl dark:text-slate-200 mb-4"}>
