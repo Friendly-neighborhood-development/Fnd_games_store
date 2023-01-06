@@ -61,6 +61,6 @@ public class AccountRegistrationImpl implements AccountRegistrationService {
 
         accountRepository.save(newAccount);
 
-        return new AccountResponseDTO(newAccount.getId(), newAccount.getUsername());
+        return new AccountResponseDTO(newAccount.getUsername(), newAccount.getId());
     }
 }
