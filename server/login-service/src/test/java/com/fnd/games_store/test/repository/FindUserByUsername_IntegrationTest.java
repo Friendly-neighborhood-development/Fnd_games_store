@@ -20,11 +20,11 @@ import java.util.List;
 
 
 import static org.assertj.core.api.Assertions.*;
-// TODO need a refactoring
+
 @DataJpaTest
 @BootstrapWith(SpringBootTestContextBootstrapper.class)
 @SpringBootTest(classes = LoginApplication.class)
-public class FindUserByUsername_IntegrationTest {
+public class FindUserByUsername_IntegrationTest extends RepositoryTestCommons{
 
 
     @Autowired
@@ -34,46 +34,20 @@ public class FindUserByUsername_IntegrationTest {
 
     private CharSequence date = "2030-01-01";
 
+    private String username = "admin";
+
+    private Account expectedEntity;
+
 
     @Test
     void findAccountByUsername_ShouldReturnProperAccount(){
-        assertThat(loadedAdminAccount).isEqualTo(createProperAdminAccount("admin"));
+        assertThat(loadedAdminAccount).isEqualTo(expectedEntity);
     }
-
-
-
-    private Account createProperAdminAccount(String username){
-
-        Account properAdminAccount = new Account();
-        properAdminAccount.setId("1");
-        properAdminAccount.setUsername("admin");
-        properAdminAccount.setPassword("$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6");
-        properAdminAccount.setEmail("admin@gmail.com");
-        properAdminAccount.setExpirationDate(LocalDate.parse(date.toString()));
-        properAdminAccount.setIsAccountEnabled(true);
-        properAdminAccount.setCredentialsExpirationDate(LocalDate.parse(date.toString()));
-        properAdminAccount.setIsAccountNonLocked(true);
-
-
-
-        List<Authority> adminGrantedAuthorities = new ArrayList<>();
-        Authority adminAuthority = new Authority("1", "super_user");
-        Authority staffAuthority = new Authority("2", "staff_user");
-        Authority regularAuthority = new Authority("3", "regular_user");
-
-        adminGrantedAuthorities.add(adminAuthority);
-        adminGrantedAuthorities.add(staffAuthority);
-        adminGrantedAuthorities.add(regularAuthority);
-
-        properAdminAccount.setAuthorities(adminGrantedAuthorities);
-
-        return properAdminAccount;
-    }
-
 
     @BeforeEach
     void testSetup(){
         loadedAdminAccount = repository.findAccountByUsername("admin").get();
+        expectedEntity = createProperAdminAccount(username, date);
     }
 
 
