@@ -4,16 +4,20 @@ import {
     PuzzlePieceIcon,
     MagnifyingGlassIcon,
     ShoppingCartIcon,
-    BellIcon,
-    UserIcon
+    UserIcon,
+    ArrowRightOnRectangleIcon
 } from "@heroicons/react/24/outline";
 import {Link} from "react-router-dom";
 import ThemeSwitcher from "../ThemeSwitcher";
 import {XMarkIcon} from "@heroicons/react/20/solid";
 import SmHeaderLink from "./SmHeaderLink";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {signOut} from "../../store/reducers/authSlice";
 
 const SmHeader: FC = memo(() => {
     const [modal, setModal] = useState(false)
+    const {isAuth} = useAppSelector(state => state.auth)
+    const dispatch = useAppDispatch()
     const setModalVisible = (visible: boolean) => {
         if (visible) {
             document.documentElement.style.overflow = "hidden"
@@ -60,7 +64,12 @@ const SmHeader: FC = memo(() => {
                             </button>
                             <ul className={"space-y-6"}>
                                 <li><SmHeaderLink href={"/cart"} title={"Cart"} Icon={ShoppingCartIcon}/></li>
-                                <li><SmHeaderLink href={"/login"} title={"Login"} Icon={UserIcon}/></li>
+                                {isAuth?
+                                    <li onClick={() => dispatch(signOut())}><SmHeaderLink href={"/login"} title={"Sign out"} Icon={ArrowRightOnRectangleIcon}/></li>
+                                    :
+                                    <li><SmHeaderLink href={"/login"} title={"Login"} Icon={UserIcon}/></li>
+
+                                }
                             </ul>
                             <div
                                 className={"pt-6 mt-6 border-t-slate-200 border-t flex items-center justify-between text-slate-700 font-normal dark:text-slate-400 dark:border-t-slate-200/10"}>
