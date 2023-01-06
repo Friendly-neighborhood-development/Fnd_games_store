@@ -1,11 +1,11 @@
 import React from 'react';
-import NotLoginLayout from "../components/layouts/NotLoginLayout";
+import SimpleLayout from "../components/layouts/SimpleLayout";
 
 const Register = () => {
     return (
-        <NotLoginLayout>
+        <SimpleLayout>
             Register
-        </NotLoginLayout>
+        </SimpleLayout>
     );
 };
 

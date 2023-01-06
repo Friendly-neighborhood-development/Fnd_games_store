@@ -1,7 +1,7 @@
 import React from 'react';
 import {Routes, Route} from "react-router-dom";
 import {authorizedRoutes, notAuthorizedRoutes} from "../constants/routes";
-import NotLoginLayout from "./layouts/NotLoginLayout";
+import SimpleLayout from "./layouts/SimpleLayout";
 import {useAppSelector} from "../hooks/redux";
 
 const AppRouter = () => {
@@ -15,7 +15,7 @@ const AppRouter = () => {
                 <Route
                     path={route.path}
                     element={
-                        <React.Suspense fallback={<NotLoginLayout/>}>
+                        <React.Suspense fallback={<SimpleLayout/>}>
                             {route.element}
                         </React.Suspense>
                     }

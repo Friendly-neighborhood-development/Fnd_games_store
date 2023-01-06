@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import NotLoginLayout from "../components/layouts/NotLoginLayout";
+import SimpleLayout from "../components/layouts/SimpleLayout";
 import {Link} from "react-router-dom";
 import {PuzzlePieceIcon} from "@heroicons/react/24/outline";
 import Input from "../components/UI/Input";
@@ -20,7 +20,7 @@ const Login: FC = () => {
     }
 
     return (
-        <NotLoginLayout>
+        <SimpleLayout>
             <div className={"pt-6 w-80 flex flex-col items-center"}>
                 <Link to={"/"} className={"my-4"}>
                     <PuzzlePieceIcon className={"w-16 h-16 text-blue-600 dark:text-sky-500"}/>
@@ -62,7 +62,7 @@ const Login: FC = () => {
                     </Link>
                 </div>
             </div>
-        </NotLoginLayout>
+        </SimpleLayout>
     );
 };
 
