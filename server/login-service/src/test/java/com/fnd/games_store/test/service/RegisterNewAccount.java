@@ -4,6 +4,7 @@ package com.fnd.games_store.test.service;
 import com.fnd.games_store.login.LoginApplication;
 import com.fnd.games_store.login.dto.AccountRequestDTO;
 import com.fnd.games_store.login.entity.Account;
+import com.fnd.games_store.login.entity.Authority;
 import com.fnd.games_store.login.repository.AccountRepository;
 import com.fnd.games_store.login.repository.AuthorityRepository;
 import com.fnd.games_store.login.service.AccountRegistration;
@@ -18,6 +19,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.*;
@@ -56,13 +59,13 @@ public class RegisterNewAccount{
 
     private Account expectedAccountEntity;
 
+    private List<Authority> accountAuthoritiesList = new ArrayList<>();
+
 
     @Test
     void register_ShouldSaveNewAccountEntityToDB(){
 
         assertThat(loadedAccountEntityFromDB).isEqualTo(expectedAccountEntity);
-
-
 
     }
 
@@ -85,6 +88,7 @@ public class RegisterNewAccount{
     public Account creteAppropriateAccountEntity(String username, String password, String email) {
 
         Account newAccount = new Account();
+        Authority regularUserAuthority = authorityRepository.findById("3").get();
 
         newAccount.setId(null);
         newAccount.setUsername(username);
@@ -94,6 +98,10 @@ public class RegisterNewAccount{
         newAccount.setIsAccountNonLocked(true);
         newAccount.setCredentialsExpirationDate(LocalDate.parse(expirationDate));
         newAccount.setIsAccountEnabled(true);
+
+        accountAuthoritiesList.add(regularUserAuthority);
+        newAccount.setAuthority(accountAuthoritiesList);
+
 
         return newAccount;
     }

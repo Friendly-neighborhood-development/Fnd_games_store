@@ -48,9 +48,6 @@ public class AccountRegistrationImpl implements AccountRegistration {
         Account newAccount = new Account();
         Authority regularUserAuthority = authorityRepository.findById("3").get();
 
-
-        log.info("service " + regularUserAuthority);
-
         newAccount.setUsername(accountRequestDTO.getUsername());
         newAccount.setPassword(encoder.encode(accountRequestDTO.getPassword()));
         newAccount.setEmail(accountRequestDTO.getEmail());
