@@ -10,14 +10,14 @@ import java.util.List;
 public class RepositoryTestCommons {
 
 
-   protected Account createProperAdminAccount(String username, CharSequence date){
+   protected Account createProperAdminAccount(String username, String date){
 
         Account properAdminAccount = new Account();
         properAdminAccount.setId("1");
         properAdminAccount.setUsername(username);
         properAdminAccount.setPassword("$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6");
         properAdminAccount.setEmail("admin@gmail.com");
-        properAdminAccount.setExpirationDate(LocalDate.parse(date.toString()));
+        properAdminAccount.setExpirationDate(LocalDate.parse(date));
         properAdminAccount.setIsAccountEnabled(true);
         properAdminAccount.setCredentialsExpirationDate(LocalDate.parse(date.toString()));
         properAdminAccount.setIsAccountNonLocked(true);

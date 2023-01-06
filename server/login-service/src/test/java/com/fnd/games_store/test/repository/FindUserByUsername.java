@@ -7,6 +7,7 @@ import com.fnd.games_store.login.repository.AccountRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTestContextBootstrapper;
@@ -26,7 +27,8 @@ public class FindUserByUsername extends RepositoryTestCommons{
 
     private Account loadedAdminAccount;
 
-    private CharSequence date = "2030-01-01";
+    @Value("${variables.common.new_account_expiration_date}")
+    private String expirationDate;
 
     private String username = "admin";
 
@@ -41,7 +43,7 @@ public class FindUserByUsername extends RepositoryTestCommons{
     @BeforeEach
     void testSetup(){
         loadedAdminAccount = repository.findAccountByUsername("admin").get();
-        expectedEntity = createProperAdminAccount(username, date);
+        expectedEntity = createProperAdminAccount(username, expirationDate);
     }
 
 
