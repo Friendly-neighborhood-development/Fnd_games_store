@@ -74,25 +74,4 @@ public class Account {
     }
 
 
-
-
-
-
-
-
-
-
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Account account = (Account) o;
-//        return username.equals(account.username);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(username);
-//    }
 }
