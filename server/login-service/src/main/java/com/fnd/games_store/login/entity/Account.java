@@ -2,6 +2,7 @@ package com.fnd.games_store.login.entity;
 
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -57,21 +58,18 @@ public class Account {
     }
 
     @Override
-    public boolean equals(Object object){
-        if (this == object) return true;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return Objects.equals(id, account.id) && Objects.equals(username, account.username) && Objects.equals(password, account.password)
+//                && authority.containsAll(account.authority)
 
-        if(object!= null ||this.getClass() != object.getClass()) return false;
-
-        Account account = (Account) object;
-
-        return username.equals(account.getUsername());
+                && Objects.equals(email, account.email) && Objects.equals(expirationDate, account.expirationDate) && Objects.equals(isAccountNonLocked, account.isAccountNonLocked) && Objects.equals(credentialsExpirationDate, account.credentialsExpirationDate) && Objects.equals(isAccountEnabled, account.isAccountEnabled);
     }
-
 
     @Override
     public int hashCode() {
-        return Objects.hash(username);
+        return Objects.hash(id, username, password, authority, email, expirationDate, isAccountNonLocked, credentialsExpirationDate, isAccountEnabled);
     }
-
-
 }

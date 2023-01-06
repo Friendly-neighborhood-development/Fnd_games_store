@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -24,6 +25,7 @@ import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest(classes = LoginApplication.class)
 @Slf4j
+@Transactional
 public class RegisterNewAccount{
 
 
@@ -58,7 +60,7 @@ public class RegisterNewAccount{
     @Test
     void register_ShouldSaveNewAccountEntityToDB(){
 
-        assertThat(loadedAccountEntityFromDB.toString()).isEqualTo(expectedAccountEntity.toString());
+        assertThat(loadedAccountEntityFromDB).isEqualTo(expectedAccountEntity);
 
 
 
@@ -84,6 +86,7 @@ public class RegisterNewAccount{
 
         Account newAccount = new Account();
 
+        newAccount.setId(null);
         newAccount.setUsername(username);
         newAccount.setPassword(password);
         newAccount.setEmail(email);
