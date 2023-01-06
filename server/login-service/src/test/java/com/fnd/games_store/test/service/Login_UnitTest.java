@@ -107,7 +107,7 @@ public class Login_UnitTest {
         creatingAccount.setExpirationDate(date);
         creatingAccount.setCredentialsExpirationDate(date);
         creatingAccount.setIsAccountNonLocked(true);
-        creatingAccount.setAuthorities(adminGrantedAuthorities);
+        creatingAccount.setAuthority(adminGrantedAuthorities);
 
         return Optional.of(creatingAccount);
     }

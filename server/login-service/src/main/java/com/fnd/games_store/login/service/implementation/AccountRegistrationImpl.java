@@ -60,7 +60,7 @@ public class AccountRegistrationImpl implements AccountRegistration {
         newAccount.setIsAccountEnabled(true);
 
         accountAuthoritiesList.add(regularUserAuthority);
-        newAccount.setAuthorities(accountAuthoritiesList);
+        newAccount.setAuthority(accountAuthoritiesList);
 
         accountRepository.save(newAccount);
 

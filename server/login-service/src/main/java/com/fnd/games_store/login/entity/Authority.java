@@ -8,7 +8,6 @@ import org.springframework.security.core.GrantedAuthority;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,7 +30,7 @@ public class Authority implements GrantedAuthority{
 
     @ManyToMany
     @JsonIgnore
-    private List<Account> accounts;
+    private List<Account> account;
 
 
     public Authority(String id, String authority) {
@@ -54,11 +53,11 @@ public class Authority implements GrantedAuthority{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Authority authority1 = (Authority) o;
-        return Objects.equals(id, authority1.id) && Objects.equals(authority, authority1.authority) && Objects.equals(accounts, authority1.accounts);
+        return Objects.equals(id, authority1.id) && Objects.equals(authority, authority1.authority) && Objects.equals(account, authority1.account);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, authority, accounts);
+        return Objects.hash(id, authority, account);
     }
 }

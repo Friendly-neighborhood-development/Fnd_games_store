@@ -59,13 +59,13 @@ public class RegisterNewAccount{
     void register_ShouldSaveNewAccountEntityToDB(){
 ////        Boolean areEntitiesEqual = loadedAccountEntityFromDB.equals(expectedAccountEntity);
 //
-//        Boolean areEntitiesEqual = Objects.equals(loadedAccountEntityFromDB, expectedAccountEntity);
-//
-//        assertThat(areEntitiesEqual).isTrue();
+        Boolean areEntitiesEqual = Objects.equals(loadedAccountEntityFromDB, expectedAccountEntity);
+
+        assertThat(areEntitiesEqual).isTrue();
 
 //        assertThat(loadedAccountEntityFromDB).isEqualTo(expectedAccountEntity);
 
-        log.info("test "+authorityRepository.findById("3").get());
+
 
     }
 
@@ -76,7 +76,7 @@ public class RegisterNewAccount{
 
         service.register(newAccountData);
 
-//        loadedAccountEntityFromDB = repository.findAccountByUsername(username).get();
+        loadedAccountEntityFromDB = repository.findAccountByUsername(username).get();
 
         expectedAccountEntity = creteAppropriateAccountEntity(username,password,email);
 

@@ -33,7 +33,7 @@ public class RepositoryTestCommons {
         adminGrantedAuthorities.add(staffAuthority);
         adminGrantedAuthorities.add(regularAuthority);
 
-        properAdminAccount.setAuthorities(adminGrantedAuthorities);
+        properAdminAccount.setAuthority(adminGrantedAuthorities);
 
         return properAdminAccount;
     }
