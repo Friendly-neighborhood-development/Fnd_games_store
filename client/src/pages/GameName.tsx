@@ -31,7 +31,7 @@ const GameName = () => {
             <h1 className={"text-3xl"}>{game.name}</h1>
             <div className={"flex flex-col lg:flex-row"}>
                 <div className={"lg:w-2/3 lg:pr-10"}>
-                    <div className={"mb-3 min-w-full h-96 overflow-hidden bg-gradient-to-b from-sky-400/20 to-blue-700/20 flex justify-center rounded-lg"}>
+                    <div className={"mb-3 min-w-full max-h-96 overflow-hidden bg-gradient-to-b from-sky-400/20 to-blue-700/20 flex justify-center rounded-lg"}>
                         <img className={"lg:rounded-lg lg:w-72"} src={game?.base64Image}/>
                     </div>
                     <div className={"hidden lg:block"}>{game?.description}</div>
