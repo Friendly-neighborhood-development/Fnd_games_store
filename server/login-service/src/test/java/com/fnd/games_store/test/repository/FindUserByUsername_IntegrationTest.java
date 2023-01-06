@@ -20,7 +20,7 @@ import java.util.List;
 
 
 import static org.assertj.core.api.Assertions.*;
-
+// TODO need a refactoring
 @DataJpaTest
 @BootstrapWith(SpringBootTestContextBootstrapper.class)
 @SpringBootTest(classes = LoginApplication.class)
