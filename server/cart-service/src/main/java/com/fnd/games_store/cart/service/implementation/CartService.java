@@ -4,16 +4,13 @@ import com.fnd.games_store.cart.dto.CartRequestDTO;
 import com.fnd.games_store.cart.dto.CartResponseDTO;
 import com.fnd.games_store.cart.dto.GameResponseDTO;
 import com.fnd.games_store.cart.entity.Cart;
-import com.fnd.games_store.cart.entity.Game;
 import com.fnd.games_store.cart.repository.CartRepository;
 import com.fnd.games_store.cart.service.CartCrudService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,12 +34,19 @@ public class CartService implements CartCrudService {
 
     @Override
     public CartResponseDTO updateCart(CartRequestDTO incomingCartData) {
+
         Cart updatingCart = new Cart();
         updatingCart.setUserId(incomingCartData.getUserId());
         updatingCart.setGameData(incomingCartData.getGameData().stream().distinct().collect(Collectors.toList()));
 
-        repository.save(updatingCart);
 
-        return new CartResponseDTO(repository.findById(incomingCartData.getUserId()).orElse(new Cart()));
+        return new CartResponseDTO(repository.findById(updateCart(updatingCart).getUserId()).orElse(new Cart()));
     }
+
+
+    private Cart updateCart(Cart updatingCart){
+        return repository.save(updatingCart);
+    }
+
+
 }

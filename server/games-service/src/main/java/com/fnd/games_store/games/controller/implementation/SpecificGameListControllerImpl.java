@@ -2,8 +2,8 @@ package com.fnd.games_store.games.controller.implementation;
 
 
 import com.fnd.games_store.games.controller.SpecificGameListController;
-import com.fnd.games_store.games.dto.GameResponseDTO;
-import com.fnd.games_store.games.service.GamePagingAndSortingService;
+import com.fnd.games_store.games.dto.game.GameResponseDTO;
+import com.fnd.games_store.games.service.SpecificGameListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
@@ -17,15 +17,15 @@ import java.util.List;
 public class SpecificGameListControllerImpl implements SpecificGameListController {
 
 
-    private final GamePagingAndSortingService gameService;
+    private final SpecificGameListService gameService;
 
     @Autowired
-    public SpecificGameListControllerImpl(GamePagingAndSortingService gameService) {
+    public SpecificGameListControllerImpl(SpecificGameListService gameService) {
         this.gameService = gameService;
     }
 
     @Override
-    @GetMapping("v1/catalogue/edited")
+    @GetMapping("v1/catalogue/list")
     public ResponseEntity<List<GameResponseDTO>> getEditedList(@RequestParam Integer page, @RequestParam Integer pageSize, @RequestParam String sortField, @RequestParam Boolean ascOrder) {
         if (ascOrder){
             return ResponseEntity.ok(gameService.getSpecifiedGameList(page,pageSize, Sort.by(sortField)));

@@ -30,7 +30,7 @@ Feel free to check out our work
 * Lombok
 * Testing: Junit5, Mockito
 
-<a name="Contact-us"><h3>Architecture</h3></a>
+<a name="Architecture"><h3>Architecture</h3></a>
 ![Homepage](server/documentation/images/architecture.png)
 
 <a name="Features"><h3>Features</h3></a>
