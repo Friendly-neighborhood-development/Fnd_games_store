@@ -8,6 +8,7 @@ import {defaultFilterTitles} from "../../constants/filter";
 import GameCard from "./game/GameCard";
 import {Modal} from "../UI/Modal";
 import {FunnelIcon} from "@heroicons/react/20/solid";
+import {SkeletonGamesList} from "./SkeletonGamesList";
 
 
 const GamesList: FC = memo(() => {
@@ -45,18 +46,16 @@ const GamesList: FC = memo(() => {
                         </Modal>
                     </div>
                 </div>
-                {error
-                    ? <h1>Ошибка: {error}</h1>
-                    : <div
-                        className={"flex space-x-2 w-full overflow-x-auto lg:flex-none lg:space-x-0 lg:overflow-x-visible lg:grid lg:gap-x-4 lg:grid-cols-3 lg:gap-y-4 xl:grid-cols-4"}>
-                        {games.map(game =>
-                            <GameCard
-                                {...game}
-                                key={game.id}
-                                skeleton={loading === "succeeded"}
-                            />)}
-                    </div>
-                }
+                <div
+                    className={"flex space-x-2 w-full overflow-x-auto lg:flex-none lg:space-x-0 lg:overflow-x-visible lg:grid lg:gap-x-4 lg:grid-cols-3 lg:gap-y-4 xl:grid-cols-4"}>
+                    {loading === "succeeded" && games.map(game => (
+                        <GameCard
+                            {...game}
+                            key={game.id}
+                        />
+                    ))}
+                    {loading === "pending" && <SkeletonGamesList/>}
+                </div>
             </div>
         </section>
     );
