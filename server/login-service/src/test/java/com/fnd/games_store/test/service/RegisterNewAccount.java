@@ -1,4 +1,4 @@
-package com.fnd.games_store.test.repository;
+package com.fnd.games_store.test.service;
 
 
 import com.fnd.games_store.login.LoginApplication;
@@ -18,7 +18,7 @@ import org.springframework.test.context.BootstrapWith;
 @DataJpaTest
 @BootstrapWith(SpringBootTestContextBootstrapper.class)
 @SpringBootTest(classes = LoginApplication.class)
-public class RegisterNewAccount extends RepositoryTestCommons{
+public class RegisterNewAccount{
 
 
     @Autowired
