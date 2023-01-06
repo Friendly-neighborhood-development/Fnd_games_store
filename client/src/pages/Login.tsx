@@ -3,11 +3,12 @@ import NotLoginLayout from "../components/layouts/NotLoginLayout";
 import {Link} from "react-router-dom";
 import {PuzzlePieceIcon} from "@heroicons/react/24/outline";
 import Input from "../components/UI/Input";
-import Button from "../components/UI/Button";
+import {PrimaryButton} from "../components/UI/PrimaryButton";
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
 import {auth} from "../store/actions/authAction";
+import {SecondaryButton} from "../components/UI/SecondaryButton";
 
-const Login:FC = () => {
+const Login: FC = () => {
     const [username, setUsername] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const {loading} = useAppSelector(state => state.auth)
@@ -49,12 +50,9 @@ const Login:FC = () => {
                         onChange={(e) => setPassword(e.currentTarget.value)}
                         autoComplete={"password"}
                     />
-                    <Button
-                        className={"bg-green-500 hover:bg-green-600 w-full text-white dark:bg-green-700 dark:hover:bg-green-600"}
-                        type={"submit"}
-                    >
+                    <SecondaryButton type={"submit"}>
                         Sign in
-                    </Button>
+                    </SecondaryButton>
                 </form>
                 <div
                     className={"text-sm bg-white dark:bg-transparent p-4 rounded-lg border border-gray-500/30 dark:border-gray-500/50 w-full mt-4 flex justify-center"}>

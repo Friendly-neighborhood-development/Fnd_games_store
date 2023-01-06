@@ -7,7 +7,6 @@ import {GamesFilter} from "./GamesFilter";
 import {defaultFilterTitles} from "../../constants/filter";
 import GameCard from "./game/GameCard";
 import {Modal} from "../UI/Modal";
-import Button from "../UI/Button";
 import {FunnelIcon} from "@heroicons/react/20/solid";
 
 
