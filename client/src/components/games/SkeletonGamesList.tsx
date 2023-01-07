@@ -6,7 +6,7 @@ export const SkeletonGamesList: FC = () => {
     return (
         <>
             {games.map((_) => (
-                <GameCardLoader/>
+                <GameCardLoader key={Math.random()}/>
             ))}
         </>
     );
