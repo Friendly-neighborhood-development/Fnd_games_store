@@ -17,9 +17,7 @@ export const GamesList: FC = memo(() => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     useEffect(() => {
-        setTimeout(() => {
-            dispatch(fetchGames(defaultFilterTitles))
-        }, 2500)
+        dispatch(fetchGames(defaultFilterTitles))
     }, []);
 
     if (loading === "failed")
@@ -56,7 +54,7 @@ export const GamesList: FC = memo(() => {
                             key={game.id}
                         />
                     ))}
-                    {loading !== "succeeded" && <SkeletonGamesList/>}
+                    {loading === "pending" && <SkeletonGamesList/>}
                 </div>
             </div>
         </section>
