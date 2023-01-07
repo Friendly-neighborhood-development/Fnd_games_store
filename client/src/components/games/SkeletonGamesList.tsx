@@ -1,8 +1,9 @@
 import React, {FC} from 'react';
 import {GameCardLoader} from "./game/GameCardLoader";
+import {defaultFilterTitles} from "../../constants/filter";
 
 export const SkeletonGamesList: FC = () => {
-    const games = Array(8).fill({})
+    const games = Array(defaultFilterTitles.pageSize).fill({})
     return (
         <>
             {games.map((_) => (
