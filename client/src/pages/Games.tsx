@@ -1,6 +1,6 @@
 import React from 'react';
-import GamesList from "../components/games/GamesList";
-import MainLayout from "../components/layouts/MainLayout";
+import {GamesList} from "../components/games/GamesList";
+import {MainLayout} from "../components/layouts/MainLayout";
 
 const Games = () => {
     return (
@@ -12,4 +12,4 @@ const Games = () => {
     );
 };
 
-export default Games;
+export default Games

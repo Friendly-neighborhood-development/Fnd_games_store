@@ -1,8 +1,8 @@
 import React, {FC, useState} from 'react';
-import SimpleLayout from "../components/layouts/SimpleLayout";
+import {SimpleLayout} from "../components/layouts/SimpleLayout";
 import {Link} from "react-router-dom";
 import {PuzzlePieceIcon} from "@heroicons/react/24/outline";
-import Input from "../components/UI/Input";
+import {Input} from "../components/UI/Input";
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
 import {auth} from "../store/actions/authAction";
 import {SecondaryButton} from "../components/UI/SecondaryButton";
@@ -72,4 +72,5 @@ const Login: FC = () => {
     );
 };
 
-export default Login;
+export default Login
+

@@ -6,8 +6,8 @@ interface SimpleLayoutProps {
     children?: React.ReactNode
 }
 
-const SimpleLayout: FC<SimpleLayoutProps> = ({children}) => {
-    const {selectedTheme, setSelectedTheme} = useSwitchTheme()
+export const SimpleLayout: FC<SimpleLayoutProps> = ({children}) => {
+    const {setSelectedTheme} = useSwitchTheme()
     useEffect(() => {
         setSelectedTheme(themes.find(theme => theme.title === localStorage.theme) || themes[2])
     }, [])
@@ -20,4 +20,3 @@ const SimpleLayout: FC<SimpleLayoutProps> = ({children}) => {
     );
 };
 
-export default SimpleLayout;

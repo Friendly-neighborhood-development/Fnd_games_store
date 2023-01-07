@@ -1,13 +1,13 @@
 import React, {FC, useEffect} from 'react';
-import Header from "../Header/Header";
-import SmHeader from "../Header/SmHeader";
-import Footer from "../Footer";
+import {Header} from "../Header/Header";
+import {SmHeader} from "../Header/SmHeader";
+import {Footer} from "../Footer";
 
 interface MainLayoutProps {
     children?: React.ReactNode
 }
 
-const MainLayout: FC<MainLayoutProps> = ({children}) => {
+export const MainLayout: FC<MainLayoutProps> = ({children}) => {
     useEffect(() => {
         // если перейти по ссылке, то сразу убрать блокировку скролла
         // т.к. она остаётся при переходе по ссылке из меню для маленьких экранов
@@ -29,4 +29,3 @@ const MainLayout: FC<MainLayoutProps> = ({children}) => {
     );
 };
 
-export default MainLayout;

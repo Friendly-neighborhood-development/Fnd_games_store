@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import SimpleLayout from "../components/layouts/SimpleLayout";
+import {SimpleLayout} from "../components/layouts/SimpleLayout";
 
 const Error = () => {
     return (
@@ -14,4 +14,5 @@ const Error = () => {
     );
 };
 
-export default Error;
+export default Error
+

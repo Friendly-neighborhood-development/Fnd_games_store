@@ -1,5 +1,5 @@
 import React from 'react';
-import SimpleLayout from "../components/layouts/SimpleLayout";
+import {SimpleLayout} from "../components/layouts/SimpleLayout";
 
 const Register = () => {
     return (
@@ -9,4 +9,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default Register

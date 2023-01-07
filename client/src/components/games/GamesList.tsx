@@ -2,18 +2,18 @@ import React, {FC, memo, useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {fetchGames} from "../../store/actions/gamesAction";
 import {useNavigate} from "react-router-dom";
-import Sidebar from "../Sidebar";
+import {Sidebar} from "../Sidebar";
 import {GamesFilter} from "./GamesFilter";
 import {defaultFilterTitles} from "../../constants/filter";
-import GameCard from "./game/GameCard";
+import {GameCard} from "./game/GameCard";
 import {Modal} from "../UI/Modal";
 import {FunnelIcon} from "@heroicons/react/20/solid";
 import {SkeletonGamesList} from "./SkeletonGamesList";
 
 
-const GamesList: FC = memo(() => {
+export const GamesList: FC = memo(() => {
     const [modalVisible, setModalVisible] = useState(false)
-    const {games, loading, error} = useAppSelector(state => state.games)
+    const {games, loading} = useAppSelector(state => state.games)
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     useEffect(() => {
@@ -63,4 +63,3 @@ const GamesList: FC = memo(() => {
     );
 })
 
-export default GamesList;

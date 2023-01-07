@@ -1,7 +1,7 @@
 import React from 'react';
 import images from "../constants/images";
 
-const Footer = () => {
+export const Footer = () => {
     return (
         <footer className={"mt-4 w-full py-4 lg:py-6 border-t border-slate-500/30 dark:bg-slate-900"}>
             <div className={"mx-auto flex lg:items-center justify-between flex-col lg:flex-row"}>
@@ -22,4 +22,3 @@ const Footer = () => {
     );
 };
 
-export default Footer;

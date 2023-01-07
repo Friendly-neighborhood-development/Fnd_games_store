@@ -12,7 +12,7 @@ interface CustomInputProps {
 
 }
 
-const Input: FC<CustomInputProps> = ({className, label, ...props}) => {
+export const Input: FC<CustomInputProps> = ({className, label, ...props}) => {
     const rootClasses = ["px-2 outline-none w-full dark:text-slate-200 text-sm", className].join(" ")
     return (
         <>
@@ -27,4 +27,3 @@ const Input: FC<CustomInputProps> = ({className, label, ...props}) => {
     )
 }
 
-export default Input;

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import MainLayout from "../components/layouts/MainLayout";
+import {MainLayout} from "../components/layouts/MainLayout";
 import {useNavigate, useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
 import {fetchOneGame} from "../store/actions/gameAction";
@@ -13,7 +13,7 @@ const GameName = () => {
     const navigate = useNavigate()
 
     const dispatch = useAppDispatch()
-    const {game, loading, error} = useAppSelector((state) => state.game)
+    const {game, loading} = useAppSelector((state) => state.game)
     useEffect(() => {
         if (!name) navigate("/error")
         else dispatch(fetchOneGame(name))
@@ -61,4 +61,5 @@ const GameName = () => {
     );
 };
 
-export default GameName;
+export default GameName
+

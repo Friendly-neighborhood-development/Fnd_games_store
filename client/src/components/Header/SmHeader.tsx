@@ -10,11 +10,11 @@ import {
 import {Link} from "react-router-dom";
 import ThemeSwitcher from "../ThemeSwitcher";
 import {XMarkIcon} from "@heroicons/react/20/solid";
-import SmHeaderLink from "./SmHeaderLink";
+import {SmHeaderLink} from "./SmHeaderLink";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {signOut} from "../../store/reducers/authSlice";
 
-const SmHeader: FC = memo(() => {
+export const SmHeader: FC = memo(() => {
     const [modal, setModal] = useState(false)
     const {isAuth} = useAppSelector(state => state.auth)
     const dispatch = useAppDispatch()
@@ -84,4 +84,3 @@ const SmHeader: FC = memo(() => {
     );
 });
 
-export default SmHeader;

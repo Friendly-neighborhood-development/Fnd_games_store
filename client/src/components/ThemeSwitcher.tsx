@@ -4,7 +4,7 @@ import {MoonIcon, SunIcon} from "@heroicons/react/24/outline";
 import {useSwitchTheme} from "../hooks/useThemeSwitch";
 import {themes} from "../constants/themes";
 
-const ThemeSwitcher = memo(() => {
+export const ThemeSwitcher = memo(() => {
     const {selectedTheme, setSelectedTheme} = useSwitchTheme()
     useEffect(() => {
         setSelectedTheme(themes.find(theme => theme.title === localStorage.theme) || themes[2])

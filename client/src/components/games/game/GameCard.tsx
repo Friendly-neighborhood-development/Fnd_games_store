@@ -4,7 +4,7 @@ import {GamePrice} from "./GamePrice";
 import {IGame} from "../../../models/IGame";
 
 
-const GameCard: FC<IGame> = memo(({name, base64Image, price, discount}) => {
+export const GameCard: FC<IGame> = memo(({name, base64Image, price, discount}) => {
     return (
         <Link to={`/games/${name}`}
               className={"flex flex-wrap pb-4 bg-white justify-between lg:shadow-md rounded-lg lg:overflow-hidden lg:before:block lg:before:absolute lg:before:-inset-1 lg:hover:before:bg-gray-400/10 dark:lg:hover:before:bg-gray-200/10 lg:relative lg:inline-block dark:bg-slate-800/50"}>
@@ -21,4 +21,3 @@ const GameCard: FC<IGame> = memo(({name, base64Image, price, discount}) => {
     );
 });
 
-export default GameCard;

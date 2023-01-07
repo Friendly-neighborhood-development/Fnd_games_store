@@ -1,13 +1,13 @@
 import React, {FC, memo} from 'react';
 import {ArrowRightOnRectangleIcon, PuzzlePieceIcon, ShoppingCartIcon, UserIcon} from "@heroicons/react/24/outline";
 import {Link} from "react-router-dom";
-import HeaderIcon from "./HeaderIcon";
+import {HeaderIcon} from "./HeaderIcon";
 import ThemeSwitcher from "../ThemeSwitcher";
-import Search from "../UI/Search";
+import {Search} from "../UI/Search";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {signOut} from "../../store/reducers/authSlice";
 
-const Header: FC = memo(() => {
+export const Header: FC = memo(() => {
     const dispatch = useAppDispatch()
     const {isAuth} = useAppSelector(state => state.auth)
     const logoutHandler = () => {
@@ -46,4 +46,3 @@ const Header: FC = memo(() => {
     );
 })
 
-export default Header;
