@@ -63,7 +63,7 @@ const Login: FC = () => {
                 <div
                     className={"text-sm bg-white dark:bg-transparent p-4 rounded-lg border border-gray-500/30 dark:border-gray-500/50 w-full mt-4 flex justify-center"}>
                     <span className={"dark:text-slate-200"}>New to Games Store?</span>
-                    <Link to={"/register"} className={"ml-1 text-blue-600 dark:text-sky-500"}>
+                    <Link to={"/signup"} className={"ml-1 text-blue-600 dark:text-sky-500"}>
                         Create an account .
                     </Link>
                 </div>

@@ -5,7 +5,7 @@ import {Navigate} from "react-router-dom";
 const Games = React.lazy(() => import("../pages/Games"));
 const GameName = React.lazy(() => import("../pages/GameName"));
 const Login = React.lazy(() => import("../pages/Login"));
-const Register = React.lazy(() => import("../pages/Register"));
+const Signup = React.lazy(() => import("../pages/Signup"));
 const Cart = React.lazy(() => import("../pages/Cart"));
 const Error = React.lazy(() => import("../pages/Error"));
 
@@ -28,7 +28,7 @@ export const notAuthorizedRoutes: Array<routeProps> = [
     {path: "/", element: <Games/>},
     {path: "/games/:name", element: <GameName/>},
     {path: "/login", element: <Login/>},
-    {path: "/register", element: <Register/>},
+    {path: "/signup", element: <Signup/>},
     {path: "/cart", element: <Cart/>},
     {path: "/error", element: <Error/>},
     {path: "*", element: <Navigate to="/error"/>},
