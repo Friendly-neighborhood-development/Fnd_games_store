@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {PuzzlePieceIcon} from "@heroicons/react/24/outline";
 import {Input} from "../components/UI/Input";
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
-import {auth} from "../store/actions/authAction";
+import {signIn} from "../store/actions/authAction";
 import {SecondaryButton} from "../components/UI/SecondaryButton";
 import {ExclamationTriangleIcon} from "@heroicons/react/20/solid";
 import {setDefaultAuth} from "../store/reducers/authSlice";
@@ -17,7 +17,7 @@ const Login: FC = () => {
 
     const formHandler = (e: React.SyntheticEvent) => {
         e.preventDefault()
-        dispatch(auth({username, password}))
+        dispatch(signIn({username, password}))
     }
 
     return (
