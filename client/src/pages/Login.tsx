@@ -42,7 +42,7 @@ const Login: FC = () => {
                         type={"text"}
                         label={"Username"}
                         className={"rounded-md py-1 my-2 border-gray-500/30 border dark:border-gray-500/50 dark:bg-slate-900"}
-                        autoComplete={"username"}
+                        autoComplete={"on"}
                         value={username}
                         onChange={(e) => setUsername(e.currentTarget.value)}
                         onFocus={() => dispatch(setDefaultAuth())}
