@@ -20,17 +20,19 @@ const Cart = () => {
             {isAuth ? (
                 games.length ? (
                     <div className="mt-10 lg:px-40">
-                        <div className="text-2xl mb-4">Cart</div>
                         <div className="flex">
                             <div className="w-3/5 divide-y ">
                                 {games.map((game) => (
                                     <div
                                         key={game.id}
-                                        className="flex py-4 border-slate-600/50"
+                                        className="flex px-2 py-4 border-slate-600/50"
                                     >
-                                        <div className="w-40 h-40 overflow-hidden rounded-lg flex justify-center bg-gray-200 mr-4 p-2 dark:bg-slate-800">
+                                        <Link
+                                            to={`/games/${game.name}`}
+                                            className="w-40 h-40 overflow-hidden rounded-lg flex justify-center bg-gray-200 mr-4 p-2 dark:bg-slate-800"
+                                        >
                                             <img src={game.base64Image} />
-                                        </div>
+                                        </Link>
                                         <div className="flex justify-between w-full">
                                             <div className="flex flex-col justify-between">
                                                 <div className="flex flex-col">
@@ -48,18 +50,13 @@ const Cart = () => {
                                                     />
                                                 </div>
                                             </div>
-                                            <div>
-                                                <XMarkIcon className="w-6 h-6" />
-                                            </div>
+                                            <XMarkIcon className="w-6 h-6 cursor-pointer" />
                                         </div>
                                     </div>
                                 ))}
                             </div>
                             <div className="w-2/5 ml-10">
-                                <PrimaryButton type={'submit'}>
-                                    Place Order
-                                </PrimaryButton>
-                                <div className="rounded-lg bg-gray-200/50 mt-4 p-4 space-y-1 dark:bg-slate-800">
+                                <div className="rounded-lg bg-gray-200/50 mb-4 p-4 space-y-1 dark:bg-slate-800">
                                     <div className="flex justify-between items-end mb-2">
                                         <div className="text-lg">Total:</div>
                                         <div className="text-xl">
@@ -106,6 +103,9 @@ const Cart = () => {
                                         </div>
                                     </div>
                                 </div>
+                                <PrimaryButton type={'submit'}>
+                                    Place Order
+                                </PrimaryButton>
                             </div>
                         </div>
                     </div>
