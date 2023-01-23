@@ -39,7 +39,7 @@ const Cart = () => {
                                                     <div className="text-xl">
                                                         {game.name}
                                                     </div>
-                                                    <div className="opacity-50">
+                                                    <div className="opacity-50 text-sm">
                                                         {game.releaseDate}
                                                     </div>
                                                 </div>
@@ -79,10 +79,13 @@ const Cart = () => {
                                     <div className="text-sm flex justify-between">
                                         <div>Games count: {games.length}</div>
                                         <div>
-                                            {games.reduce(
-                                                (acc, cur) => acc + cur.price,
-                                                0
-                                            )}
+                                            {games
+                                                .reduce(
+                                                    (acc, cur) =>
+                                                        acc + cur.price,
+                                                    0
+                                                )
+                                                .toFixed(2)}
                                             &#8381;
                                         </div>
                                     </div>
