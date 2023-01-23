@@ -18,7 +18,7 @@ const Cart = () => {
     return (
         <MainLayout>
             {isAuth ? (
-                games.length ? (
+                games.length && games[0].name ? (
                     <div className="mt-4 md:mt-10 xl:px-32">
                         <div className="text-2xl">Cart</div>
                         <div className="flex flex-col md:flex-row">
@@ -114,7 +114,9 @@ const Cart = () => {
                         </div>
                     </div>
                 ) : (
-                    <div>Here will be your cart items..</div>
+                    <div className="w-full h-10 my-10 flex items-center justify-center text-xl">
+                        Here will be your cart items..
+                    </div>
                 )
             ) : (
                 <div className={'flex justify-center text-xl'}>
