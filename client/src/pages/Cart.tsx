@@ -19,9 +19,9 @@ const Cart = () => {
         <MainLayout>
             {isAuth ? (
                 games.length ? (
-                    <div className="mt-10 lg:px-40">
-                        <div className="flex">
-                            <div className="w-3/5 divide-y ">
+                    <div className="md:mt-10 xl:px-40">
+                        <div className="flex flex-col md:flex-row">
+                            <div className="md:w-3/5 divide-y ">
                                 {games.map((game) => (
                                     <div
                                         key={game.id}
@@ -55,7 +55,7 @@ const Cart = () => {
                                     </div>
                                 ))}
                             </div>
-                            <div className="w-2/5 ml-10">
+                            <div className="md:w-2/5 md:ml-10 mt-8 md:mt-0">
                                 <div className="rounded-lg bg-gray-200/50 mb-4 p-4 space-y-1 dark:bg-slate-800">
                                     <div className="flex justify-between items-end mb-2">
                                         <div className="text-lg">Total:</div>
