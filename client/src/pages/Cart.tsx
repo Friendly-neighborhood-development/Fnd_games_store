@@ -19,7 +19,7 @@ const Cart = () => {
         <MainLayout>
             {isAuth ? (
                 games.length ? (
-                    <div className="mt-4 md:mt-10 xl:px-40">
+                    <div className="mt-4 md:mt-10 xl:px-32">
                         <div className="text-2xl">Cart</div>
                         <div className="flex flex-col md:flex-row">
                             <div className="md:w-3/5 divide-y ">
