@@ -19,17 +19,18 @@ const Cart = () => {
         <MainLayout>
             {isAuth ? (
                 games.length ? (
-                    <div className="md:mt-10 xl:px-40">
+                    <div className="mt-4 md:mt-10 xl:px-40">
+                        <div className="text-2xl">Cart</div>
                         <div className="flex flex-col md:flex-row">
                             <div className="md:w-3/5 divide-y ">
                                 {games.map((game) => (
                                     <div
                                         key={game.id}
-                                        className="flex px-2 py-4 border-slate-600/50"
+                                        className="flex md:px-2 py-4 border-slate-600/50"
                                     >
                                         <Link
                                             to={`/games/${game.name}`}
-                                            className="w-40 h-40 overflow-hidden rounded-lg flex justify-center bg-gray-200 mr-4 p-2 dark:bg-slate-800"
+                                            className="w-40 min-w-[100px] overflow-hidden rounded-lg flex justify-center bg-gray-200 mr-4 p-2 dark:bg-slate-800"
                                         >
                                             <img src={game.base64Image} />
                                         </Link>
