@@ -1,18 +1,19 @@
-import { useEffect } from 'react';
-import { MainLayout } from '../components/layouts/MainLayout';
-import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { Link } from 'react-router-dom';
-import { fetchCartGames } from '../store/actions/cartAction';
-import { PrimaryButton } from '../components/UI/PrimaryButton';
-import { GamePrice } from '../components/games/game/GamePrice';
-import { XMarkIcon } from '@heroicons/react/24/outline';
+import {useEffect} from 'react';
+import {MainLayout} from '../components/layouts/MainLayout';
+import {useAppDispatch, useAppSelector} from '../hooks/redux';
+import {Link} from 'react-router-dom';
+import {fetchCartGames} from '../store/actions/cartAction';
+import {PrimaryButton} from '../components/UI/PrimaryButton';
+import {GamePrice} from '../components/games/game/GamePrice';
+import {XMarkIcon} from '@heroicons/react/24/outline';
+import {BoltIcon} from "@heroicons/react/20/solid";
 
 const Cart = () => {
-    const { token, userId, isAuth } = useAppSelector((state) => state.auth);
-    const { games } = useAppSelector((state) => state.cart);
+    const {token, userId, isAuth} = useAppSelector((state) => state.auth);
+    const {games} = useAppSelector((state) => state.cart);
     const dispatch = useAppDispatch();
     useEffect(() => {
-        if (isAuth) dispatch(fetchCartGames({ userId, token }));
+        if (isAuth) dispatch(fetchCartGames({userId, token}));
     }, []);
 
     return (
@@ -32,7 +33,7 @@ const Cart = () => {
                                             to={`/games/${game.name}`}
                                             className="w-40 min-w-[100px] overflow-hidden rounded-lg flex justify-center bg-gray-200 mr-4 p-2 dark:bg-slate-800"
                                         >
-                                            <img src={game.base64Image} />
+                                            <img src={game.base64Image}/>
                                         </Link>
                                         <div className="flex justify-between w-full">
                                             <div className="flex flex-col justify-between">
@@ -51,7 +52,7 @@ const Cart = () => {
                                                     />
                                                 </div>
                                             </div>
-                                            <XMarkIcon className="w-6 h-6 cursor-pointer" />
+                                            <XMarkIcon className="w-6 h-6 cursor-pointer"/>
                                         </div>
                                     </div>
                                 ))}
@@ -68,7 +69,7 @@ const Cart = () => {
                                                         cur.price -
                                                         (cur.price *
                                                             cur.discount) /
-                                                            100,
+                                                        100,
                                                     0
                                                 )
                                                 .toFixed(2)}
@@ -99,7 +100,7 @@ const Cart = () => {
                                                         acc +
                                                         (cur.discount *
                                                             cur.price) /
-                                                            100,
+                                                        100,
                                                     0
                                                 )
                                                 .toFixed(2)}
@@ -109,6 +110,7 @@ const Cart = () => {
                                 </div>
                                 <PrimaryButton type={'submit'}>
                                     Place Order
+                                    <BoltIcon className={"w-4 h-4 ml-2"}/>
                                 </PrimaryButton>
                             </div>
                         </div>
@@ -119,7 +121,7 @@ const Cart = () => {
                     </div>
                 )
             ) : (
-                <div className={'flex justify-center text-xl'}>
+                <div className={'flex justify-center text-xl my-6'}>
                     <Link
                         to={'/login'}
                         className={' mr-1 text-blue-600 dark:text-sky-500'}
