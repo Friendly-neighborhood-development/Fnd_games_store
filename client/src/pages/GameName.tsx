@@ -93,7 +93,7 @@ const GameName = () => {
                                 discount={game?.discount}
                             />
                             <PrimaryButton onClick={addToCart}>
-                                add to cart
+                                Add to cart
                             </PrimaryButton>
                         </div>
                     </div>
