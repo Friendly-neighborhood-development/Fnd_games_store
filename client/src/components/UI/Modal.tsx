@@ -1,21 +1,29 @@
-import React, {FC, Fragment, useState} from 'react';
-import {Dialog, Transition} from "@headlessui/react";
+import React, { FC, Fragment, useState } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { PrimaryButton } from './PrimaryButton';
+import { SecondaryButton } from './SecondaryButton';
 
 interface ModalProps {
-    children: React.ReactNode
-    isOpen: boolean
-    setIsOpen: (arg0: boolean) => void
-    title?: string
-    buttonTitle?: string
+    children: React.ReactNode;
+    isOpen: boolean;
+    setIsOpen: (arg0: boolean) => void;
+    title?: string;
+    buttonTitle?: string;
 }
 
-export const Modal: FC<ModalProps> = ({children, isOpen, setIsOpen, title, buttonTitle}) => {
+export const Modal: FC<ModalProps> = ({
+    children,
+    isOpen,
+    setIsOpen,
+    title,
+    buttonTitle,
+}) => {
     function closeModal() {
-        setIsOpen(false)
+        setIsOpen(false);
     }
 
     function openModal() {
-        setIsOpen(true)
+        setIsOpen(true);
     }
 
     return (
@@ -31,7 +39,7 @@ export const Modal: FC<ModalProps> = ({children, isOpen, setIsOpen, title, butto
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm"/>
+                        <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm" />
                     </Transition.Child>
 
                     <div className="fixed inset-0 overflow-y-auto">
@@ -45,29 +53,25 @@ export const Modal: FC<ModalProps> = ({children, isOpen, setIsOpen, title, butto
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel
-                                    className="text-slate-900 w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all dark:bg-slate-800 dark:text-slate-200">
+                                <Dialog.Panel className="text-slate-900 w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all dark:bg-slate-800 dark:text-slate-200">
                                     <Dialog.Title
                                         as="h3"
-                                        className="text-lg font-medium leading-6"
+                                        className="text-xl font-medium leading-6"
                                     >
                                         {title}
                                     </Dialog.Title>
-                                    <div className="mt-2">
-                                        {children}
-                                    </div>
+                                    <div className="mt-2">{children}</div>
 
-                                    {buttonTitle &&
-                                        <div className="mt-4">
-                                            <button
+                                    {buttonTitle && (
+                                        <div className="mt-4 w-2/5">
+                                            <SecondaryButton
                                                 type="button"
-                                                className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                                                 onClick={closeModal}
                                             >
                                                 {buttonTitle}
-                                            </button>
+                                            </SecondaryButton>
                                         </div>
-                                    }
+                                    )}
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>
@@ -75,5 +79,5 @@ export const Modal: FC<ModalProps> = ({children, isOpen, setIsOpen, title, butto
                 </Dialog>
             </Transition>
         </>
-    )
-}
+    );
+};
