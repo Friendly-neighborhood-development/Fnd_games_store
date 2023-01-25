@@ -53,7 +53,7 @@ export const CartOrderBlock = () => {
                 type={'submit'}
                 onClick={() => setModalVisible(true)}
             >
-                Place Order
+                Place order
                 <BoltIcon className={'w-4 h-4 ml-2'} />
             </PrimaryButton>
             {modalVisible && (
@@ -63,9 +63,12 @@ export const CartOrderBlock = () => {
                     buttonTitle="Got it, thanks!"
                     title="Payment successful"
                 >
-                    <div className="opacity-80 my-4">
+                    <div className="text-slate-900/80 mt-4 dark:text-slate-200/80">
                         Thank you for your order. Now your games will be
-                        available in the games library
+                        available in the{' '}
+                        <span className="text-blue-600 cursor-pointer dark:text-sky-400 hover:underline">
+                            library
+                        </span>
                     </div>
                 </Modal>
             )}
