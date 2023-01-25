@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAppSelector } from '../../hooks/redux';
 import { PrimaryButton } from '../UI/PrimaryButton';
 import { BoltIcon } from '@heroicons/react/20/solid';
+import { Modal } from '../UI/Modal';
 
 export const CartOrderBlock = () => {
     const { games } = useAppSelector((state) => state.cart);
+    const [modalVisible, setModalVisible] = useState(false);
 
     return (
         <div className="md:w-2/5 md:ml-10 mt-8 md:mt-0">
@@ -47,10 +49,26 @@ export const CartOrderBlock = () => {
                     </div>
                 </div>
             </div>
-            <PrimaryButton type={'submit'}>
+            <PrimaryButton
+                type={'submit'}
+                onClick={() => setModalVisible(true)}
+            >
                 Place Order
                 <BoltIcon className={'w-4 h-4 ml-2'} />
             </PrimaryButton>
+            {modalVisible && (
+                <Modal
+                    isOpen={modalVisible}
+                    setIsOpen={setModalVisible}
+                    buttonTitle="Got it, thanks!"
+                    title="Payment successful"
+                >
+                    <div className="opacity-80 my-4">
+                        Thank you for your order. Now your games will be
+                        available in the games library
+                    </div>
+                </Modal>
+            )}
         </div>
     );
 };
