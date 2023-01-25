@@ -1,7 +1,9 @@
+import { IGame } from './../../models/IGame';
 import {
     CartService,
     accessCartProps,
-    updateCartProps,
+    deleteCartGameProps,
+    updateCartGamesProps,
 } from './../../services/CartService';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -14,9 +16,20 @@ export const fetchCartGames = createAsyncThunk(
 );
 
 export const updateCartGames = createAsyncThunk(
-    'cars/updateGames',
-    async (props: updateCartProps) => {
-        const res = await CartService.updateCart(props);
+    'cart/updateGames',
+    async (props: updateCartGamesProps) => {
+        const res = await CartService.updateCartGames(props);
+        return res.data;
+    }
+);
+
+export const deleteCartGame = createAsyncThunk(
+    'cart/deleteGame',
+    async (props: deleteCartGameProps) => {
+        props.games = props.games.filter(
+            (game) => game.id !== props.gameToDelete.id
+        );
+        const res = await CartService.updateCartGames(props);
         return res.data;
     }
 );

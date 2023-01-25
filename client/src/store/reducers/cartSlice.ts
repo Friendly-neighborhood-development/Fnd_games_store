@@ -1,4 +1,9 @@
-import { fetchCartGames, updateCartGames } from './../actions/cartAction';
+import { useAppDispatch, useAppSelector } from './../../hooks/redux';
+import {
+    deleteCartGame,
+    fetchCartGames,
+    updateCartGames,
+} from './../actions/cartAction';
 import { createSlice } from '@reduxjs/toolkit';
 import { IGame } from './../../models/IGame';
 
@@ -40,6 +45,17 @@ const cartSlice = createSlice({
                 state.loading = 'succeeded';
             })
             .addCase(updateCartGames.rejected, (state, action) => {
+                state.loading = 'failed';
+                console.log(action.error);
+            });
+        builder
+            .addCase(deleteCartGame.pending, (state) => {
+                state.loading = 'pending';
+            })
+            .addCase(deleteCartGame.fulfilled, (state) => {
+                state.loading = 'succeeded';
+            })
+            .addCase(deleteCartGame.rejected, (state, action) => {
                 state.loading = 'failed';
                 console.log(action.error);
             });

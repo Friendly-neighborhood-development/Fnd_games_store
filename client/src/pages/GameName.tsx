@@ -7,7 +7,7 @@ import { GamePrice } from '../components/games/game/GamePrice';
 import { PrimaryButton } from '../components/UI/PrimaryButton';
 import { GameSpecificationRow } from '../components/games/game/GameSpecificationRow';
 import { clearGameData } from '../store/reducers/gameSlice';
-import { updateCartGames } from '../store/actions/cartAction';
+import { fetchCartGames, updateCartGames } from '../store/actions/cartAction';
 
 const GameName = () => {
     const { name } = useParams();
@@ -24,13 +24,14 @@ const GameName = () => {
         };
     }, []);
 
-    const addToCart = () => {
-        dispatch(
+    const addToCart = async () => {
+        await dispatch(
             updateCartGames({
                 games: [game, ...cart.games],
                 userId,
             })
         );
+        dispatch(fetchCartGames({ userId }));
     };
 
     if (loading === 'failed') {

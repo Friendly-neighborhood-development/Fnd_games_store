@@ -17,7 +17,7 @@ const Cart = () => {
     return (
         <MainLayout>
             {isAuth ? (
-                games.length && games[0].name ? (
+                games.length ? (
                     <div className="mt-4 xl:px-32">
                         <div className="text-2xl">Cart</div>
                         <div className="flex flex-col md:flex-row">
