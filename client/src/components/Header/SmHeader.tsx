@@ -36,7 +36,7 @@ export const SmHeader: FC = memo(() => {
                     <div className={"w-full justify-between items-center flex  py-3"}>
                         <MagnifyingGlassIcon className={"w-6 h-6 cursor-pointer dark:text-gray-100"}/>
                         <Link to={"/"} className={"flex items-center"}>
-                            <PuzzlePieceIcon className={"w-6 h-6 text-blue-600"}/>
+                            <PuzzlePieceIcon className={"w-6 h-6 text-blue-600 dark:text-sky-500"}/>
                             <span className={"text-xl ml-1 dark:text-gray-100"}>Games Store</span>
                         </Link>
                         <Bars3Icon
