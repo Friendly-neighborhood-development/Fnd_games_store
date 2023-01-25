@@ -8,6 +8,25 @@ Feel free to check out our work
 ### Preview
 ![Preview](client/docs/img/AppPreview.png)
 
+### Installation
+Clone repository (or download it as .zip archive)
+```console
+git clone https://github.com/Friendly-neighborhood-development/Fnd_games_store.git
+```
+#### Client
+* Move to client folder
+```console
+cd Fnd_games_store/client
+```
+* Install dependencies
+```console
+npm install
+```
+* Start client application
+```console
+npm start
+```
+
 <a name="Frontend-stack"><h3>Frontend stack</h3></a>
 * React (with React Router v6)
 * Tailwind CSS
