@@ -4,26 +4,28 @@ import $api from '../http/api';
 
 export interface accessCartProps {
     userId: string;
-    token: string;
 }
 
-export interface updateCartProps extends accessCartProps {
+export interface updateCartGamesProps extends accessCartProps {
     games: IGame[];
+}
+
+export interface deleteCartGameProps extends accessCartProps {
+    games: IGame[];
+    gameToDelete: IGame;
 }
 
 export class CartService {
     static fetchGames({
         userId,
-        token,
     }: accessCartProps): Promise<AxiosResponse<IGame[]>> {
         userId = 'user' + userId;
         return $api.post<IGame[]>('cart/v1/content', { userId });
     }
-    static updateCart({
+    static updateCartGames({
         userId,
-        token,
         games,
-    }: updateCartProps): Promise<AxiosResponse<IGame[]>> {
+    }: updateCartGamesProps): Promise<AxiosResponse<IGame[]>> {
         userId = 'user' + userId;
         const bodyParams = {
             userId,
