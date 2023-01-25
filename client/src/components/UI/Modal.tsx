@@ -63,7 +63,7 @@ export const Modal: FC<ModalProps> = ({
                                     <div className="mt-2">{children}</div>
 
                                     {buttonTitle && (
-                                        <div className="mt-4 w-2/5">
+                                        <div className="mt-4">
                                             <SecondaryButton
                                                 type="button"
                                                 onClick={closeModal}
