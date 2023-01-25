@@ -15,7 +15,7 @@ export const PrimaryButton: FC<PrimaryButtonProps> = ({
         <button
             {...props}
             className={
-                'flex items-center justify-center px-6 lg:py-2 py-3 text-sm cursor-pointer rounded capitalize text-white bg-blue-600 hover:bg-blue-700 w-full dark:bg-sky-500 dark:text-slate-800 dark:hover:bg-sky-400'
+                'flex items-center justify-center px-6 lg:py-2 py-3 text-sm cursor-pointer rounded text-white bg-blue-600 hover:bg-blue-700 w-full dark:bg-sky-500 dark:text-slate-800 dark:hover:bg-sky-400'
             }
         >
             {children}
