@@ -41,24 +41,24 @@ const GameName = () => {
     return (
         <MainLayout>
             <h1 className={'text-3xl'}>{game.name}</h1>
-            <div className={'flex flex-col lg:flex-row'}>
-                <div className={'lg:w-2/3 lg:pr-10'}>
+            <div className={'flex flex-col md:flex-row'}>
+                <div className={'md:w-3/5 lg:w-2/3 md:pr-5 lg:pr-10'}>
                     <div
                         className={
                             'mb-3 min-w-full max-h-96 overflow-hidden bg-gradient-to-b from-sky-400/20 to-blue-700/20 flex justify-center rounded-lg'
                         }
                     >
                         <img
-                            className={'lg:rounded-lg lg:w-72'}
+                            className={'md:rounded-lg lg:w-72'}
                             src={game?.base64Image}
                         />
                     </div>
-                    <div className={'hidden lg:block'}>{game?.description}</div>
+                    <div className={'hidden md:block'}>{game?.description}</div>
                 </div>
-                <div className={'lg:w-1/3'}>
+                <div className={'md:w-2/5 lg:w-1/3'}>
                     <div
                         className={
-                            'flex flex-col-reverse lg:flex-col space-y-4'
+                            'flex flex-col-reverse md:flex-col space-y-4'
                         }
                     >
                         <div className={'space-y-4 mt-4 lg:mt-0'}>
@@ -97,7 +97,7 @@ const GameName = () => {
                             </PrimaryButton>
                         </div>
                     </div>
-                    <div className={'lg:hidden mt-3'}>{game?.description}</div>
+                    <div className={'md:hidden mt-3'}>{game?.description}</div>
                 </div>
             </div>
         </MainLayout>
