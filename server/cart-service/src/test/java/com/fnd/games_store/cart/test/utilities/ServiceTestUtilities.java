@@ -44,7 +44,6 @@ public class ServiceTestUtilities {
         game.setId("id"+ differenceParameter);
         game.setName("name" + differenceParameter);
         game.setReleaseDate("date" + differenceParameter);
-        game.setGameUrl("url" + differenceParameter);
         game.setPrice(BigDecimal.valueOf(1000));
         game.setDiscount(BigDecimal.valueOf(200));
         game.setDescription("description" + differenceParameter);
@@ -58,7 +57,6 @@ public class ServiceTestUtilities {
         game.setId("id"+ differenceParameter);
         game.setName("name" + differenceParameter);
         game.setReleaseDate("date" + differenceParameter);
-        game.setGameUrl("url" + differenceParameter);
         game.setPrice(BigDecimal.valueOf(1000));
         game.setDiscount(BigDecimal.valueOf(200));
         game.setDescription("description" + differenceParameter);

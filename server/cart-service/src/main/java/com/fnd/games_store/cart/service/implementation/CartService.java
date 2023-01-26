@@ -10,7 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,9 +28,14 @@ public class CartService implements CartCrudService {
     @Override
     public List<GameResponseDTO> getCartContent(String userId) {
 
-        Cart cart = repository.findById(userId).orElse(new Cart());
+        Optional<Cart> loadedCartData = repository.findById(userId);
 
-        return cart.getGameData().stream().map(GameResponseDTO::new).collect(Collectors.toList());
+        if (loadedCartData.isPresent()){
+            return loadedCartData.get().getGameData().stream().map(GameResponseDTO::new).collect(Collectors.toList());
+        } else {
+            return new ArrayList<>();
+        }
+
     }
 
 
