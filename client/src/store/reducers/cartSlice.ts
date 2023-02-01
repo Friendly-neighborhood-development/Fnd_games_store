@@ -1,28 +1,38 @@
-import { useAppDispatch, useAppSelector } from './../../hooks/redux';
 import {
     deleteCartGame,
     fetchCartGames,
     updateCartGames,
 } from './../actions/cartAction';
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IGame } from './../../models/IGame';
 
 interface cartState {
     games: IGame[];
     loading: 'idle' | 'pending' | 'succeeded' | 'failed';
     error: string;
+    selectedGames: IGame[];
 }
 
 const initialState: cartState = {
     games: [],
     loading: 'idle',
     error: '',
+    selectedGames: [],
 };
 
 const cartSlice = createSlice({
     name: 'cart',
     initialState,
-    reducers: {},
+    reducers: {
+        selectGame(state, action: PayloadAction<IGame>) {
+            state.selectedGames.push(action.payload);
+        },
+        unselectGame(state, action: PayloadAction<IGame>) {
+            state.selectedGames = state.selectedGames.filter(
+                (game) => game.id !== action.payload.id
+            );
+        },
+    },
     extraReducers(builder) {
         builder
             .addCase(fetchCartGames.pending, (state) => {
@@ -60,5 +70,7 @@ const cartSlice = createSlice({
             });
     },
 });
+
+export const { selectGame, unselectGame } = cartSlice.actions;
 
 export default cartSlice.reducer;

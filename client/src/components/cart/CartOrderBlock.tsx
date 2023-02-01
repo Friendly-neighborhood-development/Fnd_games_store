@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { PrimaryButton } from '../UI/PrimaryButton';
 import { BoltIcon } from '@heroicons/react/20/solid';
@@ -7,9 +7,13 @@ import {
     fetchCartGames,
     updateCartGames,
 } from '../../store/actions/cartAction';
+import { IGame } from '../../models/IGame';
 
-export const CartOrderBlock = () => {
-    const { games } = useAppSelector((state) => state.cart);
+interface CartOrderBlockProps {
+    selectedGames: IGame[];
+}
+
+export const CartOrderBlock: FC<CartOrderBlockProps> = ({ selectedGames }) => {
     const { userId } = useAppSelector((state) => state.auth);
     const [modalVisible, setModalVisible] = useState(false);
     const dispatch = useAppDispatch();
@@ -29,7 +33,7 @@ export const CartOrderBlock = () => {
                 <div className="flex justify-between items-end mb-2">
                     <div className="text-lg">Total:</div>
                     <div className="text-xl">
-                        {games
+                        {selectedGames
                             .reduce(
                                 (acc, cur) =>
                                     acc +
@@ -42,9 +46,9 @@ export const CartOrderBlock = () => {
                     </div>
                 </div>
                 <div className="text-sm flex justify-between">
-                    <div>Games count: {games.length}</div>
+                    <div>Games count: {selectedGames.length}</div>
                     <div>
-                        {games
+                        {selectedGames
                             .reduce((acc, cur) => acc + cur.price, 0)
                             .toFixed(2)}
                         &#8381;
@@ -53,7 +57,7 @@ export const CartOrderBlock = () => {
                 <div className="text-sm flex justify-between">
                     <div>Discount:</div>
                     <div className="text-red-400">
-                        {games
+                        {selectedGames
                             .reduce(
                                 (acc, cur) =>
                                     acc + (cur.discount * cur.price) / 100,

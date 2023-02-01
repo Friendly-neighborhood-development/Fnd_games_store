@@ -8,7 +8,7 @@ import { CartOrderBlock } from '../components/cart/CartOrderBlock';
 
 const Cart = () => {
     const { userId, isAuth } = useAppSelector((state) => state.auth);
-    const { games } = useAppSelector((state) => state.cart);
+    const { games, selectedGames } = useAppSelector((state) => state.cart);
     const dispatch = useAppDispatch();
     useEffect(() => {
         if (isAuth) dispatch(fetchCartGames({ userId }));
@@ -23,10 +23,18 @@ const Cart = () => {
                         <div className="flex flex-col md:flex-row">
                             <div className="md:w-3/5 divide-y ">
                                 {games.map((game) => (
-                                    <CartGameCard game={game} key={game.id} />
+                                    <CartGameCard
+                                        game={game}
+                                        selected={
+                                            !!selectedGames.find(
+                                                (g) => g.id === game.id
+                                            )
+                                        }
+                                        key={game.id}
+                                    />
                                 ))}
                             </div>
-                            <CartOrderBlock />
+                            <CartOrderBlock selectedGames={selectedGames} />
                         </div>
                     </div>
                 ) : (
