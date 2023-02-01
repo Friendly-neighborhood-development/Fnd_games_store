@@ -6,7 +6,7 @@ import { SecondaryButton } from './SecondaryButton';
 interface ModalProps {
     children: React.ReactNode;
     isOpen: boolean;
-    setIsOpen: (arg0: boolean) => void;
+    onClose: (arg0: boolean) => void;
     title?: string;
     buttonTitle?: string;
 }
@@ -14,22 +14,14 @@ interface ModalProps {
 export const Modal: FC<ModalProps> = ({
     children,
     isOpen,
-    setIsOpen,
+    onClose,
     title,
     buttonTitle,
 }) => {
-    function closeModal() {
-        setIsOpen(false);
-    }
-
-    function openModal() {
-        setIsOpen(true);
-    }
-
     return (
         <>
             <Transition appear show={isOpen} as={Fragment}>
-                <Dialog as="div" className="relative z-10" onClose={closeModal}>
+                <Dialog as="div" className="relative z-10" onClose={onClose}>
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -66,7 +58,7 @@ export const Modal: FC<ModalProps> = ({
                                         <div className="mt-4">
                                             <SecondaryButton
                                                 type="button"
-                                                onClick={closeModal}
+                                                onClick={onClose}
                                             >
                                                 {buttonTitle}
                                             </SecondaryButton>
