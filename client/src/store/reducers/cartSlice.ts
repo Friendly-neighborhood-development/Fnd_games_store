@@ -40,8 +40,7 @@ const cartSlice = createSlice({
             .addCase(updateCartGames.pending, (state) => {
                 state.loading = 'pending';
             })
-            .addCase(updateCartGames.fulfilled, (state, action) => {
-                state.games = action.payload;
+            .addCase(updateCartGames.fulfilled, (state) => {
                 state.loading = 'succeeded';
             })
             .addCase(updateCartGames.rejected, (state, action) => {

@@ -1,12 +1,27 @@
 import React, { useState } from 'react';
-import { useAppSelector } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { PrimaryButton } from '../UI/PrimaryButton';
 import { BoltIcon } from '@heroicons/react/20/solid';
 import { Modal } from '../UI/Modal';
+import {
+    fetchCartGames,
+    updateCartGames,
+} from '../../store/actions/cartAction';
 
 export const CartOrderBlock = () => {
     const { games } = useAppSelector((state) => state.cart);
+    const { userId } = useAppSelector((state) => state.auth);
     const [modalVisible, setModalVisible] = useState(false);
+    const dispatch = useAppDispatch();
+    const placeOrderHandler = () => {
+        setModalVisible(true);
+        dispatch(updateCartGames({ games: [], userId }));
+    };
+
+    const modalOnCloseHandler = () => {
+        setModalVisible(false);
+        dispatch(fetchCartGames({ userId }));
+    };
 
     return (
         <div className="md:w-2/5 md:ml-10 mt-8 md:mt-0">
@@ -49,17 +64,14 @@ export const CartOrderBlock = () => {
                     </div>
                 </div>
             </div>
-            <PrimaryButton
-                type={'submit'}
-                onClick={() => setModalVisible(true)}
-            >
+            <PrimaryButton type={'submit'} onClick={placeOrderHandler}>
                 Place order
                 <BoltIcon className={'w-4 h-4 ml-2'} />
             </PrimaryButton>
             {modalVisible && (
                 <Modal
                     isOpen={modalVisible}
-                    setIsOpen={setModalVisible}
+                    onClose={modalOnCloseHandler}
                     buttonTitle="Got it, thanks!"
                     title="Payment successful"
                 >
