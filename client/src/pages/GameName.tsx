@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MainLayout } from '../components/layouts/MainLayout';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
@@ -8,17 +8,21 @@ import { PrimaryButton } from '../components/UI/PrimaryButton';
 import { GameSpecificationRow } from '../components/games/game/GameSpecificationRow';
 import { clearGameData } from '../store/reducers/gameSlice';
 import { fetchCartGames, updateCartGames } from '../store/actions/cartAction';
+import { DisabledButton } from '../components/UI/DisabledButton';
 
 const GameName = () => {
     const { name } = useParams();
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const { game, loading } = useAppSelector((state) => state.game);
-    const { token, userId } = useAppSelector((state) => state.auth);
+    const { userId } = useAppSelector((state) => state.auth);
     const cart = useAppSelector((state) => state.cart);
+    const [isInCart, setIsInCart] = useState<boolean>(false);
+
     useEffect(() => {
         if (!name) navigate('/error');
         else dispatch(fetchOneGame(name));
+        setIsInCart(!!cart.games.find((g) => g.name === name));
         return () => {
             dispatch(clearGameData());
         };
@@ -31,6 +35,7 @@ const GameName = () => {
                 userId,
             })
         );
+        setIsInCart(true);
         dispatch(fetchCartGames({ userId }));
     };
 
@@ -92,9 +97,13 @@ const GameName = () => {
                                 price={game?.price}
                                 discount={game?.discount}
                             />
-                            <PrimaryButton onClick={addToCart}>
-                                Add to cart
-                            </PrimaryButton>
+                            {isInCart ? (
+                                <DisabledButton>Already in cart</DisabledButton>
+                            ) : (
+                                <PrimaryButton onClick={addToCart}>
+                                    Add to cart
+                                </PrimaryButton>
+                            )}
                         </div>
                     </div>
                     <div className={'md:hidden mt-3'}>{game?.description}</div>
