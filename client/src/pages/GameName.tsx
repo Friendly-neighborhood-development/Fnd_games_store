@@ -14,7 +14,7 @@ const GameName = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const { game, loading } = useAppSelector((state) => state.game);
-    const { token, userId } = useAppSelector((state) => state.auth);
+    const { userId } = useAppSelector((state) => state.auth);
     const cart = useAppSelector((state) => state.cart);
     useEffect(() => {
         if (!name) navigate('/error');
