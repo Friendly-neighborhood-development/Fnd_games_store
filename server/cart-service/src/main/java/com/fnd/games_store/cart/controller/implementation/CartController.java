@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@CrossOrigin(value = "localhost:3000")
 @Slf4j
 public class CartController implements CartCrudController, OrderProcessor {
 

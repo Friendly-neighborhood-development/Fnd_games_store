@@ -22,11 +22,14 @@ spring:
         - id: games_service
           uri: http://localhost:8081/games
           predicates:
-            - Path=/games/getAll
+            - Path=/games/v1/catalogue/list/**"
         - id: games_service
           uri: http://localhost:8081/games
           predicates:
-            - Path=/games/get/**
+            - Path=/games/v1/catalogue/**
+
+
+
         - id: cart_service
           uri: http://localhost:8083/cart
           predicates:
@@ -34,23 +37,22 @@ spring:
         - id: cart_service
           uri: http://localhost:8083/cart
           predicates:
-            - Path=/cart/v1/getContent
+            - Path=/cart/v1/content
         - id: cart_service
           uri: http://localhost:8083/cart
           predicates:
             - Path=/cart/v1/orders
+
+
+
         - id: login_service
           uri: http://localhost:8082/login
           predicates:
             - Path=/login/v1/authorization
-        - id: cart-service
-          uri: http://localhost:8083/cart
+        - id: login_service
+          uri: http://localhost:8082/login
           predicates:
-            - Path=/cart/v1/content
-        - id: cart-service
-          uri: http://localhost:8083/cart
-          predicates:
-            - Path=/cart/v1/update
+            - Path=/login/v1/registration
 
 
 eureka:

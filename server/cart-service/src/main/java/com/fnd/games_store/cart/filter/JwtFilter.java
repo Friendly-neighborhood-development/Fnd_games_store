@@ -2,7 +2,6 @@ package com.fnd.games_store.cart.filter;
 
 import com.fnd.games_store.cart.exception.UserValidationFailedException;
 import com.fnd.games_store.cart.rest.UserValidationClient;
-import javafx.application.Application;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;

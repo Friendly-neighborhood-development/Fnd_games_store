@@ -32,12 +32,7 @@ public class RepositoryTestUtilities {
         Game game = new Game();
         game.setId("id"+ differenceParameter);
         game.setName("name" + differenceParameter);
-        game.setGenre("genre" + differenceParameter);
         game.setReleaseDate("date" + differenceParameter);
-        game.setDeveloper("developer" + differenceParameter);
-        game.setPublisher("publisher" + differenceParameter);
-        game.setPlatform("platform" + differenceParameter);
-        game.setFeatures("features" + differenceParameter);
         game.setPrice(BigDecimal.valueOf(1000));
         game.setDiscount(BigDecimal.valueOf(200));
         game.setDescription("description" + differenceParameter);

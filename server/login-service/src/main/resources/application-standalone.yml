@@ -32,6 +32,8 @@ variables:
   security:
     access_secret: OTFBRjg3MUMwOUYxODlFNDc3NEQwNTAxMTg0M0M0NzI5QTczNDY1QUU4MTA5MUFERjZFNDIxNTk0QTZDOUYyQg==
     access_expiration: 90000000
+  common:
+    new_account_expiration_date: 2030-01-01
 
 
 #spring:

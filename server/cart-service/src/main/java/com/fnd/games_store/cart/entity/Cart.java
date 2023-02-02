@@ -10,12 +10,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @RedisHash("Cart")
@@ -27,6 +28,26 @@ public class Cart implements Serializable {
     private List<Game> gameData;
 
 
+    public Cart() {
+
+        Game emptyGameEntity = new Game();
+
+        emptyGameEntity.setId("");
+        emptyGameEntity.setName("");
+        emptyGameEntity.setReleaseDate("");
+        emptyGameEntity.setPrice(BigDecimal.valueOf(0));
+        emptyGameEntity.setDiscount(BigDecimal.valueOf(0));
+        emptyGameEntity.setDescription("");
+        emptyGameEntity.setBase64Image("");
+
+
+        this.userId = "";
+        this.gameData = new ArrayList<>();
+
+        gameData.add(emptyGameEntity);
+
+
+    }
 
     @Override
     public boolean equals(Object o) {

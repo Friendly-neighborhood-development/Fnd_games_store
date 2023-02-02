@@ -2,6 +2,7 @@ package com.fnd.games_store.login.service.implementation;
 
 
 import com.fnd.games_store.login.dto.LoginResponseDTO;
+import com.fnd.games_store.login.exception.InvalidPasswordException;
 import com.fnd.games_store.login.jwt_utils.JwtGenerator;
 import com.fnd.games_store.login.repository.AccountRepository;
 import com.fnd.games_store.login.service.LoginService;
@@ -39,8 +40,10 @@ public class LoginServiceImpl implements LoginService {
 
         String userId = accountRepository.findAccountByUsername(username).get().getId();
 
-        passwordEncoder.matches(password, loadedUser.getPassword());
+        if(passwordEncoder.matches(password, loadedUser.getPassword())){
+            return new LoginResponseDTO(userId, jwtGenerator.generateJwtToken(loadedUser));
+        } else throw new InvalidPasswordException("invalid password");
 
-        return new LoginResponseDTO(userId, jwtGenerator.generateJwtToken(loadedUser));
+
     }
 }

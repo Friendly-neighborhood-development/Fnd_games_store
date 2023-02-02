@@ -4,7 +4,6 @@ import com.fnd.games_store.cart.dto.CartRequestDTO;
 import com.fnd.games_store.cart.dto.CartResponseDTO;
 import com.fnd.games_store.cart.dto.GameResponseDTO;
 import com.fnd.games_store.cart.entity.Cart;
-import com.fnd.games_store.cart.entity.Game;
 import com.fnd.games_store.cart.repository.CartRepository;
 import com.fnd.games_store.cart.service.CartCrudService;
 import lombok.extern.slf4j.Slf4j;
@@ -29,20 +28,32 @@ public class CartService implements CartCrudService {
     @Override
     public List<GameResponseDTO> getCartContent(String userId) {
 
-        Cart cart = repository.findById(userId).orElse(new Cart());
+        Optional<Cart> loadedCartData = repository.findById(userId);
 
-        return cart.getGameData().stream().map(GameResponseDTO::new).collect(Collectors.toList());
+        if (loadedCartData.isPresent()){
+            return loadedCartData.get().getGameData().stream().map(GameResponseDTO::new).collect(Collectors.toList());
+        } else {
+            return new ArrayList<>();
+        }
+
     }
 
 
     @Override
     public CartResponseDTO updateCart(CartRequestDTO incomingCartData) {
+
         Cart updatingCart = new Cart();
         updatingCart.setUserId(incomingCartData.getUserId());
         updatingCart.setGameData(incomingCartData.getGameData().stream().distinct().collect(Collectors.toList()));
 
-        repository.save(updatingCart);
 
-        return new CartResponseDTO(repository.findById(incomingCartData.getUserId()).orElse(new Cart()));
+        return new CartResponseDTO(repository.findById(updateCart(updatingCart).getUserId()).orElse(new Cart()));
     }
+
+
+    private Cart updateCart(Cart updatingCart){
+        return repository.save(updatingCart);
+    }
+
+
 }

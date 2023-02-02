@@ -15,12 +15,7 @@ public class GameResponseDTO {
 
     private String id;
     private String name;
-    private String genre;
     private String releaseDate;
-    private String developer;
-    private String publisher;
-    private String platform;
-    private String features;
     private BigDecimal price;
     private BigDecimal discount;
     private String description;
@@ -30,12 +25,7 @@ public class GameResponseDTO {
     public GameResponseDTO(Game game) {
         this.id = game.getId();
         this.name = game.getName();
-        this.genre = game.getGenre();
         this.releaseDate = game.getReleaseDate();
-        this.developer = game.getDeveloper();
-        this.publisher = game.getPublisher();
-        this.platform = game.getPlatform();
-        this.features = game.getFeatures();
         this.price = game.getPrice();
         this.discount = game.getDiscount();
         this.description = game.getDescription();
@@ -47,12 +37,7 @@ public class GameResponseDTO {
         return "{" +
                 "id=" + id +
                 ", name=" + name +
-                ", genre=" + genre +
                 ", releaseDate=" + releaseDate +
-                ", developer=" + developer +
-                ", publisher=" + publisher +
-                ", platform=" + platform +
-                ", features=" + features +
                 ", price=" + price +
                 ", discount=" + discount +
                 ", description=" + description +
@@ -66,11 +51,11 @@ public class GameResponseDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GameResponseDTO that = (GameResponseDTO) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(genre, that.genre) && Objects.equals(releaseDate, that.releaseDate) && Objects.equals(developer, that.developer) && Objects.equals(publisher, that.publisher) && Objects.equals(platform, that.platform) && Objects.equals(features, that.features) && Objects.equals(price, that.price) && Objects.equals(discount, that.discount) && Objects.equals(description, that.description) && Objects.equals(base64Image, that.base64Image);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(releaseDate, that.releaseDate) && Objects.equals(price, that.price) && Objects.equals(discount, that.discount) && Objects.equals(description, that.description) && Objects.equals(base64Image, that.base64Image);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, genre, releaseDate, developer, publisher, platform, features, price, discount, description, base64Image);
+        return Objects.hash(id, name, releaseDate, price, discount, description, base64Image);
     }
 }

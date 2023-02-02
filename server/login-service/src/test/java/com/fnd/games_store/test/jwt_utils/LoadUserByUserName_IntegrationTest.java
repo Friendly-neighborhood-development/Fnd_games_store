@@ -68,7 +68,7 @@ public class LoadUserByUserName_IntegrationTest {
                 checkIfDateExpired(userAccount.getExpirationDate()),
                 checkIfDateExpired(userAccount.getCredentialsExpirationDate()),
                 userAccount.getIsAccountNonLocked(),
-                userAccount.getAuthorities());
+                userAccount.getAuthority());
     }
 
     private Boolean checkIfDateExpired(LocalDate checkingDate) {

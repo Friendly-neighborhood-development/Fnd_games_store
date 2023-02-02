@@ -5,8 +5,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -29,9 +27,9 @@ public class Account {
 
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "accounts_authorities",
-            joinColumns = @JoinColumn(name = "game_id"),
-            inverseJoinColumns = @JoinColumn(name ="genre_id"))
-    private List<Authority> authorities;
+            joinColumns = @JoinColumn(name = "account_id"),
+            inverseJoinColumns = @JoinColumn(name ="authority_id"))
+    private List<Authority> authority;
 
     private String email;
     @Column(name = "expiration_date")
@@ -58,17 +56,19 @@ public class Account {
                 '}';
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return Objects.equals(id, account.id) && Objects.equals(username, account.username) && Objects.equals(password, account.password) && Objects.equals(email, account.email) && Objects.equals(expirationDate, account.expirationDate) && Objects.equals(isAccountNonLocked, account.isAccountNonLocked) && Objects.equals(credentialsExpirationDate, account.credentialsExpirationDate) && Objects.equals(isAccountEnabled, account.isAccountEnabled);
+        return Objects.equals(id, account.id) && Objects.equals(username, account.username) && Objects.equals(password, account.password)
+//                && Objects.equals(authority, account.authority)
+                && authority.containsAll(account.authority)
+                && Objects.equals(email, account.email) && Objects.equals(expirationDate, account.expirationDate) && Objects.equals(isAccountNonLocked, account.isAccountNonLocked) && Objects.equals(credentialsExpirationDate, account.credentialsExpirationDate) && Objects.equals(isAccountEnabled, account.isAccountEnabled);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, email, expirationDate, isAccountNonLocked, credentialsExpirationDate, isAccountEnabled);
+        return Objects.hash(id, username, password, authority, email, expirationDate, isAccountNonLocked, credentialsExpirationDate, isAccountEnabled);
     }
 }
