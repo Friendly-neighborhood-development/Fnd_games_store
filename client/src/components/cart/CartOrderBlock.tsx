@@ -7,19 +7,25 @@ import {
     fetchCartGames,
     updateCartGames,
 } from '../../store/actions/cartAction';
-import { IGame } from '../../models/IGame';
+import { unselectAllGames } from '../../store/reducers/cartSlice';
 
-interface CartOrderBlockProps {
-    selectedGames: IGame[];
-}
-
-export const CartOrderBlock: FC<CartOrderBlockProps> = ({ selectedGames }) => {
+export const CartOrderBlock: FC = () => {
     const { userId } = useAppSelector((state) => state.auth);
+    const { games, selectedGames } = useAppSelector((state) => state.cart);
     const [modalVisible, setModalVisible] = useState(false);
     const dispatch = useAppDispatch();
     const placeOrderHandler = () => {
         setModalVisible(true);
-        dispatch(updateCartGames({ games: [], userId }));
+        dispatch(unselectAllGames());
+        dispatch(
+            updateCartGames({
+                games: games.filter(
+                    (game) =>
+                        !selectedGames.some((selGame) => game.id === selGame.id)
+                ),
+                userId,
+            })
+        );
     };
 
     const modalOnCloseHandler = () => {

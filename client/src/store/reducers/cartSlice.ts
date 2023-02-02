@@ -32,6 +32,9 @@ const cartSlice = createSlice({
                 (game) => game.id !== action.payload.id
             );
         },
+        unselectAllGames(state) {
+            state.selectedGames = [];
+        },
     },
     extraReducers(builder) {
         builder
@@ -71,6 +74,6 @@ const cartSlice = createSlice({
     },
 });
 
-export const { selectGame, unselectGame } = cartSlice.actions;
+export const { selectGame, unselectGame, unselectAllGames } = cartSlice.actions;
 
 export default cartSlice.reducer;

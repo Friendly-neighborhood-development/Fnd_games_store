@@ -19,9 +19,10 @@ export const CartGameCard: FC<CartGameCardProps> = ({ game, selected }) => {
     const { userId } = useAppSelector((state) => state.auth);
     const deleteFromCart = async () => {
         await dispatch(deleteCartGame({ games, gameToDelete: game, userId }));
+        dispatch(unselectGame(game));
         dispatch(fetchCartGames({ userId }));
     };
-    const selectGameHandler = () => {
+    const toggleSelect = () => {
         selected ? dispatch(unselectGame(game)) : dispatch(selectGame(game));
     };
 
@@ -51,7 +52,7 @@ export const CartGameCard: FC<CartGameCardProps> = ({ game, selected }) => {
                 <div className="flex flex-col justify-between items-end">
                     <div
                         className="w-6 h-6 border cursor-pointer rounded p-0.5 border-gray-800 bg-gray-50 hover:bg-gray-200/10 dark:border-slate-400/50 dark:bg-slate-800 dark:hover:bg-slate-700/80"
-                        onClick={selectGameHandler}
+                        onClick={toggleSelect}
                     >
                         {selected && <CheckIcon className="w-full h-full" />}
                     </div>

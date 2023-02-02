@@ -34,7 +34,7 @@ const Cart = () => {
                                     />
                                 ))}
                             </div>
-                            <CartOrderBlock selectedGames={selectedGames} />
+                            <CartOrderBlock />
                         </div>
                     </div>
                 ) : (
