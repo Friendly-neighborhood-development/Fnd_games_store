@@ -7,7 +7,7 @@ interface NavbarIconProps {
     onClick?: (arg0:any) => void
 }
 
-const HeaderIcon: FC<NavbarIconProps> = ({children, link, ...props}) => {
+export const HeaderIcon: FC<NavbarIconProps> = ({children, link, ...props}) => {
     return (
         <>
             {link ?
@@ -30,4 +30,3 @@ const HeaderIcon: FC<NavbarIconProps> = ({children, link, ...props}) => {
     );
 };
 
-export default HeaderIcon;

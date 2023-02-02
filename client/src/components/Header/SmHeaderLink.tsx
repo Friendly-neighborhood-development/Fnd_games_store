@@ -11,7 +11,7 @@ interface SmHeaderLinkProps {
     Icon: React.FC<IconProps>
 }
 
-const SmHeaderLink: FC<SmHeaderLinkProps> = ({href, title, Icon}) => {
+export const SmHeaderLink: FC<SmHeaderLinkProps> = ({href, title, Icon}) => {
     return (
         <Link to={href} className={"flex"}>
             <Icon className={"w-6 h-6"}/>
@@ -20,4 +20,3 @@ const SmHeaderLink: FC<SmHeaderLinkProps> = ({href, title, Icon}) => {
     );
 };
 
-export default SmHeaderLink;

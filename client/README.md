@@ -1,1 +1,0 @@
-# FND Games Store client

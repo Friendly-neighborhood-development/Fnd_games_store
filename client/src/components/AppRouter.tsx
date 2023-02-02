@@ -1,10 +1,10 @@
 import React from 'react';
 import {Routes, Route} from "react-router-dom";
 import {authorizedRoutes, notAuthorizedRoutes} from "../constants/routes";
-import NotLoginLayout from "./layouts/NotLoginLayout";
+import {SimpleLayout} from "./layouts/SimpleLayout";
 import {useAppSelector} from "../hooks/redux";
 
-const AppRouter = () => {
+export const AppRouter = () => {
     const {isAuth} = useAppSelector(state => state.auth)
     let routes
     if (isAuth) routes = authorizedRoutes
@@ -15,7 +15,7 @@ const AppRouter = () => {
                 <Route
                     path={route.path}
                     element={
-                        <React.Suspense fallback={<NotLoginLayout/>}>
+                        <React.Suspense fallback={<SimpleLayout/>}>
                             {route.element}
                         </React.Suspense>
                     }
@@ -25,4 +25,3 @@ const AppRouter = () => {
     );
 };
 
-export default AppRouter;

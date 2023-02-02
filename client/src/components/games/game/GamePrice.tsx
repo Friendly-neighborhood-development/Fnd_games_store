@@ -1,5 +1,4 @@
 import React, {FC} from 'react';
-import {IGame} from "../../../models/IGame";
 
 interface GamePriceProps {
     price: number

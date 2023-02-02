@@ -1,7 +1,5 @@
-import React, {FC, Fragment, useState} from 'react';
-import {Listbox} from "@headlessui/react";
-import {CheckIcon, ChevronDownIcon} from "@heroicons/react/20/solid";
-import Button from "../UI/Button";
+import React, {FC, useState} from 'react';
+import {PrimaryButton} from "../UI/PrimaryButton";
 import {useAppDispatch} from "../../hooks/redux";
 import {fetchGames} from "../../store/actions/gamesAction";
 import {fields, orders, pages, pageSizes} from "../../constants/filter";
@@ -46,11 +44,10 @@ export const GamesFilter: FC<GamesFilterProps> = ({setModalVisible}) => {
             <GamesFilterField title={"Page"} selectedValue={selectedPage} setSelectedValue={setSelectedPage} values={pages}/>
             <GamesFilterField title={"Order"} selectedValue={selectedOrder} setSelectedValue={setSelectedOrder} values={orders}/>
             <GamesFilterField title={"Page size"} selectedValue={selectedPageSize} setSelectedValue={setSelectedPageSize} values={pageSizes}/>
-            <Button
-                className={"text-white bg-blue-600 dark:bg-sky-400 dark:text-slate-800"}
+            <PrimaryButton
                 onClick={filterHandler}>
                 Apply filters
-            </Button>
+            </PrimaryButton>
         </div>
     );
 }

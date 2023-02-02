@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
-import Input from "./Input";
+import {Input} from "./Input";
 import {MagnifyingGlassIcon} from "@heroicons/react/24/outline";
 
 interface SearchProps {
     placeholder: string,
 }
 
-const Search: FC<SearchProps> = ({placeholder}) => {
+export const Search: FC<SearchProps> = ({placeholder}) => {
     return (
         <div className={" w-64 py-2 px-4 flex rounded-full bg-white border-solid border-gray-300 border dark:bg-slate-800 dark:border-slate-600"}>
             <span className={"mr-4 flex justify-center items-center"}>
@@ -17,4 +17,3 @@ const Search: FC<SearchProps> = ({placeholder}) => {
     );
 };
 
-export default Search;

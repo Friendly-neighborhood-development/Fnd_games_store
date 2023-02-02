@@ -7,18 +7,20 @@ interface CustomInputProps {
     placeholder?: string;
     className?: string
     label?: string
-    autoComplete?: "new-password" | "username" | "password"
-
+    autoComplete?: "new-password" | "username" | "password" | "no" | "on"
+    onFocus?: () => any
+    required?: boolean
 }
 
-const Input: FC<CustomInputProps> = ({className, label, ...props}) => {
+export const Input: FC<CustomInputProps> = ({className, label, required, ...props}) => {
     const rootClasses = ["px-2 outline-none w-full dark:text-slate-200 text-sm", className].join(" ")
     return (
         <>
             {label
                 ? <label className={"text-sm"}>
                     {label}
-                    <input className={rootClasses} {...props} />
+                    {required ? <span className={"text-red-400"}> *</span> : <></>}
+                    <input required={required} className={rootClasses} {...props}  />
                 </label>
                 : <input className={rootClasses} {...props} />
             }
@@ -26,4 +28,3 @@ const Input: FC<CustomInputProps> = ({className, label, ...props}) => {
     )
 }
 
-export default Input;
