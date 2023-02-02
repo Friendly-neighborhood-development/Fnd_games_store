@@ -10,7 +10,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 export const fetchCartGames = createAsyncThunk(
     'cart/fetchGames',
     async (props: accessCartProps) => {
-        const res = await CartService.fetchGames(props);
+        const res = await CartService.fetchCartGames(props);
         return res.data;
     }
 );

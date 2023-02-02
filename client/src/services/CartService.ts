@@ -16,7 +16,7 @@ export interface deleteCartGameProps extends accessCartProps {
 }
 
 export class CartService {
-    static fetchGames({
+    static fetchCartGames({
         userId,
     }: accessCartProps): Promise<AxiosResponse<IGame[]>> {
         userId = 'user' + userId;
