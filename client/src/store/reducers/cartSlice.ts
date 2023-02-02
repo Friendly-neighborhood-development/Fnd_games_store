@@ -35,6 +35,21 @@ const cartSlice = createSlice({
         unselectAllGames(state) {
             state.selectedGames = [];
         },
+        saveSelectedGames(state) {
+            localStorage.setItem(
+                'selectedGames',
+                JSON.stringify(state.selectedGames)
+            );
+        },
+        getSavedSelectedGames(state) {
+            const selectedGames = localStorage.getItem('selectedGames');
+            if (selectedGames && JSON.parse(selectedGames).length)
+                state.selectedGames = JSON.parse(selectedGames);
+        },
+        removeSavedSelectedGames(state) {
+            state.selectedGames = [];
+            localStorage.removeItem('selectedGames');
+        },
     },
     extraReducers(builder) {
         builder
@@ -74,6 +89,13 @@ const cartSlice = createSlice({
     },
 });
 
-export const { selectGame, unselectGame, unselectAllGames } = cartSlice.actions;
+export const {
+    selectGame,
+    unselectGame,
+    unselectAllGames,
+    saveSelectedGames,
+    getSavedSelectedGames,
+    removeSavedSelectedGames,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

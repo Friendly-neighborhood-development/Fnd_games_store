@@ -9,7 +9,7 @@ import { GameSpecificationRow } from '../components/games/game/GameSpecification
 import { clearGameData } from '../store/reducers/gameSlice';
 import { fetchCartGames, updateCartGames } from '../store/actions/cartAction';
 import { DisabledButton } from '../components/UI/DisabledButton';
-import { selectGame } from '../store/reducers/cartSlice';
+import { saveSelectedGames, selectGame } from '../store/reducers/cartSlice';
 
 const GameName = () => {
     const { name } = useParams();
@@ -38,6 +38,7 @@ const GameName = () => {
         );
         setIsInCart(true);
         dispatch(selectGame(game));
+        dispatch(saveSelectedGames());
         dispatch(fetchCartGames({ userId }));
     };
 

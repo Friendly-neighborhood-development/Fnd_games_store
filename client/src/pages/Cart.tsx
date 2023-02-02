@@ -5,14 +5,24 @@ import { Link } from 'react-router-dom';
 import { fetchCartGames } from '../store/actions/cartAction';
 import { CartGameCard } from '../components/cart/CartGameCard';
 import { CartOrderBlock } from '../components/cart/CartOrderBlock';
+import {
+    getSavedSelectedGames,
+    saveSelectedGames,
+} from '../store/reducers/cartSlice';
 
 const Cart = () => {
     const { userId, isAuth } = useAppSelector((state) => state.auth);
     const { games, selectedGames } = useAppSelector((state) => state.cart);
     const dispatch = useAppDispatch();
     useEffect(() => {
-        if (isAuth) dispatch(fetchCartGames({ userId }));
+        if (isAuth) {
+            dispatch(fetchCartGames({ userId }));
+            dispatch(getSavedSelectedGames());
+        }
     }, []);
+    useEffect(() => {
+        dispatch(saveSelectedGames());
+    }, [selectedGames]);
 
     return (
         <MainLayout>
