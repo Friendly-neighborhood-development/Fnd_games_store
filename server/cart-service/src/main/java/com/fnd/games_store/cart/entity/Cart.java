@@ -30,22 +30,8 @@ public class Cart implements Serializable {
 
     public Cart() {
 
-        Game emptyGameEntity = new Game();
-
-        emptyGameEntity.setId("");
-        emptyGameEntity.setName("");
-        emptyGameEntity.setReleaseDate("");
-        emptyGameEntity.setPrice(BigDecimal.valueOf(0));
-        emptyGameEntity.setDiscount(BigDecimal.valueOf(0));
-        emptyGameEntity.setDescription("");
-        emptyGameEntity.setBase64Image("");
-
-
         this.userId = "";
         this.gameData = new ArrayList<>();
-
-        gameData.add(emptyGameEntity);
-
 
     }
 
