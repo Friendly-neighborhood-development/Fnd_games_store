@@ -1,4 +1,4 @@
-package com.fnd.games_store.cart.test.service;
+package com.fnd.games_store.cart.test.cart_service;
 
 
 import com.fnd.games_store.cart.test.utilities.ServiceTestUtilities;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-public class Service_GetCartContentTest extends ServiceTestUtilities {
+public class CartService_GetCartContentTest extends ServiceTestUtilities {
 
 
 
