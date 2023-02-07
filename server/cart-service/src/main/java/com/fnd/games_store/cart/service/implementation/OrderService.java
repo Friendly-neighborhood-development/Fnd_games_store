@@ -2,6 +2,7 @@ package com.fnd.games_store.cart.service.implementation;
 
 import com.fnd.games_store.cart.dto.CartResponseDTO;
 import com.fnd.games_store.cart.entity.Cart;
+import com.fnd.games_store.cart.exception.CartNotFoundException;
 import com.fnd.games_store.cart.repository.CartRepository;
 import com.fnd.games_store.cart.service.OrderProcessingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +29,9 @@ public class OrderService implements OrderProcessingService {
 
         if (flushingCartData.isPresent()){
             repository.deleteById(userId);
-        } else {
-
-        }
+        } else throw new CartNotFoundException("Cart not found");
 
 
-        return null;
+        return new CartResponseDTO(flushingCartData.get());
     }
 }
