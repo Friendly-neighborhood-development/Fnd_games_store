@@ -25,6 +25,9 @@ public class OrderController implements  OrderProcessor{
     @Override
     @PostMapping("v1/purchase/{userId}")
     public ResponseEntity<OrderResponseDTO> processOrder(@PathVariable String userId) {
+
+        service.purchaseGames(userId);
+
         return null;
     }
 }
