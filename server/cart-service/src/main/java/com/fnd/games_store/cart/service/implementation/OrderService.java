@@ -44,5 +44,13 @@ public class OrderService implements OrderProcessingService {
     }
 
 
+    private void eraseCart(String userId) {
+        repository.deleteById(userId);
+    }
+
+    private void confirmPurchase(String userId){
+
+    }
+
 
 }
