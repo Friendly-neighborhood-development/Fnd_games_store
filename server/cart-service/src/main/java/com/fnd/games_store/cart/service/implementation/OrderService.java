@@ -25,13 +25,24 @@ public class OrderService implements OrderProcessingService {
     @Override
     public CartResponseDTO purchaseGames(String userId) {
 
-        Optional<Cart> flushingCartData = repository.findById(userId);
 
-        if (flushingCartData.isPresent()){
+
+
+        return new CartResponseDTO(findGameById(userId).get());
+    }
+
+
+    private Optional<Cart> findGameById(String userId) {
+
+        Optional<Cart> foundCartData = repository.findById(userId);
+
+        if (foundCartData.isPresent()){
             repository.deleteById(userId);
         } else throw new CartNotFoundException("Cart not found");
 
-
-        return new CartResponseDTO(flushingCartData.get());
+        return foundCartData;
     }
+
+
+
 }
