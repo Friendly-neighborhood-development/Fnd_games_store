@@ -26,13 +26,15 @@ public class OrderService implements OrderProcessingService {
     public CartResponseDTO purchaseGames(String userId) {
 
 
+        Cart erasedCartData = eraseCart(userId).get();
 
 
-        return new CartResponseDTO(findGameById(userId).get());
+
+        return new CartResponseDTO(eraseCart(userId).get());
     }
 
 
-    private Optional<Cart> findGameById(String userId) {
+    private Optional<Cart> eraseCart(String userId) {
 
         Optional<Cart> foundCartData = repository.findById(userId);
 
@@ -41,11 +43,6 @@ public class OrderService implements OrderProcessingService {
         } else throw new CartNotFoundException("Cart not found");
 
         return foundCartData;
-    }
-
-
-    private void eraseCart(String userId) {
-        repository.deleteById(userId);
     }
 
     private void confirmPurchase(String userId){
