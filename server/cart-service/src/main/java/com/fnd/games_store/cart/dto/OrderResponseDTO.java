@@ -12,8 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 public class OrderResponseDTO {
 
-    private String userId;
-
     private List<Game> gameData;
 
 
