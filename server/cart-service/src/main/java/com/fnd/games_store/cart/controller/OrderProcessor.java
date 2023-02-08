@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface OrderProcessor {
 
-    public ResponseEntity<OrderResponseDTO> processOrder();
+    public ResponseEntity<OrderResponseDTO> processOrder(String userId);
 
 
 
