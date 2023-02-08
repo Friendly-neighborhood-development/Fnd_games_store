@@ -29,7 +29,7 @@ public class OrderService implements OrderProcessingService {
         Cart erasedCartData = eraseCart(userId).get();
 
 
-        return new CartResponseDTO(eraseCart(userId).get());
+        return new CartResponseDTO(erasedCartData);
     }
 
 

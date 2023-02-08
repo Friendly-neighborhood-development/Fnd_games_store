@@ -2,6 +2,7 @@ package com.fnd.games_store.cart.controller.implementation;
 
 
 import com.fnd.games_store.cart.controller.OrderProcessor;
+import com.fnd.games_store.cart.dto.CartResponseDTO;
 import com.fnd.games_store.cart.dto.OrderResponseDTO;
 import com.fnd.games_store.cart.service.OrderProcessingService;
 import lombok.extern.slf4j.Slf4j;
@@ -26,13 +27,10 @@ public class OrderController implements  OrderProcessor{
 
     @Override
     @PostMapping("v1/purchase/{userId}")
-    public ResponseEntity<OrderResponseDTO> processOrder(@PathVariable String userId) {
-
+    public ResponseEntity<CartResponseDTO> processOrder(@PathVariable String userId) {
 
         log.info(userId);
 
-        service.purchaseGames(userId);
-
-        return null;
+        return ResponseEntity.ok(service.purchaseGames(userId));
     }
 }
