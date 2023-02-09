@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fnd.games_store.cart.CartApplication;
 import com.fnd.games_store.cart.dto.CartResponseDTO;
 import com.fnd.games_store.cart.dto.ValidationResponseDTO;
-import com.fnd.games_store.cart.test.utilities.CartControllerTestUtilities;
+import com.fnd.games_store.cart.test.utilities.ControllerTestUtilities;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = CartApplication.class)
 @AutoConfigureMockMvc
 @Slf4j
-public class CartController_UpdateCartTest extends CartControllerTestUtilities {
+public class CartController_UpdateCartTest extends ControllerTestUtilities {
 
     @Test
     void test_updateCartContent() throws Exception {
