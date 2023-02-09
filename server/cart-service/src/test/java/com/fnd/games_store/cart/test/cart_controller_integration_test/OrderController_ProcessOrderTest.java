@@ -1,4 +1,4 @@
-package com.fnd.games_store.cart.test.order_controller_integration_test;
+package com.fnd.games_store.cart.test.cart_controller_integration_test;
 
 
 import com.fnd.games_store.cart.CartApplication;
