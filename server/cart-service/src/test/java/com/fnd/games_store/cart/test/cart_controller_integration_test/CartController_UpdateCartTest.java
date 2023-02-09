@@ -1,4 +1,4 @@
-package com.fnd.games_store.cart.test.controller_integration_test;
+package com.fnd.games_store.cart.test.cart_controller_integration_test;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = CartApplication.class)
 @AutoConfigureMockMvc
 @Slf4j
-public class Controller_UpdateCartTest extends ControllerTestUtilities {
+public class CartController_UpdateCartTest extends ControllerTestUtilities {
 
     @Test
     void test_updateCartContent() throws Exception {

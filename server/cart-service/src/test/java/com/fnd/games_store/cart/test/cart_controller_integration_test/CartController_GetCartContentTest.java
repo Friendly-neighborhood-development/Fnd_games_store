@@ -1,16 +1,14 @@
-package com.fnd.games_store.cart.test.controller_integration_test;
+package com.fnd.games_store.cart.test.cart_controller_integration_test;
 
 import com.fnd.games_store.cart.CartApplication;
 import com.fnd.games_store.cart.dto.GameResponseDTO;
 import com.fnd.games_store.cart.dto.ValidationResponseDTO;
-import com.fnd.games_store.cart.test.configuration.TestSecurityConfiguration;
 import com.fnd.games_store.cart.test.utilities.ControllerTestUtilities;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MvcResult;
@@ -27,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = CartApplication.class)
 @AutoConfigureMockMvc
 @Slf4j
-public class Controller_GetCartContentTest extends ControllerTestUtilities {
+public class CartController_GetCartContentTest extends ControllerTestUtilities {
 
 
 
