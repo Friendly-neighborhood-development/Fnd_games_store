@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ControllerTestUtilities {
+public class CartControllerTestUtilities {
 
     @Autowired
     protected MockMvc mvc;
