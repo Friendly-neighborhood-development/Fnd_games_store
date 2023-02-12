@@ -4,6 +4,8 @@ package com.fnd.games_store.orders.configuration;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fnd.games_store.orders.deserializer.OrderDTODeserializer;
+import com.fnd.games_store.orders.dto.OrderDTO;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,18 +26,18 @@ public class KafkaConfiguration {
 
 
     @Bean
-    public ConsumerFactory<String,String> consumerFactory(){
+    public ConsumerFactory<String, OrderDTO> consumerFactory(){
         Map<String,Object> kafkaConfig = new HashMap<>();
         kafkaConfig.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,  kafkaPort);
         kafkaConfig.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        kafkaConfig.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        kafkaConfig.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, OrderDTODeserializer.class);
         kafkaConfig.put(ConsumerConfig.GROUP_ID_CONFIG, "orders");
         return new DefaultKafkaConsumerFactory<>(kafkaConfig);
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String,String> kafkaListener(){
-        ConcurrentKafkaListenerContainerFactory<String,String> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String,OrderDTO> kafkaListener(){
+        ConcurrentKafkaListenerContainerFactory<String,OrderDTO> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }
