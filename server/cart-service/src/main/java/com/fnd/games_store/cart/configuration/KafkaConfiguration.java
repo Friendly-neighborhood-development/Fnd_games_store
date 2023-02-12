@@ -3,6 +3,7 @@ package com.fnd.games_store.cart.configuration;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fnd.games_store.cart.dto.OrderDTO;
 import com.fnd.games_store.cart.serializer.OrderDTOSerializer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -21,7 +22,7 @@ public class KafkaConfiguration {
 
 
     @Bean
-    public ProducerFactory <String,String> producerFactory(){
+    public ProducerFactory <String, OrderDTO> producerFactory(){
         Map<String,Object> kafkaConfig = new HashMap<>();
         kafkaConfig.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         kafkaConfig.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -31,7 +32,7 @@ public class KafkaConfiguration {
 
 
     @Bean
-    public KafkaTemplate<String,String> kafkaTemplate(){
+    public KafkaTemplate<String,OrderDTO> kafkaTemplate(){
         return new KafkaTemplate<>(producerFactory());
     }
 
