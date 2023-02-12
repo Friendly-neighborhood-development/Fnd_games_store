@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class MessageToOrderServiceDTO {
+public class OrderDTO {
 
 
     private String userId;
