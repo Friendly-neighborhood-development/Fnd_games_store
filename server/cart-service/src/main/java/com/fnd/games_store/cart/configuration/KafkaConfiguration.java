@@ -17,14 +17,14 @@ import org.springframework.kafka.core.ProducerFactory;
 public class KafkaConfiguration {
 
 
-    @Value("${variables.kafka.port}")
-    private int kafkaPort;
+    @Value("${variables.kafka.bootstrapAddress}")
+    private String bootstrapAddress;
 
 
     @Bean
     public ProducerFactory <String, OrderDTO> producerFactory(){
         Map<String,Object> kafkaConfig = new HashMap<>();
-        kafkaConfig.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        kafkaConfig.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         kafkaConfig.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         kafkaConfig.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, OrderDTOSerializer.class);
         return new DefaultKafkaProducerFactory<>(kafkaConfig);
