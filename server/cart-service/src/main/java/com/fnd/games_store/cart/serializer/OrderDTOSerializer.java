@@ -2,7 +2,7 @@ package com.fnd.games_store.cart.serializer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fnd.games_store.cart.dto.OrderDTO;
-import org.apache.commons.lang.SerializationException;
+import org.apache.kafka.common.errors.SerializationException;
 import org.apache.kafka.common.header.Headers;
 import org.apache.kafka.common.serialization.Serializer;
 
@@ -13,8 +13,6 @@ public class OrderDTOSerializer implements Serializer<OrderDTO> {
 
 
     private final ObjectMapper objectMapper = new ObjectMapper();
-
-
 
 
     @Override
@@ -31,7 +29,7 @@ public class OrderDTOSerializer implements Serializer<OrderDTO> {
             }
             return objectMapper.writeValueAsBytes(data);
         } catch (Exception e) {
-            throw new SerializationException("Error when serializing MessageDto to byte[]");
+            throw new SerializationException("Error when serializing OrderDTO to byte[]");
         }
     }
 
