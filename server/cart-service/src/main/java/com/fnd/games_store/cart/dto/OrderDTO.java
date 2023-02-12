@@ -12,14 +12,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class MessageToOrderServiceDTO {
+public class OrderDTO {
 
 
     private String userId;
 
     private List<Game> gameData;
 
-    public MessageToOrderServiceDTO(Cart cart){
+    public OrderDTO(Cart cart){
         this.userId = cart.getUserId();
         this.gameData = cart.getGameData();
     }

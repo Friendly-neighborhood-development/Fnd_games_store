@@ -1,16 +1,15 @@
 package com.fnd.games_store.cart.serializer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fnd.games_store.cart.dto.MessageToOrderServiceDTO;
+import com.fnd.games_store.cart.dto.OrderDTO;
 import org.apache.commons.lang.SerializationException;
 import org.apache.kafka.common.header.Headers;
 import org.apache.kafka.common.serialization.Serializer;
-import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
 
-public class MessageDTOSerializer implements Serializer<MessageToOrderServiceDTO> {
+public class OrderDTOSerializer implements Serializer<OrderDTO> {
 
 
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -24,7 +23,7 @@ public class MessageDTOSerializer implements Serializer<MessageToOrderServiceDTO
     }
 
     @Override
-    public byte[] serialize(String topic, MessageToOrderServiceDTO data) {
+    public byte[] serialize(String topic, OrderDTO data) {
 
         try {
             if (data == null){
@@ -37,7 +36,7 @@ public class MessageDTOSerializer implements Serializer<MessageToOrderServiceDTO
     }
 
     @Override
-    public byte[] serialize(String topic, Headers headers, MessageToOrderServiceDTO data) {
+    public byte[] serialize(String topic, Headers headers, OrderDTO data) {
         return Serializer.super.serialize(topic, headers, data);
     }
 
