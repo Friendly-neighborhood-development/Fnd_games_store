@@ -21,10 +21,16 @@ public class OrderReceiverService {
 
 
     @KafkaListener(topics = "order-stream", groupId = "orders")
-    public void orderMessageListener(String order) throws JsonProcessingException {
+    public void orderMessageListener(String order)  {
 
-        OrderDTO restoredObject = objectMapper.readValue(order, OrderDTO.class);
+        OrderDTO restoredObject;
 
-        log.info(restoredObject.toString());
+        try{
+            restoredObject = objectMapper.readValue(order, OrderDTO.class);
+            log.info(restoredObject.toString());
+        } catch( JsonProcessingException e){
+            e.printStackTrace();
+        }
+
     }
 }
