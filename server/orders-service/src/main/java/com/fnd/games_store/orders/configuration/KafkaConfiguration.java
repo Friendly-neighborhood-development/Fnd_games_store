@@ -22,8 +22,6 @@ public class KafkaConfiguration {
     @Value("${variables.kafka.port}")
     private int kafkaPort;
 
-    @Value("${variables.kafka.group}")
-    private String groupId;
 
     @Bean
     public ConsumerFactory<String,String> consumerFactory(){
@@ -31,7 +29,7 @@ public class KafkaConfiguration {
         kafkaConfig.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,  kafkaPort);
         kafkaConfig.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         kafkaConfig.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        kafkaConfig.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
+        kafkaConfig.put(ConsumerConfig.GROUP_ID_CONFIG, "orders");
         return new DefaultKafkaConsumerFactory<>(kafkaConfig);
     }
 

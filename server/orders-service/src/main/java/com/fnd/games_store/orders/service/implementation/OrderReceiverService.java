@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 public class OrderReceiverService implements OrderMessageListener {
 
 
-    @Value("${variables.kafka.group}")
-    private String customGroupId;
 
 
     @Override

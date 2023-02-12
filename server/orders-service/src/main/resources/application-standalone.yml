@@ -7,4 +7,3 @@ server:
 variables:
   kafka:
     port: 9092
-    groupId: orders
