@@ -1,0 +1,9 @@
+server:
+  servlet:
+    context-path: /orders
+  port: 8084
+
+
+variables:
+  kafka:
+    port: 9092
