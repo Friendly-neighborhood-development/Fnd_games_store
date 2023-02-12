@@ -2,13 +2,15 @@ plugins {
     id 'org.springframework.boot' version '2.7.0'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-    id "org.flywaydb.flyway" version "8.5.12"
     id "io.freefair.lombok" version "5.1.0"
 }
 
+
+
 group = 'com.fnd.games_store'
-version = '0.0.1-SNAPSHOT'
+version = '1.0'
 sourceCompatibility = '1.8'
+
 
 configurations {
     compileOnly {
@@ -16,40 +18,38 @@ configurations {
     }
 }
 
+
 repositories {
     mavenCentral()
 }
 
-bootJar {
-    enabled = false
-}
-
 jar {
-    enabled = true
-}
-ext {
-    set('springCloudVersion', "2021.0.3")
+    manifest {
+        attributes(
+                'Main-Class': 'com.fnd.games_store.games.OrdersApplication'
+        )
+
+    }
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.cloud:spring-cloud-starter-config'
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+    implementation 'junit:junit:4.13.2'
+    implementation 'org.springframework.kafka:spring-kafka'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    runtimeOnly 'org.postgresql:postgresql'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
 }
 
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-    }
-}
+//dependencyManagement {
+//    imports {
+//        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+//    }
+//}
 
 tasks.named('test') {
     useJUnitPlatform()
