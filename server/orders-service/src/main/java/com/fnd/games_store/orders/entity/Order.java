@@ -9,6 +9,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -32,8 +34,9 @@ public class Order {
     private Boolean isOrderProcessed;
 
 
-    public Order(OffsetDateTime orderDate, Boolean isOrderProcessed) {
-        this.orderDate = orderDate;
-        this.isOrderProcessed = isOrderProcessed;
-    }
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "order")
+    private List<Game> games;
+
+
+
 }
