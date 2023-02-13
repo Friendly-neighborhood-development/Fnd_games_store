@@ -1,7 +1,7 @@
 package com.fnd.games_store.orders.dto;
 
 
-import com.fnd.games_store.orders.entity.Game;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +18,7 @@ public class OrderDTO {
 
     private String userId;
 
-    private List<Game> gameData;
+    private List<GameDTO> gameData;
 
 
 }
