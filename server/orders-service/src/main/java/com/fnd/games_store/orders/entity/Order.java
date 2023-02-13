@@ -11,6 +11,7 @@ import javax.persistence.*;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "orders")
@@ -37,6 +38,23 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "order")
     private List<Game> games;
 
+    public Order(OffsetDateTime orderDate, Boolean isOrderProcessed, List<Game> games) {
+        this.orderDate = orderDate;
+        this.isOrderProcessed = isOrderProcessed;
+        this.games = games;
+    }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return Objects.equals(id, order.id) && Objects.equals(orderDate, order.orderDate) && Objects.equals(isOrderProcessed, order.isOrderProcessed) && Objects.equals(games, order.games);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, orderDate, isOrderProcessed, games);
+    }
 }

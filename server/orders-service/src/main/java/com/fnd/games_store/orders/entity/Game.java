@@ -41,4 +41,18 @@ public class Game {
         this.description = description;
         this.base64Image = base64Image;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Game game = (Game) o;
+        return Objects.equals(id, game.id) && Objects.equals(order, game.order) && Objects.equals(name, game.name) && Objects.equals(releaseDate, game.releaseDate) && Objects.equals(price, game.price) && Objects.equals(discount, game.discount) && Objects.equals(description, game.description) && Objects.equals(base64Image, game.base64Image);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, order, name, releaseDate, price, discount, description, base64Image);
+    }
 }
