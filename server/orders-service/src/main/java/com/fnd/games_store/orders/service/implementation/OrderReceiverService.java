@@ -2,7 +2,7 @@ package com.fnd.games_store.orders.service.implementation;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fnd.games_store.orders.dto.OrderDTO;
+import com.fnd.games_store.orders.dto.OrderRequestDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -23,10 +23,10 @@ public class OrderReceiverService {
     @KafkaListener(topics = "order-stream", groupId = "orders")
     public void orderMessageListener(String order)  {
 
-        OrderDTO restoredObject;
+        OrderRequestDTO restoredObject;
 
         try{
-            restoredObject = objectMapper.readValue(order, OrderDTO.class);
+            restoredObject = objectMapper.readValue(order, OrderRequestDTO.class);
             log.info(restoredObject.toString());
         } catch( JsonProcessingException e){
             e.printStackTrace();
