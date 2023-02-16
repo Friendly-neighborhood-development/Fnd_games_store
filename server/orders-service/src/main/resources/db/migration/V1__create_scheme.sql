@@ -13,14 +13,10 @@ discount numeric(10,2) NOT NULL,
 description varchar NOT NULL,
 base64Image varchar NOT NULL);
 
+
 CREATE TABLE IF NOT EXISTS order_game
 (order_id varchar(255),
 game_id varchar(255),
 
-
-
-FOREIGN KEY order_id REFERENCES order_id(orders),
-FOREIGN KEY game_id, REFERENCES game_id(games)
-
-);
-
+FOREIGN KEY(order_id) REFERENCES orders(order_id),
+FOREIGN KEY(game_id) REFERENCES games(game_id));
