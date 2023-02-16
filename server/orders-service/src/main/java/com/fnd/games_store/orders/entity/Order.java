@@ -34,7 +34,10 @@ public class Order {
     private Boolean isOrderProcessed;
 
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "order")
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "order_game",
+            joinColumns = {@JoinColumn(name = "order_id")},
+            inverseJoinColumns = {@JoinColumn(name ="game_id")})
     private List<Game> games;
 
     public Order(OffsetDateTime orderDate, Boolean isOrderProcessed, List<Game> games) {

@@ -1,5 +1,6 @@
 package com.fnd.games_store.orders.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -7,6 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,8 +24,9 @@ public class Game {
     @GenericGenerator(name ="uuid", strategy ="uuid2")
     @Column(name = "game_id")
     private String id;
-    @ManyToOne
-    private Order order;
+    @ManyToMany(mappedBy = "games")
+    @JsonIgnore
+    private List<Order> order;
     private String name;
     private String releaseDate;
     private BigDecimal price;
@@ -32,7 +35,7 @@ public class Game {
     private String base64Image;
 
 
-    public Game(Order order, String name, String releaseDate, BigDecimal price, BigDecimal discount, String description, String base64Image) {
+    public Game(List<Order> order, String name, String releaseDate, BigDecimal price, BigDecimal discount, String description, String base64Image) {
         this.order = order;
         this.name = name;
         this.releaseDate = releaseDate;

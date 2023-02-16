@@ -1,5 +1,5 @@
 spring:
   application:
-    name: cart-service
+    name: orders-service
   profiles:
     active: standalone
