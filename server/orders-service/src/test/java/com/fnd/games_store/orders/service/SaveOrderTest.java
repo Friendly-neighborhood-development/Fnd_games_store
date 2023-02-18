@@ -15,10 +15,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 @Transactional
 @SpringBootTest(classes = OrdersApplication.class)
 @Slf4j
@@ -37,6 +38,8 @@ public class SaveOrderTest {
 
     private Order expectedOrder = new Order();
 
+    private OffsetDateTime testCaseInitTime = OffsetDateTime.now();
+
 
     @Test
     void saveOrder_ShouldSaveProperOrderEntity(){
@@ -46,7 +49,7 @@ public class SaveOrderTest {
 //        log.info("expected: "+expectedOrder.toString());
 
         assertThat(savedOrder).isEqualTo(expectedOrder);
-
+//        assertThat(savedOrder.equals(expectedOrder)).isTrue();
     }
 
 
@@ -61,6 +64,7 @@ public class SaveOrderTest {
 
         savedOrder.setIsOrderProcessed(true);
         savedOrder.setUserId(userId);
+        savedOrder.setOrderDate(testCaseInitTime);
 
         savedOrder.setGames(testgameList);
 

@@ -18,6 +18,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class Order {
 
     @NotNull
@@ -44,16 +45,13 @@ public class Order {
             inverseJoinColumns = {@JoinColumn(name ="game_id")})
     private List<Game> games = new ArrayList<>();
 
-    public Order(){
-        orderDate = OffsetDateTime.now();
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return Objects.equals(id, order.id) && Objects.equals(userId, order.userId) && Objects.equals(orderDate, order.orderDate) && Objects.equals(isOrderProcessed, order.isOrderProcessed) && Objects.equals(games, order.games);
+        return Objects.equals(id, order.id) && Objects.equals(userId, order.userId) && Objects.equals(isOrderProcessed, order.isOrderProcessed) && Objects.equals(games, order.games);
     }
 
     @Override
