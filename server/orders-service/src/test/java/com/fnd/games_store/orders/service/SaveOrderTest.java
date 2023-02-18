@@ -56,7 +56,7 @@ public class SaveOrderTest {
     }
 
 
-    private void createTestGameEntity(String differenceParameter){
+    private Game createTestGameEntity(String differenceParameter){
 
         Game testGameEntity = new Game();
 
@@ -67,6 +67,7 @@ public class SaveOrderTest {
         testGameEntity.setDescription(""+differenceParameter);
         testGameEntity.setBase64Image(""+differenceParameter);
 
+        return testGameEntity;
     }
 
 
