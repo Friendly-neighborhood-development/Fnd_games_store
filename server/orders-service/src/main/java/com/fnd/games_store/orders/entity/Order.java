@@ -28,6 +28,9 @@ public class Order {
     @Column(name = "order_id")
     private String id;
 
+
+    private String userId;
+
     @Column(name = "order_date")
     private OffsetDateTime orderDate;
 
@@ -41,10 +44,11 @@ public class Order {
             inverseJoinColumns = {@JoinColumn(name ="game_id")})
     private List<Game> games = new ArrayList<>();
 
-    public Order(Boolean isOrderProcessed, List<Game> games) {
+    public Order(Boolean isOrderProcessed, List<Game> games, String userId) {
         this.orderDate = OffsetDateTime.now();
         this.isOrderProcessed = isOrderProcessed;
         this.games = games;
+        this.userId = userId;
     }
 
 
