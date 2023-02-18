@@ -1,6 +1,7 @@
 package com.fnd.games_store.orders.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fnd.games_store.orders.dto.GameRequestDTO;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -44,6 +45,16 @@ public class Game {
         this.description = description;
         this.base64Image = base64Image;
     }
+
+    public Game(GameRequestDTO gameRequestDTO){
+        this.name = gameRequestDTO.getName();
+        this.releaseDate = gameRequestDTO.getReleaseDate();
+        this.price = gameRequestDTO.getPrice();
+        this.discount = gameRequestDTO.getDiscount();
+        this.description = gameRequestDTO.getDescription();
+        this.base64Image = gameRequestDTO.getBase64Image();
+    }
+
 
 
     @Override
