@@ -29,7 +29,7 @@ public class GameRequestDTO {
         this.price = game.getPrice();
         this.discount = game.getDiscount();
         this.description = game.getDescription();
-        this.base64Image = getBase64Image();
+        this.base64Image = game.getBase64Image();
     }
 
     @Override
