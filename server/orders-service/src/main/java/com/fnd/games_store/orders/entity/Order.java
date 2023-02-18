@@ -25,6 +25,7 @@ public class Order {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name ="uuid", strategy ="uuid2")
     @Column(name = "order_id")
+    @ToString.Exclude
     private String id;
 
     @Column(name = "user_id")
@@ -41,13 +42,8 @@ public class Order {
     @JoinTable(name = "order_game",
             joinColumns = {@JoinColumn(name = "order_id")},
             inverseJoinColumns = {@JoinColumn(name ="game_id")})
+    @ToString.Exclude
     private List<Game> games = new ArrayList<>();
-
-    public Order(Boolean isOrderProcessed, List<Game> games, String userId) {
-        this.isOrderProcessed = isOrderProcessed;
-        this.games = games;
-        this.userId = userId;
-    }
 
     public Order(){
         orderDate = OffsetDateTime.now();
@@ -58,11 +54,11 @@ public class Order {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return Objects.equals(id, order.id) && Objects.equals(orderDate, order.orderDate) && Objects.equals(isOrderProcessed, order.isOrderProcessed) && Objects.equals(games, order.games);
+        return Objects.equals(orderDate, order.orderDate) && Objects.equals(isOrderProcessed, order.isOrderProcessed) && Objects.equals(games, order.games);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, orderDate, isOrderProcessed, games);
+        return Objects.hash(orderDate, isOrderProcessed, games);
     }
 }

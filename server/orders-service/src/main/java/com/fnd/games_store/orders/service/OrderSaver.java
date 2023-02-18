@@ -5,6 +5,6 @@ import com.fnd.games_store.orders.dto.OrderRequestDTO;
 public interface OrderSaver {
 
 
-    void saveOrder(OrderRequestDTO incomingOrder);
+    String saveOrder(OrderRequestDTO incomingOrder);
 
 }

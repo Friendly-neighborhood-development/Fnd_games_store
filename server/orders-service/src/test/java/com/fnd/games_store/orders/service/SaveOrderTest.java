@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,9 +33,17 @@ public class SaveOrderTest {
 
     private String userId = "user1";
 
+    private Order savedOrder = new Order();
+
+    private Order expectedOrder = new Order();
+
+
     @Test
     void saveOrder_ShouldSaveProperOrderEntity(){
-//        assertThat(testOrderEntity).isEqualTo(expectedOrderEntity);
+//        assertThat(savedOrder).isEqualTo(expectedOrder);
+        log.info("saved order:" + savedOrder);
+
+        log.info("expected: "+expectedOrder.toString());
     }
 
 
@@ -44,20 +52,22 @@ public class SaveOrderTest {
     @BeforeEach
     void testSetup(){
 
-        Order expectedOrderEntity = new Order();
-
         List<Game> testgameList = new ArrayList<>();
         testgameList.add(createTestGameEntity("1"));
         testgameList.add(createTestGameEntity("2"));
 
-        expectedOrderEntity.setIsOrderProcessed(true);
-        expectedOrderEntity.setUserId(userId);
+        savedOrder.setIsOrderProcessed(true);
+        savedOrder.setUserId(userId);
 
-        expectedOrderEntity.setGames(testgameList);
+        savedOrder.setGames(testgameList);
 
-//        orderRepository.save(expectedOrderEntity);
+        OrderRequestDTO incomingOrderDto = wrapOrderToDto(savedOrder);
 
+        String savedOrderId = service.saveOrder(incomingOrderDto);
 
+        savedOrder.setId(savedOrderId);
+
+        expectedOrder = orderRepository.findById(savedOrderId).get();
 
     }
 
@@ -68,7 +78,7 @@ public class SaveOrderTest {
     private Game createTestGameEntity(String differenceParameter){
 
         Game testGameEntity = new Game();
-
+        testGameEntity.setId(differenceParameter);
         testGameEntity.setName("Doom Eternal" + differenceParameter);
         testGameEntity.setReleaseDate("2009"+differenceParameter);
         testGameEntity.setPrice(BigDecimal.valueOf(1000));

@@ -25,7 +25,7 @@ public class OrderSaverService implements OrderSaver {
     }
 
     @Override
-    public void saveOrder(OrderRequestDTO incomingOrderData) {
+    public String saveOrder(OrderRequestDTO incomingOrderData) {
 
         Order savableOrderData = new Order();
 
@@ -33,7 +33,7 @@ public class OrderSaverService implements OrderSaver {
         savableOrderData.setUserId(incomingOrderData.getUserId());
         savableOrderData.setGames(incomingOrderData.getGameData().stream().map((Game::new)).collect(Collectors.toList()));
 
-        orderRepository.save(savableOrderData);
+        return orderRepository.save(savableOrderData).getId();
 
     }
 
