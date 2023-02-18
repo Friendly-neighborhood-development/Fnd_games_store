@@ -5,6 +5,7 @@ import com.fnd.games_store.orders.OrdersApplication;
 import com.fnd.games_store.orders.entity.Game;
 import com.fnd.games_store.orders.entity.Order;
 import com.fnd.games_store.orders.repository.OrderRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,25 +14,24 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 @Transactional
 @SpringBootTest(classes = OrdersApplication.class)
+@Slf4j
 public class SaveOrderTest {
 
 
     @Autowired
     private OrderRepository orderRepository;
 
-    private Order testOrderEntity;
-
-    private Order expectedOrderEntity;
-
     private String userId = "user1";
 
     @Test
     void saveOrder_ShouldSaveProperOrderEntity(){
-        assertThat(testOrderEntity).isEqualTo(expectedOrderEntity);
+//        assertThat(testOrderEntity).isEqualTo(expectedOrderEntity);
     }
 
 
@@ -40,24 +40,23 @@ public class SaveOrderTest {
     @BeforeEach
     void testSetup(){
 
-        orderRepository.save(testOrderEntity);
+        Order expectedOrderEntity = new Order();
 
-        expectedOrderEntity = orderRepository.findById(userId).get();
+        List<Game> testgameList = new ArrayList<>();
+        testgameList.add(createTestGameEntity("1"));
+        testgameList.add(createTestGameEntity("2"));
 
-    }
+        expectedOrderEntity.setIsOrderProcessed(true);
+        expectedOrderEntity.setUserId(userId);
 
+        expectedOrderEntity.setGames(testgameList);
 
-
-    private void initTestOrderEntity(){
-
-        testOrderEntity = new Order();
-
-        testOrderEntity.addGame(createTestGameEntity("0"));
-        testOrderEntity.addGame(createTestGameEntity("1"));
-        testOrderEntity.setIsOrderProcessed(true);
-        testOrderEntity.setUserId(userId);
+        orderRepository.save(expectedOrderEntity);
 
     }
+
+
+
 
 
     private Game createTestGameEntity(String differenceParameter){

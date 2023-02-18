@@ -1,7 +1,8 @@
 CREATE TABLE IF NOT EXISTS orders
 (order_id varchar(255) PRIMARY KEY UNIQUE NOT NULL,
 order_date date NOT NULL,
-is_order_processed boolean NOT NULL);
+is_order_processed boolean NOT NULL,
+user_id varchar(255));
 
 
 CREATE TABLE IF NOT EXISTS games

@@ -15,7 +15,6 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "orders")
-@NoArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -28,7 +27,7 @@ public class Order {
     @Column(name = "order_id")
     private String id;
 
-
+    @Column(name = "user_id")
     private String userId;
 
     @Column(name = "order_date")
@@ -38,32 +37,21 @@ public class Order {
     private Boolean isOrderProcessed;
 
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "order_game",
             joinColumns = {@JoinColumn(name = "order_id")},
             inverseJoinColumns = {@JoinColumn(name ="game_id")})
     private List<Game> games = new ArrayList<>();
 
     public Order(Boolean isOrderProcessed, List<Game> games, String userId) {
-        this.orderDate = OffsetDateTime.now();
         this.isOrderProcessed = isOrderProcessed;
         this.games = games;
         this.userId = userId;
     }
 
-
-    public void addGame(Game game){
-        games.add(game);
-        game.getOrder().add(this);
+    public Order(){
+        orderDate = OffsetDateTime.now();
     }
-
-    public void removeGame(Game game){
-        games.remove(game);
-        game.getOrder().remove(this);
-
-
-    }
-
 
     @Override
     public boolean equals(Object o) {
