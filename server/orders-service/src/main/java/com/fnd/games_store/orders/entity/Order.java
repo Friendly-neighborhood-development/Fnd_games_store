@@ -41,8 +41,8 @@ public class Order {
             inverseJoinColumns = {@JoinColumn(name ="game_id")})
     private List<Game> games = new ArrayList<>();
 
-    public Order(OffsetDateTime orderDate, Boolean isOrderProcessed, List<Game> games) {
-        this.orderDate = orderDate;
+    public Order(Boolean isOrderProcessed, List<Game> games) {
+        this.orderDate = OffsetDateTime.now();
         this.isOrderProcessed = isOrderProcessed;
         this.games = games;
     }
