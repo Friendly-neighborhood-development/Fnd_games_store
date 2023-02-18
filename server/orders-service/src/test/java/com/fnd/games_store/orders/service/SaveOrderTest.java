@@ -40,10 +40,13 @@ public class SaveOrderTest {
 
     @Test
     void saveOrder_ShouldSaveProperOrderEntity(){
-//        assertThat(savedOrder).isEqualTo(expectedOrder);
+
         log.info("saved order:" + savedOrder);
 
         log.info("expected: "+expectedOrder.toString());
+
+        assertThat(savedOrder).isEqualTo(expectedOrder);
+
     }
 
 
