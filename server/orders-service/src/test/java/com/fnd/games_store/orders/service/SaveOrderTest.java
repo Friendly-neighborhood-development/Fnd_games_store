@@ -2,6 +2,7 @@ package com.fnd.games_store.orders.service;
 
 
 import com.fnd.games_store.orders.OrdersApplication;
+import com.fnd.games_store.orders.dto.OrderRequestDTO;
 import com.fnd.games_store.orders.entity.Game;
 import com.fnd.games_store.orders.entity.Order;
 import com.fnd.games_store.orders.repository.OrderRepository;
@@ -27,6 +28,9 @@ public class SaveOrderTest {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private OrderSaver service;
+
     private String userId = "user1";
 
     @Test
@@ -51,7 +55,9 @@ public class SaveOrderTest {
 
         expectedOrderEntity.setGames(testgameList);
 
-        orderRepository.save(expectedOrderEntity);
+//        orderRepository.save(expectedOrderEntity);
+
+
 
     }
 
@@ -73,6 +79,8 @@ public class SaveOrderTest {
         return testGameEntity;
     }
 
-
+    private OrderRequestDTO wrapOrderToDto(Order wrapableOrder){
+        return new OrderRequestDTO(wrapableOrder);
+    }
 
 }

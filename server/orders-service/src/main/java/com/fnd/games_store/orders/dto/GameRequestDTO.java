@@ -1,5 +1,6 @@
 package com.fnd.games_store.orders.dto;
 
+import com.fnd.games_store.orders.entity.Game;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -21,6 +22,15 @@ public class GameRequestDTO {
     private String description;
     private String base64Image;
 
+
+    public GameRequestDTO(Game game) {
+        this.name = game.getName();
+        this.releaseDate = game.getReleaseDate();
+        this.price = game.getPrice();
+        this.discount = game.getDiscount();
+        this.description = game.getDescription();
+        this.base64Image = getBase64Image();
+    }
 
     @Override
     public boolean equals(Object o) {
