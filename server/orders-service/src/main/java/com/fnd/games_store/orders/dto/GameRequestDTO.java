@@ -10,7 +10,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class GameDTO {
+public class GameRequestDTO {
 
 
     private String id;
@@ -26,7 +26,7 @@ public class GameDTO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GameDTO gameDTO = (GameDTO) o;
+        GameRequestDTO gameDTO = (GameRequestDTO) o;
         return Objects.equals(id, gameDTO.id) && Objects.equals(name, gameDTO.name) && Objects.equals(releaseDate, gameDTO.releaseDate) && Objects.equals(price, gameDTO.price) && Objects.equals(discount, gameDTO.discount) && Objects.equals(description, gameDTO.description) && Objects.equals(base64Image, gameDTO.base64Image);
     }
 

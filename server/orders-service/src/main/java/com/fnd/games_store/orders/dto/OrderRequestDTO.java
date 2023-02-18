@@ -18,7 +18,7 @@ public class OrderRequestDTO {
 
     private String userId;
 
-    private List<GameDTO> gameData;
+    private List<GameRequestDTO> gameData;
 
 
 }
