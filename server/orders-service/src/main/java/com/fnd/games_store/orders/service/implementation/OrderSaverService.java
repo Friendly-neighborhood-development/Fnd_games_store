@@ -35,9 +35,6 @@ public class OrderSaverService implements OrderSaver {
         savableOrderData.setUserId(incomingOrderData.getUserId());
         savableOrderData.setGames(incomingOrderData.getGameData().stream().map((Game::new)).collect(Collectors.toList()));
 
-        log.info("image from dto: " + incomingOrderData.getGameData().get(0).getBase64Image());
-        log.info("nullable image: " +savableOrderData.getGames().get(0).getBase64Image());
-
         return orderRepository.save(savableOrderData).getId();
 
     }

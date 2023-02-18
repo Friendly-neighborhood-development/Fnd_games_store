@@ -64,12 +64,7 @@ public class SaveOrderTest {
 
         savedOrder.setGames(testgameList);
 
-        log.info("image form savedOrder: "+savedOrder.getGames().get(0).getBase64Image());
-
         OrderRequestDTO incomingOrderDto = wrapOrderToDto(savedOrder);
-
-        log.info("image from wrapped: "+incomingOrderDto.getGameData().get(0).getBase64Image());
-
 
         String savedOrderId = service.saveOrder(incomingOrderDto);
 
@@ -98,8 +93,6 @@ public class SaveOrderTest {
     }
 
     private OrderRequestDTO wrapOrderToDto(Order wrapableOrder){
-
-        log.info("from wrapper: "+wrapableOrder.getGames().get(0).getBase64Image());
         return new OrderRequestDTO(wrapableOrder);
     }
 
