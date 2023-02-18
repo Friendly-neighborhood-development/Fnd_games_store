@@ -58,4 +58,5 @@ public class Order {
     public int hashCode() {
         return Objects.hash(id, userId, isOrderProcessed, games);
     }
+
 }

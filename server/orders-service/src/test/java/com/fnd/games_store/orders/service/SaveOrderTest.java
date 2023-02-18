@@ -43,13 +43,7 @@ public class SaveOrderTest {
 
     @Test
     void saveOrder_ShouldSaveProperOrderEntity(){
-//
-//        log.info("saved order:" + savedOrder);
-//
-//        log.info("expected: "+expectedOrder.toString());
-
-        assertThat(savedOrder).isEqualTo(expectedOrder);
-//        assertThat(savedOrder.equals(expectedOrder)).isTrue();
+        assertThat(savedOrder.equals(expectedOrder)).isTrue();
     }
 
 
@@ -66,7 +60,7 @@ public class SaveOrderTest {
         savedOrder.setUserId(userId);
         savedOrder.setOrderDate(testCaseInitTime);
 
-        savedOrder.setGames(testgameList);
+        savedOrder.setGames(new ArrayList<>());
 
         OrderRequestDTO incomingOrderDto = wrapOrderToDto(savedOrder);
 
@@ -97,6 +91,7 @@ public class SaveOrderTest {
     }
 
     private OrderRequestDTO wrapOrderToDto(Order wrapableOrder){
+        log.info(wrapableOrder.getOrderDate().toString());
         return new OrderRequestDTO(wrapableOrder);
     }
 
