@@ -6,9 +6,13 @@ import com.fnd.games_store.orders.entity.Order;
 import com.fnd.games_store.orders.repository.OrderRepository;
 import com.fnd.games_store.orders.service.OrderSaver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.stream.Collectors;
 
+@Service
+@Transactional
 public class OrderSaverService implements OrderSaver {
 
 
