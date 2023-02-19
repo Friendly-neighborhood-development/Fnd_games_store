@@ -3,16 +3,12 @@ package com.fnd.games_store.orders.service;
 
 import com.fnd.games_store.orders.OrdersApplication;
 import com.fnd.games_store.orders.dto.OrderRequestDTO;
-import com.fnd.games_store.orders.entity.Game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-
-
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 @Transactional
@@ -21,20 +17,17 @@ public class SaveInitialOrderDataTest extends ServiceTestUtils{
 
     @Test
     void saveOrder_ShouldCreateInitialOrderEntry(){
-        assertThat(savedOrder.equals(expectedOrder)).isTrue();
+        assertThat(savedOrder).isEqualTo(expectedOrder);
     }
 
     @BeforeEach
     void testSetup(){
 
-        testgameList.add(createTestGameEntity("1"));
-        testgameList.add(createTestGameEntity("2"));
-
         savedOrder.setIsOrderProcessed(true);
         savedOrder.setUserId(userId);
         savedOrder.setOrderDate(testCaseInitTime);
 
-        savedOrder.setGames(new ArrayList<>());
+        savedOrder.setGames(testgameList);
 
         OrderRequestDTO incomingOrderDto = wrapOrderToDto(savedOrder);
 

@@ -14,7 +14,7 @@ public class UpdateExistingOrderDataTest extends ServiceTestUtils{
 
     @Test
     void saveOrder_ShouldUpdateExistingOrderEntry(){
-        assertThat(updatedSavableOrder.getGames().size()).isEqualTo(expectedOrder.getGames().size());
+        assertThat(updatedSavableOrder).isEqualTo(expectedOrder);
     }
 
     @BeforeEach
