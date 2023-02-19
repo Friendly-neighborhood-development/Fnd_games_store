@@ -29,8 +29,6 @@ public class ServiceTestUtils {
 
     protected List<Game> testgameList = new ArrayList<>();
 
-    protected Order updatedSavableOrder = new Order();
-
     protected Game createTestGameEntity(String differenceParameter){
 
         Game testGameEntity = new Game();
