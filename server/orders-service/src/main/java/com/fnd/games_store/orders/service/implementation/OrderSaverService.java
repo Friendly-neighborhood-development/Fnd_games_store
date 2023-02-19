@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,7 +36,14 @@ public class OrderSaverService implements OrderSaver {
         savableOrderData.setUserId(incomingOrderData.getUserId());
         savableOrderData.setGames(incomingOrderData.getGameData().stream().map((Game::new)).collect(Collectors.toList()));
 
-        return orderRepository.save(savableOrderData).getId();
+        Optional<Order> existingOrderData = orderRepository.findOrderByUserId(incomingOrderData.getUserId());
+
+        if(!existingOrderData.isPresent()){
+            return orderRepository.save(savableOrderData).getId();
+        } else {
+            return null;
+        }
+
 
     }
 
