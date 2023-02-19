@@ -41,7 +41,8 @@ public class OrderSaverService implements OrderSaver {
         if(!existingOrderData.isPresent()){
             return orderRepository.save(savableOrderData).getId();
         } else {
-            return null;
+            savableOrderData.setId(incomingOrderData.getUserId());
+            return orderRepository.save(savableOrderData).getId();
         }
 
 
