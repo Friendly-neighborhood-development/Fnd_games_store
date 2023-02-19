@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.*;
@@ -16,6 +17,9 @@ import static org.assertj.core.api.Assertions.*;
 @SpringBootTest(classes = OrdersApplication.class)
 @Slf4j
 public class SaveInitialOrderDataTest extends ServiceTestUtils{
+
+
+    private OffsetDateTime testCaseInitTime = OffsetDateTime.now();
 
     @Test
     void saveOrder_ShouldCreateInitialOrderEntry(){

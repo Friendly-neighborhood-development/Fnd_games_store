@@ -7,10 +7,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.OffsetDateTime;
+
 import static org.assertj.core.api.Assertions.assertThat;
 @Transactional
 @SpringBootTest(classes = OrdersApplication.class)
 public class UpdateExistingOrderDataTest extends ServiceTestUtils{
+
+
+    private OffsetDateTime testCaseInitTime = OffsetDateTime.now();
 
     @Test
     void saveOrder_ShouldUpdateExistingOrderEntry(){
