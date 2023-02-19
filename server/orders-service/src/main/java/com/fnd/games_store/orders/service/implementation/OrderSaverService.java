@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.OffsetDateTime;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -35,6 +36,7 @@ public class OrderSaverService implements OrderSaver {
         savableOrderData.setIsOrderProcessed(true);
         savableOrderData.setUserId(incomingOrderData.getUserId());
         savableOrderData.setGames(incomingOrderData.getGameData().stream().map((Game::new)).collect(Collectors.toList()));
+        savableOrderData.setOrderDate(OffsetDateTime.now());
 
         Optional<Order> existingOrderData = orderRepository.findOrderByUserId(incomingOrderData.getUserId());
 
