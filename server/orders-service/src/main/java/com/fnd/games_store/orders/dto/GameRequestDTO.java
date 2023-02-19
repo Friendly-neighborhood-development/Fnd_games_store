@@ -24,6 +24,7 @@ public class GameRequestDTO {
 
 
     public GameRequestDTO(Game game) {
+        this.id = game.getId();
         this.name = game.getName();
         this.releaseDate = game.getReleaseDate();
         this.price = game.getPrice();

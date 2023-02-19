@@ -21,8 +21,6 @@ import java.util.Objects;
 public class Game {
     @NotNull
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name ="uuid", strategy ="uuid2")
     @Column(name = "game_id")
     @ToString.Exclude
     private String id;
@@ -38,6 +36,7 @@ public class Game {
     private String base64Image;
 
     public Game(GameRequestDTO gameRequestDTO){
+        this.id = gameRequestDTO.getId();
         this.name = gameRequestDTO.getName();
         this.releaseDate = gameRequestDTO.getReleaseDate();
         this.price = gameRequestDTO.getPrice();
