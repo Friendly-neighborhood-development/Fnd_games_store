@@ -17,7 +17,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 @Transactional
 @SpringBootTest(classes = OrdersApplication.class)
-public class SaveOrderTest extends ServiceTestUtils{
+public class SaveInitialOrderDataTest extends ServiceTestUtils{
 
     @Test
     void saveOrder_ShouldCreateInitialOrderEntry(){
@@ -27,7 +27,6 @@ public class SaveOrderTest extends ServiceTestUtils{
     @BeforeEach
     void testSetup(){
 
-        List<Game> testgameList = new ArrayList<>();
         testgameList.add(createTestGameEntity("1"));
         testgameList.add(createTestGameEntity("2"));
 

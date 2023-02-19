@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 @Slf4j
 public class ServiceTestUtils {
 
@@ -24,8 +27,11 @@ public class ServiceTestUtils {
 
     protected Order expectedOrder = new Order();
 
+    protected List<Game> testgameList = new ArrayList<>();
+
     protected OffsetDateTime testCaseInitTime = OffsetDateTime.now();
 
+    protected Order updatedSavableOrder = new Order();
 
     protected Game createTestGameEntity(String differenceParameter){
 
