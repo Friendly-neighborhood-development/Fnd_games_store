@@ -42,7 +42,7 @@ public class SaveOrderTest {
 
 
     @Test
-    void saveOrder_ShouldSaveProperOrderEntity(){
+    void saveOrder_ShouldCreateInitialOrderEntry(){
         assertThat(savedOrder.equals(expectedOrder)).isTrue();
     }
 
