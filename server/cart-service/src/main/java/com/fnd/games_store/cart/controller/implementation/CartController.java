@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
-public class CartController implements CartCrudController, OrderProcessor {
+public class CartController implements CartCrudController {
 
 
     private final CartCrudService service;
@@ -39,9 +39,4 @@ public class CartController implements CartCrudController, OrderProcessor {
         return ResponseEntity.ok(service.getCartContent(gameRequestDTO.getUserId()));
     }
 
-    @Override
-    @PostMapping("v1/orders/new")
-    public ResponseEntity<OrderResponseDTO> processOrder() {
-        return ResponseEntity.ok(new OrderResponseDTO());
-    }
 }

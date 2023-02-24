@@ -1,4 +1,4 @@
-package com.fnd.games_store.cart.test.service;
+package com.fnd.games_store.cart.test.cart_service;
 
 import com.fnd.games_store.cart.dto.CartRequestDTO;
 import com.fnd.games_store.cart.dto.CartResponseDTO;
@@ -15,7 +15,7 @@ import org.mockito.quality.Strictness;
 import java.util.Optional;
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-public class Service_UpdateCartTest extends ServiceTestUtilities {
+public class CartService_UpdateCartTest extends ServiceTestUtilities {
 
 
 
