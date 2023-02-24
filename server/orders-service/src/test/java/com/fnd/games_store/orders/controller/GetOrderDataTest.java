@@ -1,40 +1,23 @@
 package com.fnd.games_store.orders.controller;
 
 
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fnd.games_store.orders.dto.GameResponseDTO;
 import com.fnd.games_store.orders.dto.OrderResponseDTO;
-import com.fnd.games_store.orders.service.OrderFetcher;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 @SpringBootTest
 @AutoConfigureMockMvc
 @Slf4j
 public class GetOrderDataTest extends ControllerTestUtils{
-
-
-
-
-
 
 
     @Test
