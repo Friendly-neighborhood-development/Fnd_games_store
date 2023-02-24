@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fnd.games_store.orders.dto.GameResponseDTO;
 import com.fnd.games_store.orders.dto.OrderResponseDTO;
 import com.fnd.games_store.orders.service.OrderFetcher;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.assertj.core.api.Assertions.assertThat;
-@SpringBootTest(classes = OrderController.class)
+@SpringBootTest
 @AutoConfigureMockMvc
+@Slf4j
 public class GetOrderDataTest {
 
 
@@ -64,6 +66,9 @@ public class GetOrderDataTest {
         String requestBody = mvcResult.getResponse().getContentAsString();
 
         OrderResponseDTO actualOrderData = objectMapper.readValue(requestBody, OrderResponseDTO.class);
+
+        log.info("actual order data: "+actualOrderData.toString());
+        log.info("expected order data: "+expectedOrderData.toString());
 
         assertThat(actualOrderData).isEqualTo(expectedOrderData);
 
