@@ -1,6 +1,7 @@
 package com.fnd.games_store.orders.controller;
 
 
+import com.fnd.games_store.orders.OrdersApplication;
 import com.fnd.games_store.orders.dto.OrderResponseDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-@SpringBootTest
+@SpringBootTest(classes = OrdersApplication.class)
 @AutoConfigureMockMvc
 @Slf4j
 public class GetOrderDataTest extends ControllerTestUtils{
