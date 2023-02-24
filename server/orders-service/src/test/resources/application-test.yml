@@ -1,9 +1,9 @@
 spring:
-#  cloud:
-#    config:
-#      enabled: false
-#    discovery:
-#      enabled: false
+  cloud:
+    config:
+      enabled: false
+    discovery:
+      enabled: false
   jpa:
     flyway:
       enabled: false
