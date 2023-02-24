@@ -29,29 +29,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @AutoConfigureMockMvc
 @Slf4j
-public class GetOrderDataTest {
+public class GetOrderDataTest extends ControllerTestUtils{
 
 
 
-    @MockBean
-    protected OrderFetcher service;
 
-    @Autowired
-    protected MockMvc mvc;
-
-    @Autowired
-    protected ObjectMapper objectMapper;
-
-    protected String userId = "user1";
-
-
-    protected OrderResponseDTO mockedOrderResponse = new OrderResponseDTO();;
-
-    protected List<GameResponseDTO> testGameList = new ArrayList<>();
-
-    private OffsetDateTime testCaseInitTime = OffsetDateTime.now();
-
-    protected OrderResponseDTO expectedOrderData = new OrderResponseDTO();
 
 
 
@@ -74,10 +56,6 @@ public class GetOrderDataTest {
 
     }
 
-
-
-
-
     @BeforeEach
     void testSetup(){
 
@@ -89,21 +67,5 @@ public class GetOrderDataTest {
         when(service.fetchOrderData(userId)).thenReturn(mockedOrderResponse);
 
     }
-
-
-    protected GameResponseDTO createTestGameEntity(String differenceParameter){
-
-        GameResponseDTO testGameEntity = new GameResponseDTO();
-        testGameEntity.setId(differenceParameter);
-        testGameEntity.setName("Doom Eternal" + differenceParameter);
-        testGameEntity.setReleaseDate("2009"+differenceParameter);
-        testGameEntity.setPrice(BigDecimal.valueOf(1000));
-        testGameEntity.setDiscount(BigDecimal.valueOf(20));
-        testGameEntity.setDescription(""+differenceParameter);
-        testGameEntity.setBase64Image(""+differenceParameter);
-
-        return testGameEntity;
-    }
-
 
 }
