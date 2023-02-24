@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 @SpringBootTest(classes = OrdersApplication.class)
 @AutoConfigureMockMvc
@@ -25,7 +25,7 @@ public class GetOrderDataTest extends ControllerTestUtils{
     void getDataEndpoint_ShouldReturnProperResponse() throws Exception {
 
 
-        MvcResult mvcResult = mvc.perform(post("/v1/purchases/"+userId)
+        MvcResult mvcResult = mvc.perform(get("/v1/purchases/"+userId)
                         .contentType(MediaType.APPLICATION_JSON))
                         .andExpect(status().isOk()).andReturn();
 
