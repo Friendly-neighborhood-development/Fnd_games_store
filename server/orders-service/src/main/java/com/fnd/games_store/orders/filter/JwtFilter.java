@@ -1,5 +1,6 @@
 package com.fnd.games_store.orders.filter;
 
+import com.fnd.games_store.orders.exception.UserValidationFailedException;
 import com.fnd.games_store.orders.rest.UserValidationClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
