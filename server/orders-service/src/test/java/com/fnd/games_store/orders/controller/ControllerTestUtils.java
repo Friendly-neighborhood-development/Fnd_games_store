@@ -3,6 +3,7 @@ package com.fnd.games_store.orders.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fnd.games_store.orders.dto.GameResponseDTO;
 import com.fnd.games_store.orders.dto.OrderResponseDTO;
+import com.fnd.games_store.orders.rest.UserValidationClient;
 import com.fnd.games_store.orders.service.OrderFetcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -15,6 +16,8 @@ import java.util.List;
 
 public class ControllerTestUtils {
 
+    @MockBean
+    protected UserValidationClient userValidationClient;
     @MockBean
     protected OrderFetcher service;
 

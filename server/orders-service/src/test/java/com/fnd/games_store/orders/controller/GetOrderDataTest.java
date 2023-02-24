@@ -3,17 +3,19 @@ package com.fnd.games_store.orders.controller;
 
 import com.fnd.games_store.orders.OrdersApplication;
 import com.fnd.games_store.orders.dto.OrderResponseDTO;
+import com.fnd.games_store.orders.dto.ValidationResponseDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MvcResult;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 @SpringBootTest(classes = OrdersApplication.class)
 @AutoConfigureMockMvc
@@ -25,7 +27,8 @@ public class GetOrderDataTest extends ControllerTestUtils{
     void getDataEndpoint_ShouldReturnProperResponse() throws Exception {
 
 
-        MvcResult mvcResult = mvc.perform(post("/v1/purchases/"+userId)
+        MvcResult mvcResult = mvc.perform(get("/v1/purchases/"+userId)
+                        .header("authorization", "")
                         .contentType(MediaType.APPLICATION_JSON))
                         .andExpect(status().isOk()).andReturn();
 
@@ -50,6 +53,19 @@ public class GetOrderDataTest extends ControllerTestUtils{
 
         when(service.fetchOrderData(userId)).thenReturn(mockedOrderResponse);
 
+    }
+
+    @BeforeEach
+    void userValidationFeignClientSetup(){
+
+        Boolean tokenIsValid = true;
+
+        ValidationResponseDTO response = new ValidationResponseDTO();
+        response.setIsTokenValid(true);
+
+        ResponseEntity<ValidationResponseDTO> responseBody = ResponseEntity.ok(response);
+
+        when(userValidationClient.validateUser("")).thenReturn(responseBody);
     }
 
 }
