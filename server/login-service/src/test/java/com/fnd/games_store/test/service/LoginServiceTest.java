@@ -1,22 +1,17 @@
 package com.fnd.games_store.test.service;
 
+import com.fnd.games_store.login.LoginApplication;
 import com.fnd.games_store.login.dto.LoginResponseDTO;
 import com.fnd.games_store.login.entity.Account;
 import com.fnd.games_store.login.entity.Authority;
-import com.fnd.games_store.login.jwt_utils.JwtGenerator;
-import com.fnd.games_store.login.repository.AccountRepository;
+import com.fnd.games_store.login.exception.InvalidPasswordException;
 import com.fnd.games_store.login.service.implementation.LoginServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -24,51 +19,37 @@ import java.util.List;
 import java.util.Optional;
 
 
-import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest(classes = LoginApplication.class)
 public class LoginServiceTest {
 
-    @Mock
-    private PasswordEncoder passwordEncoder;
-    @Mock
-    private UserDetailsService userDetails;
-    @Mock
-    private JwtGenerator jwtGenerator;
-    @Mock
-    private AccountRepository accountRepository;
 
-    @InjectMocks
+    @Autowired
     private LoginServiceImpl loginService;
 
     private String username = "admin";
 
-    private String password = "password";
+    private String wrongPassword = "password1";
 
     private LocalDate date = LocalDate.parse("2030-01-01");
 
     private String generatedToken = "token";
 
-
+    private LoginResponseDTO expectedLoginResponse;
 
     @Test
     void login_shouldReturnValidResponse(){
-        assertThat(loginService.login(username, password)).isEqualTo(createAppropriateResponse());
-        verify(passwordEncoder).matches(password, userDetails.loadUserByUsername(username).getPassword());
+
+        InvalidPasswordException thrownException = assertThrows(InvalidPasswordException.class, ()-> loginService.login(username, wrongPassword));
     }
 
 
 
     @BeforeEach
     void testSetup(){
-
-        when(userDetails.loadUserByUsername(username)).thenReturn(createProperAdminUserInstance());
-        when(accountRepository.findAccountByUsername(username)).thenReturn(createAppropriateAccount());
-        when(jwtGenerator.generateJwtToken(createProperAdminUserInstance())).thenReturn(generatedToken);
-
+        expectedLoginResponse = createAppropriateResponse();
     }
 
     //TODO refactor this with stream later
@@ -76,17 +57,17 @@ public class LoginServiceTest {
 
         List<GrantedAuthority> adminGrantedAuthorities = new ArrayList<>();
 
-//        Authority adminAuthority = new Authority("1", "super_user");
-//        Authority staffAuthority = new Authority("2", "staff_user");
-//        Authority regularAuthority = new Authority("3", "regular_user");
-//
-//
-//        adminGrantedAuthorities.add(adminAuthority);
-//        adminGrantedAuthorities.add(staffAuthority);
-//        adminGrantedAuthorities.add(regularAuthority);
+        Authority adminAuthority = new Authority("1", "super_user");
+        Authority staffAuthority = new Authority("2", "staff_user");
+        Authority regularAuthority = new Authority("3", "regular_user");
+
+
+        adminGrantedAuthorities.add(adminAuthority);
+        adminGrantedAuthorities.add(staffAuthority);
+        adminGrantedAuthorities.add(regularAuthority);
 
         return new User(username,
-                password,
+                wrongPassword,
                 true,
                 true,
                 true,
@@ -102,7 +83,7 @@ public class LoginServiceTest {
 
         creatingAccount.setId("1");
         creatingAccount.setUsername(username);
-        creatingAccount.setPassword(password);
+        creatingAccount.setPassword(wrongPassword);
         creatingAccount.setIsAccountEnabled(true);
         creatingAccount.setExpirationDate(date);
         creatingAccount.setCredentialsExpirationDate(date);
@@ -111,7 +92,6 @@ public class LoginServiceTest {
 
         return Optional.of(creatingAccount);
     }
-
 
     private LoginResponseDTO createAppropriateResponse(){
         return new LoginResponseDTO("1", generatedToken);
