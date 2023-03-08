@@ -57,14 +57,14 @@ public class LoginServiceTest {
 
         List<GrantedAuthority> adminGrantedAuthorities = new ArrayList<>();
 
-//        Authority adminAuthority = new Authority("1", "super_user");
-//        Authority staffAuthority = new Authority("2", "staff_user");
-//        Authority regularAuthority = new Authority("3", "regular_user");
-//
-//
-//        adminGrantedAuthorities.add(adminAuthority);
-//        adminGrantedAuthorities.add(staffAuthority);
-//        adminGrantedAuthorities.add(regularAuthority);
+        Authority adminAuthority = new Authority("1", "super_user");
+        Authority staffAuthority = new Authority("2", "staff_user");
+        Authority regularAuthority = new Authority("3", "regular_user");
+
+
+        adminGrantedAuthorities.add(adminAuthority);
+        adminGrantedAuthorities.add(staffAuthority);
+        adminGrantedAuthorities.add(regularAuthority);
 
         return new User(username,
                 wrongPassword,
