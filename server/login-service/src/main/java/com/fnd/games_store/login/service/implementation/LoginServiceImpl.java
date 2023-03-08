@@ -40,6 +40,8 @@ public class LoginServiceImpl implements LoginService {
 
         String userId = accountRepository.findAccountByUsername(username).get().getId();
 
+        log.info(userId);
+
         if(passwordEncoder.matches(password, loadedUser.getPassword())){
             return new LoginResponseDTO(userId, jwtGenerator.generateJwtToken(loadedUser));
         } else throw new InvalidPasswordException("invalid password");

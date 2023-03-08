@@ -41,7 +41,6 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    implementation 'junit:junit:4.13.2'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation group: 'com.auth0', name: 'java-jwt', version: '3.19.2'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
