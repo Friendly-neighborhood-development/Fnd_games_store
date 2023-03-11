@@ -1,3 +1,33 @@
+version: '3'
 services:
   config-service:
     image: sergeypodgorny/config-service
+    ports:
+      - "8001:8001"
+    container_name: config-service
+    networks:
+      - private-net
+    healthcheck:
+      test: "curl --fail --silent localhost:8001/actuator/health | grep UP || exit 1"
+      interval: 1s
+      timeout: 1s
+      retries: 5
+
+
+
+
+  #Eureka
+  registry-service:
+    image: sergeypodgorny/registry-service
+    ports:
+      - "8761:8761"
+    container_name: registry-service
+    depends_on:
+      config-service:
+        condition: service_healthy
+    networks:
+      - private-net
+
+networks:
+  private-net:
+    driver: bridge
