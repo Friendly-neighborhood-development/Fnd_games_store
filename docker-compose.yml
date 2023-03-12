@@ -5,12 +5,15 @@ services:
       context: ./server/config-service
       dockerfile: Dockerfile
     ports:
-      - 8001:8001
-    container_name: config-service-container
+      - 8001-8010:8001
+#    container_name: config-service-container
     image: config-service
     hostname: config-service
-#    networks:
-#      - private
+    deploy:
+      mode: replicated
+      replicas: 2
+    networks:
+      - private
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8001/actuator/health"]
       start_period: 1s
@@ -19,21 +22,21 @@ services:
       retries: 3
 
   #Eureka
-  registry-service:
-    build:
-      context: ./server/registry-service
-      dockerfile: Dockerfile
-    container_name: registry-service-container
-    hostname: registry-service
-    image: registry-service
-    depends_on:
-      config-service:
-        condition: service_healthy
-    ports:
-      - 8761:8761
+#  registry-service:
+#    build:
+#      context: ./server/registry-service
+#      dockerfile: Dockerfile
+#    container_name: registry-service-container
+#    hostname: registry-service
+#    image: registry-service
+#    depends_on:
+#      config-service:
+#        condition: service_healthy
+#    ports:
+#      - 8761:8761
 #    networks:
 #      - private
 
-#networks:
-#  private:
-#    driver: bridge
+networks:
+  private:
+    driver: bridge
