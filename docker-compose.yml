@@ -1,7 +1,6 @@
 version: "3.9"
 services:
   config-service:
-#    build: /home/sergey/work/spring/Fnd_games_store/server/config-service
     build:
       context: ./server/config-service
       dockerfile: Dockerfile
@@ -20,19 +19,20 @@ services:
       retries: 3
 
   #Eureka
-#  registry-service:
-#    build: /home/sergey/work/spring/Fnd_games_store/server/registry-service
-#    ports:
-#      - 8761:8761
-#    container_name: registry-service
-#    hostname: registry-service
-#    links:
-#      - "config-service"
-#    depends_on:
-#      config-service:
-#        condition: service_healthy
-#    networks:
-#      - private
+  registry-service:
+    build:
+      context: ./server/registry-service
+      dockerfile: Dockerfile
+    ports:
+      - 8761:8761
+    container_name: registry-service
+    hostname: registry-service
+    image: registry-service
+    depends_on:
+      config-service:
+        condition: service_healthy
+    networks:
+      - private
 
 networks:
   private:
