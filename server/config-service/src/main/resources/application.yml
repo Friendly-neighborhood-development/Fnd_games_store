@@ -1,13 +1,18 @@
 spring:
   profiles:
-    active: prod
+    active: dev
   mvc:
     servlet:
       load-on-startup: 1
 
 server:
-  port: 8001
+  port: 8101
 
 
-
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
 
