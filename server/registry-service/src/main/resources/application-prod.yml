@@ -1,6 +1,6 @@
 eureka:
   instance:
-    preferIpAddress: true
+    preferIpAddress: false
   client:
     service-url:
       defaultZone: http://registry-service:8761/eureka/

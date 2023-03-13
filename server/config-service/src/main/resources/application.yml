@@ -5,7 +5,7 @@ spring:
     name: config-service
 
 server:
-  port: 8101
+  port: 8001
 
 
 eureka:
@@ -13,5 +13,5 @@ eureka:
     preferIpAddress: true
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://registry-service:8761/eureka/
 
