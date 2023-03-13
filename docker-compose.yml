@@ -9,10 +9,9 @@ services:
     ports:
       - 8700-8710:8761
     image: registry-service
-    hostname: registry-service
     deploy:
       mode: replicated
-      replicas: 1
+      replicas: 2
     networks:
       - private
     healthcheck:
@@ -20,7 +19,7 @@ services:
       start_period: 1s
       interval: 3s
       timeout: 6s
-      retries: 3
+      retries: 10
 
 
   #Configuration-service
@@ -31,10 +30,9 @@ services:
     ports:
       - 8001-8010:8001
     image: config-service
-    hostname: config-service
     deploy:
       mode: replicated
-      replicas: 1
+      replicas: 2
     networks:
       - private
     depends_on:
