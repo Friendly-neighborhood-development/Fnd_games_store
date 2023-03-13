@@ -1,9 +1,8 @@
 spring:
   profiles:
     active: dev
-  mvc:
-    servlet:
-      load-on-startup: 1
+  application:
+    name: config-service
 
 server:
   port: 8101
