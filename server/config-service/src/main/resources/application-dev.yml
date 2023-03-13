@@ -8,3 +8,9 @@ spring:
         git:
           uri: file://home/sergey/work/spring/games_store_environment_configurations
           skipSslValidation: true
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

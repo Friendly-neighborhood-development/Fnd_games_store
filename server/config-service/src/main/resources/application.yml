@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: prod
   application:
     name: config-service
 
@@ -8,10 +8,5 @@ server:
   port: 8001
 
 
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    service-url:
-      defaultZone: http://registry-service:8761/eureka/
+
 

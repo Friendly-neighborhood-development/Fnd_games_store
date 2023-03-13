@@ -12,7 +12,7 @@ services:
     hostname: registry-service
     deploy:
       mode: replicated
-      replicas: 2
+      replicas: 1
     networks:
       - private
     healthcheck:
@@ -23,23 +23,23 @@ services:
       retries: 3
 
 
-  #configuration-service
-#  config-service:
-#    build:
-#      context: ./server/config-service
-#      dockerfile: Dockerfile
-#    ports:
-#      - 8001-8010:8001
-#    image: config-service
-#    hostname: config-service
-#    deploy:
-#      mode: replicated
-#      replicas: 2
-#    networks:
-#      - private
-#    depends_on:
-#      registry-service:
-#        condition: service_healthy
+  #Configuration-service
+  config-service:
+    build:
+      context: ./server/config-service
+      dockerfile: Dockerfile
+    ports:
+      - 8001-8010:8001
+    image: config-service
+    hostname: config-service
+    deploy:
+      mode: replicated
+      replicas: 1
+    networks:
+      - private
+    depends_on:
+      registry-service:
+        condition: service_healthy
 
 
 networks:
