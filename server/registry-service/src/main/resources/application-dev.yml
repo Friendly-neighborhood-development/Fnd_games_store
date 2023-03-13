@@ -1,4 +1,7 @@
 eureka:
+  config:
+    activate:
+      on-profile: dev
   instance:
     preferIpAddress: true
   client:
