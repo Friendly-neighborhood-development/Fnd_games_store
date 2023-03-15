@@ -48,25 +48,25 @@ services:
         condition: service_healthy
 
   #Games-service
-  games-service:
-    build:
-      context: ./server/games-service
-      dockerfile: Dockerfile
-    ports:
-      - 8800-8810:8081
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-    networks:
-      - private
-    depends_on:
-      config-service:
-        condition: service_healthy
+#  games-service:
+#    build:
+#      context: ./server/games-service
+#      dockerfile: Dockerfile
+#    ports:
+#      - 8800-8810:8081
+#    deploy:
+#      mode: replicated
+#      replicas: 1
+#      restart_policy:
+#        condition: on-failure
+#        delay: 5s
+#        max_attempts: 3
+#        window: 120s
+#    networks:
+#      - private
+#    depends_on:
+#      config-service:
+#        condition: service_healthy
 
 
 

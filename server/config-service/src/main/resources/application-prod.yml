@@ -8,9 +8,3 @@ spring:
         git:
           uri: https://github.com/Friendly-neighborhood-development/games_store_environment_configurations
           skipSslValidation: true
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    service-url:
-      defaultZone: http://registry-service:8761/eureka/
