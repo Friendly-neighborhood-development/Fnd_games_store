@@ -8,7 +8,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8700-8710:8761
-    image: registry-service
     deploy:
       mode: replicated
       replicas: 2
@@ -34,7 +33,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8001-8010:8001
-    image: config-service
     deploy:
       mode: replicated
       replicas: 2
