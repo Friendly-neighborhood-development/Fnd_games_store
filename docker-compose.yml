@@ -1,84 +1,85 @@
 version: "3.9"
 services:
 
-#  #Eureka
-#  registry-service:
-#    build:
-#      context: ./server/registry-service
-#      dockerfile: Dockerfile
-#    image: registry-service
-#    ports:
-#      - 8700-8710:8761
-#    deploy:
-#      mode: replicated
-#      replicas: 1
-#      restart_policy:
-#        condition: on-failure
-#        delay: 5s
-#        max_attempts: 3
-#        window: 120s
-#    networks:
-#      - private
-#    healthcheck:
-#      test: [ "CMD", "curl", "-f", "http://localhost:8761/actuator/health" ]
-#      start_period: 10s
-#      interval: 15s
-#      timeout: 5s
-#      retries: 10
-#
-#
-#  #Configuration-service
-#  config-service:
-#    build:
-#      context: ./server/config-service
-#      dockerfile: Dockerfile
-#    image: config-service
-#    ports:
-#      - 8001-8010:8001
-#    deploy:
-#      mode: replicated
-#      replicas: 1
-#      restart_policy:
-#        condition: on-failure
-#        delay: 5s
-#        max_attempts: 3
-#        window: 120s
-#    networks:
-#      - private
-#    depends_on:
-#      registry-service:
-#        condition: service_healthy
-#    healthcheck:
-#      test: [ "CMD", "curl", "-f", "http://localhost:8001/actuator/health" ]
-#      start_period: 10s
-#      interval: 15s
-#      timeout: 5s
-#      retries: 10
-#
-#
-#  #Games-service
-#  games-service:
-#    build:
-#      context: ./server/games-service
-#      dockerfile: Dockerfile
-#    image: games-service
-#    ports:
-#      - 8800-8810:8081
-#    environment:
-#      - POSTGRES_DB=games-service-database
-#    deploy:
-#      mode: replicated
-#      replicas: 1
-#      restart_policy:
-#        condition: on-failure
-#        delay: 5s
-#        max_attempts: 3
-#        window: 120s
-#    networks:
-#      - private
-#    depends_on:
-#      config-service:
-#        condition: service_healthy
+  #Eureka
+  registry-service:
+    build:
+      context: ./server/registry-service
+      dockerfile: Dockerfile
+    image: registry-service
+    ports:
+      - 8700-8710:8761
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - private
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8761/actuator/health" ]
+      start_period: 10s
+      interval: 15s
+      timeout: 5s
+      retries: 10
+
+
+  #Configuration-service
+  config-service:
+    build:
+      context: ./server/config-service
+      dockerfile: Dockerfile
+    image: config-service
+    ports:
+      - 8001-8010:8001
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - private
+    depends_on:
+      registry-service:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8001/actuator/health" ]
+      start_period: 10s
+      interval: 15s
+      timeout: 5s
+      retries: 10
+
+
+  #Games-service
+  games-service:
+    build:
+      context: ./server/games-service
+      dockerfile: Dockerfile
+    image: games-service
+    ports:
+      - 8800-8810:8081
+    environment:
+      - POSTGRES_DB=games-service-database
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - private
+    depends_on:
+      config-service:
+        condition: service_healthy
+
 
 
   #Postgress database
@@ -96,7 +97,7 @@ services:
       - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
     deploy:
       mode: replicated
-      replicas: 2
+      replicas: 1
       restart_policy:
         condition: on-failure
         delay: 5s
