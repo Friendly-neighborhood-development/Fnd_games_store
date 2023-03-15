@@ -53,6 +53,24 @@ services:
       timeout: 5s
       retries: 10
 
+  #Postgress database
+  db:
+    image: postgres
+    restart: always
+    secrets:
+      - db-password
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - private
+    environment:
+      - POSTGRES_DB=games-service-database
+    expose:
+      - 5432
+
+
+
+
   #Games-service
   games-service:
     build:
@@ -60,6 +78,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8800-8810:8081
+    environment:
+      - POSTGRES_DB=games-service-database
     deploy:
       mode: replicated
       replicas: 1
@@ -75,6 +95,9 @@ services:
         condition: service_healthy
 
 
+
+volumes:
+  db-data:
 
 
 networks:
