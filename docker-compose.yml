@@ -80,6 +80,29 @@ services:
       config-service:
         condition: service_healthy
 
+  #Games-service
+  login-service:
+    build:
+      context: ./server/login-service
+      dockerfile: Dockerfile
+    image: login-service
+    ports:
+      - 8820-8830:8081
+    environment:
+      - POSTGRES_DB=login-service-database
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - private
+    depends_on:
+      config-service:
+        condition: service_healthy
 
 
   #Postgress database
@@ -93,6 +116,7 @@ services:
     networks:
       - private
     environment:
+      - POSTGRES_DB=games-service-database
       - POSTGRES_DB=games-service-database
       - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
     deploy:
