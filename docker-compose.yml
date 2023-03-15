@@ -117,7 +117,7 @@ services:
       - private
     environment:
       - POSTGRES_DB=games-service-database
-      - POSTGRES_DB=games-service-database
+      - POSTGRES_DB=login-service-database
       - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
     deploy:
       mode: replicated
