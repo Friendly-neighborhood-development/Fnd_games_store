@@ -16,9 +16,9 @@ services:
       - private
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8761/actuator/health" ]
-      start_period: 1s
-      interval: 3s
-      timeout: 6s
+      start_period: 10s
+      interval: 15s
+      timeout: 5s
       retries: 10
 
 
