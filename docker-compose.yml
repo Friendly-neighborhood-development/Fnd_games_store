@@ -10,7 +10,7 @@ services:
       - 8700-8710:8761
     deploy:
       mode: replicated
-      replicas: 1
+      replicas: 2
       restart_policy:
         condition: on-failure
         delay: 5s
@@ -35,7 +35,7 @@ services:
       - 8001-8010:8001
     deploy:
       mode: replicated
-      replicas: 1
+      replicas: 2
       restart_policy:
         condition: on-failure
         delay: 5s
@@ -67,6 +67,7 @@ services:
 #    depends_on:
 #      config-service:
 #        condition: service_healthy
+
 
 
 
