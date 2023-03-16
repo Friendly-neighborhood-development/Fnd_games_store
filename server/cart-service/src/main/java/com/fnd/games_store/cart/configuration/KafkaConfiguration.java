@@ -19,7 +19,7 @@ import org.springframework.kafka.support.serializer.JsonSerializer;
 public class KafkaConfiguration {
 
 
-    @Value("${variables.kafka.bootstrapAddress}")
+    @Value("${variables.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
 
