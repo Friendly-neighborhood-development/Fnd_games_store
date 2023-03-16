@@ -2,7 +2,9 @@ spring:
   application:
     name: cart-service
   profiles:
-    active: dev
+#    active: dev
+    active: prod
+#    active: standalone
 
 
 
