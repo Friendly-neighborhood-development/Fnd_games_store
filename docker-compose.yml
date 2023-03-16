@@ -80,7 +80,7 @@ services:
       config-service:
         condition: service_healthy
 
-  #Games-service
+  #Login-service
   login-service:
     build:
       context: ./server/login-service
@@ -105,14 +105,14 @@ services:
         condition: service_healthy
 
 
-  #Postgress database
-  db:
+  #Postgres games-service database
+  games-service-db:
     image: postgres
     restart: always
     secrets:
       - db-password
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - games-service-db-data:/var/lib/postgresql/data
     networks:
       - private
     environment:
@@ -126,13 +126,39 @@ services:
         delay: 5s
         max_attempts: 3
         window: 120s
-    expose:
-      - 5432
+    ports:
+      - 5000-5010:5432
+
+  #Postgres login-service database
+  login-service-db:
+    image: postgres
+    restart: always
+    secrets:
+      - db-password
+    volumes:
+      - login-service-db-data:/var/lib/postgresql/data
+    networks:
+      - private
+    environment:
+      - POSTGRES_DB=login-service-database
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    ports:
+      - 5000-5010:5432
+
 
 
 
 volumes:
-  db-data:
+  login-service-db-data:
+  games-service-db-data:
 
 secrets:
   db-password:
