@@ -21,14 +21,9 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 public class KafkaConfiguration {
 
 
-    @Value("${variables.kafka.bootstrap-servers}")
-    private String bootstrapAddress;
-
-
     @Bean
     public ConsumerFactory<String, String> consumerFactory(){
         Map<String,Object> kafkaConfig = new HashMap<>();
-        kafkaConfig.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         kafkaConfig.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         kafkaConfig.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         kafkaConfig.put(ConsumerConfig.GROUP_ID_CONFIG, "orders");
