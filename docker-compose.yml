@@ -56,53 +56,53 @@ services:
       retries: 10
 
 
-  #Games-service
-  games-service:
-    build:
-      context: ./server/games-service
-      dockerfile: Dockerfile
-    image: games-service
-    ports:
-      - 0:8081
-    environment:
-      - POSTGRES_DB=games-service-database
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-    networks:
-      - private
-    depends_on:
-      config-service:
-        condition: service_healthy
-
-  #Login-service
-  login-service:
-    build:
-      context: ./server/login-service
-      dockerfile: Dockerfile
-    image: login-service
-    ports:
-      - 0:8081
-    environment:
-      - POSTGRES_DB=login-service-database
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-    networks:
-      - private
-    depends_on:
-      config-service:
-        condition: service_healthy
+#  #Games-service
+#  games-service:
+#    build:
+#      context: ./server/games-service
+#      dockerfile: Dockerfile
+#    image: games-service
+#    ports:
+#      - 0:8081
+#    environment:
+#      - POSTGRES_DB=games-service-database
+#    deploy:
+#      mode: replicated
+#      replicas: 1
+#      restart_policy:
+#        condition: on-failure
+#        delay: 5s
+#        max_attempts: 3
+#        window: 120s
+#    networks:
+#      - private
+#    depends_on:
+#      config-service:
+#        condition: service_healthy
+#
+#  #Login-service
+#  login-service:
+#    build:
+#      context: ./server/login-service
+#      dockerfile: Dockerfile
+#    image: login-service
+#    ports:
+#      - 0:8081
+#    environment:
+#      - POSTGRES_DB=login-service-database
+#    deploy:
+#      mode: replicated
+#      replicas: 1
+#      restart_policy:
+#        condition: on-failure
+#        delay: 5s
+#        max_attempts: 3
+#        window: 120s
+#    networks:
+#      - private
+#    depends_on:
+#      config-service:
+#        condition: service_healthy
 
   #Orders-service
   orders-service:
@@ -130,77 +130,77 @@ services:
 
 
 
-  #Cart-service
-  cart-service:
-    build:
-      context: ./server/cart-service
-      dockerfile: Dockerfile
-    image: cart-service
-    ports:
-      - 0:8083
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-    networks:
-      - private
-    depends_on:
-      config-service:
-        condition: service_healthy
+#  #Cart-service
+#  cart-service:
+#    build:
+#      context: ./server/cart-service
+#      dockerfile: Dockerfile
+#    image: cart-service
+#    ports:
+#      - 0:8083
+#    deploy:
+#      mode: replicated
+#      replicas: 1
+#      restart_policy:
+#        condition: on-failure
+#        delay: 5s
+#        max_attempts: 3
+#        window: 120s
+#    networks:
+#      - private
+#    depends_on:
+#      config-service:
+#        condition: service_healthy
 
 
 
-  #Postgres games-service database
-  games-service-db:
-    image: postgres
-    restart: always
-    secrets:
-      - db-password
-    volumes:
-      - games-service-db-data:/var/lib/postgresql/data
-    networks:
-      - private
-    environment:
-      - POSTGRES_DB=games-service-database
-      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-    ports:
-      - 0:5432
-
-  #Postgres login-service database
-  login-service-db:
-    image: postgres
-    restart: always
-    secrets:
-      - db-password
-    volumes:
-      - login-service-db-data:/var/lib/postgresql/data
-    networks:
-      - private
-    environment:
-      - POSTGRES_DB=login-service-database
-      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-    ports:
-      - 0:5432
+#  #Postgres games-service database
+#  games-service-db:
+#    image: postgres
+#    restart: always
+#    secrets:
+#      - db-password
+#    volumes:
+#      - games-service-db-data:/var/lib/postgresql/data
+#    networks:
+#      - private
+#    environment:
+#      - POSTGRES_DB=games-service-database
+#      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
+#    deploy:
+#      mode: replicated
+#      replicas: 1
+#      restart_policy:
+#        condition: on-failure
+#        delay: 5s
+#        max_attempts: 3
+#        window: 120s
+#    ports:
+#      - 0:5432
+#
+#  #Postgres login-service database
+#  login-service-db:
+#    image: postgres
+#    restart: always
+#    secrets:
+#      - db-password
+#    volumes:
+#      - login-service-db-data:/var/lib/postgresql/data
+#    networks:
+#      - private
+#    environment:
+#      - POSTGRES_DB=login-service-database
+#      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
+#    deploy:
+#      mode: replicated
+#      replicas: 1
+#      restart_policy:
+#        condition: on-failure
+#        delay: 5s
+#        max_attempts: 3
+#        window: 120s
+#    ports:
+#      - 0:5432
 
 
   #Postgres orders-service database
@@ -227,21 +227,21 @@ services:
     ports:
       - 0:5432
 
-  #Cart redis db
-  redis-db:
-    image: redis
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-    ports:
-      - 0:6379
-    networks:
-      - private
+#  #Cart redis db
+#  redis-db:
+#    image: redis
+#    deploy:
+#      mode: replicated
+#      replicas: 1
+#      restart_policy:
+#        condition: on-failure
+#        delay: 5s
+#        max_attempts: 3
+#        window: 120s
+#    ports:
+#      - 0:6379
+#    networks:
+#      - private
 
   #Zookeeper server
   zookeeper:
