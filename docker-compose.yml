@@ -202,6 +202,32 @@ services:
     ports:
       - 0:5432
 
+
+  #Postgres orders-service database
+  orders-service-db:
+    image: postgres
+    restart: always
+    secrets:
+      - db-password
+    volumes:
+      - orders-service-db-data:/var/lib/postgresql/data
+    networks:
+      - private
+    environment:
+      - POSTGRES_DB=orders-service-database
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    ports:
+      - 0:5432
+
+  #Cart redis db
   redis-db:
     image: redis
     deploy:
@@ -265,6 +291,7 @@ services:
 volumes:
   login-service-db-data:
   games-service-db-data:
+  orders-service-db-data:
 
 secrets:
   db-password:
