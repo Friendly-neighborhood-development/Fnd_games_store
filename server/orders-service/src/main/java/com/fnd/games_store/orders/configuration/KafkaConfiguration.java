@@ -22,7 +22,7 @@ public class KafkaConfiguration {
 
 
     @Value("${variables.kafka.bootstrap-servers}")
-    private int bootstrapAddress;
+    private String bootstrapAddress;
 
 
     @Bean
