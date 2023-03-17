@@ -21,14 +21,14 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 public class KafkaConfiguration {
 
 
-    @Value("${variables.kafka.port}")
-    private int kafkaPort;
+    @Value("${variables.kafka.bootstrap-servers}")
+    private int bootstrapAddress;
 
 
     @Bean
     public ConsumerFactory<String, String> consumerFactory(){
         Map<String,Object> kafkaConfig = new HashMap<>();
-        kafkaConfig.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,  kafkaPort);
+        kafkaConfig.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         kafkaConfig.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         kafkaConfig.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         kafkaConfig.put(ConsumerConfig.GROUP_ID_CONFIG, "orders");
