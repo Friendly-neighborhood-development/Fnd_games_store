@@ -1,0 +1,32 @@
+spring:
+  cloud:
+    config:
+      enabled: false
+    discovery:
+      enabled: false
+  jpa:
+    flyway:
+      enabled: true
+      validate-on-migrate: true
+    database: POSTGRESQL
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    hibernate:
+      ddl-auto: none
+    properties:
+    datasource:
+      platform: postgres
+      url: jdbc:postgresql://orders-service-db:5432/${POSTGRES_DB}
+      username: postgres
+      password: root
+      driver-class-name: org.postgresql.Driver
+
+
+server:
+  servlet:
+    context-path: /orders
+  port: 8084
+
+
+variables:
+  kafka:
+    port: 9092
