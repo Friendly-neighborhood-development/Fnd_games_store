@@ -104,6 +104,31 @@ services:
       config-service:
         condition: service_healthy
 
+  #Orders-service
+  orders-service:
+    build:
+      context: ./server/orders-service
+      dockerfile: Dockerfile
+    image: orders-service
+    ports:
+      - 0:8084
+    environment:
+      - POSTGRES_DB=orders-service-database
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - private
+    depends_on:
+      config-service:
+        condition: service_healthy
+
+
 
   #Cart-service
   cart-service:
