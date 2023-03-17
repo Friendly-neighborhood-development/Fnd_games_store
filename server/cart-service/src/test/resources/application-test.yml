@@ -1,4 +1,6 @@
 spring:
+  kafka:
+    bootstrap-servers: kafka:9092
   cloud:
     config:
       enabled: false
@@ -13,5 +15,3 @@ variables:
   redis:
     host: localhost
     port: 6379
-  kafka:
-    bootstrapAddress: "localhost:9092"
