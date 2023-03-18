@@ -10,7 +10,7 @@ RUN  apk update \
 
 EXPOSE 8001
 COPY build/libs/config-service-1.0.jar .
-HEALTHCHECK --interval=30s --timeout=6s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=6s --retries=5 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:8001/actuator/health || exit 1
 
 ENTRYPOINT ["java", "-jar", "config-service-1.0.jar"]

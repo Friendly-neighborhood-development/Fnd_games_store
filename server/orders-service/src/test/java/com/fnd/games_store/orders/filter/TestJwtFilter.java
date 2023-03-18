@@ -14,9 +14,6 @@ import java.io.IOException;
 public class TestJwtFilter extends JwtFilter {
 
 
-    public TestJwtFilter(UserValidationClient userValidator) {
-        super(userValidator);
-    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
