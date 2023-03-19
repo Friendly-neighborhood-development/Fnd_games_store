@@ -49,27 +49,10 @@ public class WebSecurityConfiguration {
     }
 
 
-    @Bean(name = "actuatorFilter")
-    public ActuatorFilter actuatorFilter(){
-        return new ActuatorFilter();
-    }
-
-    @Bean
-    public FilterRegistrationBean actuatorFilterRegistration() {
-
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(actuatorFilter());
-        registration.addUrlPatterns("/actuator/**");
-        registration.setName("actuatorFilter");
-        return registration;
-    }
-
-
-
     @Bean
     public SecurityFilterChain securitySettings(HttpSecurity http) throws Exception {
 
-        http.authorizeHttpRequests().antMatchers("/v1/catalogue/*", "v1/catalogue/list/*").permitAll().anyRequest().authenticated();
+        http.authorizeHttpRequests().antMatchers("/v1/catalogue/*", "v1/catalogue/list/*", "/actuator/**").permitAll().anyRequest().authenticated();
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
 
