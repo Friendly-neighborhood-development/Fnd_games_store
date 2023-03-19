@@ -56,29 +56,31 @@ services:
       retries: 10
 
 
-#  #Games-service
-#  games-service:
-#    build:
-#      context: ./server/games-service
-#      dockerfile: Dockerfile
-#    image: games-service
-#    ports:
-#      - 0:8081
-#    environment:
-#      - POSTGRES_DB=games-service-database
-#    deploy:
-#      mode: replicated
-#      replicas: 1
-#      restart_policy:
-#        condition: on-failure
-#        delay: 5s
-#        max_attempts: 3
-#        window: 120s
-#    networks:
-#      - private
-#    depends_on:
-#      config-service:
-#        condition: service_healthy
+  #Games-service
+  games-service:
+    build:
+      context: ./server/games-service
+      dockerfile: Dockerfile
+    image: games-service
+    ports:
+      - 0:8081
+    environment:
+      - POSTGRES_DB=games-service-database
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - private
+    depends_on:
+      games-service-db:
+        condition: service_healthy
+      config-service:
+        condition: service_healthy
 #
 #  #Login-service
 #  login-service:
@@ -104,80 +106,16 @@ services:
 #      config-service:
 #        condition: service_healthy
 
-  #Orders-service
-  orders-service:
-    build:
-      context: ./server/orders-service
-      dockerfile: Dockerfile
-    image: orders-service
-    ports:
-      - 0:8084
-    environment:
-      - POSTGRES_DB=orders-service-database
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-    networks:
-      - private
-    depends_on:
-      config-service:
-        condition: service_healthy
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8084/orders/actuator/health" ]
-      start_period: 10s
-      interval: 15s
-      timeout: 5s
-      retries: 10
-
-
-
-  #Cart-service
-  cart-service:
-    build:
-      context: ./server/cart-service
-      dockerfile: Dockerfile
-    image: cart-service
-    ports:
-      - 0:8083
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-    networks:
-      - private
-    depends_on:
-      config-service:
-        condition: service_healthy
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8083/cart/actuator/health" ]
-      start_period: 10s
-      interval: 15s
-      timeout: 5s
-      retries: 20
-
-
-#  #Postgres games-service database
-#  games-service-db:
-#    image: postgres
-#    restart: always
-#    secrets:
-#      - db-password
-#    volumes:
-#      - games-service-db-data:/var/lib/postgresql/data
-#    networks:
-#      - private
+#  #Orders-service
+#  orders-service:
+#    build:
+#      context: ./server/orders-service
+#      dockerfile: Dockerfile
+#    image: orders-service
+#    ports:
+#      - 0:8084
 #    environment:
-#      - POSTGRES_DB=games-service-database
-#      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
+#      - POSTGRES_DB=orders-service-database
 #    deploy:
 #      mode: replicated
 #      replicas: 1
@@ -186,14 +124,78 @@ services:
 #        delay: 5s
 #        max_attempts: 3
 #        window: 120s
-#    ports:
-#      - 0:5432
+#    networks:
+#      - private
+#    depends_on:
+#      config-service:
+#        condition: service_healthy
 #    healthcheck:
-#       test: [ "CMD-SHELL", "pg_isready", "-d" ]
-#       interval: 30s
-#       timeout: 60s
-#       retries: 5
-#       start_period: 80s
+#      test: [ "CMD", "curl", "-f", "http://localhost:8084/orders/actuator/health" ]
+#      start_period: 10s
+#      interval: 15s
+#      timeout: 5s
+#      retries: 10
+
+
+
+#  #Cart-service
+#  cart-service:
+#    build:
+#      context: ./server/cart-service
+#      dockerfile: Dockerfile
+#    image: cart-service
+#    ports:
+#      - 0:8083
+#    deploy:
+#      mode: replicated
+#      replicas: 1
+#      restart_policy:
+#        condition: on-failure
+#        delay: 5s
+#        max_attempts: 3
+#        window: 120s
+#    networks:
+#      - private
+#    depends_on:
+#      config-service:
+#        condition: service_healthy
+#    healthcheck:
+#      test: [ "CMD", "curl", "-f", "http://localhost:8083/cart/actuator/health" ]
+#      start_period: 10s
+#      interval: 15s
+#      timeout: 5s
+#      retries: 20
+
+
+  #Postgres games-service database
+  games-service-db:
+    image: postgres
+    restart: always
+    secrets:
+      - db-password
+    volumes:
+      - games-service-db-data:/var/lib/postgresql/data
+    networks:
+      - private
+    environment:
+      - POSTGRES_DB=games-service-database
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    ports:
+      - 0:5432
+    healthcheck:
+       test: [ "CMD-SHELL", "pg_isready", "-d" ]
+       interval: 30s
+       timeout: 60s
+       retries: 5
+       start_period: 80s
 #
 #  #Postgres login-service database
 #  login-service-db:
@@ -225,100 +227,114 @@ services:
 #      retries: 5
 #      start_period: 80s
 
-  #Postgres orders-service database
-  orders-service-db:
-    image: postgres
-    restart: always
-    secrets:
-      - db-password
-    volumes:
-      - orders-service-db-data:/var/lib/postgresql/data
-    networks:
-      - private
-    environment:
-      - POSTGRES_DB=orders-service-database
-      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-    ports:
-      - 0:5432
-    healthcheck:
-      test: [ "CMD-SHELL", "pg_isready", "-d" ]
-      interval: 30s
-      timeout: 60s
-      retries: 5
-      start_period: 80s
+#  #Postgres orders-service database
+#  orders-service-db:
+#    image: postgres
+#    restart: always
+#    secrets:
+#      - db-password
+#    volumes:
+#      - orders-service-db-data:/var/lib/postgresql/data
+#    networks:
+#      - private
+#    environment:
+#      - POSTGRES_DB=orders-service-database
+#      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
+#    deploy:
+#      mode: replicated
+#      replicas: 1
+#      restart_policy:
+#        condition: on-failure
+#        delay: 5s
+#        max_attempts: 3
+#        window: 120s
+#    ports:
+#      - 0:5432
+#    healthcheck:
+#      test: [ "CMD-SHELL", "pg_isready", "-d" ]
+#      interval: 30s
+#      timeout: 60s
+#      retries: 5
+#      start_period: 80s
 
-  #Cart redis db
-  redis-db:
-    image: redis
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-    ports:
-      - 0:6379
-    networks:
-      - private
-    healthcheck:
-      test: [ "CMD", "redis-cli", "ping" ]
-      interval: 1s
-      timeout: 3s
-      retries: 30
+#  #Cart redis db
+#  redis-db:
+#    image: redis
+#    deploy:
+#      mode: replicated
+#      replicas: 1
+#      restart_policy:
+#        condition: on-failure
+#        delay: 5s
+#        max_attempts: 3
+#        window: 120s
+#    ports:
+#      - 0:6379
+#    networks:
+#      - private
+#    healthcheck:
+#      test: [ "CMD", "redis-cli", "ping" ]
+#      interval: 1s
+#      timeout: 3s
+#      retries: 30
 
-  #Zookeeper server
-  zookeeper:
-    image: confluentinc/cp-zookeeper:latest
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
-    ports:
-      - 22181:2181
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-    networks:
-      - private
+#  #Zookeeper server
+#  zookeeper:
+#    image: confluentinc/cp-zookeeper:latest
+#    environment:
+#      ZOOKEEPER_CLIENT_PORT: 2181
+#      ZOOKEEPER_TICK_TIME: 2000
+#    ports:
+#      - 22181:2181
+#    deploy:
+#      mode: replicated
+#      replicas: 1
+#      restart_policy:
+#        condition: on-failure
+#        delay: 5s
+#        max_attempts: 3
+#        window: 120s
+#    networks:
+#      - private
+#    healthcheck:
+#      test: nc -z localhost 2181 || exit -1
+#      start_period: 30s
+#      interval: 5s
+#      timeout: 10s
+#      retries: 5
 
-  #Kafka server
-  kafka:
-    image: confluentinc/cp-kafka:latest
-    depends_on:
-      - zookeeper
-    ports:
-      - 29092:29092
-    environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-    networks:
-      - private
+#  #Kafka server
+#  kafka:
+#    image: confluentinc/cp-kafka:latest
+#    depends_on:
+#      zookeeper:
+#        condition: service_healthy
+#
+#    ports:
+#      - 29092:29092
+#    environment:
+#      KAFKA_BROKER_ID: 1
+#      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+#      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+#      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+#      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+#      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+#    deploy:
+#      mode: replicated
+#      replicas: 1
+#      restart_policy:
+#        condition: on-failure
+#        delay: 5s
+#        max_attempts: 3
+#        window: 120s
+#    networks:
+#      - private
+#    healthcheck:
+#      test: [ "CMD", "kafka-topics.sh", "--list", "--zookeeper", "zookeeper:2181" ]
+#      start_period: 30s
+#      interval: 5s
+#      timeout: 10s
+#      retries: 10
 
 
 volumes:
