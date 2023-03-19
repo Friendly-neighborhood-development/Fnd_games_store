@@ -1,5 +1,6 @@
 package com.fnd.games_store.games.configurations;
 
+import com.fnd.games_store.games.filter.ActuatorFilter;
 import com.fnd.games_store.games.filter.AdminAuthorityValidationFilter;
 import com.fnd.games_store.games.filter.StaffAuthorityValidationFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -47,6 +48,21 @@ public class WebSecurityConfiguration {
         return registration;
     }
 
+
+    @Bean(name = "actuatorFilter")
+    public ActuatorFilter actuatorFilter(){
+        return new ActuatorFilter();
+    }
+
+    @Bean
+    public FilterRegistrationBean actuatorFilterRegistration() {
+
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(actuatorFilter());
+        registration.addUrlPatterns("/actuator/**");
+        registration.setName("actuatorFilter");
+        return registration;
+    }
 
 
 
