@@ -5,6 +5,3 @@ spring:
     #    active: dev
     active: prod
 #    active: standalone
-
-server:
-   port: 8080
