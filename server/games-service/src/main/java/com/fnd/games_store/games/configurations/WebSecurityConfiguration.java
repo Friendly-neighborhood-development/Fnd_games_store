@@ -52,7 +52,7 @@ public class WebSecurityConfiguration {
     @Bean
     public SecurityFilterChain securitySettings(HttpSecurity http) throws Exception {
 
-        http.authorizeHttpRequests().antMatchers("/v1/catalogue/*", "v1/catalogue/list/*", "/actuator/**").permitAll().anyRequest().authenticated();
+        http.authorizeHttpRequests().antMatchers("/v1/catalogue/*", "/v1/catalogue/list/*", "/actuator/**").permitAll().anyRequest().authenticated();
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
 
