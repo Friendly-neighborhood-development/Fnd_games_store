@@ -7,8 +7,8 @@ services:
       context: ./server/registry-service
       dockerfile: Dockerfile
     image: registry-service
-    ports:
-      - 0:8761
+    expose:
+      - 8761
     deploy:
       mode: replicated
       replicas: 1
