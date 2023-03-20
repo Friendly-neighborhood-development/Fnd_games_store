@@ -365,12 +365,12 @@ services:
     depends_on:
       zookeeper:
         condition: service_healthy
-    healthcheck:
+#    healthcheck:
 #      test: [ "CMD", "kafka-topics.sh", "--list", "--zookeeper", "zookeeper:2181" ]
-      start_period: 30s
-      interval: 5s
-      timeout: 10s
-      retries: 10
+#      start_period: 30s
+#      interval: 5s
+#      timeout: 10s
+#      retries: 10
 
 
 
