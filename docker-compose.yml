@@ -75,10 +75,10 @@ services:
     networks:
       - private
     depends_on:
-#      games-service:
-#        condition: service_healthy
-#      orders-service:
-#        condition: service_healthy
+      games-service:
+        condition: service_healthy
+      orders-service:
+        condition: service_healthy
       cart-service:
         condition: service_healthy
       login-service:
@@ -89,42 +89,42 @@ services:
       interval: 30s
       timeout: 5s
       retries: 20
-#
-#
-#  #Games-service
-#  games-service:
-#    build:
-#      context: ./server/games-service
-#      dockerfile: Dockerfile
-#    image: games-service
-#    expose:
-#      - 8081
-#    environment:
-#      - POSTGRES_DB=games-service-database
-#    deploy:
-#      mode: replicated
-#      replicas: 1
-#      restart_policy:
-#        condition: on-failure
-#        delay: 5s
-#        max_attempts: 3
-#        window: 120s
-#    networks:
-#      - private
-#    depends_on:
-#      games-service-db:
-#        condition: service_healthy
-#      config-service:
-#        condition: service_healthy
-#    healthcheck:
-#      test: [ "CMD", "curl", "-f", "http://localhost:8081/games/actuator/health" ]
-#      start_period: 10s
-#      interval: 15s
-#      timeout: 5s
-#      retries: 10
-#
-#
-#
+
+
+  #Games-service
+  games-service:
+    build:
+      context: ./server/games-service
+      dockerfile: Dockerfile
+    image: games-service
+    expose:
+      - 8081
+    environment:
+      - POSTGRES_DB=games-service-database
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - private
+    depends_on:
+      games-service-db:
+        condition: service_healthy
+      config-service:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8081/games/actuator/health" ]
+      start_period: 10s
+      interval: 15s
+      timeout: 5s
+      retries: 10
+
+
+
   #Login-service
   login-service:
     build:
@@ -157,37 +157,37 @@ services:
       timeout: 5s
       retries: 10
 
-#  #Orders-service
-#  orders-service:
-#    build:
-#      context: ./server/orders-service
-#      dockerfile: Dockerfile
-#    image: orders-service
-#    expose:
-#      - 8084
-#    environment:
-#      - POSTGRES_DB=orders-service-database
-#    deploy:
-#      mode: replicated
-#      replicas: 1
-#      restart_policy:
-#        condition: on-failure
-#        delay: 5s
-#        max_attempts: 3
-#        window: 120s
-#    networks:
-#      - private
-#    depends_on:
-#      orders-service-db:
-#        condition: service_healthy
-#      config-service:
-#        condition: service_healthy
-#    healthcheck:
-#      test: [ "CMD", "curl", "-f", "http://localhost:8084/orders/actuator/health" ]
-#      start_period: 10s
-#      interval: 15s
-#      timeout: 5s
-#      retries: 10
+  #Orders-service
+  orders-service:
+    build:
+      context: ./server/orders-service
+      dockerfile: Dockerfile
+    image: orders-service
+    expose:
+      - 8084
+    environment:
+      - POSTGRES_DB=orders-service-database
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - private
+    depends_on:
+      orders-service-db:
+        condition: service_healthy
+      config-service:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8084/orders/actuator/health" ]
+      start_period: 10s
+      interval: 15s
+      timeout: 5s
+      retries: 10
 
 
 
@@ -220,38 +220,38 @@ services:
       interval: 15s
       timeout: 5s
       retries: 20
-#
-#
-#  #Postgres games-service database
-#  games-service-db:
-#    image: postgres
-#    restart: always
-#    secrets:
-#      - db-password
-#    volumes:
-#      - games-service-db-data:/var/lib/postgresql/data
-#    networks:
-#      - private
-#    environment:
-#      - POSTGRES_DB=games-service-database
-#      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
-#    deploy:
-#      mode: replicated
-#      replicas: 1
-#      restart_policy:
-#        condition: on-failure
-#        delay: 5s
-#        max_attempts: 3
-#        window: 120s
-#    expose:
-#      - 5432
-#    healthcheck:
-#       test: ["CMD-SHELL", "pg_isready -U postgres -d games-service-database"]
-#       start_period: 10s
-#       interval: 15s
-#       timeout: 5s
-#       retries: 10
-#
+
+
+  #Postgres games-service database
+  games-service-db:
+    image: postgres
+    restart: always
+    secrets:
+      - db-password
+    volumes:
+      - games-service-db-data:/var/lib/postgresql/data
+    networks:
+      - private
+    environment:
+      - POSTGRES_DB=games-service-database
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    expose:
+      - 5432
+    healthcheck:
+       test: ["CMD-SHELL", "pg_isready -U postgres -d games-service-database"]
+       start_period: 10s
+       interval: 15s
+       timeout: 5s
+       retries: 10
+
   #Postgres login-service database
   login-service-db:
     image: postgres
@@ -282,35 +282,35 @@ services:
       timeout: 5s
       retries: 10
 
-#  #Postgres orders-service database
-#  orders-service-db:
-#    image: postgres
-#    restart: always
-#    secrets:
-#      - db-password
-#    volumes:
-#      - orders-service-db-data:/var/lib/postgresql/data
-#    networks:
-#      - private
-#    environment:
-#      - POSTGRES_DB=orders-service-database
-#      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
-#    deploy:
-#      mode: replicated
-#      replicas: 1
-#      restart_policy:
-#        condition: on-failure
-#        delay: 5s
-#        max_attempts: 3
-#        window: 120s
-#    expose:
-#      - 5432
-#    healthcheck:
-#      test: ["CMD-SHELL", "pg_isready -U postgres -d orders-service-database"]
-#      start_period: 10s
-#      interval: 15s
-#      timeout: 5s
-#      retries: 10
+  #Postgres orders-service database
+  orders-service-db:
+    image: postgres
+    restart: always
+    secrets:
+      - db-password
+    volumes:
+      - orders-service-db-data:/var/lib/postgresql/data
+    networks:
+      - private
+    environment:
+      - POSTGRES_DB=orders-service-database
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    expose:
+      - 5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d orders-service-database"]
+      start_period: 10s
+      interval: 15s
+      timeout: 5s
+      retries: 10
 
   #Cart redis db
   redis-db:
@@ -338,12 +338,19 @@ services:
     image: 'bitnami/zookeeper:latest'
     expose:
       - 2181
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
     networks:
       - private
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
     healthcheck:
-#      test: nc -z localhost 2181 || exit -1
       test: ["CMD", "bash", "-c", "unset" , "JMX_PORT" ,";" ,"kafka-topics.sh","--zookeeper","zookeeper:2181","--list"]
       start_period: 30s
       interval: 5s
@@ -356,6 +363,14 @@ services:
     image: 'bitnami/kafka:latest'
     expose:
       - 9092
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
     networks:
       - private
     environment:
@@ -365,12 +380,12 @@ services:
     depends_on:
       zookeeper:
         condition: service_healthy
-#    healthcheck:
-#      test: [ "CMD", "kafka-topics.sh", "--list", "--zookeeper", "zookeeper:2181" ]
-#      start_period: 30s
-#      interval: 5s
-#      timeout: 10s
-#      retries: 10
+    healthcheck:
+      test: ["CMD-SHELL", "kafka-topics.sh --bootstrap-server localhost:9092 --describe"]
+      start_period: 30s
+      interval: 5s
+      timeout: 10s
+      retries: 10
 
 
 
