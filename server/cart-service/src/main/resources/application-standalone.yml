@@ -1,4 +1,6 @@
 spring:
+  kafka:
+    bootstrap-servers: localhost:9092
   cloud:
     config:
       enabled: false

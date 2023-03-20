@@ -26,7 +26,7 @@ public class OrderController implements  OrderProcessor{
 
 
     @Override
-    @PostMapping("v1/purchase/{userId}")
+    @PostMapping("/v1/purchase/{userId}")
     public ResponseEntity<CartResponseDTO> processOrder(@PathVariable String userId) {
 
         log.info(userId);

@@ -1,5 +1,6 @@
 package com.fnd.games_store.games.configurations;
 
+import com.fnd.games_store.games.filter.ActuatorFilter;
 import com.fnd.games_store.games.filter.AdminAuthorityValidationFilter;
 import com.fnd.games_store.games.filter.StaffAuthorityValidationFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -48,12 +49,10 @@ public class WebSecurityConfiguration {
     }
 
 
-
-
     @Bean
     public SecurityFilterChain securitySettings(HttpSecurity http) throws Exception {
 
-        http.authorizeHttpRequests().antMatchers("/v1/catalogue/*", "v1/catalogue/list/*").permitAll().anyRequest().authenticated();
+        http.authorizeHttpRequests().antMatchers("/v1/catalogue/*", "/v1/catalogue/list/*", "/actuator/**").permitAll().anyRequest().authenticated();
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
 

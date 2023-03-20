@@ -1,15 +1,14 @@
 package com.fnd.games_store.cart.configuration;
 
+import com.fnd.games_store.cart.filter.ActuatorFilter;
 import com.fnd.games_store.cart.filter.JwtFilter;
 import com.fnd.games_store.cart.rest.UserValidationClient;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 public class WebSecurityConfiguration {
@@ -29,9 +28,33 @@ public class WebSecurityConfiguration {
 
     }
 
+    @Bean(name = "actuatorFilter")
+    public ActuatorFilter actuatorFilter(){
+        return new ActuatorFilter();
+    }
+
     @Bean
-    public JwtFilter globalFilter(UserValidationClient userValidationClient){
-        return new JwtFilter(userValidationClient);
+    public FilterRegistrationBean actuatorFilterRegistration() {
+
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(actuatorFilter());
+        registration.addUrlPatterns("/actuator/**");
+        registration.setName("actuatorFilter");
+        return registration;
+    }
+
+    @Bean(name = "globalFilter")
+    public JwtFilter globalFilter(){
+        return new JwtFilter();
+    }
+    @Bean
+    public FilterRegistrationBean globalFilterRegistration() {
+
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(globalFilter());
+        registration.addUrlPatterns("/v1/update","/v1/content","/v1/purchase/**");
+        registration.setName("globalFilter");
+        return registration;
     }
 
 }

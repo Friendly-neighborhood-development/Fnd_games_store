@@ -4,6 +4,7 @@
 .vscode/
 
 
+
 games-service/build
 registry-service/build
 config-service/build

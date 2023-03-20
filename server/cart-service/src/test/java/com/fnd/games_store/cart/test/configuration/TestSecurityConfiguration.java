@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Profile;
 public class TestSecurityConfiguration {
 
     @Bean
-    public TestJwtFilter testGlobalFilter(UserValidationClient userValidator){
-        return new TestJwtFilter(userValidator);
+    public TestJwtFilter testGlobalFilter(){
+        return new TestJwtFilter();
     }
 
 }

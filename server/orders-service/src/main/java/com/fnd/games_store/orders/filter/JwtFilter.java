@@ -15,13 +15,8 @@ import java.io.IOException;
 @Slf4j
 public class JwtFilter extends OncePerRequestFilter {
 
-
-    private final UserValidationClient userValidator;
-
     @Autowired
-    public JwtFilter(UserValidationClient userValidator) {
-        this.userValidator = userValidator;
-    }
+    private UserValidationClient userValidator;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

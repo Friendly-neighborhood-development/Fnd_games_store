@@ -8,9 +8,9 @@ RUN  apk update \
   && rm -rf /var/cache/apk/*
 
 
-EXPOSE 8082
-COPY build/libs/login-service-1.0.jar .
+EXPOSE 8084
+COPY build/libs/orders-service-1.0.jar .
 HEALTHCHECK --interval=30s --timeout=6s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:8082/login/actuator/health || exit 1
+  CMD wget --no-verbose --tries=1 --spider http://localhost:8084/orders/actuator/health || exit 1
 
-ENTRYPOINT ["java", "-jar", "login-service-1.0.jar"]
+ENTRYPOINT ["java", "-jar", "orders-service-1.0.jar"]
