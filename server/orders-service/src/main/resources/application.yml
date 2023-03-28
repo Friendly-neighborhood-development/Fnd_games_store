@@ -3,5 +3,5 @@ spring:
     name: orders-service
   profiles:
     #    active: dev
-    active: prod
-#    active: standalone
+#    active: prod
+    active: standalone
