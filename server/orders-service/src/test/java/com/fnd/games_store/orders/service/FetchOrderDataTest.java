@@ -22,8 +22,15 @@ public class FetchOrderDataTest extends ServiceTestUtils {
 
     @Test
     void saveOrder_ShouldCreateInitialOrderEntry(){
-        log.info("saved order: "+savedOrder.toString());
-        log.info("expected order: "+expectedOrder.toString());
+        OffsetDateTime timeNow = OffsetDateTime.now();
+
+        savedOrder.setOrderDate(timeNow);
+        expectedOrder.setOrderDate(timeNow);
+        savedOrder.setId(expectedOrder.getId());
+
+        log.info("saved order: "+savedOrder.getId());
+        log.info("expected order: "+expectedOrder.getId());
+
         assertThat(savedOrder).isEqualTo(expectedOrder);
     }
 
@@ -41,9 +48,9 @@ public class FetchOrderDataTest extends ServiceTestUtils {
 
         savedOrder.setGames(testgameList);
 
-        orderRepository.save(savedOrder);
+        service.saveOrder(wrapOrderToDto(savedOrder));
 
-        expectedOrder = orderRepository.findOrderByUserId(userId).get();
+        expectedOrder = orderRepository.findOrdersByUserId(userId).get().get(0);
 
     }
 

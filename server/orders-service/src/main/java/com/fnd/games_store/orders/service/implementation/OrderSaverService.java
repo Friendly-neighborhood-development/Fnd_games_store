@@ -38,15 +38,7 @@ public class OrderSaverService implements OrderSaver {
         savableOrderData.setGames(incomingOrderData.getGameData().stream().map((Game::new)).collect(Collectors.toList()));
         savableOrderData.setOrderDate(OffsetDateTime.now());
 
-        Optional<Order> existingOrderData = orderRepository.findOrderByUserId(incomingOrderData.getUserId());
-
-        if(!existingOrderData.isPresent()){
-            return orderRepository.save(savableOrderData).getId();
-        } else {
-            savableOrderData.setId(incomingOrderData.getUserId());
-            return orderRepository.save(savableOrderData).getId();
-        }
-
+        return orderRepository.save(savableOrderData).getId();
 
     }
 

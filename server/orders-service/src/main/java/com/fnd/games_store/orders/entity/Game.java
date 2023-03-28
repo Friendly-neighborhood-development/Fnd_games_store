@@ -51,11 +51,11 @@ public class Game {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Game game = (Game) o;
-        return Objects.equals(order, game.order) && Objects.equals(name, game.name) && Objects.equals(releaseDate, game.releaseDate) && Objects.equals(price, game.price) && Objects.equals(discount, game.discount) && Objects.equals(description, game.description) && Objects.equals(base64Image, game.base64Image);
+        return Objects.equals(id, game.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(order, name, releaseDate, price, discount, description, base64Image);
+        return Objects.hash(id);
     }
 }

@@ -8,20 +8,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @Transactional
 public class OrderFetcherService implements OrderFetcher {
 
 
-    private final OrderRepository repository;
+    private final OrderRepository orderRepository;
 
     @Autowired
-    public OrderFetcherService(OrderRepository repository) {
-        this.repository = repository;
+    public OrderFetcherService(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
     }
 
     @Override
-    public OrderResponseDTO fetchOrderData(String userId) {
-        return new OrderResponseDTO(repository.findOrderByUserId(userId).orElseThrow(() -> new OrderNotFoundException("Order data is missing")));
+    public List<OrderResponseDTO> fetchOrderData(String userId) {
+        return orderRepository.findOrdersByUserId(userId).orElseThrow(()-> new OrderNotFoundException("Oder data is missing")).stream().map(OrderResponseDTO::new).collect(Collectors.toList());
     }
 }

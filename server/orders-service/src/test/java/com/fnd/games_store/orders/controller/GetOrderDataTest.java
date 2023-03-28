@@ -1,6 +1,7 @@
 package com.fnd.games_store.orders.controller;
 
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fnd.games_store.orders.OrdersApplication;
 import com.fnd.games_store.orders.dto.OrderResponseDTO;
 import com.fnd.games_store.orders.dto.ValidationResponseDTO;
@@ -12,6 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MvcResult;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
@@ -34,12 +38,12 @@ public class GetOrderDataTest extends ControllerTestUtils{
 
         String requestBody = mvcResult.getResponse().getContentAsString();
 
-        OrderResponseDTO actualOrderData = objectMapper.readValue(requestBody, OrderResponseDTO.class);
+        List<OrderResponseDTO> actualOrderData = objectMapper.readValue(requestBody, new TypeReference<List<OrderResponseDTO>>() {});
 
         log.info("actual order data: "+actualOrderData.toString());
-        log.info("expected order data: "+expectedOrderData.toString());
+        log.info("expected order data: "+expectedOrderData.getGameData().toString());
 
-        assertThat(actualOrderData).isEqualTo(expectedOrderData);
+        assertThat(actualOrderData.get(0)).isEqualTo(expectedOrderData);
 
     }
 
@@ -47,7 +51,10 @@ public class GetOrderDataTest extends ControllerTestUtils{
     void testSetup(){
 
         testGameList.add(createTestGameEntity("1"));
-        mockedOrderResponse.setGameData(testGameList);
+
+
+
+        mockedOrderResponse.add(expectedOrderData);
 
         expectedOrderData.setGameData(testGameList);
 
