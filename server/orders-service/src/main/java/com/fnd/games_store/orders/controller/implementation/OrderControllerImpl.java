@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 
 @RestController
@@ -24,7 +25,7 @@ public class OrderControllerImpl implements OrderController {
 
     @Override
     @GetMapping("/v1/purchases/{userId}")
-    public ResponseEntity<OrderResponseDTO> getOrderData(@PathVariable String userId) {
+    public ResponseEntity<List<OrderResponseDTO>> getOrderData(@PathVariable String userId) {
         return ResponseEntity.ok(service.fetchOrderData(userId));
     }
 }
