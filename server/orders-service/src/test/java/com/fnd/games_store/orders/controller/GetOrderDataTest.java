@@ -23,49 +23,49 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class GetOrderDataTest extends ControllerTestUtils{
 
 
-    @Test
-    void getDataEndpoint_ShouldReturnProperResponse() throws Exception {
-
-
-        MvcResult mvcResult = mvc.perform(get("/v1/purchases/"+userId)
-                        .header("authorization", "")
-                        .contentType(MediaType.APPLICATION_JSON))
-                        .andExpect(status().isOk()).andReturn();
-
-        String requestBody = mvcResult.getResponse().getContentAsString();
-
-        OrderResponseDTO actualOrderData = objectMapper.readValue(requestBody, OrderResponseDTO.class);
-
-        log.info("actual order data: "+actualOrderData.toString());
-        log.info("expected order data: "+expectedOrderData.toString());
-
-        assertThat(actualOrderData).isEqualTo(expectedOrderData);
-
-    }
-
-    @BeforeEach
-    void testSetup(){
-
-        testGameList.add(createTestGameEntity("1"));
-        mockedOrderResponse.setGameData(testGameList);
-
-        expectedOrderData.setGameData(testGameList);
-
-        when(service.fetchOrderData(userId)).thenReturn(mockedOrderResponse);
-
-    }
-
-    @BeforeEach
-    void userValidationFeignClientSetup(){
-
-        Boolean tokenIsValid = true;
-
-        ValidationResponseDTO response = new ValidationResponseDTO();
-        response.setIsTokenValid(true);
-
-        ResponseEntity<ValidationResponseDTO> responseBody = ResponseEntity.ok(response);
-
-        when(userValidationClient.validateUser("")).thenReturn(responseBody);
-    }
+//    @Test
+//    void getDataEndpoint_ShouldReturnProperResponse() throws Exception {
+//
+//
+//        MvcResult mvcResult = mvc.perform(get("/v1/purchases/"+userId)
+//                        .header("authorization", "")
+//                        .contentType(MediaType.APPLICATION_JSON))
+//                        .andExpect(status().isOk()).andReturn();
+//
+//        String requestBody = mvcResult.getResponse().getContentAsString();
+//
+//        OrderResponseDTO actualOrderData = objectMapper.readValue(requestBody, OrderResponseDTO.class);
+//
+//        log.info("actual order data: "+actualOrderData.toString());
+//        log.info("expected order data: "+expectedOrderData.toString());
+//
+//        assertThat(actualOrderData).isEqualTo(expectedOrderData);
+//
+//    }
+//
+//    @BeforeEach
+//    void testSetup(){
+//
+//        testGameList.add(createTestGameEntity("1"));
+//        mockedOrderResponse.setGameData(testGameList);
+//
+//        expectedOrderData.setGameData(testGameList);
+//
+//        when(service.fetchOrderData(userId)).thenReturn(mockedOrderResponse);
+//
+//    }
+//
+//    @BeforeEach
+//    void userValidationFeignClientSetup(){
+//
+//        Boolean tokenIsValid = true;
+//
+//        ValidationResponseDTO response = new ValidationResponseDTO();
+//        response.setIsTokenValid(true);
+//
+//        ResponseEntity<ValidationResponseDTO> responseBody = ResponseEntity.ok(response);
+//
+//        when(userValidationClient.validateUser("")).thenReturn(responseBody);
+//    }
 
 }

@@ -2,8 +2,10 @@ package com.fnd.games_store.orders.service;
 
 import com.fnd.games_store.orders.dto.OrderResponseDTO;
 
+import java.util.List;
+
 public interface OrderFetcher {
 
-    OrderResponseDTO fetchOrderData(String userId);
+   List<OrderResponseDTO> fetchOrderData(String userId);
 
 }

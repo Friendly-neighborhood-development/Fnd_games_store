@@ -30,7 +30,7 @@ public class ControllerTestUtils {
     protected String userId = "user1";
 
 
-    protected OrderResponseDTO mockedOrderResponse = new OrderResponseDTO();;
+    protected List<OrderResponseDTO> mockedOrderResponse = new ArrayList<>();
 
     protected List<GameResponseDTO> testGameList = new ArrayList<>();
 
