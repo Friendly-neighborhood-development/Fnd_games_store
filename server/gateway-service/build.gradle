@@ -2,7 +2,6 @@ plugins {
     id 'org.springframework.boot' version '2.7.0'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-    id "io.freefair.lombok" version "5.1.0"
 }
 
 group = 'com.fnd.games_store'
@@ -36,10 +35,6 @@ dependencies {
     implementation 'io.netty:netty-resolver-dns-native-macos:4.1.85.Final:osx-aarch_64'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
-
-    compileOnly 'org.projectlombok:lombok'
-
-    annotationProcessor 'org.projectlombok:lombok'
 }
 
 dependencyManagement {
