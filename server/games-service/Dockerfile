@@ -9,7 +9,7 @@ RUN  apk update \
   && apk upgrade \
   && apk add --update openjdk8 tzdata curl unzip bash \
   && rm -rf /var/cache/apk/* \
-EXPOSE 8080
+EXPOSE 8081
 COPY --from=APPLICATION_BUILD_STAGE /home/gradle/build/libs/*.jar games-service-1.0.jar
 HEALTHCHECK --interval=30s --timeout=6s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:8081/games/actuator/health || exit 1
