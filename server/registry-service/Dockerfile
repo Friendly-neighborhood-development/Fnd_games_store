@@ -14,3 +14,20 @@ COPY --from=APPLICATION_BUILD_STAGE /home/gradle/build/libs/*.jar registry-servi
 HEALTHCHECK --interval=30s --timeout=6s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:8761/actuator/health || exit 1
 ENTRYPOINT ["java","-jar","/registry-service-1.0.jar"]
+
+#Separate gradle build
+
+#FROM alpine:3.14
+#
+#RUN  apk update \
+#  && apk upgrade \
+#  && apk add --update openjdk8 tzdata curl unzip bash \
+#  && rm -rf /var/cache/apk/*
+#
+#
+#EXPOSE 8001
+#COPY build/libs/config-service-1.0.jar .
+#HEALTHCHECK --interval=30s --timeout=6s --retries=5 \
+#  CMD wget --no-verbose --tries=1 --spider http://localhost:8761/actuator/health || exit 1
+#
+#ENTRYPOINT ["java","-jar","/registry-service-1.0.jar"]
