@@ -15,6 +15,8 @@ HEALTHCHECK --interval=30s --timeout=6s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:8084/orders/actuator/health || exit 1
 ENTRYPOINT ["java", "-jar", "orders-service-1.0.jar"]
 
+#Separate gradle build
+
 #FROM alpine:3.14
 #
 #RUN  apk update \
