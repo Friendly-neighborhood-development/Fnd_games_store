@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Slf4j
-@Transactional
+@Transactional(readOnly = true)
 public class LoginServiceImpl implements LoginService {
 
     private final PasswordEncoder passwordEncoder;

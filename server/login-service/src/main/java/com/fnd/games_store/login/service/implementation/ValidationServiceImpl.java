@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 @Slf4j
+@Transactional(readOnly = true)
 public class ValidationServiceImpl implements ValidationService {
 
     private final JwtValidator jwtValidator;

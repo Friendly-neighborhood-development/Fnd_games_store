@@ -21,7 +21,7 @@ import java.util.List;
 
 @Service
 @Slf4j
-@Transactional
+@Transactional(readOnly = true)
 public class AccountRegistrationImpl implements AccountRegistration {
 
     @Value("${variables.common.new_account_expiration_date}")
