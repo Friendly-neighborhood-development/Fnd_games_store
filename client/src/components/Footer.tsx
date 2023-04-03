@@ -1,5 +1,5 @@
 import React from 'react';
-import images from "../constants/images";
+import {images} from "../constants/images";
 
 export const Footer = () => {
     return (
@@ -16,7 +16,6 @@ export const Footer = () => {
                         </a>
                     </span>
                 </div>
-
             </div>
         </footer>
     );
