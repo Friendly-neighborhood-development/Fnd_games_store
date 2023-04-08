@@ -21,9 +21,9 @@ services:
       - private
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8761/actuator/health" ]
-      start_period: 10s
-      interval: 15s
-      timeout: 5s
+      start_period: 30s
+      interval: 5s
+      timeout: 10s
       retries: 10
 
 
@@ -50,9 +50,9 @@ services:
         condition: service_healthy
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8001/actuator/health" ]
-      start_period: 10s
-      interval: 15s
-      timeout: 5s
+      start_period: 30s
+      interval: 5s
+      timeout: 10s
       retries: 10
 
 
@@ -86,9 +86,9 @@ services:
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       start_period: 30s
-      interval: 30s
-      timeout: 5s
-      retries: 20
+      interval: 5s
+      timeout: 10s
+      retries: 10
 
 
   #Games-service
@@ -118,9 +118,9 @@ services:
         condition: service_healthy
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8081/games/actuator/health" ]
-      start_period: 10s
-      interval: 15s
-      timeout: 5s
+      start_period: 30s
+      interval: 5s
+      timeout: 10s
       retries: 10
 
 
@@ -152,9 +152,9 @@ services:
         condition: service_healthy
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8082/login/actuator/health" ]
-      start_period: 10s
-      interval: 15s
-      timeout: 5s
+      start_period: 30s
+      interval: 5s
+      timeout: 10s
       retries: 10
 
   #Orders-service
@@ -184,9 +184,9 @@ services:
         condition: service_healthy
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8084/orders/actuator/health" ]
-      start_period: 10s
-      interval: 15s
-      timeout: 5s
+      start_period: 30s
+      interval: 5s
+      timeout: 10s
       retries: 10
 
 
@@ -216,10 +216,10 @@ services:
         condition: service_healthy
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8083/cart/actuator/health" ]
-      start_period: 10s
-      interval: 15s
-      timeout: 5s
-      retries: 20
+      start_period: 30s
+      interval: 5s
+      timeout: 10s
+      retries: 10
 
 
   #Client-application
@@ -272,9 +272,9 @@ services:
       - 5432
     healthcheck:
        test: ["CMD-SHELL", "pg_isready -U postgres -d games-service-database"]
-       start_period: 10s
-       interval: 15s
-       timeout: 5s
+       start_period: 30s
+       interval: 5s
+       timeout: 10s
        retries: 10
 
   #Postgres login-service database
@@ -302,9 +302,9 @@ services:
       - 5432
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d login-service-database"]
-      start_period: 10s
-      interval: 15s
-      timeout: 5s
+      start_period: 30s
+      interval: 5s
+      timeout: 10s
       retries: 10
 
   #Postgres orders-service database
@@ -332,9 +332,9 @@ services:
       - 5432
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d orders-service-database"]
-      start_period: 10s
-      interval: 15s
-      timeout: 5s
+      start_period: 30s
+      interval: 5s
+      timeout: 10s
       retries: 10
 
   #Cart redis db
@@ -354,9 +354,10 @@ services:
       - private
     healthcheck:
       test: [ "CMD", "redis-cli", "ping" ]
-      interval: 1s
-      timeout: 3s
-      retries: 30
+      start_period: 30s
+      interval: 5s
+      timeout: 10s
+      retries: 10
 
   #Zookeeper server
   zookeeper:
@@ -380,7 +381,7 @@ services:
       start_period: 30s
       interval: 5s
       timeout: 10s
-      retries: 5
+      retries: 10
 
 
   #Kafka server
