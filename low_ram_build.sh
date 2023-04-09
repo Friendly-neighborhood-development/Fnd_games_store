@@ -5,13 +5,11 @@ NC='\033[0m'
 GREEN='\033[0;32m'
 
 
-printf ${YELLOW}"===Building registry-service===/n"${NC}
-cd server/registry-service;
-docker build -t registry-service .;
-printf ${GREEN}"===Registry-service build completed===/n"${NC}
+docker build -t registry-service ./server/registry-service;
 
-printf ${YELLOW}"===Building config-service===/n"${NC}
-cd ..
-cd config-service;
-docker build -t config-service .;
-printf ${GREEN}"===Config-service build completed===/n"${NC}
+docker build -t config-service ./server/config-service;
+
+docker build -t gateway-service ./server/gateway-service;
+
+
+printf ${GREEN}"===Fnd_games_store build completed===/n"${NC}
