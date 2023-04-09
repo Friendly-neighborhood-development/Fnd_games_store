@@ -21,5 +21,5 @@ docker build -t cart-service ./server/cart-service;
 docker build -t client-application ./client
 
 
-printf ${GREEN}"===Fnd_games_store build completed==="${NC}
+printf ${GREEN}"===Fnd_games_store services build completed==="${NC}
 echo
