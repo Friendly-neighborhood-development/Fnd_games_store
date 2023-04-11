@@ -2,38 +2,44 @@
 
 This is a modern web app - Games Store, made as a learning project. This microservice-based
 games store is composed of microservices developed with Spring(Java) and using React for the UI.
-Feel free to check out our work
+Feel free to check out our work.
 
 ## Preview
 ![Preview](client/docs/img/AppPreview.png)
 
 ## Getting started
 These instructions will get you a copy of the project up and running it on your local machine.
-*Note that the server installation guide will be coming soon*
+
 
 ### Prerequisites
-* Last one stable Node.js version
+* Stable Docker and Docker Compose versions installed on your machine.
 
 ### Installation
 Clone repository *(or download it as .zip archive)*
 ```console
 git clone https://github.com/Friendly-neighborhood-development/Fnd_games_store.git
 ```
-#### Client
-* Move to client folder
+* Move to project folder
 ```console
-cd Fnd_games_store/client
+cd Fnd_games_store
 ```
-* Install dependencies
-
-*Note that you can also use yarn or pnpm instead of npm*
-
+* Build and run application with Compose
+*(first start can take a lot of time, so please be patient)*
 ```console
-npm install
+docker compose up
 ```
-* Start client application
+* Note that, if your machine has lower than 8Gb RAM, please use script for sequential docker 
+images build 
 ```console
-npm start
+chmod +x low_ram_build.sh 
+```
+and
+```console
+./low_ram_build.sh 
+```
+After build is completed run application with Compose 
+```console
+docker compose up
 ```
 Now enjoy 🙂
 
