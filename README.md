@@ -63,6 +63,7 @@ Now enjoy 🙂
 * **Databases**: PostgreSQL, H2, Redis
 * **Build automation tool:** Gradle
 * **Testing:** Junit5, Mockito
+* **Deployment:** Docker, Docker Compose
 * **Miscellaneous:** Lombok
 
 ## Architecture
