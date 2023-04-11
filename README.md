@@ -67,6 +67,7 @@ Now enjoy 🙂
 * **Miscellaneous:** Lombok
 
 ## Architecture
+
 ![Homepage](server/documentation/images/architecture.png)
 
 ## Features
