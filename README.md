@@ -70,9 +70,10 @@ Now enjoy 🙂
 ![Homepage](server/documentation/images/architecture.png)
 
 ## Features
-* This application uses Netflix Eureka as a registry service
-* Backend security is built upon Spring Security with Jwt technologies
-* Every single microservice is hidden behind Gateway API
+* Service discovery performed by Netflix Eureka
+* Security is built upon Spring Security with Jwt technologies
+* Load balancing performed by Spring Cloud Gateway
+* Service configuration provided by Spring Cloud Config
 
 ## Authors
 * Frontend: [Andrew Semenov](https://t.me/keax4208)
