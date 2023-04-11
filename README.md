@@ -54,16 +54,16 @@ Now enjoy 🙂
 * **Npm** - package manager
 
 ## Backend stack
-* Java 8
-* Spring: Boot, Data, Web, MVC, Security with Jwt, WebFlux
-* Spring Cloud: Gateway, Config server, Eureka, OpenFeign
-* Apache Kafka
-* Hibernate
-* Cache: Caffeine, Redis
-* Databases: PostgreSQL, H2
-* Gradle
-* Lombok
-* Testing: Junit5, Mockito
+* **Java 8**
+* **Spring:** Boot, Data, Web, MVC, Security with Jwt
+* **Spring Cloud:** Gateway, Config server, Eureka, OpenFeign
+* **Message broker:** Apache Kafka
+* **ORM:** Hibernate
+* **Caching:** Caffeine
+* **Databases**: PostgreSQL, H2, Redis
+* **Build automation tool:** Gradle
+* **Testing:** Junit5, Mockito
+* **Miscellaneous:** Lombok
 
 ## Architecture
 ![Homepage](server/documentation/images/architecture.png)
