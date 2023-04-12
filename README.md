@@ -85,6 +85,7 @@ Now enjoy 🙂
 * Security is built upon Spring Security with Jwt technologies
 * Load balancing performed by Spring Cloud Gateway
 * Service configuration provided by Spring Cloud Config
+* Games avatars stores as base64 strings in databases
 
 ## Authors
 * Frontend: [Andrew Semenov](https://t.me/keax4208)
