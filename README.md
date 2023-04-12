@@ -76,7 +76,8 @@ Now enjoy 🙂
   ![Homepage](server/documentation/images/games-service db scheme.png)
 * Login service database scheme
   ![Homepage](server/documentation/images/login-service db scheme.png)
-
+* Orders service database scheme
+  ![Homepage](server/documentation/images/orders-service db scheme.png)
 
 
 ## Features
