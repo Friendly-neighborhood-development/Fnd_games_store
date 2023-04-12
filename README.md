@@ -70,6 +70,13 @@ Now enjoy 🙂
 
 ![Homepage](server/documentation/images/architecture.png)
 
+
+## Databases schemes
+* Games service database scheme
+  ![Homepage](server/documentation/images/games-service db scheme.png)
+
+
+
 ## Features
 * Service discovery performed by Netflix Eureka
 * Security is built upon Spring Security with Jwt technologies
