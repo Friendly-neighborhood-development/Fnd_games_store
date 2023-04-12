@@ -74,6 +74,8 @@ Now enjoy 🙂
 ## Databases schemes
 * Games service database scheme
   ![Homepage](server/documentation/images/games-service db scheme.png)
+* Login service database scheme
+  ![Homepage](server/documentation/images/login-service db scheme.png)
 
 
 
