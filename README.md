@@ -8,7 +8,7 @@ Feel free to check out our work.
 ![Preview](client/docs/img/AppPreview.png)
 
 ## Getting started
-These instructions will get you a copy of the project up and running it on your local machine.
+These instructions will get you a copy of the project up and run it on your machine.
 
 
 ### Prerequisites
