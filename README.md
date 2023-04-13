@@ -2,38 +2,44 @@
 
 This is a modern web app - Games Store, made as a learning project. This microservice-based
 games store is composed of microservices developed with Spring(Java) and using React for the UI.
-Feel free to check out our work
+Feel free to check out our work.
 
 ## Preview
 ![Preview](client/docs/img/AppPreview.png)
 
 ## Getting started
-These instructions will get you a copy of the project up and running it on your local machine.
-*Note that the server installation guide will be coming soon*
+These instructions will get you a copy of the project up and run it on your machine.
+
 
 ### Prerequisites
-* Last one stable Node.js version
+* Stable Docker and Docker Compose versions installed on your machine.
 
 ### Installation
 Clone repository *(or download it as .zip archive)*
 ```console
 git clone https://github.com/Friendly-neighborhood-development/Fnd_games_store.git
 ```
-#### Client
-* Move to client folder
+* Move to project folder
 ```console
-cd Fnd_games_store/client
+cd Fnd_games_store
 ```
-* Install dependencies
-
-*Note that you can also use yarn or pnpm instead of npm*
-
+* Build and run application with Compose
+*(first start can take a lot of time, so please be patient)*
 ```console
-npm install
+docker compose up
 ```
-* Start client application
+* Note that, if your machine has lower than 8Gb RAM, please use script for sequential docker 
+images build 
 ```console
-npm start
+chmod +x low_ram_build.sh 
+```
+and
+```console
+./low_ram_build.sh 
+```
+After build is completed run application with Compose 
+```console
+docker compose up
 ```
 Now enjoy 🙂
 
@@ -48,24 +54,41 @@ Now enjoy 🙂
 * **Npm** - package manager
 
 ## Backend stack
-* Java 8
-* Spring: Boot, Data, Web, MVC, Security with Jwt, WebFlux
-* Spring Cloud: Gateway, Config server, Eureka, OpenFeign
-* Apache Kafka
-* Hibernate
-* Cache: Caffeine, Redis
-* Databases: PostgreSQL, H2
-* Gradle
-* Lombok
-* Testing: Junit5, Mockito
+* **Java 8**
+* **Spring:** Boot, Data, Web, MVC, Security with Jwt
+* **Spring Cloud:** Gateway, Config server, Eureka, OpenFeign
+* **Message broker:** Apache Kafka
+* **ORM:** Hibernate
+* **Caching:** Caffeine
+* **Databases**: PostgreSQL, H2, Redis
+* **Build automation tool:** Gradle
+* **Testing:** Junit5, Mockito
+* **Deployment:** Docker, Docker Compose
+* **Miscellaneous:** Lombok
 
 ## Architecture
-![Homepage](server/documentation/images/architecture.png)
+![Architecture](server/documentation/images/architecture.png)
+## Games service database scheme
+<p align="center">
+  <img src="server/documentation/images/gamesServiceDbScheme.png" />
+</p>
+
+## Login service database scheme
+<p align="center">
+  <img src="server/documentation/images/loginServiceDbScheme.png" />
+</p>
+
+## Orders service database scheme
+<p align="center">
+  <img src="server/documentation/images/ordersServiceDbScheme.png" />
+</p>
 
 ## Features
-* This application uses Netflix Eureka as a registry service
-* Backend security is built upon Spring Security with Jwt technologies
-* Every single microservice is hidden behind Gateway API
+* Service discovery performed by Netflix Eureka
+* Security is built upon Spring Security with Jwt technologies
+* Load balancing performed by Spring Cloud Gateway
+* Service configuration provided by Spring Cloud Config
+* Games avatars stores as base64 strings in databases
 
 ## Authors
 * Frontend: [Andrew Semenov](https://t.me/keax4208)
