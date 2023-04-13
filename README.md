@@ -68,12 +68,20 @@ Now enjoy 🙂
 
 ## Architecture
 ![Architecture](server/documentation/images/architecture.png)
- ## Games service database scheme
-![Games service database scheme](server/documentation/images/gamesServiceDbScheme.png)
+## Games service database scheme
+<p align="center">
+  <img src="server/documentation/images/gamesServiceDbScheme.png" />
+</p>
+
 ## Login service database scheme
-![Login service database scheme](server/documentation/images/loginServiceDbScheme.png)
+<p align="center">
+  <img src="server/documentation/images/loginServiceDbScheme.png" />
+</p>
+
 ## Orders service database scheme
-![Orders service database scheme](server/documentation/images/ordersServiceDbScheme.png)
+<p align="center">
+  <img src="server/documentation/images/ordersServiceDbScheme.png" />
+</p>
 
 ## Features
 * Service discovery performed by Netflix Eureka
