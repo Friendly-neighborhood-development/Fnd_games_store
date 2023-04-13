@@ -69,7 +69,7 @@ Now enjoy 🙂
 ## Architecture
 ![Architecture](server/documentation/images/architecture.png)
  ## Games service database scheme
-![Games service database scheme](server/documentation/images/games-service db scheme.png)
+![Games service database scheme](server/documentation/images/architecture.png)
 ## Login service database scheme
 ![Login service database scheme](server/documentation/images/login-service db scheme.png)
 ## Orders service database scheme
