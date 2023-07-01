@@ -3,5 +3,8 @@ spring:
     name: login-service
   profiles:
     #    active: dev
-    active: prod
-#    active: standalone
+#    active: prod
+    active: standalone
+server:
+  error:
+    include-message: always
