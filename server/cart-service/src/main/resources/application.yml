@@ -5,6 +5,8 @@ spring:
 #    active: dev
     active: prod
 #    active: standalone
-
+server:
+  error:
+    include-message: always
 
 

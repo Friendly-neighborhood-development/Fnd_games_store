@@ -222,27 +222,27 @@ services:
       retries: 10
 
 
-  #Client-application
-  client-application:
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    image: client-application
-    ports:
-      - 5173:5173
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-    networks:
-      - private
-    depends_on:
-      gateway-service:
-        condition: service_healthy
+#  #Client-application
+#  client-application:
+#    build:
+#      context: ./client
+#      dockerfile: Dockerfile
+#    image: client-application
+#    ports:
+#      - 5173:5173
+#    deploy:
+#      mode: replicated
+#      replicas: 1
+#      restart_policy:
+#        condition: on-failure
+#        delay: 5s
+#        max_attempts: 3
+#        window: 120s
+#    networks:
+#      - private
+#    depends_on:
+#      gateway-service:
+#        condition: service_healthy
 
 
 
