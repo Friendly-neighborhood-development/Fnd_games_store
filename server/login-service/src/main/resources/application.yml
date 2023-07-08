@@ -3,8 +3,14 @@ spring:
     name: login-service
   profiles:
 #    active: dev
-    active: prod
-#    active: standalone
+#    active: prod
+    active: standalone
 server:
   error:
     include-message: always
+
+
+logging:
+  level:
+    org.springframework.orm.jpa: DEBUG
+    org.springframework.transaction: DEBUG
