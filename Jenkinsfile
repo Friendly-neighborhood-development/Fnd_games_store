@@ -7,6 +7,7 @@ pipeline {
                 sh cd cart-service
                 echo sh pwd
                 sh gradle build
+
             }
         }
     }
