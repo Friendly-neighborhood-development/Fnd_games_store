@@ -4,7 +4,9 @@ pipeline {
         stage('build') {
             steps {
                 sh 'gradle --version'
-                echo 'another testing change'
+                sh cd cart-service
+                echo sh pwd
+                sh gradle build
             }
         }
     }
