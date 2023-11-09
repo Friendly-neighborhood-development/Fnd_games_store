@@ -43,7 +43,11 @@ public class AccountRegistrationImpl implements AccountRegistration {
         this.encoder = encoder;
         this.authorityRepository = authorityRepository;
     }
-    @Transactional(label = "account_registration", propagation = Propagation.REQUIRED, isolation = Isolation.REPEATABLE_READ, timeout = 5, rollbackFor = AccountAlreadyExistsException.class)
+    @Transactional(label = "account_registration",
+            propagation = Propagation.REQUIRED,
+            isolation = Isolation.REPEATABLE_READ,
+            timeout = 5,
+            rollbackFor = AccountAlreadyExistsException.class)
     @Override
     public AccountResponseDTO register(AccountRequestDTO accountRequestDTO) {
 
