@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Slf4j
-@Transactional(readOnly = true)
 public class ValidationServiceImpl implements ValidationService {
 
     private final JwtValidator jwtValidator;
