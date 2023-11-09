@@ -4,7 +4,7 @@ pipeline {
         stage('build') {
             steps {
                 sh 'gradle --version'
-                sh 'cd cart-service'
+                sh '/home/sergey/work/spring/Fnd_games_store gradle build'
             }
         }
     }
