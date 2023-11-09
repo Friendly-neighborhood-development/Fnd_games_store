@@ -3,10 +3,10 @@ pipeline {
     stages {
         stage('build') {
             steps {
-//                 sh 'gradle --version'
-//                 sh cd cart-service
-//                 echo sh pwd
-//                 sh gradle build
+                sh 'gradle --version'
+                sh cd cart-service
+                echo sh pwd
+                sh gradle build
 
             }
         }
