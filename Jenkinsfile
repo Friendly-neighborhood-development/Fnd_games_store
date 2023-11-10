@@ -3,7 +3,10 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh '/home/sergey/.jenkins/workspace/Games-service_pipeline/server/cart-service gradle build'
+                echo 'change directory'
+                sh 'cd /home/sergey/.jenkins/workspace/Games-service_pipeline/server/cart-service'
+                echo 'directory changed'
+                sh 'gradle build'
             }
         }
     }
