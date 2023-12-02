@@ -361,7 +361,7 @@ services:
 
   #Zookeeper server
   zookeeper:
-    image: 'bitnami/zookeeper:latest'
+    image: 'bitnami/zookeeper:3'
     expose:
       - 2181
     deploy:
@@ -386,7 +386,7 @@ services:
 
   #Kafka server
   kafka:
-    image: 'bitnami/kafka:latest'
+    image: 'bitnami/kafka:3'
     expose:
       - 9092
     deploy:
