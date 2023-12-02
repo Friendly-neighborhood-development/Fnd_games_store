@@ -61,9 +61,6 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.24'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
 
-    implementation ('com.github.ben-manes:caffeine:2.9.2'){
-        exclude group: 'org.slf4j'
-    }
     implementation 'org.springframework.boot:spring-boot-starter-cache'
 
 

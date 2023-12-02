@@ -249,7 +249,7 @@ services:
 
   #Postgres games-service database
   games-service-db:
-    image: postgres
+    image: postgres:14
     restart: always
     secrets:
       - db-password
@@ -279,7 +279,7 @@ services:
 
   #Postgres login-service database
   login-service-db:
-    image: postgres
+    image: postgres:14
     restart: always
     secrets:
       - db-password
@@ -309,7 +309,7 @@ services:
 
   #Postgres orders-service database
   orders-service-db:
-    image: postgres
+    image: postgres:14
     restart: always
     secrets:
       - db-password
@@ -339,7 +339,7 @@ services:
 
   #Cart redis db
   redis-db:
-    image: redis
+    image: redis:7
     deploy:
       mode: replicated
       replicas: 1
@@ -361,7 +361,7 @@ services:
 
   #Zookeeper server
   zookeeper:
-    image: 'bitnami/zookeeper:latest'
+    image: 'bitnami/zookeeper:3'
     expose:
       - 2181
     deploy:
@@ -386,7 +386,7 @@ services:
 
   #Kafka server
   kafka:
-    image: 'bitnami/kafka:latest'
+    image: 'bitnami/kafka:3'
     expose:
       - 9092
     deploy:

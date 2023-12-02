@@ -1,10 +1,10 @@
-FROM gradle:latest AS APPLICATION_BUILD_STAGE
+FROM gradle:jdk8 AS APPLICATION_BUILD_STAGE
 COPY --chown=gradle:gradle . /home/gradle
 WORKDIR /home/gradle
 RUN gradle build || return 1
 
 
-FROM alpine:latest AS IMAGE_BUILD_STAGE
+FROM alpine:3.14 AS IMAGE_BUILD_STAGE
 RUN  apk update \
   && apk upgrade \
   && apk add --update openjdk8 tzdata curl unzip bash \
