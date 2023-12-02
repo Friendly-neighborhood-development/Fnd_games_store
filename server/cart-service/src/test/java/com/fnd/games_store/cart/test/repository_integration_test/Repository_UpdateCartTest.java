@@ -6,16 +6,18 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-//@Slf4j
-//@SpringBootTest(classes = CartApplication.class)
+@Slf4j
+@SpringBootTest(classes = CartApplication.class)
+@Testcontainers(disabledWithoutDocker = true)
 public class Repository_UpdateCartTest extends RepositoryTestUtilities {
 
 
 
-//    @Test
+    @Test
     void updateCart_shouldNotReturnUpdatedGameSet(){
 
         testCartGameData.add(createTestGameEntity("2"));
@@ -23,16 +25,14 @@ public class Repository_UpdateCartTest extends RepositoryTestUtilities {
         repository.save(testCart);
 
 
-//        log.info(repository.findById(userId).get().toString());
-//        log.info(testCart.toString());
+        log.info(repository.findById(userId).get().toString());
+        log.info(testCart.toString());
 
         assertThat(repository.findById(userId)).get().isEqualTo(testCart);
 
-
-
     }
 
-//    @BeforeEach
+    @BeforeEach
     void testSetup(){
         testCart.setUserId(userId);
         testCartGameData.add(createTestGameEntity("1"));

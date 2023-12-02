@@ -1,4 +1,5 @@
 spring:
+  redis:
   kafka:
     bootstrap-servers: kafka:9092
   cloud:
