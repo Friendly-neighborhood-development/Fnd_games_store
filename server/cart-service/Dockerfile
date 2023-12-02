@@ -4,7 +4,7 @@ WORKDIR /home/gradle
 RUN gradle build || return 1
 
 
-FROM alpine:latest AS IMAGE_BUILD_STAGE
+FROM alpine:3.14 AS IMAGE_BUILD_STAGE
 RUN  apk update \
   && apk upgrade \
   && apk add --update openjdk8 tzdata curl unzip bash \
