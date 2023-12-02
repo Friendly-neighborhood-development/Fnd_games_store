@@ -339,7 +339,7 @@ services:
 
   #Cart redis db
   redis-db:
-    image: redis
+    image: redis:7
     deploy:
       mode: replicated
       replicas: 1
