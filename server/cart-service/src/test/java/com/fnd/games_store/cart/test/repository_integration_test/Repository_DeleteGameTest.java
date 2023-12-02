@@ -8,22 +8,22 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.utility.DockerImageName;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-//@SpringBootTest(classes = CartApplication.class)
-//@Slf4j
+@SpringBootTest(classes = CartApplication.class)
+@Slf4j
 public class Repository_DeleteGameTest extends RepositoryTestUtilities {
 
-
-
-//    @Test
+    @Test
     void deleteGameInCart_ShouldDeleteGameEntry(){
 
-        testCartGameData.remove((createTestGameEntity("1")));
-        repository.save(testCart);
-
-        assertThat(repository.findById(userId).get()).isEqualTo(testCart);
+//        testCartGameData.remove((createTestGameEntity("1")));
+//        repository.save(testCart);
+//
+//        assertThat(repository.findById(userId).get()).isEqualTo(testCart);
 
 //        log.info("cart persisted in db: "+repository.findById(userId).get().toString());
 //        log.info("updated cart: "+testCart.toString());

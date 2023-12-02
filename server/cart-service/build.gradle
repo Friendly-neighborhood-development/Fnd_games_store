@@ -61,6 +61,12 @@ dependencies {
     // https://mvnrepository.com/artifact/org.testcontainers/testcontainers
     testImplementation group: 'org.testcontainers', name: 'testcontainers', version: '1.17.2'
 
+    // https://mvnrepository.com/artifact/org.testcontainers/junit-jupiter
+    testImplementation group: 'org.testcontainers', name: 'junit-jupiter', version: '1.17.2'
+
+    // https://mvnrepository.com/artifact/com.redis.testcontainers/testcontainers-redis-junit-jupiter
+    implementation group: 'com.redis.testcontainers', name: 'testcontainers-redis-junit-jupiter', version: '1.4.6'
+
 
 
 }
