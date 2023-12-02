@@ -25,21 +25,21 @@ import static org.junit.Assert.assertTrue;
 public class Repository_DeleteGameTest extends RepositoryTestUtilities {
 
 
-//    @Test
-//    void deleteGameInCart_ShouldDeleteGameEntry(){
+    @Test
+    void deleteGameInCart_ShouldDeleteGameEntry(){
 
-//        testCartGameData.remove((createTestGameEntity("1")));
-//        repository.save(testCart);
-//
-//        assertThat(repository.findById(userId).get()).isEqualTo(testCart);
+        testCartGameData.remove((createTestGameEntity("1")));
+        repository.save(testCart);
 
-//        log.info("cart persisted in db: "+repository.findById(userId).get().toString());
-//        log.info("updated cart: "+testCart.toString());
+        assertThat(repository.findById(userId).get()).isEqualTo(testCart);
 
-//    }
+        log.info("cart persisted in db: "+repository.findById(userId).get().toString());
+        log.info("updated cart: "+testCart.toString());
+
+    }
 
 
-//    @BeforeEach
+    @BeforeEach
     void testSetup(){
         testCart.setUserId(userId);
         testCartGameData.add(createTestGameEntity("1"));

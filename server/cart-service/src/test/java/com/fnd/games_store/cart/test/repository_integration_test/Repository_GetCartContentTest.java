@@ -9,27 +9,29 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-//@SpringBootTest(classes = CartApplication.class)
-//@Slf4j
+@SpringBootTest(classes = CartApplication.class)
+@Slf4j
+@Testcontainers(disabledWithoutDocker = true)
 public class Repository_GetCartContentTest extends RepositoryTestUtilities {
 
     @Autowired
     CartRepository repository;
 
 
-//   @Test
+   @Test
     void getCartContent_ShouldReturnSavedTestCart(){
-//       log.info(repository.findById(userId).get().toString());
-//       log.info(testCart.toString());
+       log.info(repository.findById(userId).get().toString());
+       log.info(testCart.toString());
 
        assertThat(repository.findById(userId)).get().isEqualTo(testCart);
     }
 
-//    @BeforeEach
+    @BeforeEach
     void testSetup(){
         testCart.setUserId(userId);
         testCartGameData.add(createTestGameEntity("1"));
