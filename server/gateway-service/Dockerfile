@@ -1,4 +1,4 @@
-FROM gradle:latest AS APPLICATION_BUILD_STAGE
+FROM gradle:jdk8 AS APPLICATION_BUILD_STAGE
 COPY --chown=gradle:gradle . /home/gradle
 WORKDIR /home/gradle
 RUN gradle build || return 1
