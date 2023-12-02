@@ -249,7 +249,7 @@ services:
 
   #Postgres games-service database
   games-service-db:
-    image: postgres
+    image: postgres:14
     restart: always
     secrets:
       - db-password
@@ -279,7 +279,7 @@ services:
 
   #Postgres login-service database
   login-service-db:
-    image: postgres
+    image: postgres:14
     restart: always
     secrets:
       - db-password
@@ -309,7 +309,7 @@ services:
 
   #Postgres orders-service database
   orders-service-db:
-    image: postgres
+    image: postgres:14
     restart: always
     secrets:
       - db-password
