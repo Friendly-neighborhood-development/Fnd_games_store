@@ -3,9 +3,13 @@ package com.fnd.games_store.cart.test.utilities;
 import com.fnd.games_store.cart.entity.Cart;
 import com.fnd.games_store.cart.entity.Game;
 import com.fnd.games_store.cart.repository.CartRepository;
+import com.redis.testcontainers.RedisContainer;
 import org.junit.jupiter.api.AfterEach;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.utility.DockerImageName;
 
 import java.math.BigDecimal;
@@ -17,7 +21,15 @@ import java.util.Set;
 
 public class RepositoryTestUtilities {
 
+    @Container
+    protected static final RedisContainer REDIS_CONTAINER = new RedisContainer(DockerImageName.parse("redis:5.0.3-alpine")).withExposedPorts(6379);
 
+    @DynamicPropertySource
+    protected static void registerRedisProperties(DynamicPropertyRegistry registry) {
+        registry.add("variables.redis.host", REDIS_CONTAINER::getHost);
+        registry.add("variables.redis.port", () -> REDIS_CONTAINER.getMappedPort(6379)
+                .toString());
+    }
 
     @Autowired
     protected CartRepository repository;

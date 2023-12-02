@@ -25,24 +25,6 @@ import static org.junit.Assert.assertTrue;
 public class Repository_DeleteGameTest extends RepositoryTestUtilities {
 
 
-    @Container
-    private static final RedisContainer REDIS_CONTAINER = new RedisContainer(DockerImageName.parse("redis:5.0.3-alpine")).withExposedPorts(6379);
-
-
-    @DynamicPropertySource
-    private static void registerRedisProperties(DynamicPropertyRegistry registry) {
-        registry.add("variables.redis.host", REDIS_CONTAINER::getHost);
-        registry.add("variables.redis.port", () -> REDIS_CONTAINER.getMappedPort(6379)
-                .toString());
-    }
-
-
-    @Test
-    void givenRedisContainerConfiguredWithDynamicProperties_whenCheckingRunningStatus_thenStatusIsRunning() {
-        assertTrue(REDIS_CONTAINER.isRunning());
-    }
-
-
 //    @Test
 //    void deleteGameInCart_ShouldDeleteGameEntry(){
 
