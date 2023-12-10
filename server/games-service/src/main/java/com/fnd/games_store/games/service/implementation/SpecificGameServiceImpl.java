@@ -1,5 +1,6 @@
 package com.fnd.games_store.games.service.implementation;
 
+import com.fnd.games_store.games.annotations.Benchmarked;
 import com.fnd.games_store.games.dto.game.GameResponseDTO;
 import com.fnd.games_store.games.exceptions.GameNotFoundException;
 import com.fnd.games_store.games.repository.GameRepository;
@@ -27,6 +28,7 @@ public class SpecificGameServiceImpl implements SpecificGameService {
             timeout = 5,
             readOnly = true,
             rollbackFor = GameNotFoundException.class)
+    @Benchmarked
     @Override
     public GameResponseDTO getGameByName(String name) {
         return new GameResponseDTO(repository.getGameByName(name).orElseThrow(GameNotFoundException::new));
