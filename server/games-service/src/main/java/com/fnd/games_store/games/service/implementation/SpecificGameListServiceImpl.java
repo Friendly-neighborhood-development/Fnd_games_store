@@ -1,5 +1,6 @@
 package com.fnd.games_store.games.service.implementation;
 
+import com.fnd.games_store.games.annotations.Benchmarked;
 import com.fnd.games_store.games.dto.game.GameResponseDTO;
 import com.fnd.games_store.games.exceptions.GameNotFoundException;
 import com.fnd.games_store.games.repository.GameRepository;
@@ -32,6 +33,7 @@ public class SpecificGameListServiceImpl implements SpecificGameListService {
             isolation = Isolation.REPEATABLE_READ,
             timeout = 5,
             readOnly = true)
+    @Benchmarked
     @Override
     public List<GameResponseDTO> getSpecifiedGameList(Integer page, Integer pageSize, Sort sortBy) {
         return repository.findAll(PageRequest.of(page,pageSize, sortBy)).stream().map(GameResponseDTO::new).collect(Collectors.toList());
